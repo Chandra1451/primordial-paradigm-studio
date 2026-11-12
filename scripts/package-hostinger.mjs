@@ -148,3 +148,4 @@ console.log(`  Path: ${outFilePath}`);
 console.log(`  Size: ${sizeKb} KB`);
 console.log(`  SHA-256: ${hash}`);
 console.log(`\nReady for Hostinger upload into public_html/.`);
+
