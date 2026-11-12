@@ -1,0 +1,71 @@
+# =============================================================================
+# .gitignore for Primordial Paradigm Studio (Hardened Security Baseline)
+# =============================================================================
+
+# --- Secrets & Environment Credentials (STRICT) ---
+.env
+.env.*
+!.env.example
+*.env
+*.pem
+*.key
+*.pfx
+*.p12
+*.crt
+*.cert
+*.token
+*.secret
+credentials.json
+client_secret*.json
+id_rsa*
+id_ed25519*
+*.pub
+
+# --- Dependencies & Package Managers ---
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- Framework & Build Artifacts ---
+dist/
+build/
+release/
+.astro/
+.cache/
+temp/
+scratch/
+*.zip
+*.tar.gz
+
+# --- Test Results & Screenshots ---
+test-results/
+playwright-report/
+screenshots/
+*.png
+*.jpg
+*.jpeg
+*.webp
+!src/assets/images/**/*
+
+# --- Planning Docs & Prompt Files ---
+/[0-9][0-9]_*.md
+*_PROMPT.md
+PROJECT_MEMORY.md
+research/
+reports/
+*.xlsx
+*.csv
+
+# --- Operating System & Editor Files ---
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
