@@ -69,3 +69,4 @@ console.log('\n✓ Production branch deployed successfully!');
 console.log('  Branch: production');
 console.log('  Target: https://github.com/Chandra1451/primordial-paradigm-studio/tree/production');
 console.log('\nHostinger Git Auto-Deployment will now pull the latest production release.');
+
