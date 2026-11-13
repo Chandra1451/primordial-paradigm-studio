@@ -911,3 +911,4 @@ export function renderLivingSpecimenHero() {
     </script>
   `.trim();
 }
+
