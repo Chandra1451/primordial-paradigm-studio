@@ -36,6 +36,7 @@ import { renderLearnPage } from '../src/pages/learn.js';
 import { renderServicesPage } from '../src/pages/services.js';
 import { renderAboutPage } from '../src/pages/about.js';
 import { render404Page } from '../src/pages/404.js';
+import { renderExplorePage } from '../src/pages/explore.js';
 
 console.log('=== Primordial Paradigm Studio Build ===');
 
@@ -130,7 +131,8 @@ const corePages = [
   { route: 'games', html: renderGamesPage(gamesArticles), priority: '0.9' },
   { route: 'learn', html: renderLearnPage(learnArticles), priority: '0.9' },
   { route: 'services', html: renderServicesPage(), priority: '0.8' },
-  { route: 'about', html: renderAboutPage(), priority: '0.7' }
+  { route: 'about', html: renderAboutPage(), priority: '0.7' },
+  { route: 'explore', html: renderExplorePage(), priority: '0.5' }
 ];
 
 for (const page of corePages) {
