@@ -162,7 +162,7 @@ export function renderEditorialBroadSheetHero() {
         position: relative;
         z-index: 2;
         border-bottom: 1px solid var(--border-subtle);
-        background: rgba(7, 8, 10, 0.85);
+        background: var(--bg-surface);
         backdrop-filter: blur(14px);
         -webkit-backdrop-filter: blur(14px);
         padding: 0.75rem 0;
@@ -615,7 +615,7 @@ export function renderEditorialBroadSheetHero() {
         }
 
         // -------------------------------------------------------------
-        // ATMOSPHERE 01: LUMINOUS LIMESTONE (Warm Italian Paper + Soft Charcoal)
+        // ATMOSPHERE 01: LUMINOUS LIMESTONE (Coolors Palette: #f4f1ea, #9c95dc, #228cdb, #0b7189, #170a1c)
         // -------------------------------------------------------------
         function drawLimestone() {
           // Warm limestone paper trail wash
@@ -625,30 +625,30 @@ export function renderEditorialBroadSheetHero() {
           const cx = width > 960 ? width * 0.75 : width * 0.5;
           const cy = height * 0.5;
 
-          // Terracotta clay atmospheric corona
-          const corona = ctx.createRadialGradient(cx, cy, 10, cx, cy, 100);
-          corona.addColorStop(0, 'rgba(200, 75, 49, 0.16)');
-          corona.addColorStop(0.5, 'rgba(234, 229, 220, 0.20)');
+          // Atmospheric corona: Ocean Teal & Lavender Mist
+          const corona = ctx.createRadialGradient(cx, cy, 10, cx, cy, 105);
+          corona.addColorStop(0, 'rgba(11, 113, 137, 0.20)');
+          corona.addColorStop(0.5, 'rgba(156, 149, 220, 0.16)');
           corona.addColorStop(1, 'rgba(244, 241, 234, 0)');
           ctx.fillStyle = corona;
           ctx.beginPath();
-          ctx.arc(cx, cy, 100, 0, Math.PI * 2);
+          ctx.arc(cx, cy, 105, 0, Math.PI * 2);
           ctx.fill();
 
-          // Softened warm charcoal ink core (not harsh digital black)
-          ctx.fillStyle = '#2d313a';
+          // Deep Midnight Plum / Currant Core (#170a1c)
+          ctx.fillStyle = '#170a1c';
           ctx.beginPath();
           ctx.arc(cx, cy, horizonRadius, 0, Math.PI * 2);
           ctx.fill();
 
-          // Hairline terracotta ring
-          ctx.strokeStyle = '#c84b31';
-          ctx.lineWidth = 1.2;
+          // Hairline Ocean Teal ring (#0b7189)
+          ctx.strokeStyle = '#0b7189';
+          ctx.lineWidth = 1.3;
           ctx.beginPath();
           ctx.arc(cx, cy, horizonRadius + 1.5, 0, Math.PI * 2);
           ctx.stroke();
 
-          // Update & draw softened warm charcoal & terracotta particles
+          // Update & draw kinetic particles (Plum, Ocean Teal, Cerulean Blue, Soft Lavender)
           updateParticlePhysics(cx, cy);
           for (let i = 0; i < orbitalParticles.length; i++) {
             const p = orbitalParticles[i];
@@ -657,9 +657,15 @@ export function renderEditorialBroadSheetHero() {
             const dist = Math.sqrt(dx * dx + dy * dy);
             const alpha = Math.min(p.brightness, (dist - horizonRadius) / 28);
             if (alpha > 0.04) {
-              ctx.fillStyle = p.isAccent
-                ? 'rgba(200, 75, 49, ' + alpha + ')'
-                : 'rgba(45, 49, 58, ' + (alpha * 0.75) + ')';
+              if (i % 4 === 0) {
+                ctx.fillStyle = 'rgba(34, 140, 219, ' + alpha + ')'; // Cerulean
+              } else if (i % 4 === 1) {
+                ctx.fillStyle = 'rgba(11, 113, 137, ' + alpha + ')'; // Ocean Teal
+              } else if (i % 4 === 2) {
+                ctx.fillStyle = 'rgba(156, 149, 220, ' + (alpha * 0.9) + ')'; // Lavender
+              } else {
+                ctx.fillStyle = 'rgba(23, 10, 28, ' + (alpha * 0.85) + ')'; // Deep Plum
+              }
               ctx.beginPath();
               ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
               ctx.fill();
@@ -789,10 +795,10 @@ export function renderEditorialBroadSheetHero() {
             if (docketId) docketId.textContent = 'WARM LIMESTONE ATELIER';
             if (docketOrbitVal) docketOrbitVal.textContent = 'LUMINANCE: 92% D65';
             if (docketOrbitHint) docketOrbitHint.textContent = 'HIGH-KEY GALLERY PAPER';
-            if (docketStatK1) docketStatK1.textContent = 'PAPER STOCK';
-            if (docketStatV1) docketStatV1.textContent = 'UNCOATED 300GSM';
-            if (docketStatK2) docketStatK2.textContent = 'INK CONTRAST';
-            if (docketStatV2) docketStatV2.textContent = '11.3:1 AAA';
+            if (docketStatK1) docketStatK1.textContent = 'PRIMARY INK';
+            if (docketStatV1) docketStatV1.textContent = 'DEEP PLUM #170A1C';
+            if (docketStatK2) docketStatK2.textContent = 'CONTRAST';
+            if (docketStatV2) docketStatV2.textContent = '16.0:1 AAA';
             if (telemetryCol4) {
               telemetryCol4.textContent = 'Luminous Limestone';
               telemetryCol4.style.color = 'var(--accent-studio)';

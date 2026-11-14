@@ -197,8 +197,8 @@ export function renderEditorialIndexLedger() {
       .ledger-section {
         padding-top: clamp(4.5rem, 7vw, 7rem);
         padding-bottom: clamp(4.5rem, 7vw, 7rem);
-        background: #06070a;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        background: var(--bg-canvas);
+        border-bottom: 1px solid var(--border-subtle);
       }
 
       .ledger-header-lockup {
@@ -215,7 +215,7 @@ export function renderEditorialIndexLedger() {
       }
 
       .ledger-code {
-        color: var(--accent-amber);
+        color: var(--accent-studio);
         font-weight: 700;
         letter-spacing: 0.08em;
       }
@@ -223,7 +223,7 @@ export function renderEditorialIndexLedger() {
       .ledger-rule {
         flex: 0 0 35px;
         height: 1px;
-        background: rgba(255, 255, 255, 0.15);
+        background: var(--border-strong);
       }
 
       .ledger-note {
@@ -243,7 +243,7 @@ export function renderEditorialIndexLedger() {
       .ledger-table {
         display: flex;
         flex-direction: column;
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        border-top: 1px solid var(--border-strong);
       }
 
       .ledger-row {
@@ -252,15 +252,15 @@ export function renderEditorialIndexLedger() {
         gap: 1.5rem;
         align-items: center;
         padding: 2.25rem 1rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        border-bottom: 1px solid var(--border-subtle);
         text-decoration: none;
         transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
         position: relative;
       }
 
       .ledger-row:hover {
-        background: rgba(245, 158, 11, 0.03);
-        border-bottom-color: var(--accent-amber);
+        background: var(--bg-surface-hover);
+        border-bottom-color: var(--accent-studio);
         padding-left: 1.5rem;
         text-decoration: none;
       }

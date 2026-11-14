@@ -8,41 +8,47 @@
 
 /* -----------------------------------------------------------------------------
    DEFAULT / MODE 01: LUMINOUS LIMESTONE (Daylight Gallery & Warm Paper)
-   Inspired by: Fumito Ueda (Ico, The Last Guardian), Swiss Art Catalogues
-   Softer, organic letterpress charcoal typography on sun-warmed Italian paper.
+   Inspired by Coolors Palette: #f4f1ea, #9c95dc, #228cdb, #0b7189, #170a1c
+   Deep plum/black currant typography (#170a1c), ocean teal (#0b7189),
+   cerulean blue (#228cdb), and soft lavender (#9c95dc) on warm Italian paper.
    ----------------------------------------------------------------------------- */
 :root,
 [data-atmosphere="limestone"],
 [data-atmosphere="dawn"] {
   /* Surface Layers (Warm Italian Limestone & Uncoated Cotton Paper) */
-  --bg-canvas: #f4f1ea;           /* Sun-drenched warm limestone */
+  --bg-canvas: #f4f1ea;           /* Sun-drenched warm limestone alabaster */
   --bg-surface: #eae5dc;          /* Warm drafting stone surface */
   --bg-surface-hover: #dfd9ce;    /* Interactive hover stone */
   --bg-surface-elevated: #ffffff; /* Crisp gallery plinths & cards */
 
   /* Structural Hairlines */
-  --border-subtle: rgba(45, 49, 58, 0.12);
-  --border-strong: rgba(45, 49, 58, 0.24);
+  --border-subtle: rgba(23, 10, 28, 0.12);
+  --border-strong: rgba(23, 10, 28, 0.25);
 
-  /* Typography (Refined, Softened Charcoal Ink — 11.3:1 AAA Contrast) */
-  --text-primary: #2d313a;        /* Warm editorial charcoal (softer than harsh black) */
-  --text-secondary: #5a5f6e;      /* Muted architectural slate (5.8:1) */
-  --text-muted: #7c8292;          /* Technical metadata */
+  /* Typography (WCAG AAA Contrast: 16.0:1 against #f4f1ea) */
+  --text-primary: #170a1c;        /* Deep midnight plum / black currant ink */
+  --text-secondary: #493c4e;      /* Muted editorial plum slate (8.4:1 AAA) */
+  --text-muted: #6c5d72;          /* Technical metadata (4.8:1) */
 
-  /* Accent: Warm Terracotta Clay & Raw Cadmium */
-  --accent-studio: #c84b31;
-  --accent-studio-hover: #b03a22;
-  --accent-studio-glow: rgba(200, 75, 49, 0.15);
-  --border-spark: rgba(200, 75, 49, 0.40);
+  /* Primary Accent: Deep Ocean Teal / Peacock (#0b7189) */
+  --accent-studio: #0b7189;
+  --accent-studio-hover: #228cdb; /* Cerulean Blue hover */
+  --accent-studio-glow: rgba(11, 113, 137, 0.18);
+  --border-spark: rgba(34, 140, 219, 0.45);
 
-  /* Aliases */
+  /* Palette Specific Accents */
+  --accent-teal: #0b7189;
+  --accent-cerulean: #228cdb;
+  --accent-lavender: #9c95dc;
+
+  /* Aliases for Design System */
   --accent-amber: var(--accent-studio);
-  --accent-amber-light: var(--accent-studio-hover);
+  --accent-amber-light: var(--accent-cerulean);
   --accent-amber-glow: var(--accent-studio-glow);
 
-  --accent-cyan: #2a6f7b;
-  --accent-cyan-light: #1d555f;
-  --accent-cyan-glow: rgba(42, 111, 123, 0.15);
+  --accent-cyan: var(--accent-cerulean);
+  --accent-cyan-light: #52a8e8;
+  --accent-cyan-glow: rgba(34, 140, 219, 0.18);
 
   /* Status Tokens */
   --status-success: #15803d;
