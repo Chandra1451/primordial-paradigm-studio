@@ -1,0 +1,2179 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Option 3: Living Specimen Atelier — Primordial Paradigm Studio</title>
+    <meta name="description" content="Living Specimen Atelier preview exploring deterministic cellular simulation, floating specimen reel, and interactive physical automata." />
+    
+    <link rel="canonical" href="https://primordialparadigm.com/specimen/" />
+
+    <!-- Security & Resource Directives -->
+    <meta name="color-scheme" content="dark" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+
+    <!-- OpenGraph Tags -->
+    <meta property="og:title" content="Option 3: Living Specimen Atelier — Primordial Paradigm Studio" />
+    <meta property="og:description" content="Living Specimen Atelier preview exploring deterministic cellular simulation, floating specimen reel, and interactive physical automata." />
+    <meta property="og:url" content="https://primordialparadigm.com/specimen/" />
+    <meta property="og:site_name" content="Primordial Paradigm" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Option 3: Living Specimen Atelier — Primordial Paradigm Studio" />
+    <meta name="twitter:description" content="Living Specimen Atelier preview exploring deterministic cellular simulation, floating specimen reel, and interactive physical automata." />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Design System Tokens & Global Styles -->
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/global.css" />
+
+    <!-- Immediate Atmosphere Token Initialization (Zero FOUC) -->
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('pp_atmosphere');
+          if (saved === 'twilight' || saved === 'chiaroscuro' || saved === 'blueprint') saved = 'titanium';
+          if (saved === 'surrealism' || saved === 'dawn') saved = 'limestone';
+          if (saved && (saved === 'limestone' || saved === 'titanium')) {
+            document.documentElement.setAttribute('data-atmosphere', saved);
+          } else {
+            document.documentElement.setAttribute('data-atmosphere', 'limestone');
+          }
+        } catch(e) {}
+      })();
+    </script>
+
+    <!-- Google Consent Mode v2 (Default: Denied / Zero Telemetry) -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+    </script>
+
+    <!-- Structured Data (Schema.org JSON-LD) -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Primordial Paradigm",
+  "url": "https://primordialparadigm.com",
+  "logo": "https://primordialparadigm.com/favicon.svg",
+  "description": "Living Specimen Atelier preview exploring deterministic cellular simulation, floating specimen reel, and interactive physical automata."
+}
+    </script>
+  </head>
+  <body>
+    <!-- Accessibility Skip Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="studio-header" id="studioHeader">
+      <div class="container header-inner">
+        
+        <!-- Architectural Brand Masthead -->
+        <a href="/" class="brand-masthead" aria-label="Primordial Paradigm Homepage">
+          <div class="brand-icon-wrap" aria-hidden="true">
+            <svg
+      width="26"
+      height="26"
+      viewBox="0 0 120 120"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="monogram "
+      aria-label="Primordial Paradigm Monogram"
+      role="img"
+    >
+      <title>Primordial Paradigm</title>
+      <path
+        d="M29 101V45C29 24 42 12 63 12C86 12 101 27 101 48C101 70 85 84 63 84H54V65H63C75 65 82 59 82 48C82 38 75 31 64 31C54 31 48 37 48 47V101Z"
+        fill="currentColor"
+      />
+      <circle cx="64" cy="48" r="7" fill="#f4f4f5" />
+    </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">PRIMORDIAL PARADIGM</span>
+            <span class="brand-tag">STUDIO // SYSTEMS ATELIER</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <nav class="nav-menu" aria-label="Main Navigation">
+          <ul class="nav-list">
+            
+      <li class="nav-item">
+        <a
+          href="/games/"
+          class="nav-link "
+          
+        >
+          <span class="nav-link-text">GAMES</span>
+          
+        </a>
+      </li>
+    
+      <li class="nav-item">
+        <a
+          href="/learn/"
+          class="nav-link "
+          
+        >
+          <span class="nav-link-text">LEARN</span>
+          
+        </a>
+      </li>
+    
+      <li class="nav-item">
+        <a
+          href="/services/"
+          class="nav-link "
+          
+        >
+          <span class="nav-link-text">SERVICES</span>
+          
+        </a>
+      </li>
+    
+      <li class="nav-item">
+        <a
+          href="/about/"
+          class="nav-link "
+          
+        >
+          <span class="nav-link-text">ABOUT</span>
+          
+        </a>
+      </li>
+    
+          </ul>
+        </nav>
+
+        <!-- Right Utility & Mobile Toggle -->
+        <div class="header-dock">
+          <!-- Minimalist Atmosphere Selector in Header -->
+          <div class="header-atmosphere-controls" role="group" aria-label="Visual Atmosphere">
+            <span class="atmo-indicator-label">ATMO //</span>
+            <button type="button" class="header-atmo-btn" data-atmo="limestone" title="Mode 01: Luminous Limestone (Warm Gallery Paper)">01</button>
+            <button type="button" class="header-atmo-btn" data-atmo="titanium" title="Mode 02: Warm Titanium (Architectural Slate)">02</button>
+          </div>
+
+          <!-- Mobile Hamburger Toggle Button -->
+          <button
+            type="button"
+            class="mobile-nav-toggle"
+            id="mobileNavToggle"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="mobileNavDrawer"
+          >
+            <span class="toggle-icon-box" aria-hidden="true">
+              <span class="toggle-bar bar-1"></span>
+              <span class="toggle-bar bar-2"></span>
+              <span class="toggle-bar bar-3"></span>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation Drawer -->
+      <div
+        class="mobile-nav-drawer"
+        id="mobileNavDrawer"
+        aria-hidden="true"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile Navigation"
+      >
+        <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop" aria-hidden="true"></div>
+        <div class="mobile-drawer-panel">
+          <div class="mobile-drawer-header">
+            <div class="drawer-meta-title">[STUDIO DIRECTORY]</div>
+            <button
+              type="button"
+              class="mobile-drawer-close"
+              id="mobileDrawerClose"
+              aria-label="Close navigation menu"
+            >
+              &times;
+            </button>
+          </div>
+
+          <nav class="mobile-drawer-nav" aria-label="Mobile Navigation Menu">
+            <ul class="mobile-nav-list">
+              
+      <li class="mobile-nav-item">
+        <a
+          href="/games/"
+          class="mobile-nav-link "
+          
+        >
+          <span class="mobile-link-index">[01]</span>
+          <span class="mobile-link-label">GAMES</span>
+          <span class="mobile-link-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+      <li class="mobile-nav-item">
+        <a
+          href="/learn/"
+          class="mobile-nav-link "
+          
+        >
+          <span class="mobile-link-index">[02]</span>
+          <span class="mobile-link-label">LEARN</span>
+          <span class="mobile-link-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+      <li class="mobile-nav-item">
+        <a
+          href="/services/"
+          class="mobile-nav-link "
+          
+        >
+          <span class="mobile-link-index">[03]</span>
+          <span class="mobile-link-label">SERVICES</span>
+          <span class="mobile-link-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+      <li class="mobile-nav-item">
+        <a
+          href="/about/"
+          class="mobile-nav-link "
+          
+        >
+          <span class="mobile-link-index">[04]</span>
+          <span class="mobile-link-label">ABOUT</span>
+          <span class="mobile-link-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+            </ul>
+          </nav>
+
+          <!-- Mobile Drawer Atmosphere Selection -->
+          <div class="drawer-atmo-section">
+            <div class="drawer-atmo-title">[ATMOSPHERIC LUMINOSITY]</div>
+            <div class="drawer-atmo-grid">
+              <button type="button" class="drawer-atmo-option" data-atmo="limestone">
+                <span class="option-num">01</span>
+                <span class="option-name">Luminous Limestone (Warm Paper)</span>
+              </button>
+              <button type="button" class="drawer-atmo-option" data-atmo="titanium">
+                <span class="option-num">02</span>
+                <span class="option-name">Warm Titanium (Concrete Slate)</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="mobile-drawer-footer">
+            <div class="drawer-telemetry-row">
+              <span class="telemetry-label">SECTOR</span>
+              <span class="telemetry-val">01 // DEEP SYSTEMS</span>
+            </div>
+            <div class="drawer-telemetry-row">
+              <span class="telemetry-label">LOCATION</span>
+              <span class="telemetry-val">BANGALORE // UTC+5:30</span>
+            </div>
+            <div class="drawer-telemetry-row">
+              <span class="telemetry-label">ARCHITECTURE</span>
+              <span class="telemetry-val text-bone">DETERMINISTIC</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Header & Mobile Drawer Interaction Logic -->
+    <script>
+      (function() {
+        const toggleBtn = document.getElementById('mobileNavToggle');
+        const closeBtn = document.getElementById('mobileDrawerClose');
+        const drawer = document.getElementById('mobileNavDrawer');
+        const backdrop = document.getElementById('mobileDrawerBackdrop');
+        const header = document.getElementById('studioHeader');
+
+        if (!toggleBtn || !drawer) return;
+
+        function openDrawer() {
+          drawer.classList.add('is-open');
+          toggleBtn.classList.add('is-active');
+          toggleBtn.setAttribute('aria-expanded', 'true');
+          drawer.setAttribute('aria-hidden', 'false');
+          document.body.classList.add('drawer-locked');
+          if (closeBtn) closeBtn.focus();
+        }
+
+        function closeDrawer() {
+          drawer.classList.remove('is-open');
+          toggleBtn.classList.remove('is-active');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+          drawer.setAttribute('aria-hidden', 'true');
+          document.body.classList.remove('drawer-locked');
+          toggleBtn.focus();
+        }
+
+        toggleBtn.addEventListener('click', function() {
+          const isOpen = drawer.classList.contains('is-open');
+          if (isOpen) closeDrawer();
+          else openDrawer();
+        });
+
+        if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+        if (backdrop) backdrop.addEventListener('click', closeDrawer);
+
+        // Close on ESC key
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && drawer.classList.contains('is-open')) {
+            closeDrawer();
+          }
+        });
+
+        // Close when a link inside mobile drawer is clicked
+        drawer.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            closeDrawer();
+          });
+        });
+
+        // Sticky header hairline shadow on scroll
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 16) {
+            header.classList.add('is-scrolled');
+          } else {
+            header.classList.remove('is-scrolled');
+          }
+        }, { passive: true });
+      })();
+    </script>
+    <main id="main-content">
+      <!-- 1. Playable Living Specimen Hero Viewport -->
+    <section class="specimen-hero-viewport" id="specimenHero">
+      <!-- Architectural Canvas Background -->
+      <canvas id="specimenCanvas" class="specimen-canvas" aria-label="Interactive Game Engine Physics Viewport"></canvas>
+
+      <!-- Analog Film Grain / Texture Overlay -->
+      <div class="analog-texture-overlay" aria-hidden="true"></div>
+
+      <!-- Live Top Telemetry Bar (CAD / Avionics Style) -->
+      <div class="hero-telemetry-strip">
+        <div class="container telemetry-flex">
+          <div class="telemetry-left">
+            <span class="telemetry-pill">
+              <span class="telemetry-dot"></span>
+              PRIMORDIAL ENGINE v1.2
+            </span>
+            <span class="telemetry-coord">COORD: [37.77° N, -122.41° W]</span>
+            <span class="telemetry-coord desktop-only">SECTOR: 01 // FIRST FORM</span>
+          </div>
+
+          <div class="telemetry-right">
+            <span class="telemetry-stat" id="heroFps">60 FPS</span>
+            <span class="telemetry-stat desktop-only" id="heroEntities">ENTITIES: 120</span>
+            <button type="button" id="heroMotionBtn" class="telemetry-btn" aria-label="Toggle simulation motion" title="Pause or resume simulation">
+              <span class="btn-indicator">&bull;</span>
+              <span class="btn-text">RUNNING</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Monumental Editorial Hero Content Layer -->
+      <div class="container hero-content-layer">
+        <div class="hero-grid-lockup">
+          
+          <!-- Left / Primary: Monumental Display Typography -->
+          <div class="hero-title-column">
+            <div class="hero-index-tag">
+              <span class="tag-index">[SEC-00]</span>
+              <span class="tag-label">INDEPENDENT GAME & SYSTEMS ATELIER</span>
+            </div>
+
+            <h1 class="hero-monumental-title">
+              Computational <br />
+              <span class="title-accent">Worlds.</span> <br />
+              Systemic Play.
+            </h1>
+
+            <p class="hero-manifesto-lead">
+              We design original video games, research emergent physics architectures, and craft precision software from first principles. Zero engine bloat. Pure mechanical craft.
+            </p>
+
+            <div class="hero-action-cluster">
+              <a href="/games/" class="action-tile action-primary">
+                <span class="tile-num">01</span>
+                <div class="tile-info">
+                  <span class="tile-title">Explore Games & Devlogs</span>
+                  <span class="tile-sub">Playable Alpha & Physics Research &rarr;</span>
+                </div>
+              </a>
+
+              <a href="/learn/" class="action-tile action-secondary">
+                <span class="tile-num">02</span>
+                <div class="tile-info">
+                  <span class="tile-title">Read Systems Essays</span>
+                  <span class="tile-sub">Deterministic Architecture &rarr;</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right / Interactive HUD Deck: Real-Time Engine Telemetry -->
+          <div class="hero-hud-column">
+            <div class="engine-hud-card">
+              <div class="hud-card-header">
+                <div class="hud-header-title">
+                  <span class="crosshair">+</span>
+                  <span>LIVE SPECIMEN: KINEMATICS ENGINE</span>
+                </div>
+                <span class="hud-status-badge">INTERACTIVE</span>
+              </div>
+
+              <div class="hud-card-body">
+                <p class="hud-micro-copy">
+                  The canvas below is a live 60 FPS vector simulation. Steer the vessel with your cursor or drag to impart velocity and observe momentum damping.
+                </p>
+
+                <!-- Interactive Mode Selector -->
+                <div class="hud-modes-row" role="group" aria-label="Simulation Mode Selector">
+                  <button type="button" class="specimen-mode-btn active" data-specimen="vessel">
+                    <span>✦ Kinematic Vessel</span>
+                  </button>
+                  <button type="button" class="specimen-mode-btn" data-specimen="gravity">
+                    <span>◎ Singularity Lens</span>
+                  </button>
+                  <button type="button" class="specimen-mode-btn" data-specimen="flow">
+                    <span>∿ Fluid Vectors</span>
+                  </button>
+                </div>
+
+                <!-- Live Vector Telemetry Readouts -->
+                <div class="hud-telemetry-grid">
+                  <div class="telemetry-box">
+                    <span class="box-label">VELOCITY (v)</span>
+                    <span class="box-value" id="hudVelocity">0.00 px/f</span>
+                  </div>
+                  <div class="telemetry-box">
+                    <span class="box-label">TRAJECTORY (θ)</span>
+                    <span class="box-value" id="hudHeading">0.00 rad</span>
+                  </div>
+                  <div class="telemetry-box">
+                    <span class="box-label">SURFACE COEFF (μ)</span>
+                    <span class="box-value">0.982 (Standard)</span>
+                  </div>
+                  <div class="telemetry-box">
+                    <span class="box-label">THRUST MAGNITUDE</span>
+                    <span class="box-value">1.45G</span>
+                  </div>
+                </div>
+
+                <div class="hud-interaction-hint">
+                  <span class="crosshair">+</span>
+                  <span>Click and drag on the background to launch kinetic energy particles</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <style>
+      /* =============================================================================
+         Specimen Hero Section Styles (Living Atelier)
+         ============================================================================= */
+      .specimen-hero-viewport {
+        position: relative;
+        min-height: calc(100vh - var(--nav-height));
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: #040508;
+        overflow: hidden;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .specimen-canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        z-index: 0;
+      }
+
+      .analog-texture-overlay {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+        opacity: 0.035;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+
+      /* Telemetry Strip */
+      .hero-telemetry-strip {
+        position: relative;
+        z-index: 2;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        background: rgba(4, 5, 8, 0.85);
+        backdrop-filter: blur(12px);
+        padding: 0.65rem 0;
+      }
+
+      .telemetry-flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+      }
+
+      .telemetry-left, .telemetry-right {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+      }
+
+      .telemetry-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        color: var(--accent-amber);
+        font-weight: 600;
+        letter-spacing: 0.05em;
+      }
+
+      .telemetry-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent-amber);
+        box-shadow: 0 0 8px var(--accent-amber);
+        animation: telemetryPulse 2s infinite ease-in-out;
+      }
+
+      @keyframes telemetryPulse {
+        0%, 100% { opacity: 0.4; }
+        50% { opacity: 1; }
+      }
+
+      .telemetry-coord {
+        color: var(--text-muted);
+      }
+
+      .telemetry-stat {
+        color: var(--text-muted);
+      }
+
+      .telemetry-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--text-secondary);
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        padding: 3px 8px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 150ms ease;
+      }
+
+      .telemetry-btn:hover {
+        background: rgba(245, 158, 11, 0.12);
+        border-color: var(--accent-amber);
+        color: var(--accent-amber);
+      }
+
+      .telemetry-btn.is-paused .btn-indicator {
+        color: var(--status-error);
+      }
+
+      /* Hero Content Layer */
+      .hero-content-layer {
+        position: relative;
+        z-index: 2;
+        padding-top: clamp(2.5rem, 5vw, 4rem);
+        padding-bottom: clamp(3rem, 6vw, 5rem);
+        pointer-events: none; /* Let canvas capture mouse, re-enable on interactive elements */
+      }
+
+      .hero-grid-lockup {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: clamp(2rem, 5vw, 4.5rem);
+        align-items: center;
+      }
+
+      .hero-title-column {
+        pointer-events: auto;
+      }
+
+      .hero-index-tag {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .tag-index {
+        color: var(--accent-amber);
+        font-weight: 700;
+      }
+
+      .tag-label {
+        color: var(--text-muted);
+        letter-spacing: 0.1em;
+      }
+
+      .hero-monumental-title {
+        font-size: clamp(2.75rem, 5.5vw, 5.25rem);
+        line-height: 0.95;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        color: var(--text-primary);
+        margin-bottom: 1.75rem;
+      }
+
+      .title-accent {
+        color: var(--accent-amber);
+        text-shadow: 0 0 40px rgba(245, 158, 11, 0.25);
+      }
+
+      .hero-manifesto-lead {
+        font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+        line-height: 1.6;
+        color: var(--text-secondary);
+        max-width: 580px;
+        margin-bottom: 2.5rem;
+      }
+
+      /* Action Tiles */
+      .hero-action-cluster {
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+        max-width: 500px;
+      }
+
+      .action-tile {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        padding: 1rem 1.35rem;
+        border-radius: var(--radius-md);
+        text-decoration: none;
+        transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(10, 13, 20, 0.8);
+        backdrop-filter: blur(10px);
+      }
+
+      .action-primary {
+        border-color: rgba(245, 158, 11, 0.3);
+      }
+
+      .action-primary:hover {
+        background: rgba(245, 158, 11, 0.12);
+        border-color: var(--accent-amber);
+        transform: translateX(6px);
+      }
+
+      .action-secondary:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.2);
+        transform: translateX(6px);
+      }
+
+      .tile-num {
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--accent-amber);
+      }
+
+      .tile-info {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .tile-title {
+        font-weight: 600;
+        font-size: 1rem;
+        color: var(--text-primary);
+      }
+
+      .tile-sub {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--text-muted);
+      }
+
+      /* Interactive HUD Card (Right Column) */
+      .hero-hud-column {
+        pointer-events: auto;
+      }
+
+      .engine-hud-card {
+        background: rgba(8, 11, 16, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: var(--radius-lg);
+        padding: clamp(1.25rem, 3vw, 1.75rem);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(16px);
+      }
+
+      .hud-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 0.85rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .hud-header-title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        letter-spacing: 0.06em;
+      }
+
+      .crosshair {
+        color: var(--accent-amber);
+        font-weight: bold;
+      }
+
+      .hud-status-badge {
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        padding: 2px 7px;
+        border-radius: 3px;
+        background: rgba(16, 185, 129, 0.15);
+        color: var(--status-success);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+      }
+
+      .hud-micro-copy {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        line-height: 1.5;
+        margin-bottom: 1.25rem;
+      }
+
+      .hud-modes-row {
+        display: flex;
+        gap: 6px;
+        margin-bottom: 1.25rem;
+        background: rgba(4, 5, 8, 0.8);
+        padding: 4px;
+        border-radius: var(--radius-sm);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .specimen-mode-btn {
+        flex: 1;
+        background: transparent;
+        border: none;
+        color: var(--text-muted);
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        padding: 6px 8px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 150ms ease;
+        text-align: center;
+        white-space: nowrap;
+      }
+
+      .specimen-mode-btn:hover {
+        color: var(--text-primary);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .specimen-mode-btn.active {
+        background: rgba(245, 158, 11, 0.18);
+        color: var(--accent-amber);
+        border: 1px solid rgba(245, 158, 11, 0.35);
+      }
+
+      .hud-telemetry-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-bottom: 1.25rem;
+      }
+
+      .telemetry-box {
+        background: rgba(4, 5, 8, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 4px;
+        padding: 8px 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+      }
+
+      .box-label {
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        color: var(--text-muted);
+        letter-spacing: 0.05em;
+      }
+
+      .box-value {
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+
+      .hud-interaction-hint {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+        padding-top: 0.85rem;
+      }
+
+      /* Responsive Rules */
+      @media (max-width: 960px) {
+        .hero-grid-lockup {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
+        .hero-monumental-title {
+          font-size: clamp(2.5rem, 8vw, 3.75rem);
+        }
+      }
+
+      @media (max-width: 600px) {
+        .desktop-only { display: none; }
+        .hero-action-cluster { width: 100%; }
+        .hud-modes-row { flex-direction: column; }
+      }
+    </style>
+
+    <script>
+      (function() {
+        const canvas = document.getElementById('specimenCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        const section = document.getElementById('specimenHero');
+
+        let width = 0;
+        let height = 0;
+        let dpr = window.devicePixelRatio || 1;
+        let isRunning = true;
+        let activeMode = 'vessel'; // 'vessel' | 'gravity' | 'flow'
+        let animId = null;
+
+        // Telemetry UI DOM
+        const fpsEl = document.getElementById('heroFps');
+        const hudVelocity = document.getElementById('hudVelocity');
+        const hudHeading = document.getElementById('hudHeading');
+        const motionBtn = document.getElementById('heroMotionBtn');
+        const modeButtons = document.querySelectorAll('.specimen-mode-btn');
+
+        // Physics State: Interactive Vessel
+        const vessel = {
+          x: 200,
+          y: 200,
+          vx: 0,
+          vy: 0,
+          angle: 0,
+          thrust: false,
+          radius: 12,
+          history: [] // vector trail points
+        };
+
+        const mouse = { x: null, y: null, isDown: false, lastX: 0, lastY: 0 };
+        const particles = [];
+        let lastFrameTime = performance.now();
+        let frameCounter = 0;
+        let fpsTimer = 0;
+
+        // -------------------------------------------------------------
+        // Particle Initializer
+        // -------------------------------------------------------------
+        function initEntities() {
+          particles.length = 0;
+          for (let i = 0; i < 90; i++) {
+            particles.push({
+              x: Math.random() * width,
+              y: Math.random() * height,
+              vx: (Math.random() - 0.5) * 0.8,
+              vy: (Math.random() - 0.5) * 0.8,
+              size: Math.random() < 0.25 ? 2.0 : 1.0,
+              hue: Math.random() < 0.4 ? 38 : 190,
+              alpha: Math.random() * 0.6 + 0.2
+            });
+          }
+        }
+
+        function resize() {
+          if (!section) return;
+          const rect = section.getBoundingClientRect();
+          width = rect.width;
+          height = rect.height;
+          dpr = window.devicePixelRatio || 1;
+
+          canvas.width = width * dpr;
+          canvas.height = height * dpr;
+          ctx.scale(dpr, dpr);
+
+          if (vessel.x === 200 && vessel.y === 200) {
+            vessel.x = width * 0.35;
+            vessel.y = height * 0.45;
+          }
+          if (particles.length === 0) initEntities();
+        }
+
+        resize();
+        window.addEventListener('resize', resize, { passive: true });
+
+        // -------------------------------------------------------------
+        // Pointer / Mouse Listeners
+        // -------------------------------------------------------------
+        window.addEventListener('pointermove', (e) => {
+          const rect = canvas.getBoundingClientRect();
+          mouse.x = e.clientX - rect.left;
+          mouse.y = e.clientY - rect.top;
+        }, { passive: true });
+
+        window.addEventListener('pointerdown', (e) => {
+          if (e.target.closest('a') || e.target.closest('button')) return;
+          mouse.isDown = true;
+          // Spawn kinetic energy pulse at click
+          for (let i = 0; i < 14; i++) {
+            const angle = Math.random() * Math.PI * 2;
+            const speed = Math.random() * 3 + 1.5;
+            particles.push({
+              x: mouse.x || width / 2,
+              y: mouse.y || height / 2,
+              vx: Math.cos(angle) * speed,
+              vy: Math.sin(angle) * speed,
+              size: 2.2,
+              hue: 38,
+              alpha: 1.0,
+              decay: 0.025
+            });
+          }
+        });
+
+        window.addEventListener('pointerup', () => { mouse.isDown = false; });
+
+        // -------------------------------------------------------------
+        // Main Render Loop
+        // -------------------------------------------------------------
+        function render(now) {
+          const dt = (now - lastFrameTime) / 1000;
+          lastFrameTime = now;
+
+          // FPS Update
+          frameCounter++;
+          fpsTimer += dt;
+          if (fpsTimer >= 0.5) {
+            if (fpsEl) fpsEl.textContent = `${Math.round(frameCounter / fpsTimer)} FPS`;
+            frameCounter = 0;
+            fpsTimer = 0;
+          }
+
+          if (isRunning) {
+            // Background clear with slight motion persistence
+            ctx.fillStyle = 'rgba(4, 5, 8, 0.28)';
+            ctx.fillRect(0, 0, width, height);
+
+            // Subtle background coordinate grid
+            drawCoordinateGrid();
+
+            if (activeMode === 'vessel') {
+              updateAndDrawVessel();
+            } else if (activeMode === 'gravity') {
+              updateAndDrawGravity();
+            } else if (activeMode === 'flow') {
+              updateAndDrawFlow(now);
+            }
+
+            // Universal ambient particles
+            updateAndDrawParticles();
+          }
+
+          animId = requestAnimationFrame(render);
+        }
+
+        // Draw Architectural Grid
+        function drawCoordinateGrid() {
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.025)';
+          ctx.lineWidth = 1;
+          const step = 80;
+          for (let x = 0; x < width; x += step) {
+            ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, height); ctx.stroke();
+          }
+          for (let y = 0; y < height; y += step) {
+            ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(width, y); ctx.stroke();
+          }
+        }
+
+        // -------------------------------------------------------------
+        // MODE 1: KINEMATIC VESSEL SIMULATION
+        // -------------------------------------------------------------
+        function updateAndDrawVessel() {
+          // If mouse is active, steer towards mouse
+          if (mouse.x !== null && mouse.y !== null) {
+            const dx = mouse.x - vessel.x;
+            const dy = mouse.y - vessel.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            vessel.angle = Math.atan2(dy, dx);
+
+            if (dist > 30) {
+              const accel = Math.min(dist * 0.0035, 0.65);
+              vessel.vx += Math.cos(vessel.angle) * accel;
+              vessel.vy += Math.sin(vessel.angle) * accel;
+              vessel.thrust = true;
+            } else {
+              vessel.thrust = false;
+            }
+          }
+
+          // Inertia damping
+          vessel.vx *= 0.965;
+          vessel.vy *= 0.965;
+
+          vessel.x += vessel.vx;
+          vessel.y += vessel.vy;
+
+          // Boundary bounce with damping
+          if (vessel.x < 20) { vessel.x = 20; vessel.vx *= -0.5; }
+          if (vessel.x > width - 20) { vessel.x = width - 20; vessel.vx *= -0.5; }
+          if (vessel.y < 20) { vessel.y = 20; vessel.vy *= -0.5; }
+          if (vessel.y > height - 20) { vessel.y = height - 20; vessel.vy *= -0.5; }
+
+          // Record trajectory trail
+          const speed = Math.sqrt(vessel.vx * vessel.vx + vessel.vy * vessel.vy);
+          vessel.history.push({ x: vessel.x, y: vessel.y, speed });
+          if (vessel.history.length > 36) vessel.history.shift();
+
+          // Update HUD telemetry
+          if (hudVelocity) hudVelocity.textContent = `${speed.toFixed(2)} px/f`;
+          if (hudHeading) hudHeading.textContent = `${vessel.angle.toFixed(2)} rad`;
+
+          // Draw Trajectory Vector Ribbon
+          if (vessel.history.length > 2) {
+            ctx.beginPath();
+            ctx.moveTo(vessel.history[0].x, vessel.history[0].y);
+            for (let i = 1; i < vessel.history.length; i++) {
+              ctx.lineTo(vessel.history[i].x, vessel.history[i].y);
+            }
+            ctx.strokeStyle = 'rgba(245, 158, 11, 0.35)';
+            ctx.lineWidth = 1.8;
+            ctx.stroke();
+
+            // Glow line
+            ctx.strokeStyle = 'rgba(245, 158, 11, 0.12)';
+            ctx.lineWidth = 5;
+            ctx.stroke();
+          }
+
+          // Draw Vessel (Geometric Dart)
+          ctx.save();
+          ctx.translate(vessel.x, vessel.y);
+          ctx.rotate(vessel.angle);
+
+          // Thruster flame if accelerating
+          if (vessel.thrust && speed > 0.5) {
+            ctx.beginPath();
+            ctx.moveTo(-10, -4);
+            ctx.lineTo(-20 - Math.random() * 8, 0);
+            ctx.lineTo(-10, 4);
+            ctx.closePath();
+            ctx.fillStyle = 'rgba(245, 158, 11, 0.85)';
+            ctx.shadowColor = 'rgba(245, 158, 11, 0.8)';
+            ctx.shadowBlur = 12;
+            ctx.fill();
+            ctx.shadowBlur = 0;
+          }
+
+          // Ship body
+          ctx.beginPath();
+          ctx.moveTo(14, 0);
+          ctx.lineTo(-10, -9);
+          ctx.lineTo(-5, 0);
+          ctx.lineTo(-10, 9);
+          ctx.closePath();
+          ctx.fillStyle = '#0f121a';
+          ctx.fill();
+          ctx.strokeStyle = 'rgba(245, 158, 11, 0.85)';
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+
+          // Cockpit node
+          ctx.fillStyle = 'var(--accent-cyan)';
+          ctx.beginPath();
+          ctx.arc(2, 0, 2.5, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.restore();
+        }
+
+        // -------------------------------------------------------------
+        // MODE 2: GRAVITATIONAL SINGULARITY
+        // -------------------------------------------------------------
+        function updateAndDrawGravity() {
+          const cx = width * 0.65;
+          const cy = height * 0.5;
+          const coreRadius = 24;
+
+          // Event Horizon Aura
+          const grad = ctx.createRadialGradient(cx, cy, 2, cx, cy, 80);
+          grad.addColorStop(0, '#000');
+          grad.addColorStop(0.35, 'rgba(10, 12, 18, 0.9)');
+          grad.addColorStop(0.5, 'rgba(245, 158, 11, 0.4)');
+          grad.addColorStop(1, 'transparent');
+
+          ctx.fillStyle = grad;
+          ctx.beginPath();
+          ctx.arc(cx, cy, 80, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.fillStyle = '#020305';
+          ctx.beginPath();
+          ctx.arc(cx, cy, coreRadius, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.strokeStyle = 'rgba(245, 158, 11, 0.7)';
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+
+          // Pull particles
+          for (const p of particles) {
+            const dx = cx - p.x;
+            const dy = cy - p.y;
+            const distSq = dx * dx + dy * dy;
+            const dist = Math.sqrt(distSq);
+            if (dist > coreRadius) {
+              const f = 750 / Math.max(distSq, 300);
+              p.vx += (dx / dist) * f;
+              p.vy += (dy / dist) * f;
+            } else {
+              p.x = cx + (Math.random() - 0.5) * 300;
+              p.y = cy + (Math.random() - 0.5) * 300;
+              p.vx = (Math.random() - 0.5) * 1.5;
+              p.vy = (Math.random() - 0.5) * 1.5;
+            }
+          }
+        }
+
+        // -------------------------------------------------------------
+        // MODE 3: FLUID CURL VECTORS
+        // -------------------------------------------------------------
+        function updateAndDrawFlow(now) {
+          const t = now * 0.0004;
+          for (const p of particles) {
+            const angle = Math.sin(p.x * 0.005 + t) * Math.cos(p.y * 0.005 + t) * Math.PI * 2;
+            p.vx = p.vx * 0.94 + Math.cos(angle) * 0.35;
+            p.vy = p.vy * 0.94 + Math.sin(angle) * 0.35;
+          }
+        }
+
+        // -------------------------------------------------------------
+        // Particle Simulation
+        // -------------------------------------------------------------
+        function updateAndDrawParticles() {
+          for (let i = particles.length - 1; i >= 0; i--) {
+            const p = particles[i];
+            p.x += p.vx;
+            p.y += p.vy;
+
+            if (p.decay) {
+              p.alpha -= p.decay;
+              if (p.alpha <= 0) {
+                particles.splice(i, 1);
+                continue;
+              }
+            }
+
+            // Wrap around
+            if (p.x < -10) p.x = width + 10;
+            if (p.x > width + 10) p.x = -10;
+            if (p.y < -10) p.y = height + 10;
+            if (p.y > height + 10) p.y = -10;
+
+            ctx.fillStyle = p.hue === 38
+              ? `rgba(245, 158, 11, ${p.alpha})`
+              : `rgba(6, 182, 212, ${p.alpha})`;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+
+        // -------------------------------------------------------------
+        // Mode Controls
+        // -------------------------------------------------------------
+        modeButtons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            modeButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            activeMode = btn.dataset.specimen;
+            ctx.clearRect(0, 0, width, height);
+          });
+        });
+
+        if (motionBtn) {
+          motionBtn.addEventListener('click', () => {
+            isRunning = !isRunning;
+            const text = motionBtn.querySelector('.btn-text');
+            if (isRunning) {
+              text.textContent = 'RUNNING';
+              motionBtn.classList.remove('is-paused');
+            } else {
+              text.textContent = 'PAUSED';
+              motionBtn.classList.add('is-paused');
+            }
+          });
+        }
+
+        animId = requestAnimationFrame(render);
+      })();
+    </script>
+
+    <!-- 2. Architectural Specimen Reel & Engineering Colophon -->
+    <!-- SECTION 1: ARCHITECTURAL SPECIMEN REEL -->
+    <section class="specimen-section" id="specimens">
+      <div class="container">
+        
+        <!-- Section Header with Blueprint Telemetry -->
+        <div class="section-blueprint-header">
+          <div class="blueprint-meta">
+            <span class="blueprint-code">[CATALOGUE // SECTORS 01–03]</span>
+            <span class="blueprint-divider"></span>
+            <span class="blueprint-status">ALL SYSTEMS DETERMINISTIC</span>
+          </div>
+          <h2 class="blueprint-title">Active Projects & Technical Research</h2>
+          <p class="blueprint-sub">Direct access to current video game prototypes, systems monographs, and strategic advisory.</p>
+        </div>
+
+        <!-- Asymmetric Specimen Grid -->
+        <div class="specimens-asymmetric-layout">
+          
+          <!-- SPECIMEN 01: Hero Flagship Cassette (Wide 65%) -->
+          <article class="specimen-cassette cassette-flagship">
+            <div class="cassette-cad-corner top-left">+</div>
+            <div class="cassette-cad-corner top-right">+</div>
+            <div class="cassette-cad-corner bottom-left">+</div>
+            <div class="cassette-cad-corner bottom-right">+</div>
+
+            <div class="cassette-header-bar">
+              <span class="cassette-id">[SPECIMEN // 01]</span>
+              <span class="cassette-stage-pill stage-active">
+                <span class="pulse-spark"></span>
+                PLAYABLE ALPHA
+              </span>
+            </div>
+
+            <div class="cassette-body-grid">
+              <div class="cassette-content-side">
+                <span class="cassette-category">INDEPENDENT GAME DEVLOG &bull; PHYSICS</span>
+                <h3 class="cassette-heading">Systemic Movement Prototype</h3>
+                <p class="cassette-summary">
+                  A pure deterministic 2D vector kinematics engine built with zero external runtime dependencies. Features real-time vector trails, momentum accumulation, surface friction transitions, and in-browser canvas playability.
+                </p>
+
+                <div class="cassette-telemetry-specs">
+                  <div class="spec-node">
+                    <span class="spec-key">DISCIPLINE</span>
+                    <span class="spec-val">Vector Kinematics</span>
+                  </div>
+                  <div class="spec-node">
+                    <span class="spec-key">RUNTIME OVERHEAD</span>
+                    <span class="spec-val">0.0 KB (Pure JS)</span>
+                  </div>
+                  <div class="spec-node">
+                    <span class="spec-key">COMPLIANCE</span>
+                    <span class="spec-val">WCAG 2.2 AAA</span>
+                  </div>
+                </div>
+
+                <div class="cassette-action-row">
+                  <a href="/games/systemic-movement-prototype/" class="cassette-btn btn-amber">
+                    <span>Launch Interactive Devlog</span>
+                    <span class="btn-glyph">&rarr;</span>
+                  </a>
+                  <a href="/games/" class="cassette-link">View All Games Archive</a>
+                </div>
+              </div>
+
+              <!-- Interactive Mini Radar Preview Box -->
+              <div class="cassette-radar-side" aria-hidden="true">
+                <div class="radar-hud-box">
+                  <div class="radar-scope">
+                    <div class="radar-sweep-line"></div>
+                    <div class="radar-grid-rings"></div>
+                    <div class="radar-blip blip-1"></div>
+                    <div class="radar-blip blip-2"></div>
+                  </div>
+                  <div class="radar-readout">
+                    <span>LIVE RADAR // 2D VECTOR SCAN</span>
+                    <span class="radar-coords">[V: 1.45G | μ: 0.98]</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- SPECIMENS 02 & 03: Stacked Research & Advisory Cassettes (35%) -->
+          <div class="specimens-stacked-column">
+            
+            <!-- SPECIMEN 02: Systems Essay -->
+            <article class="specimen-cassette cassette-compact">
+              <div class="cassette-cad-corner top-left">+</div>
+              <div class="cassette-cad-corner top-right">+</div>
+              <div class="cassette-cad-corner bottom-left">+</div>
+              <div class="cassette-cad-corner bottom-right">+</div>
+
+              <div class="cassette-header-bar">
+                <span class="cassette-id">[SPECIMEN // 02]</span>
+                <span class="cassette-stage-pill stage-monograph">MONOGRAPH</span>
+              </div>
+
+              <span class="cassette-category">SYSTEMS ARCHITECTURE &bull; ESSAY</span>
+              <h3 class="cassette-heading" style="font-size: 1.25rem;">First Principles & Emergence</h3>
+              <p class="cassette-summary" style="font-size: 0.9rem;">
+                Exhaustive technical study on building deterministic state machines, spatial memory caching, and zero-native static architectures.
+              </p>
+
+              <div class="compact-footer-row">
+                <span class="spec-meta">8 MIN READ &bull; SCHEMA.ORG</span>
+                <a href="/learn/systems-architecture-first-principles/" class="compact-arrow-link">&rarr;</a>
+              </div>
+            </article>
+
+            <!-- SPECIMEN 03: Advisory -->
+            <article class="specimen-cassette cassette-compact">
+              <div class="cassette-cad-corner top-left">+</div>
+              <div class="cassette-cad-corner top-right">+</div>
+              <div class="cassette-cad-corner bottom-left">+</div>
+              <div class="cassette-cad-corner bottom-right">+</div>
+
+              <div class="cassette-header-bar">
+                <span class="cassette-id">[SPECIMEN // 03]</span>
+                <span class="cassette-stage-pill stage-advisory">ADVISORY</span>
+              </div>
+
+              <span class="cassette-category">STRATEGIC COMPUTATION &bull; ADVISORY</span>
+              <h3 class="cassette-heading" style="font-size: 1.25rem;">Executive Systems Advisory</h3>
+              <p class="cassette-summary" style="font-size: 0.9rem;">
+                Bespoke enterprise dashboards, high-performance database modeling, and mission-critical business intelligence architectures.
+              </p>
+
+              <div class="compact-footer-row">
+                <span class="spec-meta">BESPOKE ENGAGEMENTS</span>
+                <a href="/services/" class="compact-arrow-link">&rarr;</a>
+              </div>
+            </article>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: EDITORIAL MANIFESTO & ENGINEERING COLOPHON -->
+    <section class="colophon-section" id="colophon">
+      <div class="container">
+        <div class="colophon-asymmetric-grid">
+          
+          <!-- Left Column: Monumental Manifesto Pull-Quote -->
+          <div class="colophon-manifesto-col">
+            <div class="colophon-meta">
+              <span class="crosshair">+</span>
+              <span>ENGINEERING MANIFESTO</span>
+            </div>
+
+            <blockquote class="manifesto-quote">
+              “We reject the templated mediocrity and corporate bloat of modern software. Real games emerge from raw computation, rigorous mathematics, and deliberate craft.”
+            </blockquote>
+
+            <div class="manifesto-author-box">
+              <span class="author-title">FOUNDER DIRECTIVE // PRIMORDIAL PARADIGM</span>
+              <span class="author-note">Obsidian Cosmos &bull; Zero-Native Architecture</span>
+            </div>
+          </div>
+
+          <!-- Right Column: Studio Colophon & Architectural Standards -->
+          <div class="colophon-standards-col">
+            <div class="colophon-card">
+              <h3 class="standards-heading">Architectural Ground Rules</h3>
+              
+              <ul class="standards-list">
+                <li class="standard-item">
+                  <span class="standard-bullet">01</span>
+                  <div class="standard-desc">
+                    <strong>Zero-Native Binary Purity:</strong> 100% pure Node.js ESM compilation. Zero native C++/Rust DLL dependencies, fully compliant with OS Application Control policies.
+                  </div>
+                </li>
+                <li class="standard-item">
+                  <span class="standard-bullet">02</span>
+                  <div class="standard-desc">
+                    <strong>Accessibility Baseline:</strong> Full WCAG 2.2 AAA contrast (17.5:1 title contrast, 11.2:1 body contrast against canvas), zero layout shift, and instant reduced-motion accommodation.
+                  </div>
+                </li>
+                <li class="standard-item">
+                  <span class="standard-bullet">03</span>
+                  <div class="standard-desc">
+                    <strong>Verified Claims Boundary:</strong> Zero fabricated marketing claims. Every devlog, game mechanic, and systems essay is backed by reproducible code and executable demonstrations.
+                  </div>
+                </li>
+              </ul>
+
+              <div class="standards-action-box">
+                <a href="/about/" class="btn btn-secondary" style="width: 100%; justify-content: center;">
+                  Read Full Studio Philosophy & Colophon &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <style>
+      /* =============================================================================
+         Specimen Reel & Hardware Cassettes Styles
+         ============================================================================= */
+      .specimen-section {
+        padding-top: clamp(4.5rem, 7vw, 7rem);
+        padding-bottom: clamp(4.5rem, 7vw, 7rem);
+        background: #06070b;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .section-blueprint-header {
+        margin-bottom: 3.5rem;
+      }
+
+      .blueprint-meta {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .blueprint-code {
+        color: var(--accent-amber);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+      }
+
+      .blueprint-divider {
+        flex: 0 0 35px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      .blueprint-status {
+        color: var(--text-muted);
+        letter-spacing: 0.06em;
+      }
+
+      .blueprint-title {
+        font-size: clamp(1.85rem, 3.5vw, 2.75rem);
+        letter-spacing: -0.03em;
+        margin-bottom: 0.5rem;
+        color: var(--text-primary);
+      }
+
+      .blueprint-sub {
+        font-size: 1.05rem;
+        color: var(--text-secondary);
+        max-width: 680px;
+      }
+
+      /* Asymmetric Grid Layout */
+      .specimens-asymmetric-layout {
+        display: grid;
+        grid-template-columns: 1.25fr 0.75fr;
+        gap: 1.75rem;
+        align-items: stretch;
+      }
+
+      /* Cassette Cards */
+      .specimen-cassette {
+        position: relative;
+        background: rgba(11, 14, 21, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: var(--radius-md);
+        padding: clamp(1.5rem, 3.5vw, 2.25rem);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        backdrop-filter: blur(12px);
+        transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1), border-color 220ms ease, box-shadow 220ms ease;
+      }
+
+      .specimen-cassette:hover {
+        transform: translateY(-4px);
+        border-color: rgba(245, 158, 11, 0.4);
+        box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.85), 0 0 20px -5px rgba(245, 158, 11, 0.15);
+      }
+
+      /* CAD Corner Markers */
+      .cassette-cad-corner {
+        position: absolute;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: rgba(245, 158, 11, 0.4);
+        line-height: 1;
+        pointer-events: none;
+      }
+
+      .top-left { top: 6px; left: 8px; }
+      .top-right { top: 6px; right: 8px; }
+      .bottom-left { bottom: 6px; left: 8px; }
+      .bottom-right { bottom: 6px; right: 8px; }
+
+      .cassette-header-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 0.75rem;
+        margin-bottom: 1.25rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .cassette-id {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: var(--accent-amber);
+        letter-spacing: 0.06em;
+      }
+
+      .cassette-stage-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        font-weight: 600;
+        padding: 2px 7px;
+        border-radius: 3px;
+        letter-spacing: 0.05em;
+      }
+
+      .stage-active {
+        background: rgba(245, 158, 11, 0.15);
+        color: var(--accent-amber);
+        border: 1px solid rgba(245, 158, 11, 0.35);
+      }
+
+      .stage-monograph {
+        background: rgba(6, 182, 212, 0.15);
+        color: var(--accent-cyan);
+        border: 1px solid rgba(6, 182, 212, 0.35);
+      }
+
+      .stage-advisory {
+        background: rgba(255, 255, 255, 0.08);
+        color: var(--text-primary);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+
+      .pulse-spark {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--accent-amber);
+        box-shadow: 0 0 6px var(--accent-amber);
+        animation: sparkFlicker 1.8s infinite ease-in-out;
+      }
+
+      @keyframes sparkFlicker {
+        0%, 100% { opacity: 0.4; }
+        50% { opacity: 1; }
+      }
+
+      /* Body Grid for Flagship */
+      .cassette-body-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .cassette-category {
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        letter-spacing: 0.08em;
+        margin-bottom: 0.4rem;
+        display: block;
+      }
+
+      .cassette-heading {
+        font-size: 1.65rem;
+        color: var(--text-primary);
+        line-height: 1.2;
+        margin-bottom: 0.75rem;
+      }
+
+      .cassette-summary {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        line-height: 1.65;
+        margin-bottom: 1.5rem;
+      }
+
+      .cassette-telemetry-specs {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        padding: 0.85rem 1rem;
+        background: rgba(4, 5, 8, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: var(--radius-sm);
+        margin-bottom: 1.75rem;
+      }
+
+      .spec-node {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+      }
+
+      .spec-key {
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        color: var(--text-muted);
+        letter-spacing: 0.05em;
+      }
+
+      .spec-val {
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+
+      .cassette-action-row {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        flex-wrap: wrap;
+      }
+
+      .cassette-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.75rem 1.25rem;
+        border-radius: var(--radius-sm);
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 180ms ease;
+      }
+
+      .btn-amber {
+        background: var(--accent-amber);
+        color: #040508;
+      }
+
+      .btn-amber:hover {
+        background: var(--accent-amber-light);
+        transform: translateY(-2px);
+        text-decoration: none;
+      }
+
+      .cassette-link {
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        text-decoration: none;
+        transition: color 150ms ease;
+      }
+
+      .cassette-link:hover {
+        color: var(--text-primary);
+        text-decoration: underline;
+      }
+
+      /* Stacked Column */
+      .specimens-stacked-column {
+        display: flex;
+        flex-direction: column;
+        gap: 1.75rem;
+      }
+
+      .cassette-compact {
+        flex: 1;
+      }
+
+      .compact-footer-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: auto;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .spec-meta {
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        letter-spacing: 0.06em;
+      }
+
+      .compact-arrow-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: var(--text-primary);
+        font-family: var(--font-mono);
+        font-size: 1rem;
+        text-decoration: none;
+        transition: all 180ms ease;
+      }
+
+      .compact-arrow-link:hover {
+        background: var(--accent-amber);
+        color: #040508;
+        transform: translateX(3px);
+        text-decoration: none;
+      }
+
+      /* Radar Graphics (Decorative) */
+      .radar-hud-box {
+        background: rgba(4, 5, 8, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: var(--radius-sm);
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .radar-scope {
+        position: relative;
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        border: 1px solid rgba(245, 158, 11, 0.35);
+        background: radial-gradient(circle, rgba(245, 158, 11, 0.08) 0%, transparent 70%);
+        overflow: hidden;
+      }
+
+      .radar-sweep-line {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 55px;
+        height: 2px;
+        background: linear-gradient(90deg, rgba(245, 158, 11, 0.85), transparent);
+        transform-origin: 0 0;
+        animation: radarSweep 3.5s infinite linear;
+      }
+
+      @keyframes radarSweep {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+
+      .radar-grid-rings {
+        position: absolute;
+        inset: 15px;
+        border-radius: 50%;
+        border: 1px dashed rgba(255, 255, 255, 0.12);
+      }
+
+      .radar-blip {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--accent-cyan);
+        box-shadow: 0 0 6px var(--accent-cyan);
+      }
+
+      .blip-1 { top: 35px; left: 65px; }
+      .blip-2 { top: 75px; left: 40px; }
+
+      .radar-readout {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        color: var(--text-muted);
+      }
+
+      .radar-coords {
+        color: var(--accent-amber);
+      }
+
+      /* =============================================================================
+         Colophon & Engineering Manifesto Styles
+         ============================================================================= */
+      .colophon-section {
+        padding-top: clamp(4.5rem, 7vw, 7rem);
+        padding-bottom: clamp(4.5rem, 7vw, 7rem);
+        background: #040508;
+      }
+
+      .colophon-asymmetric-grid {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: clamp(2.5rem, 5vw, 4.5rem);
+        align-items: start;
+      }
+
+      .colophon-meta {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        color: var(--accent-amber);
+        margin-bottom: 1.5rem;
+        letter-spacing: 0.08em;
+      }
+
+      .manifesto-quote {
+        font-size: clamp(1.4rem, 2.5vw, 2.15rem);
+        line-height: 1.35;
+        font-weight: 500;
+        color: var(--text-primary);
+        letter-spacing: -0.02em;
+        margin-bottom: 2rem;
+        border-left: 2px solid var(--accent-amber);
+        padding-left: 1.5rem;
+      }
+
+      .manifesto-author-box {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        padding-left: 1.5rem;
+      }
+
+      .author-title {
+        color: var(--text-primary);
+        font-weight: 600;
+        letter-spacing: 0.06em;
+      }
+
+      .author-note {
+        color: var(--text-muted);
+      }
+
+      /* Standards Card */
+      .colophon-card {
+        background: rgba(11, 14, 21, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: var(--radius-lg);
+        padding: clamp(1.5rem, 3vw, 2.25rem);
+        backdrop-filter: blur(12px);
+      }
+
+      .standards-heading {
+        font-size: 1.25rem;
+        color: var(--text-primary);
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .standards-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        margin-bottom: 2rem;
+      }
+
+      .standard-item {
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+      }
+
+      .standard-bullet {
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--accent-amber);
+        padding-top: 2px;
+      }
+
+      .standard-desc {
+        font-size: 0.925rem;
+        color: var(--text-secondary);
+        line-height: 1.55;
+      }
+
+      .standard-desc strong {
+        color: var(--text-primary);
+      }
+
+      /* Responsive Rules */
+      @media (max-width: 900px) {
+        .specimens-asymmetric-layout,
+        .colophon-asymmetric-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+        .cassette-telemetry-specs {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (min-width: 680px) {
+        .cassette-body-grid {
+          grid-template-columns: 1fr auto;
+        }
+      }
+    </style>
+    </main>
+    <aside class="craft-switcher-dock" id="craftSwitcherDock" aria-label="Studio Creative Atmosphere Switcher">
+      <div class="switcher-inner">
+        <div class="switcher-meta">
+          <span class="switcher-title">LUMINOSITY //</span>
+        </div>
+        <div class="switcher-pills" role="toolbar" aria-label="Atmosphere Modes">
+          <button
+            type="button"
+            class="switcher-pill"
+            data-atmo="limestone"
+            title="Mode 01: Luminous Limestone (High-Key Warm Gallery Paper)"
+          >
+            <span class="pill-num">01</span>
+            <span class="pill-label">LIMESTONE</span>
+          </button>
+          <button
+            type="button"
+            class="switcher-pill"
+            data-atmo="titanium"
+            title="Mode 02: Warm Titanium (Architectural Mid-Tone Slate)"
+          >
+            <span class="pill-num">02</span>
+            <span class="pill-label">TITANIUM</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+    <footer class="studio-footer" role="contentinfo">
+      <div class="container footer-container">
+        
+        <!-- Top Architectural Banner: Thesis & Brand Lockup -->
+        <div class="footer-hero-band">
+          <div class="footer-brand-lockup">
+            <a href="/" class="footer-brand-link" aria-label="Primordial Paradigm Homepage">
+              <svg
+      width="30"
+      height="30"
+      viewBox="0 0 120 120"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="monogram "
+      aria-label="Primordial Paradigm Monogram"
+      role="img"
+    >
+      <title>Primordial Paradigm</title>
+      <path
+        d="M29 101V45C29 24 42 12 63 12C86 12 101 27 101 48C101 70 85 84 63 84H54V65H63C75 65 82 59 82 48C82 38 75 31 64 31C54 31 48 37 48 47V101Z"
+        fill="currentColor"
+      />
+      <circle cx="64" cy="48" r="7" fill="var(--accent-amber)" />
+    </svg>
+              <span class="footer-brand-title">PRIMORDIAL PARADIGM</span>
+            </a>
+            <p class="footer-thesis">
+              An independent game and creative systems studio crafting deterministic vector physics, original interactive worlds, and computational architecture from first principles.
+            </p>
+          </div>
+
+          <div class="footer-telemetry-badge">
+            <div class="telemetry-badge-content">
+              <span class="telemetry-badge-title">STUDIO NODE // PRODUCTION</span>
+              <span class="telemetry-badge-detail">SECTOR: 01 &bull; BANGALORE &bull; UTC+5:30</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Middle Section: 4-Column Directory Grid -->
+        <div class="footer-columns-grid">
+          
+          <!-- Column 1: Studio Directory -->
+          <div class="footer-nav-col">
+            <h4 class="footer-col-header">
+              <span class="col-index">[01]</span>
+              <span class="col-title">Studio Directory</span>
+            </h4>
+            <ul class="footer-links-list">
+              <li><a href="/games/">Games &amp; Devlogs</a></li>
+              <li><a href="/learn/">Systems Learning Hub</a></li>
+              <li><a href="/services/">Advisory &amp; Engineering</a></li>
+              <li><a href="/about/">Philosophy &amp; Ethos</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 2: Systems & Prototypes -->
+          <div class="footer-nav-col">
+            <h4 class="footer-col-header">
+              <span class="col-index">[02]</span>
+              <span class="col-title">Systems &amp; Research</span>
+            </h4>
+            <ul class="footer-links-list">
+              <li><a href="/games/systemic-movement-prototype/">Vector Kinematics Prototype</a></li>
+              <li><a href="/learn/systems-architecture-first-principles/">First Principles Monograph</a></li>
+              <li><a href="/explore/">Motion &amp; Physics Lab</a></li>
+              <li><a href="/specimen/">Living Specimen Atelier</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Architecture & Integrity -->
+          <div class="footer-nav-col">
+            <h4 class="footer-col-header">
+              <span class="col-index">[03]</span>
+              <span class="col-title">Architecture Standards</span>
+            </h4>
+            <ul class="footer-links-list">
+              <li><a href="/about/#colophon">Studio Colophon</a></li>
+              <li><a href="/sitemap.xml">XML Machine Sitemap</a></li>
+              <li><span class="footer-spec-item">Pure Static ESM Compiler</span></li>
+              <li><span class="footer-spec-item">Zero Native DLL Binaries</span></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Operational Telemetry -->
+          <div class="footer-nav-col">
+            <h4 class="footer-col-header">
+              <span class="col-index">[04]</span>
+              <span class="col-title">Production Telemetry</span>
+            </h4>
+            <div class="footer-telemetry-docket">
+              <div class="telemetry-entry">
+                <span class="entry-kicker">HOSTING</span>
+                <span class="entry-data">Hostinger High-Performance Cloud</span>
+              </div>
+              <div class="telemetry-entry">
+                <span class="entry-kicker">DEPLOY PIPELINE</span>
+                <span class="entry-data">Git Auto-Deploy (production)</span>
+              </div>
+              <div class="telemetry-entry">
+                <span class="entry-kicker">ACCESSIBILITY</span>
+                <span class="entry-data">WCAG 2.2 AAA Contrast</span>
+              </div>
+              <div class="telemetry-entry">
+                <span class="entry-kicker">TELEMETRY</span>
+                <span class="entry-data highlight-amber">Zero Unconsented Tracking</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bottom Ground Bar: Legal & Back to Top -->
+        <div class="footer-bottom-bar">
+          <div class="footer-legal-copy">
+            <p class="copyright-text">
+              &copy; 2026 Primordial Paradigm. All rights reserved.
+            </p>
+            <p class="privacy-text">
+              Zero tracking cookies. Zero client telemetry without explicit consent. Built with pure static craft.
+            </p>
+          </div>
+
+          <a href="#studioHeader" class="footer-back-to-top" id="footerBackToTop" aria-label="Back to top of page">
+            <span>Back to Top</span>
+            <span class="back-arrow" aria-hidden="true">&uarr;</span>
+          </a>
+        </div>
+
+      </div>
+    </footer>
+
+    <!-- Site-Wide Atmosphere Synchronization Controller -->
+    <script>
+      (function() {
+        const VALID_ATMOSPHERES = ['limestone', 'titanium'];
+
+        function normalizeAtmosphere(atmo) {
+          if (atmo === 'twilight' || atmo === 'chiaroscuro' || atmo === 'blueprint') return 'titanium';
+          if (atmo === 'surrealism' || atmo === 'dawn') return 'limestone';
+          return VALID_ATMOSPHERES.includes(atmo) ? atmo : 'limestone';
+        }
+
+        function setAtmosphere(atmo) {
+          var normalized = normalizeAtmosphere(atmo);
+          document.documentElement.setAttribute('data-atmosphere', normalized);
+          try { localStorage.setItem('pp_atmosphere', normalized); } catch(e) {}
+          
+          document.querySelectorAll('[data-atmo]').forEach(function(btn) {
+            var btnAtmo = normalizeAtmosphere(btn.getAttribute('data-atmo'));
+            var isActive = btnAtmo === normalized;
+            btn.classList.toggle('active', isActive);
+            btn.classList.toggle('is-active', isActive);
+            btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+          });
+
+          window.dispatchEvent(new CustomEvent('pp:atmosphere-changed', { detail: { atmosphere: normalized } }));
+        }
+
+        window.__setAtmosphere = setAtmosphere;
+
+        // Attach click listeners to all atmosphere buttons
+        document.addEventListener('click', function(e) {
+          var btn = e.target.closest('[data-atmo]');
+          if (btn) {
+            e.preventDefault();
+            var atmo = btn.getAttribute('data-atmo');
+            if (atmo) setAtmosphere(atmo);
+          }
+        });
+
+        // Initialize active button states
+        var current = normalizeAtmosphere(document.documentElement.getAttribute('data-atmosphere') || 'limestone');
+        setAtmosphere(current);
+      })();
+    </script>
+  </body>
+</html>

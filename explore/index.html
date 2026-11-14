@@ -1,0 +1,1563 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Creative Direction & Motion Lab — Primordial Paradigm Studio</title>
+    <meta name="description" content="Interactive experimental lab for testing bespoke studio layouts, procedural shaders, and kinetic physics simulations." />
+    
+    <link rel="canonical" href="https://primordialparadigm.com/explore/" />
+
+    <!-- Security & Resource Directives -->
+    <meta name="color-scheme" content="dark" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+
+    <!-- OpenGraph Tags -->
+    <meta property="og:title" content="Creative Direction & Motion Lab — Primordial Paradigm Studio" />
+    <meta property="og:description" content="Interactive experimental lab for testing bespoke studio layouts, procedural shaders, and kinetic physics simulations." />
+    <meta property="og:url" content="https://primordialparadigm.com/explore/" />
+    <meta property="og:site_name" content="Primordial Paradigm" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Creative Direction & Motion Lab — Primordial Paradigm Studio" />
+    <meta name="twitter:description" content="Interactive experimental lab for testing bespoke studio layouts, procedural shaders, and kinetic physics simulations." />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Design System Tokens & Global Styles -->
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/global.css" />
+
+    <!-- Immediate Atmosphere Token Initialization (Zero FOUC) -->
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('pp_atmosphere');
+          if (saved === 'twilight' || saved === 'chiaroscuro' || saved === 'blueprint') saved = 'titanium';
+          if (saved === 'surrealism' || saved === 'dawn') saved = 'limestone';
+          if (saved && (saved === 'limestone' || saved === 'titanium')) {
+            document.documentElement.setAttribute('data-atmosphere', saved);
+          } else {
+            document.documentElement.setAttribute('data-atmosphere', 'limestone');
+          }
+        } catch(e) {}
+      })();
+    </script>
+
+    <!-- Google Consent Mode v2 (Default: Denied / Zero Telemetry) -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+    </script>
+
+    <!-- Structured Data (Schema.org JSON-LD) -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Primordial Paradigm",
+  "url": "https://primordialparadigm.com",
+  "logo": "https://primordialparadigm.com/favicon.svg",
+  "description": "Interactive experimental lab for testing bespoke studio layouts, procedural shaders, and kinetic physics simulations."
+}
+    </script>
+  </head>
+  <body>
+    <!-- Accessibility Skip Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="studio-header" id="studioHeader">
+      <div class="container header-inner">
+        
+        <!-- Architectural Brand Masthead -->
+        <a href="/" class="brand-masthead" aria-label="Primordial Paradigm Homepage">
+          <div class="brand-icon-wrap" aria-hidden="true">
+            <svg
+      width="26"
+      height="26"
+      viewBox="0 0 120 120"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="monogram "
+      aria-label="Primordial Paradigm Monogram"
+      role="img"
+    >
+      <title>Primordial Paradigm</title>
+      <path
+        d="M29 101V45C29 24 42 12 63 12C86 12 101 27 101 48C101 70 85 84 63 84H54V65H63C75 65 82 59 82 48C82 38 75 31 64 31C54 31 48 37 48 47V101Z"
+        fill="currentColor"
+      />
+      <circle cx="64" cy="48" r="7" fill="#f4f4f5" />
+    </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">PRIMORDIAL PARADIGM</span>
+            <span class="brand-tag">STUDIO // SYSTEMS ATELIER</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <nav class="nav-menu" aria-label="Main Navigation">
+          <ul class="nav-list">
+            
+      <li class="nav-item">
+        <a
+          href="/games/"
+          class="nav-link "
+          
+        >
+          <span class="nav-link-text">GAMES</span>
+          
+        </a>
+      </li>
+    
+      <li class="nav-item">
+        <a
+          href="/learn/"
+          class="nav-link "
+          
+        >
+          <span class="nav-link-text">LEARN</span>
+          
+        </a>
+      </li>
+    
+      <li class="nav-item">
+        <a
+          href="/services/"
+          class="nav-link "
+          
+        >
+          <span class="nav-link-text">SERVICES</span>
+          
+        </a>
+      </li>
+    
+      <li class="nav-item">
+        <a
+          href="/about/"
+          class="nav-link "
+          
+        >
+          <span class="nav-link-text">ABOUT</span>
+          
+        </a>
+      </li>
+    
+          </ul>
+        </nav>
+
+        <!-- Right Utility & Mobile Toggle -->
+        <div class="header-dock">
+          <!-- Minimalist Atmosphere Selector in Header -->
+          <div class="header-atmosphere-controls" role="group" aria-label="Visual Atmosphere">
+            <span class="atmo-indicator-label">ATMO //</span>
+            <button type="button" class="header-atmo-btn" data-atmo="limestone" title="Mode 01: Luminous Limestone (Warm Gallery Paper)">01</button>
+            <button type="button" class="header-atmo-btn" data-atmo="titanium" title="Mode 02: Warm Titanium (Architectural Slate)">02</button>
+          </div>
+
+          <!-- Mobile Hamburger Toggle Button -->
+          <button
+            type="button"
+            class="mobile-nav-toggle"
+            id="mobileNavToggle"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="mobileNavDrawer"
+          >
+            <span class="toggle-icon-box" aria-hidden="true">
+              <span class="toggle-bar bar-1"></span>
+              <span class="toggle-bar bar-2"></span>
+              <span class="toggle-bar bar-3"></span>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation Drawer -->
+      <div
+        class="mobile-nav-drawer"
+        id="mobileNavDrawer"
+        aria-hidden="true"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile Navigation"
+      >
+        <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop" aria-hidden="true"></div>
+        <div class="mobile-drawer-panel">
+          <div class="mobile-drawer-header">
+            <div class="drawer-meta-title">[STUDIO DIRECTORY]</div>
+            <button
+              type="button"
+              class="mobile-drawer-close"
+              id="mobileDrawerClose"
+              aria-label="Close navigation menu"
+            >
+              &times;
+            </button>
+          </div>
+
+          <nav class="mobile-drawer-nav" aria-label="Mobile Navigation Menu">
+            <ul class="mobile-nav-list">
+              
+      <li class="mobile-nav-item">
+        <a
+          href="/games/"
+          class="mobile-nav-link "
+          
+        >
+          <span class="mobile-link-index">[01]</span>
+          <span class="mobile-link-label">GAMES</span>
+          <span class="mobile-link-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+      <li class="mobile-nav-item">
+        <a
+          href="/learn/"
+          class="mobile-nav-link "
+          
+        >
+          <span class="mobile-link-index">[02]</span>
+          <span class="mobile-link-label">LEARN</span>
+          <span class="mobile-link-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+      <li class="mobile-nav-item">
+        <a
+          href="/services/"
+          class="mobile-nav-link "
+          
+        >
+          <span class="mobile-link-index">[03]</span>
+          <span class="mobile-link-label">SERVICES</span>
+          <span class="mobile-link-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+      <li class="mobile-nav-item">
+        <a
+          href="/about/"
+          class="mobile-nav-link "
+          
+        >
+          <span class="mobile-link-index">[04]</span>
+          <span class="mobile-link-label">ABOUT</span>
+          <span class="mobile-link-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+            </ul>
+          </nav>
+
+          <!-- Mobile Drawer Atmosphere Selection -->
+          <div class="drawer-atmo-section">
+            <div class="drawer-atmo-title">[ATMOSPHERIC LUMINOSITY]</div>
+            <div class="drawer-atmo-grid">
+              <button type="button" class="drawer-atmo-option" data-atmo="limestone">
+                <span class="option-num">01</span>
+                <span class="option-name">Luminous Limestone (Warm Paper)</span>
+              </button>
+              <button type="button" class="drawer-atmo-option" data-atmo="titanium">
+                <span class="option-num">02</span>
+                <span class="option-name">Warm Titanium (Concrete Slate)</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="mobile-drawer-footer">
+            <div class="drawer-telemetry-row">
+              <span class="telemetry-label">SECTOR</span>
+              <span class="telemetry-val">01 // DEEP SYSTEMS</span>
+            </div>
+            <div class="drawer-telemetry-row">
+              <span class="telemetry-label">LOCATION</span>
+              <span class="telemetry-val">BANGALORE // UTC+5:30</span>
+            </div>
+            <div class="drawer-telemetry-row">
+              <span class="telemetry-label">ARCHITECTURE</span>
+              <span class="telemetry-val text-bone">DETERMINISTIC</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Header & Mobile Drawer Interaction Logic -->
+    <script>
+      (function() {
+        const toggleBtn = document.getElementById('mobileNavToggle');
+        const closeBtn = document.getElementById('mobileDrawerClose');
+        const drawer = document.getElementById('mobileNavDrawer');
+        const backdrop = document.getElementById('mobileDrawerBackdrop');
+        const header = document.getElementById('studioHeader');
+
+        if (!toggleBtn || !drawer) return;
+
+        function openDrawer() {
+          drawer.classList.add('is-open');
+          toggleBtn.classList.add('is-active');
+          toggleBtn.setAttribute('aria-expanded', 'true');
+          drawer.setAttribute('aria-hidden', 'false');
+          document.body.classList.add('drawer-locked');
+          if (closeBtn) closeBtn.focus();
+        }
+
+        function closeDrawer() {
+          drawer.classList.remove('is-open');
+          toggleBtn.classList.remove('is-active');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+          drawer.setAttribute('aria-hidden', 'true');
+          document.body.classList.remove('drawer-locked');
+          toggleBtn.focus();
+        }
+
+        toggleBtn.addEventListener('click', function() {
+          const isOpen = drawer.classList.contains('is-open');
+          if (isOpen) closeDrawer();
+          else openDrawer();
+        });
+
+        if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+        if (backdrop) backdrop.addEventListener('click', closeDrawer);
+
+        // Close on ESC key
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && drawer.classList.contains('is-open')) {
+            closeDrawer();
+          }
+        });
+
+        // Close when a link inside mobile drawer is clicked
+        drawer.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            closeDrawer();
+          });
+        });
+
+        // Sticky header hairline shadow on scroll
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 16) {
+            header.classList.add('is-scrolled');
+          } else {
+            header.classList.remove('is-scrolled');
+          }
+        }, { passive: true });
+      })();
+    </script>
+    <main id="main-content">
+      <section class="section" style="padding-top: calc(var(--space-2xl) * 1.2);">
+      <div class="container">
+        <!-- Eyebrow & Headline -->
+        <div class="hero-top-bar" style="margin-bottom: var(--space-xs);">
+          <span class="studio-badge">
+            PP-STUDIO-13 // CREATIVE VISUAL LAB
+          </span>
+          <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">
+            ARCHITECTURAL OBSIDIAN
+          </span>
+        </div>
+
+        <h1 class="hero-headline" style="font-size: clamp(2.2rem, 5vw, 3.5rem); margin-bottom: var(--space-sm);">
+          Evolving Beyond the <br />
+          <span class="headline-solid">Standard Template.</span>
+        </h1>
+
+        <p class="hero-lead" style="max-width: 720px; margin-bottom: var(--space-xl);">
+          Independent game and creative technology studios sell atmosphere, mystery, and uncompromising technical craft. Below is our interactive research sandbox for testing three bespoke motion systems and exploring modern architectural layouts.
+        </p>
+
+        <!-- Interactive Motion Sandbox -->
+        <div class="creative-lab-stage" id="creativeLab">
+      <!-- Master Mood Selector Bar -->
+      <div class="lab-mood-bar">
+        <div class="mood-bar-kicker">
+          <span class="mood-indicator-pip"></span>
+          <span class="mood-bar-title">CREATIVE MOOD COMPARATOR //</span>
+        </div>
+
+        <div class="lab-mode-switch" role="tablist" aria-label="Creative Atmosphere Directions">
+          <button type="button" class="mode-tab active" data-mode="chiaroscuro" role="tab" aria-selected="true" id="tabChiaroscuro">
+            <span class="tab-num">01</span>
+            <span class="tab-text">COSMIC CHIAROSCURO</span>
+            <span class="tab-badge">REMEDY // NOLAN</span>
+          </button>
+          <button type="button" class="mode-tab" data-mode="blueprint" role="tab" aria-selected="false" id="tabBlueprint">
+            <span class="tab-num">02</span>
+            <span class="tab-text">VECTOR BLUEPRINT</span>
+            <span class="tab-badge">MARATHON // HOSK</span>
+          </button>
+          <button type="button" class="mode-tab" data-mode="surrealism" role="tab" aria-selected="false" id="tabSurrealism">
+            <span class="tab-num">03</span>
+            <span class="tab-text">ATMOSPHERIC SURREALISM</span>
+            <span class="tab-badge">PLAYDEAD // INSIDE</span>
+          </button>
+        </div>
+
+        <div class="lab-telemetry-cluster">
+          <span class="telemetry-pill" id="labFps">60 FPS</span>
+          <span class="telemetry-pill" id="labCoords">LOC: 0.0, 0.0</span>
+        </div>
+      </div>
+
+      <!-- Main Stage Viewport -->
+      <div class="lab-viewport-container" id="labViewportContainer">
+        <canvas id="labCanvas"></canvas>
+
+        <!-- Dynamic Texture & Grid Overlays -->
+        <div class="lab-grain-overlay" id="labGrainOverlay" aria-hidden="true"></div>
+        <div class="lab-cad-grid" id="labCadGrid" aria-hidden="true"></div>
+
+        <!-- Atmospheric Typography & Editorial Overlay -->
+        <div class="lab-stage-overlay">
+          <!-- Mode 01: Cosmic Chiaroscuro Overlay Content -->
+          <div class="mood-overlay-pane active" id="paneChiaroscuro">
+            <div class="pane-docket">
+              <span class="docket-tag">[DIRECTION 01 // COSMIC CHIAROSCURO]</span>
+              <span class="docket-sep">//</span>
+              <span class="docket-meta">KERR SINGULARITY &bull; 0.98c ACCRETION</span>
+            </div>
+            <h2 class="pane-headline serif-headline">
+              Crafting Worlds from the Void. <br />
+              <span class="accent-headline">Computational Play.</span>
+            </h2>
+            <p class="pane-lead">
+              Deep volumetric atmosphere, analog film grain, and gravitational spacetime lensing. The game universe directly reacts to human presence—light and matter bend around your cursor.
+            </p>
+            <div class="pane-action-bar">
+              <span class="pane-hint">✦ Move cursor across canvas to bend spacetime curvature</span>
+            </div>
+          </div>
+
+          <!-- Mode 02: Vector Blueprint Overlay Content -->
+          <div class="mood-overlay-pane" id="paneBlueprint">
+            <div class="pane-docket">
+              <span class="docket-tag" style="color: var(--accent-amber);">[DIRECTION 02 // VECTOR BLUEPRINT]</span>
+              <span class="docket-sep">//</span>
+              <span class="docket-meta">CAD RASTER &bull; 3D ISOMETRIC MESH</span>
+            </div>
+            <h2 class="pane-headline mono-headline">
+              PRIMORDIAL_PARADIGM.SYS <br />
+              <span style="color: #f4f4f5; font-size: 0.75em;">// PHYSICAL COMPUTATION & RIGOR</span>
+            </h2>
+            <p class="pane-lead mono-lead">
+              Hyper-precise technical schematics, real-time rotating 3D wireframe polyhedra, and live cursor reticle tracking. An uncompromising skunkworks atelier where games are forged from mathematics.
+            </p>
+            <div class="pane-action-bar">
+              <span class="pane-hint">✦ Cursor velocity drives 3D mesh inertia; reticle computes azimuth</span>
+            </div>
+          </div>
+
+          <!-- Mode 03: Atmospheric Surrealism Overlay Content -->
+          <div class="mood-overlay-pane" id="paneSurrealism">
+            <div class="pane-docket">
+              <span class="docket-tag" style="color: #cbd5e1;">[DIRECTION 03 // ATMOSPHERIC SURREALISM]</span>
+              <span class="docket-sep">//</span>
+              <span class="docket-meta">VOLUMETRIC MIST &bull; SILENT MONOLITHS</span>
+            </div>
+            <h2 class="pane-headline surreal-headline">
+              In the Silence of the Void, <br />
+              <em>Worlds Await.</em>
+            </h2>
+            <p class="pane-lead">
+              Haunting procedural fog drifting across silhouetted monoliths, ambient dust motes, and poetic spatial tension. Speaks with eerie quiet authority and cinematic atmosphere.
+            </p>
+            <div class="pane-action-bar">
+              <span class="pane-hint">✦ Mouse emits a volumetric beacon through the mist; dust particles scatter</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Parameter & Direction Anatomy Footer -->
+      <div class="lab-anatomy-bar">
+        <div class="anatomy-metric">
+          <span class="metric-label">ATMOSPHERIC MOOD:</span>
+          <span class="metric-value" id="currentMoodName">Cinematic Cosmic Chiaroscuro</span>
+        </div>
+        <div class="anatomy-metric">
+          <span class="metric-label">CORE INFLUENCE:</span>
+          <span class="metric-value" id="currentMoodInfluence">Remedy Entertainment, Christopher Nolan</span>
+        </div>
+        <div class="anatomy-metric">
+          <span class="metric-label">VISUAL KEYWORDS:</span>
+          <span class="metric-value" id="currentMoodKeywords">Volumetric Glow &bull; Spacetime Lensing &bull; Film Grain &bull; Monumental Serif</span>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      .creative-lab-stage {
+        position: relative;
+        background: #040507;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0px;
+        overflow: hidden;
+        margin: var(--space-xl) 0;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85);
+      }
+
+      /* Master Mood Bar */
+      .lab-mood-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 1.25rem;
+        background: #08090d;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .mood-bar-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        color: #f4f4f5;
+        font-weight: 700;
+      }
+
+      .mood-indicator-pip {
+        width: 6px;
+        height: 6px;
+        background: var(--accent-amber);
+        border-radius: 0px;
+      }
+
+      .lab-mode-switch {
+        display: flex;
+        gap: 0.4rem;
+        background: #020304;
+        padding: 3px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 0px;
+      }
+
+      .mode-tab {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: transparent;
+        border: 1px solid transparent;
+        color: var(--text-muted);
+        padding: 0.5rem 0.85rem;
+        border-radius: 0px;
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+        transition: all 150ms ease;
+      }
+
+      .mode-tab:hover {
+        color: #f4f4f5;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .mode-tab.active {
+        background: #0f1118;
+        color: #f4f4f5;
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .tab-num {
+        color: var(--accent-amber);
+        font-weight: 700;
+      }
+
+      .tab-badge {
+        font-size: 0.62rem;
+        opacity: 0.6;
+        padding-left: 0.25rem;
+        border-left: 1px solid rgba(255, 255, 255, 0.15);
+      }
+
+      .lab-telemetry-cluster {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .telemetry-pill {
+        font-family: var(--font-mono);
+        font-size: 0.68rem;
+        color: var(--text-muted);
+        padding: 3px 8px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 0px;
+      }
+
+      /* Viewport Stage */
+      .lab-viewport-container {
+        position: relative;
+        width: 100%;
+        height: 560px;
+        background: #030406;
+        overflow: hidden;
+        cursor: crosshair;
+      }
+
+      #labCanvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      /* Atmospheric Textures */
+      .lab-grain-overlay {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.04;
+        background-image: radial-gradient(#fff 1px, transparent 1px);
+        background-size: 4px 4px;
+        mix-blend-mode: overlay;
+        display: block;
+      }
+
+      .lab-cad-grid {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0;
+        background-image: 
+          linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        background-size: 48px 48px;
+        transition: opacity 300ms ease;
+      }
+
+      .lab-cad-grid.is-visible {
+        opacity: 1;
+      }
+
+      /* Stage Overlay */
+      .lab-stage-overlay {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: clamp(1.5rem, 4vw, 3rem);
+        background: linear-gradient(to top, rgba(3, 4, 6, 0.85) 0%, rgba(3, 4, 6, 0.2) 60%, transparent 100%);
+      }
+
+      .mood-overlay-pane {
+        display: none;
+        max-width: 680px;
+        animation: fadeInPane 300ms ease forwards;
+      }
+
+      .mood-overlay-pane.active {
+        display: block;
+      }
+
+      @keyframes fadeInPane {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .pane-docket {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        margin-bottom: 0.75rem;
+      }
+
+      .docket-tag {
+        color: var(--accent-amber);
+        font-weight: 700;
+      }
+
+      .docket-sep {
+        opacity: 0.3;
+      }
+
+      .docket-meta {
+        color: var(--text-muted);
+      }
+
+      .pane-headline {
+        margin: 0 0 0.85rem 0;
+        color: #f4f4f5;
+        line-height: 1.15;
+      }
+
+      .serif-headline {
+        font-family: var(--font-serif);
+        font-size: clamp(1.8rem, 4vw, 2.75rem);
+        font-weight: 400;
+        letter-spacing: -0.02em;
+      }
+
+      .mono-headline {
+        font-family: var(--font-mono);
+        font-size: clamp(1.3rem, 3vw, 2rem);
+        font-weight: 700;
+        letter-spacing: 0.05em;
+      }
+
+      .surreal-headline {
+        font-family: var(--font-serif);
+        font-size: clamp(1.8rem, 4.2vw, 2.9rem);
+        font-weight: 300;
+        letter-spacing: 0.02em;
+        font-style: italic;
+      }
+
+      .accent-headline {
+        color: #f4f4f5;
+      }
+
+      .pane-lead {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin: 0 0 1.25rem 0;
+      }
+
+      .mono-lead {
+        font-family: var(--font-mono);
+        font-size: 0.82rem;
+        color: #94a3b8;
+      }
+
+      .pane-action-bar {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .pane-hint {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        color: var(--text-muted);
+        background: rgba(8, 9, 13, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 4px 10px;
+      }
+
+      /* Anatomy Bar */
+      .lab-anatomy-bar {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+        gap: 1.25rem;
+        padding: 1rem 1.25rem;
+        background: #06070a;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .anatomy-metric {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+
+      .metric-label {
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        letter-spacing: 0.1em;
+        color: var(--text-muted);
+      }
+
+      .metric-value {
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+        color: #f4f4f5;
+        font-weight: 600;
+      }
+
+      @media (max-width: 768px) {
+        .lab-viewport-container { height: 440px; }
+        .lab-mode-switch { flex-direction: column; width: 100%; }
+        .mode-tab { width: 100%; }
+        .tab-badge { display: none; }
+      }
+    </style>
+
+    <script>
+      (function() {
+        const canvas = document.getElementById('labCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        const container = document.getElementById('labViewportContainer');
+        const cadGrid = document.getElementById('labCadGrid');
+
+        let width = 0;
+        let height = 0;
+        let currentMode = 'chiaroscuro';
+        const mouse = { x: null, y: null, active: false };
+        let animationFrameId = null;
+        let lastFrameTime = performance.now();
+        let frameCounter = 0;
+        let fpsTimer = 0;
+
+        // UI Elements
+        const fpsEl = document.getElementById('labFps');
+        const coordsEl = document.getElementById('labCoords');
+        const moodNameEl = document.getElementById('currentMoodName');
+        const moodInfluenceEl = document.getElementById('currentMoodInfluence');
+        const moodKeywordsEl = document.getElementById('currentMoodKeywords');
+
+        const tabs = {
+          chiaroscuro: document.getElementById('tabChiaroscuro'),
+          blueprint: document.getElementById('tabBlueprint'),
+          surrealism: document.getElementById('tabSurrealism')
+        };
+
+        const panes = {
+          chiaroscuro: document.getElementById('paneChiaroscuro'),
+          blueprint: document.getElementById('paneBlueprint'),
+          surrealism: document.getElementById('paneSurrealism')
+        };
+
+        const MOOD_DATA = {
+          chiaroscuro: {
+            name: 'Cinematic Cosmic Chiaroscuro',
+            influence: 'Remedy Entertainment, Christopher Nolan (Interstellar)',
+            keywords: 'Volumetric Glow &bull; Spacetime Lensing &bull; Film Grain &bull; Monumental Serif'
+          },
+          blueprint: {
+            name: 'Tactile Vector Blueprint / Industrial Atelier',
+            influence: 'Bungie Marathon, Kurppa Hosk, Teenage Engineering',
+            keywords: 'CAD Coordinate Grid &bull; 3D Inertial Wireframe &bull; Live Reticle &bull; Monospace Rigor'
+          },
+          surrealism: {
+            name: 'Eerie Atmospheric Surrealism',
+            influence: 'Playdead (Inside, Limbo), Fumito Ueda (Shadow of the Colossus)',
+            keywords: 'Layered Drifting Fog &bull; Silhouette Monoliths &bull; Ambient Spores &bull; Poetic Space'
+          }
+        };
+
+        // Resize Canvas
+        function resize() {
+          const rect = container.getBoundingClientRect();
+          width = rect.width;
+          height = rect.height;
+          const dpr = window.devicePixelRatio || 1;
+          canvas.width = Math.floor(width * dpr);
+          canvas.height = Math.floor(height * dpr);
+          ctx.setTransform(1, 0, 0, 1, 0, 0);
+          ctx.scale(dpr, dpr);
+          initCurrentMode();
+        }
+
+        window.addEventListener('resize', resize, { passive: true });
+
+        // Mouse listeners
+        container.addEventListener('mousemove', e => {
+          const rect = container.getBoundingClientRect();
+          mouse.x = e.clientX - rect.left;
+          mouse.y = e.clientY - rect.top;
+          mouse.active = true;
+          if (coordsEl) {
+            coordsEl.textContent = 'LOC: ' + Math.round(mouse.x) + '.0, ' + Math.round(mouse.y) + '.0';
+          }
+        });
+
+        container.addEventListener('mouseleave', () => {
+          mouse.active = false;
+        });
+
+        // =============================================================
+        // ENGINE 01: COSMIC CHIAROSCURO (Gravitational Singularity)
+        // =============================================================
+        const cosmicParticles = [];
+        function initChiaroscuro() {
+          cosmicParticles.length = 0;
+          const count = 320;
+          const cx = width / 2;
+          const cy = height * 0.42;
+          for (let i = 0; i < count; i++) {
+            const angle = Math.random() * Math.PI * 2;
+            const dist = Math.random() * (Math.min(width, height) * 0.5) + 35;
+            cosmicParticles.push({
+              x: cx + Math.cos(angle) * dist,
+              y: cy + Math.sin(angle) * dist,
+              vx: -Math.sin(angle) * (1.1 + Math.random() * 0.9),
+              vy: Math.cos(angle) * (1.1 + Math.random() * 0.9),
+              size: Math.random() < 0.25 ? 2.0 : 1.1,
+              isAmber: Math.random() < 0.4,
+              brightness: Math.random() * 0.7 + 0.3
+            });
+          }
+        }
+
+        function drawChiaroscuro() {
+          ctx.fillStyle = 'rgba(3, 4, 6, 0.22)';
+          ctx.fillRect(0, 0, width, height);
+
+          const cx = width / 2;
+          const cy = height * 0.42;
+          const eventHorizon = 26;
+
+          // Horizon ambient glow
+          const glowGrad = ctx.createRadialGradient(cx, cy, 2, cx, cy, Math.min(width, height) * 0.45);
+          glowGrad.addColorStop(0, 'rgba(0, 0, 0, 1)');
+          glowGrad.addColorStop(0.35, 'rgba(229, 155, 32, 0.22)');
+          glowGrad.addColorStop(0.65, 'rgba(15, 18, 26, 0.15)');
+          glowGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+          ctx.fillStyle = glowGrad;
+          ctx.beginPath();
+          ctx.arc(cx, cy, Math.min(width, height) * 0.45, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Black hole core
+          ctx.fillStyle = '#020204';
+          ctx.beginPath();
+          ctx.arc(cx, cy, eventHorizon, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Gold Event Horizon Ring
+          ctx.strokeStyle = 'rgba(229, 155, 32, 0.85)';
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          ctx.arc(cx, cy, eventHorizon + 1, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Accretion particles with spacetime bending on mouse
+          for (const p of cosmicParticles) {
+            const dx = cx - p.x;
+            const dy = cy - p.y;
+            const distSq = dx * dx + dy * dy;
+            const dist = Math.sqrt(distSq);
+
+            const force = 1100 / Math.max(distSq, 500);
+            p.vx += (dx / dist) * force;
+            p.vy += (dy / dist) * force;
+
+            // Spacetime curvature on mouse
+            if (mouse.active && mouse.x !== null) {
+              const mdx = mouse.x - p.x;
+              const mdy = mouse.y - p.y;
+              const mdistSq = mdx * mdx + mdy * mdy;
+              if (mdistSq < 50000 && mdistSq > 100) {
+                const mdist = Math.sqrt(mdistSq);
+                const mforce = 750 / mdistSq;
+                p.vx += (mdx / mdist) * mforce;
+                p.vy += (mdy / mdist) * mforce;
+              }
+            }
+
+            p.vx *= 0.985;
+            p.vy *= 0.985;
+            p.x += p.vx;
+            p.y += p.vy;
+
+            const alpha = Math.min(p.brightness, (dist - eventHorizon) / 30);
+            if (alpha > 0.03) {
+              ctx.fillStyle = p.isAmber ? 'rgba(229, 155, 32, ' + alpha + ')' : 'rgba(244, 244, 245, ' + alpha + ')';
+              ctx.beginPath();
+              ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+              ctx.fill();
+            }
+
+            if (dist < eventHorizon || p.x < -40 || p.x > width + 40 || p.y < -40 || p.y > height + 40) {
+              const spawnAngle = Math.random() * Math.PI * 2;
+              const spawnDist = Math.min(width, height) * 0.44 + Math.random() * 50;
+              p.x = cx + Math.cos(spawnAngle) * spawnDist;
+              p.y = cy + Math.sin(spawnAngle) * spawnDist;
+              p.vx = -Math.sin(spawnAngle) * (1.2 + Math.random() * 0.8);
+              p.vy = Math.cos(spawnAngle) * (1.2 + Math.random() * 0.8);
+            }
+          }
+        }
+
+        // =============================================================
+        // ENGINE 02: TACTILE VECTOR BLUEPRINT (3D Wireframe + Reticle)
+        // =============================================================
+        let rotX = 0.45;
+        let rotY = 0.7;
+        let targetRotX = 0.45;
+        let targetRotY = 0.7;
+
+        // 3D Icosahedron Vertices & Edges
+        const phi = (1 + Math.sqrt(5)) / 2;
+        const ICOSA_VERTICES = [
+          [-1,  phi, 0], [ 1,  phi, 0], [-1, -phi, 0], [ 1, -phi, 0],
+          [ 0, -1,  phi], [ 0,  1,  phi], [ 0, -1, -phi], [ 0,  1, -phi],
+          [ phi, 0, -1], [ phi, 0,  1], [-phi, 0, -1], [-phi, 0,  1]
+        ];
+
+        const ICOSA_EDGES = [
+          [0,11],[0,5],[0,1],[0,7],[0,10],[1,5],[1,7],[1,8],[1,9],
+          [2,11],[2,4],[2,3],[2,6],[2,10],[3,4],[3,6],[3,8],[3,9],
+          [4,5],[4,9],[4,11],[5,9],[5,11],[6,7],[6,8],[6,10],[7,8],
+          [7,10],[8,9],[10,11]
+        ];
+
+        function project3D(v, scale, cx, cy) {
+          const cosY = Math.cos(rotY);
+          const sinY = Math.sin(rotY);
+          let x1 = v[0] * cosY + v[2] * sinY;
+          let z1 = -v[0] * sinY + v[2] * cosY;
+
+          const cosX = Math.cos(rotX);
+          const sinX = Math.sin(rotX);
+          let y2 = v[1] * cosX - z1 * sinX;
+          let z2 = v[1] * sinX + z1 * cosX;
+
+          const fov = 3.6;
+          const pers = fov / (fov + z2 * 0.5);
+          return {
+            x: cx + x1 * scale * pers,
+            y: cy + y2 * scale * pers,
+            z: z2,
+            pers: pers
+          };
+        }
+
+        function initBlueprint() {
+          rotX = 0.45;
+          rotY = 0.7;
+        }
+
+        function drawBlueprint() {
+          ctx.fillStyle = '#030406';
+          ctx.fillRect(0, 0, width, height);
+
+          const cx = width / 2;
+          const cy = height * 0.42;
+
+          // Interactive 3D Rotation driven by mouse
+          if (mouse.active && mouse.x !== null) {
+            const ndx = (mouse.x - cx) / (width / 2);
+            const ndy = (mouse.y - cy) / (height / 2);
+            targetRotY = ndx * 2.2;
+            targetRotX = -ndy * 1.5;
+          } else {
+            targetRotY += 0.007;
+            targetRotX = Math.sin(performance.now() * 0.001) * 0.25;
+          }
+
+          rotX += (targetRotX - rotX) * 0.08;
+          rotY += (targetRotY - rotY) * 0.08;
+
+          const scale = Math.min(width, height) * 0.16;
+          const projected = ICOSA_VERTICES.map(v => project3D(v, scale, cx, cy));
+
+          // Draw 3D Edges
+          ctx.strokeStyle = 'rgba(244, 244, 245, 0.45)';
+          ctx.lineWidth = 1.2;
+          for (const [i, j] of ICOSA_EDGES) {
+            ctx.beginPath();
+            ctx.moveTo(projected[i].x, projected[i].y);
+            ctx.lineTo(projected[j].x, projected[j].y);
+            ctx.stroke();
+          }
+
+          // Draw Vertex Reticles
+          for (const p of projected) {
+            ctx.fillStyle = 'rgba(229, 155, 32, 0.95)';
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, 2.5 * p.pers, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          // Real-time Mouse Reticle Crosshairs (Marathon Style)
+          if (mouse.active && mouse.x !== null) {
+            ctx.strokeStyle = 'rgba(229, 155, 32, 0.35)';
+            ctx.lineWidth = 1;
+            ctx.setLineDash([4, 4]);
+
+            // Horizontal hairline
+            ctx.beginPath();
+            ctx.moveTo(0, mouse.y);
+            ctx.lineTo(width, mouse.y);
+            ctx.stroke();
+
+            // Vertical hairline
+            ctx.beginPath();
+            ctx.moveTo(mouse.x, 0);
+            ctx.lineTo(mouse.x, height);
+            ctx.stroke();
+
+            ctx.setLineDash([]);
+
+            // Reticle Target Box
+            ctx.strokeStyle = 'rgba(229, 155, 32, 0.8)';
+            ctx.strokeRect(mouse.x - 14, mouse.y - 14, 28, 28);
+
+            // Coordinates Tag
+            ctx.fillStyle = '#e59b20';
+            ctx.font = '10px monospace';
+            ctx.fillText('[' + Math.round(mouse.x) + ', ' + Math.round(mouse.y) + ']', mouse.x + 18, mouse.y - 6);
+          }
+
+          // Bottom Oscilloscope Waveform
+          ctx.strokeStyle = 'rgba(244, 244, 245, 0.25)';
+          ctx.lineWidth = 1.2;
+          ctx.beginPath();
+          const waveY = height - 20;
+          for (let x = 0; x < width; x += 6) {
+            const freq = (x * 0.015) + (performance.now() * 0.003);
+            const amp = Math.sin(freq) * Math.cos(freq * 0.5) * 12;
+            if (x === 0) ctx.moveTo(x, waveY + amp);
+            else ctx.lineTo(x, waveY + amp);
+          }
+          ctx.stroke();
+        }
+
+        // =============================================================
+        // ENGINE 03: ATMOSPHERIC SURREALISM (Fog Drift & Silhouettes)
+        // =============================================================
+        const spores = [];
+        const fogWaves = [
+          { speed: 0.25, offset: 0, amp: 28, alpha: 0.12, yRatio: 0.52 },
+          { speed: 0.40, offset: 40, amp: 35, alpha: 0.18, yRatio: 0.62 },
+          { speed: 0.65, offset: 90, amp: 45, alpha: 0.26, yRatio: 0.75 }
+        ];
+
+        function initSurrealism() {
+          spores.length = 0;
+          for (let i = 0; i < 90; i++) {
+            spores.push({
+              x: Math.random() * width,
+              y: Math.random() * height,
+              vx: (Math.random() - 0.5) * 0.3,
+              vy: -0.2 - Math.random() * 0.4,
+              size: Math.random() * 2 + 1,
+              alpha: Math.random() * 0.6 + 0.2
+            });
+          }
+        }
+
+        function drawSurrealism() {
+          // Deep Charcoal Void
+          ctx.fillStyle = '#040507';
+          ctx.fillRect(0, 0, width, height);
+
+          const time = performance.now() * 0.001;
+
+          // Monolithic Architecture Silhouettes in background
+          ctx.fillStyle = '#090b10';
+          const spireWidth = 44;
+          const cx = width / 2;
+          ctx.fillRect(cx - 180, height * 0.25, spireWidth, height);
+          ctx.fillRect(cx - 30, height * 0.15, spireWidth * 1.5, height);
+          ctx.fillRect(cx + 140, height * 0.32, spireWidth * 0.9, height);
+
+          // Volumetric Mist / Fog Layers
+          for (const f of fogWaves) {
+            ctx.fillStyle = 'rgba(15, 20, 28, ' + f.alpha + ')';
+            ctx.beginPath();
+            ctx.moveTo(0, height);
+            const baseY = height * f.yRatio;
+            for (let x = 0; x <= width; x += 15) {
+              const y = baseY + Math.sin((x * 0.004) + (time * f.speed) + f.offset) * f.amp;
+              ctx.lineTo(x, y);
+            }
+            ctx.lineTo(width, height);
+            ctx.closePath();
+            ctx.fill();
+          }
+
+          // Cursor Atmospheric Spotlight Beam
+          if (mouse.active && mouse.x !== null) {
+            const beamGrad = ctx.createRadialGradient(mouse.x, mouse.y, 10, mouse.x, mouse.y, 220);
+            beamGrad.addColorStop(0, 'rgba(244, 244, 245, 0.15)');
+            beamGrad.addColorStop(0.5, 'rgba(229, 155, 32, 0.05)');
+            beamGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            ctx.fillStyle = beamGrad;
+            ctx.beginPath();
+            ctx.arc(mouse.x, mouse.y, 220, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          // Drifting Spores / Dust Motes
+          for (const s of spores) {
+            s.x += s.vx;
+            s.y += s.vy;
+
+            // Mouse fluid repulsion
+            if (mouse.active && mouse.x !== null) {
+              const dx = s.x - mouse.x;
+              const dy = s.y - mouse.y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+              if (dist < 100 && dist > 1) {
+                const repulse = (1 - dist / 100) * 1.8;
+                s.x += (dx / dist) * repulse;
+                s.y += (dy / dist) * repulse;
+              }
+            }
+
+            if (s.y < -10) s.y = height + 10;
+            if (s.x < -10) s.x = width + 10;
+            if (s.x > width + 10) s.x = -10;
+
+            ctx.fillStyle = 'rgba(244, 244, 245, ' + s.alpha + ')';
+            ctx.beginPath();
+            ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+
+        // Master Animation Loop
+        function initCurrentMode() {
+          if (currentMode === 'chiaroscuro') initChiaroscuro();
+          else if (currentMode === 'blueprint') initBlueprint();
+          else if (currentMode === 'surrealism') initSurrealism();
+        }
+
+        function renderFrame() {
+          if (currentMode === 'chiaroscuro') drawChiaroscuro();
+          else if (currentMode === 'blueprint') drawBlueprint();
+          else if (currentMode === 'surrealism') drawSurrealism();
+
+          // FPS counter
+          frameCounter++;
+          const now = performance.now();
+          if (now - fpsTimer >= 1000) {
+            if (fpsEl) fpsEl.textContent = frameCounter + ' FPS';
+            frameCounter = 0;
+            fpsTimer = now;
+          }
+
+          animationFrameId = requestAnimationFrame(renderFrame);
+        }
+
+        // Mode Switching Handler
+        function setMode(mode) {
+          if (!MOOD_DATA[mode]) return;
+          currentMode = mode;
+
+          // Update Tabs
+          Object.keys(tabs).forEach(m => {
+            if (tabs[m]) {
+              const isActive = m === mode;
+              tabs[m].classList.toggle('active', isActive);
+              tabs[m].setAttribute('aria-selected', isActive ? 'true' : 'false');
+            }
+          });
+
+          // Update Panes
+          Object.keys(panes).forEach(m => {
+            if (panes[m]) {
+              panes[m].classList.toggle('active', m === mode);
+            }
+          });
+
+          // Update Overlays
+          if (cadGrid) {
+            cadGrid.classList.toggle('is-visible', mode === 'blueprint');
+          }
+
+          // Update Anatomy Data
+          const data = MOOD_DATA[mode];
+          if (moodNameEl) moodNameEl.textContent = data.name;
+          if (moodInfluenceEl) moodInfluenceEl.textContent = data.influence;
+          if (moodKeywordsEl) moodKeywordsEl.innerHTML = data.keywords;
+
+          initCurrentMode();
+        }
+
+        // Bind Mode Tabs
+        Object.keys(tabs).forEach(m => {
+          if (tabs[m]) {
+            tabs[m].addEventListener('click', () => setMode(m));
+          }
+        });
+
+        // Initialize
+        resize();
+        animationFrameId = requestAnimationFrame(renderFrame);
+
+        // Expose to window for testing / automated capture
+        window.__setCreativeMood = setMode;
+      })();
+    </script>
+
+        <!-- Architectural Layout Concepts Section -->
+        <div style="margin-top: calc(var(--space-2xl) * 1.5);">
+          <div class="section-header">
+            <div class="section-meta">
+              <span class="section-label">LAYOUT ARCHITECTURE</span>
+              <span class="meta-line"></span>
+            </div>
+            <h2 class="section-title">Three Studio Layout Directions</h2>
+            <p class="section-sub">Replacing the 3-box SaaS card grid with deliberate, asymmetrical editorial structures.</p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: var(--space-lg); margin-top: var(--space-xl);">
+            
+            <!-- Architecture Option 1 -->
+            <article class="pillar-card" style="border-color: rgba(229, 155, 32, 0.25);">
+              <span class="card-tag">CONCEPT 01 // COSMIC CHIAROSCURO</span>
+              <h3 class="card-title" style="font-size: 1.3rem;">Cinematic Volumetric Void</h3>
+              <p class="card-desc">
+                Inspired by Remedy Entertainment (<em>Control</em>) and Christopher Nolan (<em>Interstellar</em>). Analog film grain, dark starlight horizon glow, and real-time spacetime curvature lensing around user mouse interactions.
+              </p>
+              <div style="margin-top: var(--space-md); padding-top: var(--space-sm); border-top: 1px solid var(--border-subtle); font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">
+                ✦ Influence: <strong>Remedy, Nolan, Denis Villeneuve</strong>
+              </div>
+            </article>
+
+            <!-- Architecture Option 2 -->
+            <article class="pillar-card" style="border-color: rgba(244, 244, 245, 0.25);">
+              <span class="card-tag">CONCEPT 02 // VECTOR BLUEPRINT</span>
+              <h3 class="card-title" style="font-size: 1.3rem;">Tactical CAD Drafting & Schematics</h3>
+              <p class="card-desc">
+                Inspired by Bungie <em>Marathon</em>, Kurppa Hosk, and Teenage Engineering. Precision CAD coordinate grid, real-time rotating 3D wireframe polyhedra driven by mouse inertia, and dynamic crosshair reticle tracking.
+              </p>
+              <div style="margin-top: var(--space-md); padding-top: var(--space-sm); border-top: 1px solid var(--border-subtle); font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">
+                ✦ Influence: <strong>Bungie Marathon, Kurppa Hosk</strong>
+              </div>
+            </article>
+
+            <!-- Architecture Option 3 -->
+            <article class="pillar-card" style="border-color: rgba(148, 163, 184, 0.25);">
+              <span class="card-tag">CONCEPT 03 // ATMOSPHERIC SURREALISM</span>
+              <h3 class="card-title" style="font-size: 1.3rem;">Drifting Mist & Monolithic Scale</h3>
+              <p class="card-desc">
+                Inspired by Playdead (<em>Inside</em>, <em>Limbo</em>) and Fumito Ueda (<em>Shadow of the Colossus</em>). Layered volumetric fog drifting across dark architectural spires, ambient spore particles that scatter on hover, and poetic spatial tension.
+              </p>
+              <div style="margin-top: var(--space-md); padding-top: var(--space-sm); border-top: 1px solid var(--border-subtle); font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">
+                ✦ Influence: <strong>Playdead, Fumito Ueda, Kentucky Route Zero</strong>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <!-- Call to Action / Alignment -->
+        <div style="margin-top: calc(var(--space-2xl) * 1.2); padding: var(--space-xl); background: rgba(15, 18, 26, 0.6); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); text-align: center;">
+          <h3 style="font-size: 1.4rem; color: var(--text-primary); margin-bottom: var(--space-xs);">
+            Ready to Select the Studio Direction
+          </h3>
+          <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto var(--space-md); font-size: 0.95rem;">
+            Test the 3 animation modes above, feel the mouse response and velocity, and let me know which concept best matches your vision for Primordial Paradigm Studio.
+          </p>
+          <div style="display: flex; gap: var(--space-sm); justify-content: center; flex-wrap: wrap;">
+            <a href="/" class="btn btn-secondary">&larr; Return to Live Homepage</a>
+            <a href="/games/systemic-movement-prototype/" class="btn btn-secondary">Inspect Kinematics Sandbox</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    </main>
+    <aside class="craft-switcher-dock" id="craftSwitcherDock" aria-label="Studio Creative Atmosphere Switcher">
+      <div class="switcher-inner">
+        <div class="switcher-meta">
+          <span class="switcher-title">LUMINOSITY //</span>
+        </div>
+        <div class="switcher-pills" role="toolbar" aria-label="Atmosphere Modes">
+          <button
+            type="button"
+            class="switcher-pill"
+            data-atmo="limestone"
+            title="Mode 01: Luminous Limestone (High-Key Warm Gallery Paper)"
+          >
+            <span class="pill-num">01</span>
+            <span class="pill-label">LIMESTONE</span>
+          </button>
+          <button
+            type="button"
+            class="switcher-pill"
+            data-atmo="titanium"
+            title="Mode 02: Warm Titanium (Architectural Mid-Tone Slate)"
+          >
+            <span class="pill-num">02</span>
+            <span class="pill-label">TITANIUM</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+    <footer class="studio-footer" role="contentinfo">
+      <div class="container footer-container">
+        
+        <!-- Top Architectural Banner: Thesis & Brand Lockup -->
+        <div class="footer-hero-band">
+          <div class="footer-brand-lockup">
+            <a href="/" class="footer-brand-link" aria-label="Primordial Paradigm Homepage">
+              <svg
+      width="30"
+      height="30"
+      viewBox="0 0 120 120"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="monogram "
+      aria-label="Primordial Paradigm Monogram"
+      role="img"
+    >
+      <title>Primordial Paradigm</title>
+      <path
+        d="M29 101V45C29 24 42 12 63 12C86 12 101 27 101 48C101 70 85 84 63 84H54V65H63C75 65 82 59 82 48C82 38 75 31 64 31C54 31 48 37 48 47V101Z"
+        fill="currentColor"
+      />
+      <circle cx="64" cy="48" r="7" fill="var(--accent-amber)" />
+    </svg>
+              <span class="footer-brand-title">PRIMORDIAL PARADIGM</span>
+            </a>
+            <p class="footer-thesis">
+              An independent game and creative systems studio crafting deterministic vector physics, original interactive worlds, and computational architecture from first principles.
+            </p>
+          </div>
+
+          <div class="footer-telemetry-badge">
+            <div class="telemetry-badge-content">
+              <span class="telemetry-badge-title">STUDIO NODE // PRODUCTION</span>
+              <span class="telemetry-badge-detail">SECTOR: 01 &bull; BANGALORE &bull; UTC+5:30</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Middle Section: 4-Column Directory Grid -->
+        <div class="footer-columns-grid">
+          
+          <!-- Column 1: Studio Directory -->
+          <div class="footer-nav-col">
+            <h4 class="footer-col-header">
+              <span class="col-index">[01]</span>
+              <span class="col-title">Studio Directory</span>
+            </h4>
+            <ul class="footer-links-list">
+              <li><a href="/games/">Games &amp; Devlogs</a></li>
+              <li><a href="/learn/">Systems Learning Hub</a></li>
+              <li><a href="/services/">Advisory &amp; Engineering</a></li>
+              <li><a href="/about/">Philosophy &amp; Ethos</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 2: Systems & Prototypes -->
+          <div class="footer-nav-col">
+            <h4 class="footer-col-header">
+              <span class="col-index">[02]</span>
+              <span class="col-title">Systems &amp; Research</span>
+            </h4>
+            <ul class="footer-links-list">
+              <li><a href="/games/systemic-movement-prototype/">Vector Kinematics Prototype</a></li>
+              <li><a href="/learn/systems-architecture-first-principles/">First Principles Monograph</a></li>
+              <li><a href="/explore/">Motion &amp; Physics Lab</a></li>
+              <li><a href="/specimen/">Living Specimen Atelier</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Architecture & Integrity -->
+          <div class="footer-nav-col">
+            <h4 class="footer-col-header">
+              <span class="col-index">[03]</span>
+              <span class="col-title">Architecture Standards</span>
+            </h4>
+            <ul class="footer-links-list">
+              <li><a href="/about/#colophon">Studio Colophon</a></li>
+              <li><a href="/sitemap.xml">XML Machine Sitemap</a></li>
+              <li><span class="footer-spec-item">Pure Static ESM Compiler</span></li>
+              <li><span class="footer-spec-item">Zero Native DLL Binaries</span></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Operational Telemetry -->
+          <div class="footer-nav-col">
+            <h4 class="footer-col-header">
+              <span class="col-index">[04]</span>
+              <span class="col-title">Production Telemetry</span>
+            </h4>
+            <div class="footer-telemetry-docket">
+              <div class="telemetry-entry">
+                <span class="entry-kicker">HOSTING</span>
+                <span class="entry-data">Hostinger High-Performance Cloud</span>
+              </div>
+              <div class="telemetry-entry">
+                <span class="entry-kicker">DEPLOY PIPELINE</span>
+                <span class="entry-data">Git Auto-Deploy (production)</span>
+              </div>
+              <div class="telemetry-entry">
+                <span class="entry-kicker">ACCESSIBILITY</span>
+                <span class="entry-data">WCAG 2.2 AAA Contrast</span>
+              </div>
+              <div class="telemetry-entry">
+                <span class="entry-kicker">TELEMETRY</span>
+                <span class="entry-data highlight-amber">Zero Unconsented Tracking</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bottom Ground Bar: Legal & Back to Top -->
+        <div class="footer-bottom-bar">
+          <div class="footer-legal-copy">
+            <p class="copyright-text">
+              &copy; 2026 Primordial Paradigm. All rights reserved.
+            </p>
+            <p class="privacy-text">
+              Zero tracking cookies. Zero client telemetry without explicit consent. Built with pure static craft.
+            </p>
+          </div>
+
+          <a href="#studioHeader" class="footer-back-to-top" id="footerBackToTop" aria-label="Back to top of page">
+            <span>Back to Top</span>
+            <span class="back-arrow" aria-hidden="true">&uarr;</span>
+          </a>
+        </div>
+
+      </div>
+    </footer>
+
+    <!-- Site-Wide Atmosphere Synchronization Controller -->
+    <script>
+      (function() {
+        const VALID_ATMOSPHERES = ['limestone', 'titanium'];
+
+        function normalizeAtmosphere(atmo) {
+          if (atmo === 'twilight' || atmo === 'chiaroscuro' || atmo === 'blueprint') return 'titanium';
+          if (atmo === 'surrealism' || atmo === 'dawn') return 'limestone';
+          return VALID_ATMOSPHERES.includes(atmo) ? atmo : 'limestone';
+        }
+
+        function setAtmosphere(atmo) {
+          var normalized = normalizeAtmosphere(atmo);
+          document.documentElement.setAttribute('data-atmosphere', normalized);
+          try { localStorage.setItem('pp_atmosphere', normalized); } catch(e) {}
+          
+          document.querySelectorAll('[data-atmo]').forEach(function(btn) {
+            var btnAtmo = normalizeAtmosphere(btn.getAttribute('data-atmo'));
+            var isActive = btnAtmo === normalized;
+            btn.classList.toggle('active', isActive);
+            btn.classList.toggle('is-active', isActive);
+            btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+          });
+
+          window.dispatchEvent(new CustomEvent('pp:atmosphere-changed', { detail: { atmosphere: normalized } }));
+        }
+
+        window.__setAtmosphere = setAtmosphere;
+
+        // Attach click listeners to all atmosphere buttons
+        document.addEventListener('click', function(e) {
+          var btn = e.target.closest('[data-atmo]');
+          if (btn) {
+            e.preventDefault();
+            var atmo = btn.getAttribute('data-atmo');
+            if (atmo) setAtmosphere(atmo);
+          }
+        });
+
+        // Initialize active button states
+        var current = normalizeAtmosphere(document.documentElement.getAttribute('data-atmosphere') || 'limestone');
+        setAtmosphere(current);
+      })();
+    </script>
+  </body>
+</html>

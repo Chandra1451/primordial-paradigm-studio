@@ -1,0 +1,1949 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Primordial Paradigm — Independent Game & Creative Systems Studio</title>
+    <meta name="description" content="Primordial Paradigm is an independent game and creative systems studio designing original interactive experiences, vector physics engines, and deterministic architectures." />
+    
+    <link rel="canonical" href="https://primordialparadigm.com/" />
+
+    <!-- Security & Resource Directives -->
+    <meta name="color-scheme" content="dark" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+
+    <!-- OpenGraph Tags -->
+    <meta property="og:title" content="Primordial Paradigm — Independent Game & Creative Systems Studio" />
+    <meta property="og:description" content="Primordial Paradigm is an independent game and creative systems studio designing original interactive experiences, vector physics engines, and deterministic architectures." />
+    <meta property="og:url" content="https://primordialparadigm.com/" />
+    <meta property="og:site_name" content="Primordial Paradigm" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Primordial Paradigm — Independent Game & Creative Systems Studio" />
+    <meta name="twitter:description" content="Primordial Paradigm is an independent game and creative systems studio designing original interactive experiences, vector physics engines, and deterministic architectures." />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Design System Tokens & Global Styles -->
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/global.css" />
+
+    <!-- Immediate Atmosphere Token Initialization (Zero FOUC) -->
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('pp_atmosphere');
+          if (saved === 'twilight' || saved === 'chiaroscuro' || saved === 'blueprint') saved = 'titanium';
+          if (saved === 'surrealism' || saved === 'dawn') saved = 'limestone';
+          if (saved && (saved === 'limestone' || saved === 'titanium')) {
+            document.documentElement.setAttribute('data-atmosphere', saved);
+          } else {
+            document.documentElement.setAttribute('data-atmosphere', 'limestone');
+          }
+        } catch(e) {}
+      })();
+    </script>
+
+    <!-- Google Consent Mode v2 (Default: Denied / Zero Telemetry) -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+    </script>
+
+    <!-- Structured Data (Schema.org JSON-LD) -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Primordial Paradigm",
+  "url": "https://primordialparadigm.com",
+  "logo": "https://primordialparadigm.com/favicon.svg",
+  "description": "Primordial Paradigm is an independent game and creative systems studio designing original interactive experiences, vector physics engines, and deterministic architectures."
+}
+    </script>
+  </head>
+  <body>
+    <!-- Accessibility Skip Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="studio-header" id="studioHeader">
+      <div class="container header-inner">
+        
+        <!-- Architectural Brand Masthead -->
+        <a href="/" class="brand-masthead" aria-label="Primordial Paradigm Homepage">
+          <div class="brand-icon-wrap" aria-hidden="true">
+            <svg
+      width="26"
+      height="26"
+      viewBox="0 0 120 120"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="monogram "
+      aria-label="Primordial Paradigm Monogram"
+      role="img"
+    >
+      <title>Primordial Paradigm</title>
+      <path
+        d="M29 101V45C29 24 42 12 63 12C86 12 101 27 101 48C101 70 85 84 63 84H54V65H63C75 65 82 59 82 48C82 38 75 31 64 31C54 31 48 37 48 47V101Z"
+        fill="currentColor"
+      />
+      <circle cx="64" cy="48" r="7" fill="#f4f4f5" />
+    </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">PRIMORDIAL PARADIGM</span>
+            <span class="brand-tag">STUDIO // SYSTEMS ATELIER</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <nav class="nav-menu" aria-label="Main Navigation">
+          <ul class="nav-list">
+            
+      <li class="nav-item">
+        <a
+          href="/games/"
+          class="nav-link "
+          
+        >
+          <span class="nav-link-text">GAMES</span>
+          
+        </a>
+      </li>
+    
+      <li class="nav-item">
+        <a
+          href="/learn/"
+          class="nav-link "
+          
+        >
+          <span class="nav-link-text">LEARN</span>
+          
+        </a>
+      </li>
+    
+      <li class="nav-item">
+        <a
+          href="/services/"
+          class="nav-link "
+          
+        >
+          <span class="nav-link-text">SERVICES</span>
+          
+        </a>
+      </li>
+    
+      <li class="nav-item">
+        <a
+          href="/about/"
+          class="nav-link "
+          
+        >
+          <span class="nav-link-text">ABOUT</span>
+          
+        </a>
+      </li>
+    
+          </ul>
+        </nav>
+
+        <!-- Right Utility & Mobile Toggle -->
+        <div class="header-dock">
+          <!-- Minimalist Atmosphere Selector in Header -->
+          <div class="header-atmosphere-controls" role="group" aria-label="Visual Atmosphere">
+            <span class="atmo-indicator-label">ATMO //</span>
+            <button type="button" class="header-atmo-btn" data-atmo="limestone" title="Mode 01: Luminous Limestone (Warm Gallery Paper)">01</button>
+            <button type="button" class="header-atmo-btn" data-atmo="titanium" title="Mode 02: Warm Titanium (Architectural Slate)">02</button>
+          </div>
+
+          <!-- Mobile Hamburger Toggle Button -->
+          <button
+            type="button"
+            class="mobile-nav-toggle"
+            id="mobileNavToggle"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="mobileNavDrawer"
+          >
+            <span class="toggle-icon-box" aria-hidden="true">
+              <span class="toggle-bar bar-1"></span>
+              <span class="toggle-bar bar-2"></span>
+              <span class="toggle-bar bar-3"></span>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation Drawer -->
+      <div
+        class="mobile-nav-drawer"
+        id="mobileNavDrawer"
+        aria-hidden="true"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile Navigation"
+      >
+        <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop" aria-hidden="true"></div>
+        <div class="mobile-drawer-panel">
+          <div class="mobile-drawer-header">
+            <div class="drawer-meta-title">[STUDIO DIRECTORY]</div>
+            <button
+              type="button"
+              class="mobile-drawer-close"
+              id="mobileDrawerClose"
+              aria-label="Close navigation menu"
+            >
+              &times;
+            </button>
+          </div>
+
+          <nav class="mobile-drawer-nav" aria-label="Mobile Navigation Menu">
+            <ul class="mobile-nav-list">
+              
+      <li class="mobile-nav-item">
+        <a
+          href="/games/"
+          class="mobile-nav-link "
+          
+        >
+          <span class="mobile-link-index">[01]</span>
+          <span class="mobile-link-label">GAMES</span>
+          <span class="mobile-link-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+      <li class="mobile-nav-item">
+        <a
+          href="/learn/"
+          class="mobile-nav-link "
+          
+        >
+          <span class="mobile-link-index">[02]</span>
+          <span class="mobile-link-label">LEARN</span>
+          <span class="mobile-link-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+      <li class="mobile-nav-item">
+        <a
+          href="/services/"
+          class="mobile-nav-link "
+          
+        >
+          <span class="mobile-link-index">[03]</span>
+          <span class="mobile-link-label">SERVICES</span>
+          <span class="mobile-link-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+      <li class="mobile-nav-item">
+        <a
+          href="/about/"
+          class="mobile-nav-link "
+          
+        >
+          <span class="mobile-link-index">[04]</span>
+          <span class="mobile-link-label">ABOUT</span>
+          <span class="mobile-link-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+            </ul>
+          </nav>
+
+          <!-- Mobile Drawer Atmosphere Selection -->
+          <div class="drawer-atmo-section">
+            <div class="drawer-atmo-title">[ATMOSPHERIC LUMINOSITY]</div>
+            <div class="drawer-atmo-grid">
+              <button type="button" class="drawer-atmo-option" data-atmo="limestone">
+                <span class="option-num">01</span>
+                <span class="option-name">Luminous Limestone (Warm Paper)</span>
+              </button>
+              <button type="button" class="drawer-atmo-option" data-atmo="titanium">
+                <span class="option-num">02</span>
+                <span class="option-name">Warm Titanium (Concrete Slate)</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="mobile-drawer-footer">
+            <div class="drawer-telemetry-row">
+              <span class="telemetry-label">SECTOR</span>
+              <span class="telemetry-val">01 // DEEP SYSTEMS</span>
+            </div>
+            <div class="drawer-telemetry-row">
+              <span class="telemetry-label">LOCATION</span>
+              <span class="telemetry-val">BANGALORE // UTC+5:30</span>
+            </div>
+            <div class="drawer-telemetry-row">
+              <span class="telemetry-label">ARCHITECTURE</span>
+              <span class="telemetry-val text-bone">DETERMINISTIC</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Header & Mobile Drawer Interaction Logic -->
+    <script>
+      (function() {
+        const toggleBtn = document.getElementById('mobileNavToggle');
+        const closeBtn = document.getElementById('mobileDrawerClose');
+        const drawer = document.getElementById('mobileNavDrawer');
+        const backdrop = document.getElementById('mobileDrawerBackdrop');
+        const header = document.getElementById('studioHeader');
+
+        if (!toggleBtn || !drawer) return;
+
+        function openDrawer() {
+          drawer.classList.add('is-open');
+          toggleBtn.classList.add('is-active');
+          toggleBtn.setAttribute('aria-expanded', 'true');
+          drawer.setAttribute('aria-hidden', 'false');
+          document.body.classList.add('drawer-locked');
+          if (closeBtn) closeBtn.focus();
+        }
+
+        function closeDrawer() {
+          drawer.classList.remove('is-open');
+          toggleBtn.classList.remove('is-active');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+          drawer.setAttribute('aria-hidden', 'true');
+          document.body.classList.remove('drawer-locked');
+          toggleBtn.focus();
+        }
+
+        toggleBtn.addEventListener('click', function() {
+          const isOpen = drawer.classList.contains('is-open');
+          if (isOpen) closeDrawer();
+          else openDrawer();
+        });
+
+        if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+        if (backdrop) backdrop.addEventListener('click', closeDrawer);
+
+        // Close on ESC key
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && drawer.classList.contains('is-open')) {
+            closeDrawer();
+          }
+        });
+
+        // Close when a link inside mobile drawer is clicked
+        drawer.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            closeDrawer();
+          });
+        });
+
+        // Sticky header hairline shadow on scroll
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 16) {
+            header.classList.add('is-scrolled');
+          } else {
+            header.classList.remove('is-scrolled');
+          }
+        }, { passive: true });
+      })();
+    </script>
+    <main id="main-content">
+      <!-- 1. Editorial Broad-Sheet Hero with Multi-Atmosphere Engine -->
+    <section class="editorial-hero" id="editorialHero">
+      <!-- Ambient Interactive Physics Canvas -->
+      <canvas id="singularityCanvas" class="singularity-canvas" aria-label="Interactive Studio Physics Canvas"></canvas>
+
+      <!-- Analog Film Grain / Texture Overlay -->
+      <div class="editorial-grain-overlay" aria-hidden="true"></div>
+
+      <!-- Architectural Masthead Strip -->
+      <div class="editorial-masthead-strip">
+        <div class="container masthead-flex">
+          <div class="masthead-meta-left">
+            <span class="masthead-index" id="heroCatalogNo">[CATALOGUE NO. 01]</span>
+            <span class="masthead-divider"></span>
+            <span class="masthead-tag" id="heroAtelierTag">AUTONOMOUS ATELIER</span>
+          </div>
+          <div class="masthead-meta-center">
+            <span class="masthead-location" id="heroSectorTag">SECTOR: 01 // DEEP SYSTEMS</span>
+          </div>
+          <div class="masthead-meta-right">
+            <span class="masthead-coord">37.77° N, -122.41° W</span>
+            <span class="masthead-divider"></span>
+            <span class="masthead-status" id="heroStatusTag">STATUS // ACTIVE R&D</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Center Monumental Editorial Lockup -->
+      <div class="container editorial-hero-container">
+        <div class="editorial-hero-grid">
+          
+          <div class="editorial-title-wrap">
+            <div class="editorial-kicker">
+              <span class="kicker-rule"></span>
+              <span class="kicker-text" id="heroKickerText">AN INDEPENDENT GAME & SYSTEMS ATELIER</span>
+            </div>
+
+            <h1 class="editorial-monumental-headline" id="heroMainTitle">
+              Crafting Worlds <br />
+              <em class="headline-italic">from the Void.</em> <br />
+              <span class="headline-sans">Computational Play.</span>
+            </h1>
+
+            <p class="editorial-lead-prose" id="heroLeadProse">
+              Primordial Paradigm develops atmospheric independent games, researches deterministic emergent mechanics, and builds high-craft computational systems. Built entirely on first principles — zero engine bloat, unyielding architectural rigor, and radical transparency.
+            </p>
+
+            <div class="editorial-action-row">
+              <a href="#ledger" class="editorial-btn editorial-btn-primary">
+                <span>VIEW ARCHIVAL LEDGER</span>
+                <span class="btn-arrow" aria-hidden="true">&darr;</span>
+              </a>
+              <a href="/about/" class="editorial-btn editorial-btn-outline">
+                <span>STUDIO COLOPHON</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Interactive Physics & Telemetry Docket (Right Column) -->
+          <div class="editorial-singularity-docket">
+            <div class="docket-frame">
+              <div class="docket-top">
+                <span class="docket-label" id="docketLabel">PHENOMENON // 001</span>
+                <span class="docket-id" id="docketId">KERR SINGULARITY</span>
+              </div>
+
+              <div class="docket-display-area" aria-hidden="true">
+                <div class="docket-crosshair ch-tl">+</div>
+                <div class="docket-crosshair ch-tr">+</div>
+                <div class="docket-crosshair ch-bl">+</div>
+                <div class="docket-crosshair ch-br">+</div>
+                <div class="docket-orbit-hint">
+                  <span class="hint-val" id="docketOrbitVal">ORBITAL VELOCITY: 0.98c</span>
+                  <span class="hint-sub" id="docketOrbitHint">MOVE CURSOR TO CURVE SPACETIME</span>
+                </div>
+              </div>
+
+              <div class="docket-bottom">
+                <div class="docket-stat">
+                  <span class="stat-k" id="docketStatK1">MASS RATIO</span>
+                  <span class="stat-v" id="docketStatV1">3.14 &times; 10&#8308; M&#9737;</span>
+                </div>
+                <div class="docket-stat">
+                  <span class="stat-k" id="docketStatK2">ACCRETION</span>
+                  <span class="stat-v" id="docketStatV2">KEPLERIAN</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Telemetry Dock Strip -->
+        <div class="editorial-telemetry-dock">
+          <div class="telemetry-col">
+            <span class="t-kicker">ENGINE PARADIGM</span>
+            <span class="t-val" id="telemetryCol1">Vector Kinematics</span>
+          </div>
+          <div class="telemetry-col">
+            <span class="t-kicker">CREATIVE DISCIPLINE</span>
+            <span class="t-val" id="telemetryCol2">Emergent Simulation</span>
+          </div>
+          <div class="telemetry-col">
+            <span class="t-kicker">INFRASTRUCTURE</span>
+            <span class="t-val" id="telemetryCol3">Zero-Dependency Pure ESM</span>
+          </div>
+          <div class="telemetry-col">
+            <span class="t-kicker">ACTIVE ATMOSPHERE</span>
+            <span class="t-val" id="telemetryCol4" style="color: var(--accent-studio);">Cosmic Chiaroscuro</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Component Scoped Styles -->
+    <style>
+      .editorial-hero {
+        position: relative;
+        background: var(--bg-canvas);
+        color: var(--text-primary);
+        overflow: hidden;
+        min-height: 85vh;
+        display: flex;
+        flex-direction: column;
+        border-bottom: 1px solid var(--border-subtle);
+        transition: background 300ms ease;
+      }
+
+      /* Background Canvas */
+      .singularity-canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: auto;
+      }
+
+      /* Film Grain Texture */
+      .editorial-grain-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        opacity: 0.035;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+
+      /* Masthead Strip */
+      .editorial-masthead-strip {
+        position: relative;
+        z-index: 2;
+        border-bottom: 1px solid var(--border-subtle);
+        background: var(--bg-surface);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        padding: 0.75rem 0;
+      }
+
+      .masthead-flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        color: var(--text-muted);
+      }
+
+      .masthead-meta-left, .masthead-meta-right {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+      }
+
+      .masthead-index {
+        color: var(--text-primary);
+        font-weight: 700;
+        letter-spacing: 0.08em;
+      }
+
+      .masthead-divider {
+        width: 20px;
+        height: 1px;
+        background: var(--border-subtle);
+      }
+
+      .masthead-tag, .masthead-coord {
+        letter-spacing: 0.06em;
+      }
+
+      .masthead-status {
+        color: var(--accent-studio);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+      }
+
+      /* Editorial Hero Container */
+      .editorial-hero-container {
+        position: relative;
+        z-index: 2;
+        padding-top: clamp(3.5rem, 6vw, 5.5rem);
+        padding-bottom: clamp(3.5rem, 6vw, 5.5rem);
+        pointer-events: none;
+      }
+
+      .editorial-hero-grid {
+        display: grid;
+        grid-template-columns: 1.25fr 0.75fr;
+        gap: clamp(2rem, 5vw, 4.5rem);
+        align-items: center;
+      }
+
+      .editorial-title-wrap {
+        pointer-events: auto;
+      }
+
+      .editorial-kicker {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .kicker-rule {
+        width: 28px;
+        height: 1px;
+        background: var(--accent-studio);
+      }
+
+      .kicker-text {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.16em;
+        color: var(--accent-studio);
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      .editorial-monumental-headline {
+        font-family: var(--font-serif);
+        font-size: clamp(2.5rem, 5.5vw, 4.25rem);
+        line-height: 1.08;
+        font-weight: 400;
+        letter-spacing: -0.02em;
+        margin: 0 0 1.85rem 0;
+        color: var(--text-primary);
+      }
+
+      .headline-italic {
+        font-style: italic;
+        color: var(--text-primary);
+      }
+
+      .headline-sans {
+        font-family: var(--font-sans);
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        color: var(--text-primary);
+      }
+
+      .editorial-lead-prose {
+        font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+        line-height: 1.7;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin-bottom: 2.75rem;
+      }
+
+      .editorial-action-row {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        flex-wrap: wrap;
+      }
+
+      .editorial-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.85rem 1.65rem;
+        border-radius: 0px;
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-decoration: none;
+        transition: all 160ms ease;
+      }
+
+      .editorial-btn-primary {
+        background: var(--text-primary);
+        color: var(--bg-canvas);
+        border: 1px solid var(--text-primary);
+      }
+
+      .editorial-btn-primary:hover {
+        background: var(--accent-studio);
+        border-color: var(--accent-studio);
+        color: #ffffff;
+        text-decoration: none;
+      }
+
+      .editorial-btn-outline {
+        background: transparent;
+        border: 1px solid var(--border-strong);
+        color: var(--text-primary);
+      }
+
+      .editorial-btn-outline:hover {
+        background: var(--bg-surface-hover);
+        border-color: var(--text-primary);
+        text-decoration: none;
+      }
+
+      /* Singularity Docket (Right Column) */
+      .editorial-singularity-docket {
+        pointer-events: auto;
+      }
+
+      .docket-frame {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-subtle);
+        border-left: 2px solid var(--accent-studio);
+        border-radius: 0px;
+        padding: 1.5rem;
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+        transition: all 250ms ease;
+      }
+
+      .docket-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        padding-bottom: 0.75rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid var(--border-subtle);
+      }
+
+      .docket-label {
+        color: var(--accent-studio);
+        font-weight: 700;
+        letter-spacing: 0.1em;
+      }
+
+      .docket-id {
+        color: var(--text-primary);
+        font-weight: 600;
+        letter-spacing: 0.06em;
+      }
+
+      .docket-display-area {
+        position: relative;
+        height: 140px;
+        border: 1px solid var(--border-subtle);
+        background: var(--bg-surface);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .docket-crosshair {
+        position: absolute;
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        color: var(--text-muted);
+        line-height: 1;
+      }
+      .ch-tl { top: 4px; left: 6px; }
+      .ch-tr { top: 4px; right: 6px; }
+      .ch-bl { bottom: 4px; left: 6px; }
+      .ch-br { bottom: 4px; right: 6px; }
+
+      .docket-orbit-hint {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+        text-align: center;
+        font-family: var(--font-mono);
+      }
+
+      .hint-val {
+        font-size: 0.75rem;
+        color: var(--text-primary);
+        font-weight: 600;
+        letter-spacing: 0.06em;
+      }
+
+      .hint-sub {
+        font-size: 0.62rem;
+        color: var(--text-muted);
+        letter-spacing: 0.08em;
+      }
+
+      .docket-bottom {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        padding-top: 0.85rem;
+        border-top: 1px solid var(--border-subtle);
+      }
+
+      .docket-stat {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        font-family: var(--font-mono);
+      }
+
+      .stat-k {
+        font-size: 0.62rem;
+        color: var(--text-muted);
+        letter-spacing: 0.08em;
+      }
+
+      .stat-v {
+        font-size: 0.82rem;
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+
+      /* Telemetry Dock Strip */
+      .editorial-telemetry-dock {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        margin-top: clamp(3rem, 5vw, 4.5rem);
+        padding-top: 1.75rem;
+        border-top: 1px solid var(--border-subtle);
+        pointer-events: auto;
+      }
+
+      .telemetry-col {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        font-family: var(--font-mono);
+      }
+
+      .t-kicker {
+        font-size: 0.62rem;
+        color: var(--text-muted);
+        letter-spacing: 0.08em;
+      }
+
+      .t-val {
+        font-size: 0.85rem;
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+
+      /* Responsive Rules */
+      @media (max-width: 960px) {
+        .editorial-hero-grid {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+        .editorial-telemetry-dock {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1.5rem;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .editorial-masthead-strip {
+          display: none;
+        }
+        .editorial-telemetry-dock {
+          grid-template-columns: 1fr;
+          gap: 1.25rem;
+        }
+      }
+    </style>
+
+    <!-- Multi-Atmosphere Dynamic Canvas Engine -->
+    <script>
+      (function() {
+        const canvas = document.getElementById('singularityCanvas');
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+        let width = 0;
+        let height = 0;
+        let dpr = 1;
+        let animId = null;
+
+        // UI Telemetry Elements
+        const docketLabel = document.getElementById('docketLabel');
+        const docketId = document.getElementById('docketId');
+        const docketOrbitVal = document.getElementById('docketOrbitVal');
+        const docketOrbitHint = document.getElementById('docketOrbitHint');
+        const docketStatK1 = document.getElementById('docketStatK1');
+        const docketStatV1 = document.getElementById('docketStatV1');
+        const docketStatK2 = document.getElementById('docketStatK2');
+        const docketStatV2 = document.getElementById('docketStatV2');
+        const telemetryCol4 = document.getElementById('telemetryCol4');
+
+        function normalizeAtmo(atmo) {
+          if (atmo === 'twilight' || atmo === 'chiaroscuro' || atmo === 'blueprint') return 'titanium';
+          if (atmo === 'surrealism' || atmo === 'dawn') return 'limestone';
+          return atmo === 'titanium' ? 'titanium' : 'limestone';
+        }
+
+        let currentAtmosphere = normalizeAtmo(document.documentElement.getAttribute('data-atmosphere'));
+
+        function resize() {
+          const rect = canvas.getBoundingClientRect();
+          width = rect.width;
+          height = rect.height;
+          dpr = Math.min(window.devicePixelRatio || 1, 2);
+          canvas.width = Math.floor(width * dpr);
+          canvas.height = Math.floor(height * dpr);
+          ctx.setTransform(1, 0, 0, 1, 0, 0);
+          ctx.scale(dpr, dpr);
+          initAtmosphere();
+        }
+
+        window.addEventListener('resize', resize, { passive: true });
+
+        // Mouse tracking
+        const mouse = { x: null, y: null, active: false };
+        window.addEventListener('mousemove', function(e) {
+          const rect = canvas.getBoundingClientRect();
+          mouse.x = e.clientX - rect.left;
+          mouse.y = e.clientY - rect.top;
+          mouse.active = true;
+        }, { passive: true });
+
+        window.addEventListener('mouseleave', function() {
+          mouse.active = false;
+        });
+
+        // -------------------------------------------------------------
+        // SHARED GRAVITATIONAL KINEMATICS (Limestone & Twilight)
+        // -------------------------------------------------------------
+        const PARTICLE_COUNT = 130;
+        const orbitalParticles = [];
+        const horizonRadius = 36;
+
+        function initParticles() {
+          orbitalParticles.length = 0;
+          const cx = width > 960 ? width * 0.75 : width * 0.5;
+          const cy = height * 0.5;
+          for (let i = 0; i < PARTICLE_COUNT; i++) {
+            const angle = Math.random() * Math.PI * 2;
+            const dist = horizonRadius + 28 + Math.random() * 260;
+            orbitalParticles.push({
+              x: cx + Math.cos(angle) * dist,
+              y: cy + Math.sin(angle) * dist,
+              angle: angle,
+              dist: dist,
+              size: Math.random() * 1.5 + 0.6,
+              brightness: Math.random() * 0.7 + 0.3,
+              vx: -Math.sin(angle) * (1.1 + Math.random() * 0.8),
+              vy: Math.cos(angle) * (1.1 + Math.random() * 0.8),
+              isAccent: Math.random() < 0.32
+            });
+          }
+        }
+
+        function updateParticlePhysics(cx, cy) {
+          for (let i = 0; i < orbitalParticles.length; i++) {
+            const p = orbitalParticles[i];
+            const dx = cx - p.x;
+            const dy = cy - p.y;
+            const distSq = dx * dx + dy * dy;
+            const dist = Math.sqrt(distSq);
+
+            const f = 900 / Math.max(distSq, 380);
+            p.vx += (dx / dist) * f;
+            p.vy += (dy / dist) * f;
+
+            if (mouse.active && mouse.x !== null) {
+              const mdx = mouse.x - p.x;
+              const mdy = mouse.y - p.y;
+              const mdistSq = mdx * mdx + mdy * mdy;
+              if (mdistSq < 40000 && mdistSq > 100) {
+                const mdist = Math.sqrt(mdistSq);
+                const mf = 550 / mdistSq;
+                p.vx += (mdx / mdist) * mf;
+                p.vy += (mdy / mdist) * mf;
+              }
+            }
+
+            p.vx *= 0.988;
+            p.vy *= 0.988;
+            p.x += p.vx;
+            p.y += p.vy;
+
+            if (dist < horizonRadius || p.x < -40 || p.x > width + 40 || p.y < -40 || p.y > height + 40) {
+              const spawnAngle = Math.random() * Math.PI * 2;
+              const spawnDist = Math.min(width, height) * 0.44 + Math.random() * 40;
+              p.x = cx + Math.cos(spawnAngle) * spawnDist;
+              p.y = cy + Math.sin(spawnAngle) * spawnDist;
+              p.vx = -Math.sin(spawnAngle) * (1.1 + Math.random() * 0.8);
+              p.vy = Math.cos(spawnAngle) * (1.1 + Math.random() * 0.8);
+            }
+          }
+        }
+
+        // -------------------------------------------------------------
+        // ATMOSPHERE 01: LUMINOUS LIMESTONE (Coolors Palette: #f4f1ea, #9c95dc, #228cdb, #0b7189, #170a1c)
+        // -------------------------------------------------------------
+        function drawLimestone() {
+          // Warm limestone paper trail wash
+          ctx.fillStyle = 'rgba(244, 241, 234, 0.28)';
+          ctx.fillRect(0, 0, width, height);
+
+          const cx = width > 960 ? width * 0.75 : width * 0.5;
+          const cy = height * 0.5;
+
+          // Atmospheric corona: Ocean Teal & Lavender Mist
+          const corona = ctx.createRadialGradient(cx, cy, 10, cx, cy, 105);
+          corona.addColorStop(0, 'rgba(11, 113, 137, 0.20)');
+          corona.addColorStop(0.5, 'rgba(156, 149, 220, 0.16)');
+          corona.addColorStop(1, 'rgba(244, 241, 234, 0)');
+          ctx.fillStyle = corona;
+          ctx.beginPath();
+          ctx.arc(cx, cy, 105, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Deep Midnight Plum / Currant Core (#170a1c)
+          ctx.fillStyle = '#170a1c';
+          ctx.beginPath();
+          ctx.arc(cx, cy, horizonRadius, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Hairline Ocean Teal ring (#0b7189)
+          ctx.strokeStyle = '#0b7189';
+          ctx.lineWidth = 1.3;
+          ctx.beginPath();
+          ctx.arc(cx, cy, horizonRadius + 1.5, 0, Math.PI * 2);
+          ctx.stroke();
+
+          // Update & draw kinetic particles (Plum, Ocean Teal, Cerulean Blue, Soft Lavender)
+          updateParticlePhysics(cx, cy);
+          for (let i = 0; i < orbitalParticles.length; i++) {
+            const p = orbitalParticles[i];
+            const dx = cx - p.x;
+            const dy = cy - p.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            const alpha = Math.min(p.brightness, (dist - horizonRadius) / 28);
+            if (alpha > 0.04) {
+              if (i % 4 === 0) {
+                ctx.fillStyle = 'rgba(34, 140, 219, ' + alpha + ')'; // Cerulean
+              } else if (i % 4 === 1) {
+                ctx.fillStyle = 'rgba(11, 113, 137, ' + alpha + ')'; // Ocean Teal
+              } else if (i % 4 === 2) {
+                ctx.fillStyle = 'rgba(156, 149, 220, ' + (alpha * 0.9) + ')'; // Lavender
+              } else {
+                ctx.fillStyle = 'rgba(23, 10, 28, ' + (alpha * 0.85) + ')'; // Deep Plum
+              }
+              ctx.beginPath();
+              ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+              ctx.fill();
+            }
+          }
+        }
+
+        // -------------------------------------------------------------
+        // ATMOSPHERE 02: WARM TITANIUM SLATE (Architectural Slate + Vermilion)
+        // -------------------------------------------------------------
+        let rotX = 0.45;
+        let rotY = 0.65;
+        let targetRotX = 0.45;
+        let targetRotY = 0.65;
+
+        const phi = (1 + Math.sqrt(5)) / 2;
+        const ICOSA_VERTICES = [
+          [-1,  phi, 0], [ 1,  phi, 0], [-1, -phi, 0], [ 1, -phi, 0],
+          [ 0, -1,  phi], [ 0,  1,  phi], [ 0, -1, -phi], [ 0,  1, -phi],
+          [ phi, 0, -1], [ phi, 0,  1], [-phi, 0, -1], [-phi, 0,  1]
+        ];
+
+        const ICOSA_EDGES = [
+          [0,11],[0,5],[0,1],[0,7],[0,10],[1,5],[1,7],[1,8],[1,9],
+          [2,11],[2,4],[2,3],[2,6],[2,10],[3,4],[3,6],[3,8],[3,9],
+          [4,5],[4,9],[4,11],[5,9],[5,11],[6,7],[6,8],[6,10],[7,8],
+          [7,10],[8,9],[10,11]
+        ];
+
+        function project3D(v, scale, cx, cy) {
+          const cosY = Math.cos(rotY);
+          const sinY = Math.sin(rotY);
+          let x1 = v[0] * cosY + v[2] * sinY;
+          let z1 = -v[0] * sinY + v[2] * cosY;
+
+          const cosX = Math.cos(rotX);
+          const sinX = Math.sin(rotX);
+          let y2 = v[1] * cosX - z1 * sinX;
+          let z2 = v[1] * sinX + z1 * cosX;
+
+          const fov = 3.6;
+          const pers = fov / (fov + z2 * 0.5);
+          return {
+            x: cx + x1 * scale * pers,
+            y: cy + y2 * scale * pers,
+            z: z2,
+            pers: pers
+          };
+        }
+
+        function drawTitanium() {
+          ctx.fillStyle = '#1e222b';
+          ctx.fillRect(0, 0, width, height);
+
+          // Subtle Architectural CAD Grid
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
+          ctx.lineWidth = 1;
+          const gridSize = 48;
+          for (let x = 0; x < width; x += gridSize) {
+            ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, height); ctx.stroke();
+          }
+          for (let y = 0; y < height; y += gridSize) {
+            ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(width, y); ctx.stroke();
+          }
+
+          const cx = width > 960 ? width * 0.75 : width * 0.5;
+          const cy = height * 0.5;
+
+          if (mouse.active && mouse.x !== null) {
+            const ndx = (mouse.x - cx) / (width / 2);
+            const ndy = (mouse.y - cy) / (height / 2);
+            targetRotY = ndx * 2.2;
+            targetRotX = -ndy * 1.5;
+          } else {
+            targetRotY += 0.006;
+            targetRotX = Math.sin(performance.now() * 0.001) * 0.22;
+          }
+
+          rotX += (targetRotX - rotX) * 0.08;
+          rotY += (targetRotY - rotY) * 0.08;
+
+          const scale = Math.min(width, height) * 0.18;
+          const projected = ICOSA_VERTICES.map(v => project3D(v, scale, cx, cy));
+
+          // Draw Edges
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.40)';
+          ctx.lineWidth = 1.2;
+          for (const [i, j] of ICOSA_EDGES) {
+            ctx.beginPath();
+            ctx.moveTo(projected[i].x, projected[i].y);
+            ctx.lineTo(projected[j].x, projected[j].y);
+            ctx.stroke();
+          }
+
+          // Draw NASA Signal Vermilion Vertex Reticles
+          for (const p of projected) {
+            ctx.fillStyle = '#ff5500';
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, 2.8 * p.pers, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          // Live Reticle Target Box on mouse
+          if (mouse.active && mouse.x !== null) {
+            ctx.strokeStyle = 'rgba(255, 85, 0, 0.75)';
+            ctx.strokeRect(mouse.x - 12, mouse.y - 12, 24, 24);
+          }
+        }
+
+        // Master Atmosphere Switcher
+        function initAtmosphere() {
+          const norm = normalizeAtmo(currentAtmosphere);
+          if (norm === 'limestone') {
+            ctx.fillStyle = '#f4f1ea';
+            ctx.fillRect(0, 0, width, height);
+            initParticles();
+          } else if (norm === 'titanium') {
+            rotX = 0.45;
+            rotY = 0.65;
+          }
+          updateDocketUI(norm);
+        }
+
+        function updateDocketUI(atmo) {
+          if (atmo === 'limestone') {
+            if (docketLabel) docketLabel.textContent = 'ATMOSPHERE // 001';
+            if (docketId) docketId.textContent = 'WARM LIMESTONE ATELIER';
+            if (docketOrbitVal) docketOrbitVal.textContent = 'LUMINANCE: 92% D65';
+            if (docketOrbitHint) docketOrbitHint.textContent = 'HIGH-KEY GALLERY PAPER';
+            if (docketStatK1) docketStatK1.textContent = 'PRIMARY INK';
+            if (docketStatV1) docketStatV1.textContent = 'DEEP PLUM #170A1C';
+            if (docketStatK2) docketStatK2.textContent = 'CONTRAST';
+            if (docketStatV2) docketStatV2.textContent = '16.0:1 AAA';
+            if (telemetryCol4) {
+              telemetryCol4.textContent = 'Luminous Limestone';
+              telemetryCol4.style.color = 'var(--accent-studio)';
+            }
+          } else if (atmo === 'titanium') {
+            if (docketLabel) docketLabel.textContent = 'ATMOSPHERE // 002';
+            if (docketId) docketId.textContent = '3D ISOMETRIC RASTER';
+            if (docketOrbitVal) docketOrbitVal.textContent = 'CAD MATRIX // TITANIUM';
+            if (docketOrbitHint) docketOrbitHint.textContent = 'CURSOR VELOCITY DRIVES INERTIA';
+            if (docketStatK1) docketStatK1.textContent = 'TOPOLOGY';
+            if (docketStatV1) docketStatV1.textContent = 'ICOSAHEDRAL';
+            if (docketStatK2) docketStatK2.textContent = 'SIGNAL ACCENT';
+            if (docketStatV2) docketStatV2.textContent = 'VERMILION #FF5500';
+            if (telemetryCol4) {
+              telemetryCol4.textContent = 'Warm Titanium';
+              telemetryCol4.style.color = 'var(--accent-studio)';
+            }
+          }
+        }
+
+        function renderFrame() {
+          const norm = normalizeAtmo(currentAtmosphere);
+          if (norm === 'limestone') drawLimestone();
+          else if (norm === 'titanium') drawTitanium();
+          animId = requestAnimationFrame(renderFrame);
+        }
+
+        // Listen for atmosphere change events
+        window.addEventListener('pp:atmosphere-changed', function(e) {
+          if (e.detail && e.detail.atmosphere) {
+            currentAtmosphere = normalizeAtmo(e.detail.atmosphere);
+            initAtmosphere();
+          }
+        });
+
+        resize();
+        animId = requestAnimationFrame(renderFrame);
+      })();
+    </script>
+
+    <!-- 2. Archival Project Ledger & Broadsheet Colophon -->
+    <!-- SECTION 1: ARCHIVAL PROJECT LEDGER -->
+    <section class="ledger-section" id="ledger">
+      <div class="container">
+        
+        <div class="ledger-header-lockup">
+          <div class="ledger-eyebrow">
+            <span class="ledger-code">[INDEX // ARCHIVAL REGISTER]</span>
+            <span class="ledger-rule"></span>
+            <span class="ledger-note">CATALOGUE OF ACTIVE RESEARCH & SYSTEMS</span>
+          </div>
+          <h2 class="ledger-title">Current Works & Monograph Index</h2>
+        </div>
+
+        <!-- The Expandable Horizontal Ledger Table -->
+        <div class="ledger-table" role="table" aria-label="Studio Project Index">
+          
+          <!-- Ledger Row 01: Games Devlog -->
+          <a href="/games/systemic-movement-prototype/" class="ledger-row" role="row">
+            <div class="ledger-col-id" role="cell">
+              <span class="col-num">01</span>
+              <span class="col-tag">ALPHA // PLAYABLE</span>
+            </div>
+
+            <div class="ledger-col-primary" role="cell">
+              <h3 class="ledger-item-title">Systemic Movement Prototype</h3>
+              <p class="ledger-item-desc">
+                A pure 2D deterministic vector kinematics engine built without external runtime dependencies. Explores momentum accumulation, surface friction transitions, and in-browser canvas playability.
+              </p>
+            </div>
+
+            <div class="ledger-col-discipline" role="cell">
+              <span class="disc-label">DISCIPLINE</span>
+              <span class="disc-val">Vector Kinematics</span>
+            </div>
+
+            <div class="ledger-col-date" role="cell">
+              <span class="date-label">RECORDED</span>
+              <span class="date-val">2026.11</span>
+            </div>
+
+            <div class="ledger-col-arrow" role="cell">
+              <span class="ledger-arrow">&rarr;</span>
+            </div>
+          </a>
+
+          <!-- Ledger Row 02: Systems Monograph -->
+          <a href="/learn/systems-architecture-first-principles/" class="ledger-row" role="row">
+            <div class="ledger-col-id" role="cell">
+              <span class="col-num">02</span>
+              <span class="col-tag">MONOGRAPH</span>
+            </div>
+
+            <div class="ledger-col-primary" role="cell">
+              <h3 class="ledger-item-title">First Principles & Emergence</h3>
+              <p class="ledger-item-desc">
+                Exhaustive technical study on building deterministic state machines, spatial memory caching, and zero-native pure ESM static architectures for mission-critical software.
+              </p>
+            </div>
+
+            <div class="ledger-col-discipline" role="cell">
+              <span class="disc-label">DISCIPLINE</span>
+              <span class="disc-val">Systems Architecture</span>
+            </div>
+
+            <div class="ledger-col-date" role="cell">
+              <span class="date-label">RECORDED</span>
+              <span class="date-val">2026.11</span>
+            </div>
+
+            <div class="ledger-col-arrow" role="cell">
+              <span class="ledger-arrow">&rarr;</span>
+            </div>
+          </a>
+
+          <!-- Ledger Row 03: Advisory -->
+          <a href="/services/" class="ledger-row" role="row">
+            <div class="ledger-col-id" role="cell">
+              <span class="col-num">03</span>
+              <span class="col-tag">SELECTIVE</span>
+            </div>
+
+            <div class="ledger-col-primary" role="cell">
+              <h3 class="ledger-item-title">Executive Systems Advisory</h3>
+              <p class="ledger-item-desc">
+                Bespoke enterprise dashboards, high-performance database modeling, and mission-critical business intelligence architectures delivered with obsessive craftsmanship.
+              </p>
+            </div>
+
+            <div class="ledger-col-discipline" role="cell">
+              <span class="disc-label">DISCIPLINE</span>
+              <span class="disc-val">Strategic Computation</span>
+            </div>
+
+            <div class="ledger-col-date" role="cell">
+              <span class="date-label">STATUS</span>
+              <span class="date-val">ACTIVE</span>
+            </div>
+
+            <div class="ledger-col-arrow" role="cell">
+              <span class="ledger-arrow">&rarr;</span>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2: EDITORIAL BROADSHEET COLOPHON -->
+    <section class="broadsheet-section" id="broadsheetColophon">
+      <div class="container">
+        
+        <div class="broadsheet-grid">
+          
+          <!-- Left Column: Editorial Manifesto with Drop Cap -->
+          <div class="broadsheet-prose-col">
+            <div class="broadsheet-section-meta">
+              <span class="broadsheet-kicker">[ESSAY // THE FOUNDER DIRECTIVE]</span>
+            </div>
+
+            <div class="broadsheet-lead-statement">
+              The Architecture of Restraint
+            </div>
+
+            <p class="broadsheet-dropcap-paragraph">
+              <span class="dropcap">W</span>e reject the templated mediocrity and corporate bloat that characterizes the modern web. In an era dominated by sprawling dependencies, fragile runtimes, and superficial visual trends, Primordial Paradigm operates under an uncompromising principle: every computational artifact must be built from first principles.
+            </p>
+
+            <p class="broadsheet-body-prose">
+              Real interactive experiences are not assembled from off-the-shelf templates. They are discovered through mathematical rigor, deliberate art direction, and exhaustive experimentation. Whether constructing a deterministic vector physics engine for an independent video game or designing an executive intelligence architecture, we prioritize zero runtime overhead, complete accessibility, and lasting aesthetic integrity.
+            </p>
+
+            <div class="broadsheet-signature-block">
+              <div class="signature-line"></div>
+              <span class="signature-title">PRIMORDIAL PARADIGM STUDIO</span>
+              <span class="signature-subtitle">Independent Game & Creative Systems Atelier</span>
+            </div>
+          </div>
+
+          <!-- Right Column: Archival Standards & Colophon Box -->
+          <div class="broadsheet-specs-col">
+            <div class="archival-specs-box">
+              <div class="specs-box-header">
+                <span class="box-index">COLOPHON // 2026</span>
+                <span class="box-status">STANDARDS SPECIFICATION</span>
+              </div>
+
+              <div class="specs-detail-list">
+                <div class="detail-item">
+                  <span class="detail-label">COMPILATION ENGINE</span>
+                  <span class="detail-val">Pure Node.js ESM Static Architecture</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">NATIVE BINARY OVERHEAD</span>
+                  <span class="detail-val">0.0 KB (Zero .node DLL dependencies)</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">ACCESSIBILITY AUDIT</span>
+                  <span class="detail-val">WCAG 2.2 AAA Contrast (> 11.2:1 Body, 17.5:1 Titles)</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">TELEMETRY BASELINE</span>
+                  <span class="detail-val">Google Consent Mode v2 (Default: Denied / Zero Telemetry)</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">HOSTING INFRASTRUCTURE</span>
+                  <span class="detail-val">Hostinger LiteSpeed Edge + Automated Git CI/CD</span>
+                </div>
+              </div>
+
+              <div class="specs-box-footer">
+                <a href="/about/" class="broadsheet-link-btn">
+                  <span>Read Detailed Studio Philosophy</span>
+                  <span class="btn-arrow">&rarr;</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <style>
+      /* =============================================================================
+         Option 1: Archival Project Ledger Styles
+         ============================================================================= */
+      .ledger-section {
+        padding-top: clamp(4.5rem, 7vw, 7rem);
+        padding-bottom: clamp(4.5rem, 7vw, 7rem);
+        background: var(--bg-canvas);
+        border-bottom: 1px solid var(--border-subtle);
+      }
+
+      .ledger-header-lockup {
+        margin-bottom: 3.5rem;
+      }
+
+      .ledger-eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .ledger-code {
+        color: var(--accent-studio);
+        font-weight: 700;
+        letter-spacing: 0.08em;
+      }
+
+      .ledger-rule {
+        flex: 0 0 35px;
+        height: 1px;
+        background: var(--border-strong);
+      }
+
+      .ledger-note {
+        color: var(--text-muted);
+        letter-spacing: 0.06em;
+      }
+
+      .ledger-title {
+        font-family: Georgia, Cambria, 'Times New Roman', serif;
+        font-size: clamp(2rem, 3.8vw, 3rem);
+        font-weight: 400;
+        letter-spacing: -0.02em;
+        color: var(--text-primary);
+      }
+
+      /* Ledger Table & Rows */
+      .ledger-table {
+        display: flex;
+        flex-direction: column;
+        border-top: 1px solid var(--border-strong);
+      }
+
+      .ledger-row {
+        display: grid;
+        grid-template-columns: 140px 1.8fr 1fr 120px 60px;
+        gap: 1.5rem;
+        align-items: center;
+        padding: 2.25rem 1rem;
+        border-bottom: 1px solid var(--border-subtle);
+        text-decoration: none;
+        transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+      }
+
+      .ledger-row:hover {
+        background: var(--bg-surface-hover);
+        border-bottom-color: var(--accent-studio);
+        padding-left: 1.5rem;
+        text-decoration: none;
+      }
+
+      .ledger-col-id {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        font-family: var(--font-mono);
+      }
+
+      .col-num {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--accent-amber);
+      }
+
+      .col-tag {
+        font-size: 0.65rem;
+        color: var(--text-muted);
+        letter-spacing: 0.08em;
+      }
+
+      .ledger-col-primary {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+
+      .ledger-item-title {
+        font-size: 1.45rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        letter-spacing: -0.015em;
+        transition: color 150ms ease;
+      }
+
+      .ledger-row:hover .ledger-item-title {
+        color: var(--accent-amber);
+      }
+
+      .ledger-item-desc {
+        font-size: 0.925rem;
+        color: var(--text-secondary);
+        line-height: 1.55;
+        max-width: 650px;
+      }
+
+      .ledger-col-discipline, .ledger-col-date {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        font-family: var(--font-mono);
+      }
+
+      .disc-label, .date-label {
+        font-size: 0.65rem;
+        color: var(--text-muted);
+        letter-spacing: 0.06em;
+      }
+
+      .disc-val, .date-val {
+        font-size: 0.8rem;
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+
+      .ledger-col-arrow {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .ledger-arrow {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 0px;
+        border: 1px solid var(--border-strong);
+        color: var(--text-primary);
+        font-family: var(--font-mono);
+        font-size: 1.1rem;
+        transition: all 160ms ease;
+      }
+
+      .ledger-row:hover .ledger-arrow {
+        background: var(--text-primary);
+        border-color: var(--text-primary);
+        color: var(--bg-canvas);
+        transform: translateX(4px);
+      }
+
+      /* =============================================================================
+         Editorial Broadsheet Colophon Styles
+         ============================================================================= */
+      .broadsheet-section {
+        padding-top: clamp(4.5rem, 7vw, 7rem);
+        padding-bottom: clamp(4.5rem, 7vw, 7rem);
+        background: var(--bg-surface);
+        border-top: 1px solid var(--border-subtle);
+      }
+
+      .broadsheet-grid {
+        display: grid;
+        grid-template-columns: 1.25fr 0.75fr;
+        gap: clamp(3rem, 6vw, 5rem);
+        align-items: start;
+      }
+
+      .broadsheet-section-meta {
+        margin-bottom: 1.25rem;
+      }
+
+      .broadsheet-kicker {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        letter-spacing: 0.1em;
+        color: var(--accent-amber);
+        font-weight: 600;
+      }
+
+      .broadsheet-lead-statement {
+        font-family: Georgia, Cambria, 'Times New Roman', serif;
+        font-size: clamp(2rem, 3.5vw, 2.75rem);
+        font-weight: 400;
+        letter-spacing: -0.02em;
+        line-height: 1.15;
+        color: var(--text-primary);
+        margin-bottom: 1.75rem;
+      }
+
+      .broadsheet-dropcap-paragraph {
+        font-size: 1.15rem;
+        line-height: 1.75;
+        color: var(--text-primary);
+        margin-bottom: 1.5rem;
+      }
+
+      .dropcap {
+        float: left;
+        font-family: Georgia, Cambria, 'Times New Roman', serif;
+        font-size: 4.2rem;
+        line-height: 0.8;
+        padding-top: 4px;
+        padding-right: 12px;
+        padding-bottom: 4px;
+        color: var(--accent-amber);
+        font-weight: 700;
+      }
+
+      .broadsheet-body-prose {
+        font-size: 1.05rem;
+        line-height: 1.75;
+        color: var(--text-secondary);
+        margin-bottom: 2.5rem;
+      }
+
+      .broadsheet-signature-block {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        font-family: var(--font-mono);
+      }
+
+      .signature-line {
+        width: 60px;
+        height: 1px;
+        background: var(--accent-amber);
+        margin-bottom: 0.75rem;
+      }
+
+      .signature-title {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        letter-spacing: 0.08em;
+      }
+
+      .signature-subtitle {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+      }
+
+      /* Archival Specs Box (Right Column) */
+      .archival-specs-box {
+        background: var(--bg-surface-elevated);
+        border: 1px solid var(--border-subtle);
+        border-radius: 0px;
+        padding: clamp(1.5rem, 3vw, 2rem);
+        backdrop-filter: blur(12px);
+      }
+
+      .specs-box-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 0.85rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid var(--border-subtle);
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+      }
+
+      .box-index {
+        color: var(--accent-amber);
+        font-weight: 700;
+      }
+
+      .box-status {
+        color: var(--text-muted);
+      }
+
+      .specs-detail-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        margin-bottom: 2rem;
+      }
+
+      .detail-item {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid var(--border-subtle);
+      }
+
+      .detail-label {
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        color: var(--text-muted);
+        letter-spacing: 0.06em;
+      }
+
+      .detail-val {
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+
+      .specs-box-footer {
+        padding-top: 0.5rem;
+      }
+
+      .broadsheet-link-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0.85rem 1.25rem;
+        border-radius: 0px;
+        background: var(--bg-surface);
+        border: 1px solid var(--border-subtle);
+        color: var(--text-primary);
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 180ms ease;
+      }
+
+      .broadsheet-link-btn:hover {
+        background: var(--accent-amber);
+        border-color: var(--accent-amber);
+        color: #ffffff;
+        text-decoration: none;
+      }
+
+      /* Responsive Rules */
+      @media (max-width: 960px) {
+        .ledger-row {
+          grid-template-columns: 80px 1fr 40px;
+          gap: 1rem;
+        }
+        .ledger-col-discipline, .ledger-col-date {
+          display: none;
+        }
+        .broadsheet-grid {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .ledger-row {
+          grid-template-columns: 1fr;
+          gap: 0.75rem;
+          padding: 1.5rem 0.5rem;
+        }
+        .ledger-col-arrow {
+          display: none;
+        }
+      }
+    </style>
+    </main>
+    <aside class="craft-switcher-dock" id="craftSwitcherDock" aria-label="Studio Creative Atmosphere Switcher">
+      <div class="switcher-inner">
+        <div class="switcher-meta">
+          <span class="switcher-title">LUMINOSITY //</span>
+        </div>
+        <div class="switcher-pills" role="toolbar" aria-label="Atmosphere Modes">
+          <button
+            type="button"
+            class="switcher-pill"
+            data-atmo="limestone"
+            title="Mode 01: Luminous Limestone (High-Key Warm Gallery Paper)"
+          >
+            <span class="pill-num">01</span>
+            <span class="pill-label">LIMESTONE</span>
+          </button>
+          <button
+            type="button"
+            class="switcher-pill"
+            data-atmo="titanium"
+            title="Mode 02: Warm Titanium (Architectural Mid-Tone Slate)"
+          >
+            <span class="pill-num">02</span>
+            <span class="pill-label">TITANIUM</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+    <footer class="studio-footer" role="contentinfo">
+      <div class="container footer-container">
+        
+        <!-- Top Architectural Banner: Thesis & Brand Lockup -->
+        <div class="footer-hero-band">
+          <div class="footer-brand-lockup">
+            <a href="/" class="footer-brand-link" aria-label="Primordial Paradigm Homepage">
+              <svg
+      width="30"
+      height="30"
+      viewBox="0 0 120 120"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="monogram "
+      aria-label="Primordial Paradigm Monogram"
+      role="img"
+    >
+      <title>Primordial Paradigm</title>
+      <path
+        d="M29 101V45C29 24 42 12 63 12C86 12 101 27 101 48C101 70 85 84 63 84H54V65H63C75 65 82 59 82 48C82 38 75 31 64 31C54 31 48 37 48 47V101Z"
+        fill="currentColor"
+      />
+      <circle cx="64" cy="48" r="7" fill="var(--accent-amber)" />
+    </svg>
+              <span class="footer-brand-title">PRIMORDIAL PARADIGM</span>
+            </a>
+            <p class="footer-thesis">
+              An independent game and creative systems studio crafting deterministic vector physics, original interactive worlds, and computational architecture from first principles.
+            </p>
+          </div>
+
+          <div class="footer-telemetry-badge">
+            <div class="telemetry-badge-content">
+              <span class="telemetry-badge-title">STUDIO NODE // PRODUCTION</span>
+              <span class="telemetry-badge-detail">SECTOR: 01 &bull; BANGALORE &bull; UTC+5:30</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Middle Section: 4-Column Directory Grid -->
+        <div class="footer-columns-grid">
+          
+          <!-- Column 1: Studio Directory -->
+          <div class="footer-nav-col">
+            <h4 class="footer-col-header">
+              <span class="col-index">[01]</span>
+              <span class="col-title">Studio Directory</span>
+            </h4>
+            <ul class="footer-links-list">
+              <li><a href="/games/">Games &amp; Devlogs</a></li>
+              <li><a href="/learn/">Systems Learning Hub</a></li>
+              <li><a href="/services/">Advisory &amp; Engineering</a></li>
+              <li><a href="/about/">Philosophy &amp; Ethos</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 2: Systems & Prototypes -->
+          <div class="footer-nav-col">
+            <h4 class="footer-col-header">
+              <span class="col-index">[02]</span>
+              <span class="col-title">Systems &amp; Research</span>
+            </h4>
+            <ul class="footer-links-list">
+              <li><a href="/games/systemic-movement-prototype/">Vector Kinematics Prototype</a></li>
+              <li><a href="/learn/systems-architecture-first-principles/">First Principles Monograph</a></li>
+              <li><a href="/explore/">Motion &amp; Physics Lab</a></li>
+              <li><a href="/specimen/">Living Specimen Atelier</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Architecture & Integrity -->
+          <div class="footer-nav-col">
+            <h4 class="footer-col-header">
+              <span class="col-index">[03]</span>
+              <span class="col-title">Architecture Standards</span>
+            </h4>
+            <ul class="footer-links-list">
+              <li><a href="/about/#colophon">Studio Colophon</a></li>
+              <li><a href="/sitemap.xml">XML Machine Sitemap</a></li>
+              <li><span class="footer-spec-item">Pure Static ESM Compiler</span></li>
+              <li><span class="footer-spec-item">Zero Native DLL Binaries</span></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Operational Telemetry -->
+          <div class="footer-nav-col">
+            <h4 class="footer-col-header">
+              <span class="col-index">[04]</span>
+              <span class="col-title">Production Telemetry</span>
+            </h4>
+            <div class="footer-telemetry-docket">
+              <div class="telemetry-entry">
+                <span class="entry-kicker">HOSTING</span>
+                <span class="entry-data">Hostinger High-Performance Cloud</span>
+              </div>
+              <div class="telemetry-entry">
+                <span class="entry-kicker">DEPLOY PIPELINE</span>
+                <span class="entry-data">Git Auto-Deploy (production)</span>
+              </div>
+              <div class="telemetry-entry">
+                <span class="entry-kicker">ACCESSIBILITY</span>
+                <span class="entry-data">WCAG 2.2 AAA Contrast</span>
+              </div>
+              <div class="telemetry-entry">
+                <span class="entry-kicker">TELEMETRY</span>
+                <span class="entry-data highlight-amber">Zero Unconsented Tracking</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bottom Ground Bar: Legal & Back to Top -->
+        <div class="footer-bottom-bar">
+          <div class="footer-legal-copy">
+            <p class="copyright-text">
+              &copy; 2026 Primordial Paradigm. All rights reserved.
+            </p>
+            <p class="privacy-text">
+              Zero tracking cookies. Zero client telemetry without explicit consent. Built with pure static craft.
+            </p>
+          </div>
+
+          <a href="#studioHeader" class="footer-back-to-top" id="footerBackToTop" aria-label="Back to top of page">
+            <span>Back to Top</span>
+            <span class="back-arrow" aria-hidden="true">&uarr;</span>
+          </a>
+        </div>
+
+      </div>
+    </footer>
+
+    <!-- Site-Wide Atmosphere Synchronization Controller -->
+    <script>
+      (function() {
+        const VALID_ATMOSPHERES = ['limestone', 'titanium'];
+
+        function normalizeAtmosphere(atmo) {
+          if (atmo === 'twilight' || atmo === 'chiaroscuro' || atmo === 'blueprint') return 'titanium';
+          if (atmo === 'surrealism' || atmo === 'dawn') return 'limestone';
+          return VALID_ATMOSPHERES.includes(atmo) ? atmo : 'limestone';
+        }
+
+        function setAtmosphere(atmo) {
+          var normalized = normalizeAtmosphere(atmo);
+          document.documentElement.setAttribute('data-atmosphere', normalized);
+          try { localStorage.setItem('pp_atmosphere', normalized); } catch(e) {}
+          
+          document.querySelectorAll('[data-atmo]').forEach(function(btn) {
+            var btnAtmo = normalizeAtmosphere(btn.getAttribute('data-atmo'));
+            var isActive = btnAtmo === normalized;
+            btn.classList.toggle('active', isActive);
+            btn.classList.toggle('is-active', isActive);
+            btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+          });
+
+          window.dispatchEvent(new CustomEvent('pp:atmosphere-changed', { detail: { atmosphere: normalized } }));
+        }
+
+        window.__setAtmosphere = setAtmosphere;
+
+        // Attach click listeners to all atmosphere buttons
+        document.addEventListener('click', function(e) {
+          var btn = e.target.closest('[data-atmo]');
+          if (btn) {
+            e.preventDefault();
+            var atmo = btn.getAttribute('data-atmo');
+            if (atmo) setAtmosphere(atmo);
+          }
+        });
+
+        // Initialize active button states
+        var current = normalizeAtmosphere(document.documentElement.getAttribute('data-atmosphere') || 'limestone');
+        setAtmosphere(current);
+      })();
+    </script>
+  </body>
+</html>

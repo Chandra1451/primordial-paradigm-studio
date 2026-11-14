@@ -1,0 +1,66 @@
+# =============================================================================
+# primordialparadigm.com — Hostinger (LiteSpeed/Apache) Production Configuration
+# Zero-Native Pure Static Site Architecture.
+# =============================================================================
+
+# 1. Canonical Redirect: enforce HTTPS and apex domain (no www)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Redirect HTTP to HTTPS or www to apex in a single hop
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} ^www\. [NC]
+  RewriteRule ^(.*)$ https://primordialparadigm.com/$1 [L,R=301]
+
+  # Never serve dotfiles (.git, .env, .htaccess, etc.)
+  # Allow .well-known/ for automated SSL certificate renewal (Let's Encrypt / Hostinger)
+  RewriteRule "(^|/)\.(?!well-known/)" - [F,L]
+</IfModule>
+
+# 2. Directory Index & Error Documents
+DirectoryIndex index.html
+Options -Indexes
+ErrorDocument 404 /404.html
+
+# 3. Charset, MIME Types & Compression
+AddDefaultCharset UTF-8
+<IfModule mod_mime.c>
+  AddType font/woff2          .woff2
+  AddType image/webp          .webp
+  AddType image/svg+xml       .svg
+  AddType text/plain          .txt
+  AddType application/xml     .xml
+  AddType application/json    .json
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/plain application/javascript text/javascript application/xml image/svg+xml image/x-icon application/json
+</IfModule>
+
+# 4. Cache Control
+<IfModule mod_headers.c>
+  # HTML pages revalidate immediately so updates show instantly
+  <FilesMatch "\.(html)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+
+  # Static assets (fonts, images, icons, styles, manifest) cached 24h
+  <FilesMatch "\.(css|js|png|jpe?g|webp|ico|svg|woff2|txt|xml)$">
+    Header set Cache-Control "public, max-age=86400"
+  </FilesMatch>
+
+  # Security Headers (WCAG & OWASP Baseline)
+  Header always set Content-Security-Policy "frame-ancestors 'none'"
+  Header always set X-Frame-Options "DENY"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+  Header always set Strict-Transport-Security "max-age=31536000"
+</IfModule>
+
+# 5. Defense in Depth: Deny direct HTTP requests for internal source/config files
+<FilesMatch "\.(md|mjs|ts|astro|json|lock|log|env|bak|sh|py|yml|yaml|ps1)$">
+  Require all denied
+</FilesMatch>
+

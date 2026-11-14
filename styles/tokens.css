@@ -1,0 +1,116 @@
+/* =============================================================================
+   Primordial Paradigm Studio - Design System Tokens
+   Luminous Atmospheric Color Worlds (Dual Creative Atelier Baseline)
+   Purged the pitch-black void trap and AI-generated vibes; featuring:
+   1. Luminous Limestone (High-Key Warm Gallery Paper #f4f1ea + Soft Charcoal Ink)
+   2. Warm Titanium (Architectural Mid-Tone Slate #1e222b + Signal Vermilion)
+   ============================================================================= */
+
+/* -----------------------------------------------------------------------------
+   DEFAULT / MODE 01: LUMINOUS LIMESTONE (Daylight Gallery & Warm Paper)
+   Inspired by Coolors Palette: #f4f1ea, #9c95dc, #228cdb, #0b7189, #170a1c
+   Deep plum/black currant typography (#170a1c), ocean teal (#0b7189),
+   cerulean blue (#228cdb), and soft lavender (#9c95dc) on warm Italian paper.
+   ----------------------------------------------------------------------------- */
+:root,
+[data-atmosphere="limestone"],
+[data-atmosphere="dawn"] {
+  /* Surface Layers (Warm Italian Limestone & Uncoated Cotton Paper) */
+  --bg-canvas: #f4f1ea;           /* Sun-drenched warm limestone alabaster */
+  --bg-surface: #eae5dc;          /* Warm drafting stone surface */
+  --bg-surface-hover: #dfd9ce;    /* Interactive hover stone */
+  --bg-surface-elevated: #ffffff; /* Crisp gallery plinths & cards */
+
+  /* Structural Hairlines */
+  --border-subtle: rgba(23, 10, 28, 0.12);
+  --border-strong: rgba(23, 10, 28, 0.25);
+
+  /* Typography (WCAG AAA Contrast: 16.0:1 against #f4f1ea) */
+  --text-primary: #170a1c;        /* Deep midnight plum / black currant ink */
+  --text-secondary: #493c4e;      /* Muted editorial plum slate (8.4:1 AAA) */
+  --text-muted: #6c5d72;          /* Technical metadata (4.8:1) */
+
+  /* Primary Accent: Deep Ocean Teal / Peacock (#0b7189) */
+  --accent-studio: #0b7189;
+  --accent-studio-hover: #228cdb; /* Cerulean Blue hover */
+  --accent-studio-glow: rgba(11, 113, 137, 0.18);
+  --border-spark: rgba(34, 140, 219, 0.45);
+
+  /* Palette Specific Accents */
+  --accent-teal: #0b7189;
+  --accent-cerulean: #228cdb;
+  --accent-lavender: #9c95dc;
+
+  /* Aliases for Design System */
+  --accent-amber: var(--accent-studio);
+  --accent-amber-light: var(--accent-cerulean);
+  --accent-amber-glow: var(--accent-studio-glow);
+
+  --accent-cyan: var(--accent-cerulean);
+  --accent-cyan-light: #52a8e8;
+  --accent-cyan-glow: rgba(34, 140, 219, 0.18);
+
+  /* Status Tokens */
+  --status-success: #15803d;
+  --status-warning: #c84b31;
+  --status-error: #dc2626;
+
+  /* Typography Stacks */
+  --font-serif: 'Georgia', 'Cambria', 'Times New Roman', serif;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+  /* Layout Constraints */
+  --max-content-width: 1160px;
+  --nav-height: 64px;
+
+  /* Architectural Sharp Geometry */
+  --radius-sm: 0px;
+  --radius-md: 2px;
+  --radius-lg: 2px;
+
+  /* Transitions */
+  --transition-fast: 140ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* -----------------------------------------------------------------------------
+   MODE 02: WARM TITANIUM & SLATE (Architectural Mid-Tone & Signal Vermilion)
+   Inspired by: Kurppa Hosk, Dieter Rams, Industrial Design Ateliers
+   Comfortable mid-tone slate & raw concrete — significantly lighter than black!
+   ----------------------------------------------------------------------------- */
+[data-atmosphere="titanium"],
+[data-atmosphere="twilight"],
+[data-atmosphere="chiaroscuro"],
+[data-atmosphere="blueprint"],
+[data-atmosphere="surrealism"] {
+  --bg-canvas: #1e222b;           /* Warm architectural concrete & slate */
+  --bg-surface: #282d39;          /* Titanium matte surface */
+  --bg-surface-hover: #323847;    /* Brushed metal hover */
+  --bg-surface-elevated: #3c4455; /* Floating cassettes */
+
+  --border-subtle: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.28);
+
+  --text-primary: #ffffff;        /* Pure Signal White (10.4:1) */
+  --text-secondary: #cbd5e1;      /* Light mechanical silver (7.5:1) */
+  --text-muted: #94a3b8;
+
+  /* Accent: Signal Flight Vermilion / Electric Tangerine */
+  --accent-studio: #ff5500;
+  --accent-studio-hover: #ff701a;
+  --accent-studio-glow: rgba(255, 85, 0, 0.25);
+  --border-spark: rgba(255, 85, 0, 0.45);
+
+  --accent-amber: var(--accent-studio);
+  --accent-amber-light: var(--accent-studio-hover);
+  --accent-amber-glow: var(--accent-studio-glow);
+
+  --accent-cyan: #00d2ff;
+  --accent-cyan-light: #4de1ff;
+  --accent-cyan-glow: rgba(0, 210, 255, 0.15);
+
+  --status-success: #10b981;
+  --status-warning: #ff5500;
+  --status-error: #ef4444;
+}

@@ -1,0 +1,1186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Architecting Systemic Movement: Vector Kinematics in 2D Space — Primordial Paradigm</title>
+    <meta name="description" content="An engineering post-mortem on building inertia, surface friction, and deterministic player controllers from first principles." />
+    
+    <link rel="canonical" href="https://primordialparadigm.com/games/systemic-movement-prototype/" />
+
+    <!-- Security & Resource Directives -->
+    <meta name="color-scheme" content="dark" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+
+    <!-- OpenGraph Tags -->
+    <meta property="og:title" content="Architecting Systemic Movement: Vector Kinematics in 2D Space — Primordial Paradigm" />
+    <meta property="og:description" content="An engineering post-mortem on building inertia, surface friction, and deterministic player controllers from first principles." />
+    <meta property="og:url" content="https://primordialparadigm.com/games/systemic-movement-prototype/" />
+    <meta property="og:site_name" content="Primordial Paradigm" />
+    <meta property="og:type" content="article" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Architecting Systemic Movement: Vector Kinematics in 2D Space — Primordial Paradigm" />
+    <meta name="twitter:description" content="An engineering post-mortem on building inertia, surface friction, and deterministic player controllers from first principles." />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Design System Tokens & Global Styles -->
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/global.css" />
+
+    <!-- Immediate Atmosphere Token Initialization (Zero FOUC) -->
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('pp_atmosphere');
+          if (saved === 'twilight' || saved === 'chiaroscuro' || saved === 'blueprint') saved = 'titanium';
+          if (saved === 'surrealism' || saved === 'dawn') saved = 'limestone';
+          if (saved && (saved === 'limestone' || saved === 'titanium')) {
+            document.documentElement.setAttribute('data-atmosphere', saved);
+          } else {
+            document.documentElement.setAttribute('data-atmosphere', 'limestone');
+          }
+        } catch(e) {}
+      })();
+    </script>
+
+    <!-- Google Consent Mode v2 (Default: Denied / Zero Telemetry) -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+    </script>
+
+    <!-- Structured Data (Schema.org JSON-LD) -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Primordial Paradigm",
+  "url": "https://primordialparadigm.com",
+  "logo": "https://primordialparadigm.com/favicon.svg",
+  "description": "An engineering post-mortem on building inertia, surface friction, and deterministic player controllers from first principles."
+}
+    </script>
+  </head>
+  <body>
+    <!-- Accessibility Skip Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="studio-header" id="studioHeader">
+      <div class="container header-inner">
+        
+        <!-- Architectural Brand Masthead -->
+        <a href="/" class="brand-masthead" aria-label="Primordial Paradigm Homepage">
+          <div class="brand-icon-wrap" aria-hidden="true">
+            <svg
+      width="26"
+      height="26"
+      viewBox="0 0 120 120"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="monogram "
+      aria-label="Primordial Paradigm Monogram"
+      role="img"
+    >
+      <title>Primordial Paradigm</title>
+      <path
+        d="M29 101V45C29 24 42 12 63 12C86 12 101 27 101 48C101 70 85 84 63 84H54V65H63C75 65 82 59 82 48C82 38 75 31 64 31C54 31 48 37 48 47V101Z"
+        fill="currentColor"
+      />
+      <circle cx="64" cy="48" r="7" fill="#f4f4f5" />
+    </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">PRIMORDIAL PARADIGM</span>
+            <span class="brand-tag">STUDIO // SYSTEMS ATELIER</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <nav class="nav-menu" aria-label="Main Navigation">
+          <ul class="nav-list">
+            
+      <li class="nav-item">
+        <a
+          href="/games/"
+          class="nav-link is-active"
+          aria-current="page"
+        >
+          <span class="nav-link-text">GAMES</span>
+          <span class="nav-active-rule" aria-hidden="true"></span>
+        </a>
+      </li>
+    
+      <li class="nav-item">
+        <a
+          href="/learn/"
+          class="nav-link "
+          
+        >
+          <span class="nav-link-text">LEARN</span>
+          
+        </a>
+      </li>
+    
+      <li class="nav-item">
+        <a
+          href="/services/"
+          class="nav-link "
+          
+        >
+          <span class="nav-link-text">SERVICES</span>
+          
+        </a>
+      </li>
+    
+      <li class="nav-item">
+        <a
+          href="/about/"
+          class="nav-link "
+          
+        >
+          <span class="nav-link-text">ABOUT</span>
+          
+        </a>
+      </li>
+    
+          </ul>
+        </nav>
+
+        <!-- Right Utility & Mobile Toggle -->
+        <div class="header-dock">
+          <!-- Minimalist Atmosphere Selector in Header -->
+          <div class="header-atmosphere-controls" role="group" aria-label="Visual Atmosphere">
+            <span class="atmo-indicator-label">ATMO //</span>
+            <button type="button" class="header-atmo-btn" data-atmo="limestone" title="Mode 01: Luminous Limestone (Warm Gallery Paper)">01</button>
+            <button type="button" class="header-atmo-btn" data-atmo="titanium" title="Mode 02: Warm Titanium (Architectural Slate)">02</button>
+          </div>
+
+          <!-- Mobile Hamburger Toggle Button -->
+          <button
+            type="button"
+            class="mobile-nav-toggle"
+            id="mobileNavToggle"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="mobileNavDrawer"
+          >
+            <span class="toggle-icon-box" aria-hidden="true">
+              <span class="toggle-bar bar-1"></span>
+              <span class="toggle-bar bar-2"></span>
+              <span class="toggle-bar bar-3"></span>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation Drawer -->
+      <div
+        class="mobile-nav-drawer"
+        id="mobileNavDrawer"
+        aria-hidden="true"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile Navigation"
+      >
+        <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop" aria-hidden="true"></div>
+        <div class="mobile-drawer-panel">
+          <div class="mobile-drawer-header">
+            <div class="drawer-meta-title">[STUDIO DIRECTORY]</div>
+            <button
+              type="button"
+              class="mobile-drawer-close"
+              id="mobileDrawerClose"
+              aria-label="Close navigation menu"
+            >
+              &times;
+            </button>
+          </div>
+
+          <nav class="mobile-drawer-nav" aria-label="Mobile Navigation Menu">
+            <ul class="mobile-nav-list">
+              
+      <li class="mobile-nav-item">
+        <a
+          href="/games/"
+          class="mobile-nav-link is-active"
+          aria-current="page"
+        >
+          <span class="mobile-link-index">[01]</span>
+          <span class="mobile-link-label">GAMES</span>
+          <span class="mobile-link-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+      <li class="mobile-nav-item">
+        <a
+          href="/learn/"
+          class="mobile-nav-link "
+          
+        >
+          <span class="mobile-link-index">[02]</span>
+          <span class="mobile-link-label">LEARN</span>
+          <span class="mobile-link-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+      <li class="mobile-nav-item">
+        <a
+          href="/services/"
+          class="mobile-nav-link "
+          
+        >
+          <span class="mobile-link-index">[03]</span>
+          <span class="mobile-link-label">SERVICES</span>
+          <span class="mobile-link-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+      <li class="mobile-nav-item">
+        <a
+          href="/about/"
+          class="mobile-nav-link "
+          
+        >
+          <span class="mobile-link-index">[04]</span>
+          <span class="mobile-link-label">ABOUT</span>
+          <span class="mobile-link-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+            </ul>
+          </nav>
+
+          <!-- Mobile Drawer Atmosphere Selection -->
+          <div class="drawer-atmo-section">
+            <div class="drawer-atmo-title">[ATMOSPHERIC LUMINOSITY]</div>
+            <div class="drawer-atmo-grid">
+              <button type="button" class="drawer-atmo-option" data-atmo="limestone">
+                <span class="option-num">01</span>
+                <span class="option-name">Luminous Limestone (Warm Paper)</span>
+              </button>
+              <button type="button" class="drawer-atmo-option" data-atmo="titanium">
+                <span class="option-num">02</span>
+                <span class="option-name">Warm Titanium (Concrete Slate)</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="mobile-drawer-footer">
+            <div class="drawer-telemetry-row">
+              <span class="telemetry-label">SECTOR</span>
+              <span class="telemetry-val">01 // DEEP SYSTEMS</span>
+            </div>
+            <div class="drawer-telemetry-row">
+              <span class="telemetry-label">LOCATION</span>
+              <span class="telemetry-val">BANGALORE // UTC+5:30</span>
+            </div>
+            <div class="drawer-telemetry-row">
+              <span class="telemetry-label">ARCHITECTURE</span>
+              <span class="telemetry-val text-bone">DETERMINISTIC</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Header & Mobile Drawer Interaction Logic -->
+    <script>
+      (function() {
+        const toggleBtn = document.getElementById('mobileNavToggle');
+        const closeBtn = document.getElementById('mobileDrawerClose');
+        const drawer = document.getElementById('mobileNavDrawer');
+        const backdrop = document.getElementById('mobileDrawerBackdrop');
+        const header = document.getElementById('studioHeader');
+
+        if (!toggleBtn || !drawer) return;
+
+        function openDrawer() {
+          drawer.classList.add('is-open');
+          toggleBtn.classList.add('is-active');
+          toggleBtn.setAttribute('aria-expanded', 'true');
+          drawer.setAttribute('aria-hidden', 'false');
+          document.body.classList.add('drawer-locked');
+          if (closeBtn) closeBtn.focus();
+        }
+
+        function closeDrawer() {
+          drawer.classList.remove('is-open');
+          toggleBtn.classList.remove('is-active');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+          drawer.setAttribute('aria-hidden', 'true');
+          document.body.classList.remove('drawer-locked');
+          toggleBtn.focus();
+        }
+
+        toggleBtn.addEventListener('click', function() {
+          const isOpen = drawer.classList.contains('is-open');
+          if (isOpen) closeDrawer();
+          else openDrawer();
+        });
+
+        if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+        if (backdrop) backdrop.addEventListener('click', closeDrawer);
+
+        // Close on ESC key
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && drawer.classList.contains('is-open')) {
+            closeDrawer();
+          }
+        });
+
+        // Close when a link inside mobile drawer is clicked
+        drawer.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            closeDrawer();
+          });
+        });
+
+        // Sticky header hairline shadow on scroll
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 16) {
+            header.classList.add('is-scrolled');
+          } else {
+            header.classList.remove('is-scrolled');
+          }
+        }, { passive: true });
+      })();
+    </script>
+    <main id="main-content">
+      <article class="container article-container">
+      <nav class="article-breadcrumb" aria-label="Breadcrumb">
+        <a href="/games/" class="back-link">&larr; Back to Games Hub</a>
+      </nav>
+
+      <header class="article-header">
+        <div class="article-meta-top">
+          <span class="category-badge">DEVLOG / RESEARCH</span>
+          <span class="meta-sep">&bull;</span>
+          <time datetime="2026-11-13">2026-11-13</time>
+          <span class="meta-sep">&bull;</span>
+          <span class="reading-time">2 min read</span>
+        </div>
+
+        <h1 class="article-title">Architecting Systemic Movement: Vector Kinematics in 2D Space</h1>
+        <p class="article-lead">An engineering post-mortem on building inertia, surface friction, and deterministic player controllers from first principles.</p>
+
+        <div class="article-tags-wrap"><span class="article-tag">game-mechanics</span> <span class="article-tag">kinematics</span> <span class="article-tag">systems-design</span></div>
+      </header>
+
+      <div class="prose-content">
+        <h2>The Illusion of Weight</h2>
+<p>In game feel engineering, realism is rarely the actual goal. Pure Newtonian physics produces sluggish, unresponsive controls that feel frustrating to human players. Conversely, instantaneous velocity transitions feel robotic and disconnected from the game world.</p>
+<p>The challenge in designing responsive systemic movement is balancing <strong>tactile snappiness</strong> with <strong>satisfying physical momentum</strong>.</p>
+<h3>Decoupling Input from Acceleration</h3>
+<p>A common architectural trap in early movement controllers is modifying position directly from raw input vectors:</p>
+<pre><code class="language-javascript">// Fragile direct assignment
+player.x += input.x * speed * dt;
+player.y += input.y * speed * dt;
+</code></pre>
+<p>This bypasses momentum entirely. Instead, inputs should apply <strong>directional force vectors</strong> into an accumulator, modulated by friction and drag coefficients:</p>
+<pre><code class="language-javascript">// Deterministic vector accumulator
+const targetVelocity = input.normalize().scale(maxSpeed);
+velocity.x = lerp(velocity.x, targetVelocity.x, acceleration * dt);
+velocity.y = lerp(velocity.y, targetVelocity.y, acceleration * dt);
+
+position.add(velocity.scale(dt));
+</code></pre>
+<h2>Friction Surfaces and Tractions</h2>
+<p>By treating surface friction as an external force curve rather than a constant multiplier, surfaces gain distinct tactile personalities:</p>
+<ul>
+<li><strong>High-tack surfaces:</strong> Rapid acceleration damping (tight cornering, instant stop).</li>
+<li><strong>Inertial surfaces:</strong> Low friction drag with prolonged momentum preservation.</li>
+</ul>
+<div class="sandbox-wrapper" role="region" aria-label="Interactive Vector Kinematics Sandbox">
+      <div class="sandbox-header">
+        <div class="sandbox-title-wrap">
+          <span class="sandbox-badge">INTERACTIVE EXPERIMENT</span>
+          <h3 class="sandbox-title">2D Vector Kinematics Sandbox</h3>
+        </div>
+        <div class="sandbox-presets" role="group" aria-label="Friction Presets">
+          <button type="button" class="preset-btn active" data-surface="standard">Standard Ground</button>
+          <button type="button" class="preset-btn" data-surface="ice">Inertial Ice</button>
+          <button type="button" class="preset-btn" data-surface="rubber">High-Tack</button>
+        </div>
+      </div>
+
+      <div class="canvas-container">
+        <canvas id="kinematicsCanvas" width="700" height="380" tabindex="0" aria-label="Kinematics simulation canvas. Use arrow keys or click/drag to guide the physics probe."></canvas>
+        <div class="canvas-overlay-hint">Click & drag or use WASD/Arrows to steer &bull; Space to brake</div>
+      </div>
+
+      <div class="sandbox-controls">
+        <div class="control-col">
+          <label for="frictionSlider" class="control-label">
+            <span>Friction Damping (&mu;)</span>
+            <span id="frictionVal" class="control-val">0.92</span>
+          </label>
+          <input type="range" id="frictionSlider" min="0.80" max="0.99" step="0.01" value="0.92" class="sandbox-slider" />
+        </div>
+
+        <div class="control-col">
+          <label for="thrustSlider" class="control-label">
+            <span>Thrust Force (F)</span>
+            <span id="thrustVal" class="control-val">1.20</span>
+          </label>
+          <input type="range" id="thrustSlider" min="0.5" max="3.0" step="0.1" value="1.2" class="sandbox-slider" />
+        </div>
+
+        <div class="telemetry-col">
+          <div class="telemetry-item">
+            <span class="telemetry-label">Velocity</span>
+            <span id="telVel" class="telemetry-val">0.0 px/s</span>
+          </div>
+          <div class="telemetry-item">
+            <span class="telemetry-label">Heading</span>
+            <span id="telAngle" class="telemetry-val">0&deg;</span>
+          </div>
+          <button type="button" id="resetBtn" class="sandbox-reset-btn" title="Reset probe to origin">Reset Origin</button>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      .sandbox-wrapper {
+        background-color: var(--bg-surface);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+        margin: 2.5rem 0;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+      }
+
+      .sandbox-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .sandbox-badge {
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+        color: var(--accent-amber);
+        display: block;
+        margin-bottom: 0.25rem;
+      }
+
+      .sandbox-title {
+        font-size: 1.15rem;
+        color: var(--text-primary);
+        margin: 0;
+      }
+
+      .sandbox-presets {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+
+      .preset-btn {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        background-color: var(--bg-canvas);
+        color: var(--text-secondary);
+        border: 1px solid var(--border-subtle);
+        padding: 0.35rem 0.75rem;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        transition: all var(--transition-fast);
+      }
+
+      .preset-btn:hover {
+        border-color: var(--accent-amber);
+        color: var(--text-primary);
+      }
+
+      .preset-btn.active {
+        background-color: var(--accent-amber);
+        color: var(--bg-canvas);
+        border-color: var(--accent-amber);
+        font-weight: 600;
+      }
+
+      .canvas-container {
+        position: relative;
+        width: 100%;
+        background-color: #050608;
+        border: 1px solid var(--border-strong);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+      }
+
+      #kinematicsCanvas {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 700 / 380;
+        cursor: crosshair;
+      }
+
+      #kinematicsCanvas:focus-visible {
+        outline: 2px solid var(--accent-amber);
+        outline-offset: -2px;
+      }
+
+      .canvas-overlay-hint {
+        position: absolute;
+        bottom: 10px;
+        left: 12px;
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        color: rgba(203, 213, 225, 0.6);
+        pointer-events: none;
+        user-select: none;
+      }
+
+      .sandbox-controls {
+        display: grid;
+        grid-template-columns: 1fr 1fr auto;
+        gap: 1.5rem;
+        margin-top: 1.25rem;
+        align-items: center;
+      }
+
+      @media (max-width: 720px) {
+        .sandbox-controls {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+      }
+
+      .control-col {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .control-label {
+        display: flex;
+        justify-content: space-between;
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+      }
+
+      .control-val {
+        color: var(--accent-amber);
+        font-weight: 600;
+      }
+
+      .sandbox-slider {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 6px;
+        background: var(--bg-canvas);
+        border-radius: 3px;
+        border: 1px solid var(--border-subtle);
+        outline: none;
+      }
+
+      .sandbox-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: var(--accent-amber);
+        cursor: pointer;
+        box-shadow: 0 0 6px rgba(245, 158, 11, 0.4);
+      }
+
+      .telemetry-col {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        background-color: var(--bg-canvas);
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--border-subtle);
+        flex-wrap: wrap;
+      }
+
+      .telemetry-item {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .telemetry-label {
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+      }
+
+      .telemetry-val {
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+
+      .sandbox-reset-btn {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        padding: 0.35rem 0.65rem;
+        background: transparent;
+        border: 1px solid var(--border-strong);
+        color: var(--text-secondary);
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        transition: all var(--transition-fast);
+      }
+
+      .sandbox-reset-btn:hover {
+        border-color: var(--accent-amber);
+        color: var(--text-primary);
+      }
+    </style>
+
+    <script>
+      (function() {
+        const canvas = document.getElementById('kinematicsCanvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+
+        // Physics State
+        const state = {
+          pos: { x: 350, y: 190 },
+          vel: { x: 0, y: 0 },
+          acc: { x: 0, y: 0 },
+          friction: 0.92,
+          thrust: 1.2,
+          radius: 9,
+          trail: [],
+          maxTrail: 32,
+          target: null,
+          keys: {}
+        };
+
+        const presets = {
+          standard: { friction: 0.92, thrust: 1.2 },
+          ice: { friction: 0.985, thrust: 0.8 },
+          rubber: { friction: 0.83, thrust: 1.6 }
+        };
+
+        // UI elements
+        const frictionSlider = document.getElementById('frictionSlider');
+        const frictionVal = document.getElementById('frictionVal');
+        const thrustSlider = document.getElementById('thrustSlider');
+        const thrustVal = document.getElementById('thrustVal');
+        const telVel = document.getElementById('telVel');
+        const telAngle = document.getElementById('telAngle');
+        const resetBtn = document.getElementById('resetBtn');
+        const presetBtns = document.querySelectorAll('.preset-btn');
+
+        function updateSliderLabels() {
+          frictionVal.textContent = parseFloat(state.friction).toFixed(3);
+          thrustVal.textContent = parseFloat(state.thrust).toFixed(1);
+          frictionSlider.value = state.friction;
+          thrustSlider.value = state.thrust;
+        }
+
+        frictionSlider.addEventListener('input', (e) => {
+          state.friction = parseFloat(e.target.value);
+          frictionVal.textContent = state.friction.toFixed(2);
+          presetBtns.forEach(b => b.classList.remove('active'));
+        });
+
+        thrustSlider.addEventListener('input', (e) => {
+          state.thrust = parseFloat(e.target.value);
+          thrustVal.textContent = state.thrust.toFixed(1);
+          presetBtns.forEach(b => b.classList.remove('active'));
+        });
+
+        presetBtns.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const presetName = btn.getAttribute('data-surface');
+            if (presets[presetName]) {
+              state.friction = presets[presetName].friction;
+              state.thrust = presets[presetName].thrust;
+              updateSliderLabels();
+              presetBtns.forEach(b => b.classList.remove('active'));
+              btn.classList.add('active');
+            }
+          });
+        });
+
+        resetBtn.addEventListener('click', () => {
+          state.pos = { x: canvas.width / 2, y: canvas.height / 2 };
+          state.vel = { x: 0, y: 0 };
+          state.trail = [];
+          state.target = null;
+        });
+
+        // Input Listeners
+        window.addEventListener('keydown', (e) => {
+          if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'w', 'a', 's', 'd', ' '].includes(e.key)) {
+            if (document.activeElement === canvas) {
+              e.preventDefault();
+            }
+          }
+          state.keys[e.key.toLowerCase()] = true;
+        });
+
+        window.addEventListener('keyup', (e) => {
+          state.keys[e.key.toLowerCase()] = false;
+        });
+
+        function getCanvasCoords(clientX, clientY) {
+          const rect = canvas.getBoundingClientRect();
+          const scaleX = canvas.width / rect.width;
+          const scaleY = canvas.height / rect.height;
+          return {
+            x: (clientX - rect.left) * scaleX,
+            y: (clientY - rect.top) * scaleY
+          };
+        }
+
+        let isPointerDown = false;
+        canvas.addEventListener('pointerdown', (e) => {
+          isPointerDown = true;
+          canvas.focus();
+          state.target = getCanvasCoords(e.clientX, e.clientY);
+        });
+
+        window.addEventListener('pointermove', (e) => {
+          if (isPointerDown) {
+            state.target = getCanvasCoords(e.clientX, e.clientY);
+          }
+        });
+
+        window.addEventListener('pointerup', () => {
+          isPointerDown = false;
+          state.target = null;
+        });
+
+        // Simulation Step
+        function updatePhysics() {
+          state.acc = { x: 0, y: 0 };
+
+          // Keyboard steering
+          if (state.keys['arrowup'] || state.keys['w']) state.acc.y -= state.thrust;
+          if (state.keys['arrowdown'] || state.keys['s']) state.acc.y += state.thrust;
+          if (state.keys['arrowleft'] || state.keys['a']) state.acc.x -= state.thrust;
+          if (state.keys['arrowright'] || state.keys['d']) state.acc.x += state.thrust;
+
+          // Spacebar brake
+          if (state.keys[' ']) {
+            state.vel.x *= 0.8;
+            state.vel.y *= 0.8;
+          }
+
+          // Target (mouse/touch) steering
+          if (state.target) {
+            const dx = state.target.x - state.pos.x;
+            const dy = state.target.y - state.pos.y;
+            const dist = Math.hypot(dx, dy);
+            if (dist > 8) {
+              const nx = dx / dist;
+              const ny = dy / dist;
+              state.acc.x += nx * state.thrust * 1.2;
+              state.acc.y += ny * state.thrust * 1.2;
+            }
+          }
+
+          // Integrate acceleration into velocity
+          state.vel.x += state.acc.x;
+          state.vel.y += state.acc.y;
+
+          // Apply friction damping curve
+          state.vel.x *= state.friction;
+          state.vel.y *= state.friction;
+
+          // Integrate velocity into position
+          state.pos.x += state.vel.x;
+          state.pos.y += state.vel.y;
+
+          // Screen wrap-around boundaries
+          if (state.pos.x < 0) state.pos.x = canvas.width;
+          if (state.pos.x > canvas.width) state.pos.x = 0;
+          if (state.pos.y < 0) state.pos.y = canvas.height;
+          if (state.pos.y > canvas.height) state.pos.y = 0;
+
+          // Append to trail
+          state.trail.push({ x: state.pos.x, y: state.pos.y });
+          if (state.trail.length > state.maxTrail) {
+            state.trail.shift();
+          }
+
+          // Telemetry
+          const speed = Math.hypot(state.vel.x, state.vel.y) * 60; // converted to px/s approx
+          telVel.textContent = speed.toFixed(1) + ' px/s';
+          const deg = (Math.atan2(state.vel.y, state.vel.x) * (180 / Math.PI) + 360) % 360;
+          telAngle.textContent = Math.round(deg) + '°';
+        }
+
+        // Render Step
+        function draw() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          // 1. Draw subtle coordinate grid
+          ctx.strokeStyle = '#121620';
+          ctx.lineWidth = 1;
+          const gridSize = 35;
+          for (let x = 0; x <= canvas.width; x += gridSize) {
+            ctx.beginPath();
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, canvas.height);
+            ctx.stroke();
+          }
+          for (let y = 0; y <= canvas.height; y += gridSize) {
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            ctx.lineTo(canvas.width, y);
+            ctx.stroke();
+          }
+
+          // 2. Target indicator
+          if (state.target) {
+            ctx.strokeStyle = 'rgba(245, 158, 11, 0.35)';
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.arc(state.target.x, state.target.y, 14, 0, Math.PI * 2);
+            ctx.stroke();
+          }
+
+          // 3. Motion trail
+          for (let i = 0; i < state.trail.length; i++) {
+            const pt = state.trail[i];
+            const alpha = (i / state.trail.length) * 0.45;
+            const r = state.radius * (0.3 + (i / state.trail.length) * 0.7);
+            ctx.fillStyle = 'rgba(245, 158, 11, ' + alpha + ')';
+            ctx.beginPath();
+            ctx.arc(pt.x, pt.y, r, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          // 4. Primary probe body (Obsidian core with Amber spark)
+          ctx.fillStyle = '#08090d';
+          ctx.beginPath();
+          ctx.arc(state.pos.x, state.pos.y, state.radius, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.strokeStyle = '#f59e0b';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+
+          // Core spark
+          ctx.fillStyle = '#f59e0b';
+          ctx.beginPath();
+          ctx.arc(state.pos.x, state.pos.y, 3, 0, Math.PI * 2);
+          ctx.fill();
+
+          // 5. Velocity Vector Arrow
+          const speed = Math.hypot(state.vel.x, state.vel.y);
+          if (speed > 0.3) {
+            const vectorLen = Math.min(speed * 8, 45);
+            const angle = Math.atan2(state.vel.y, state.vel.x);
+            const headX = state.pos.x + Math.cos(angle) * vectorLen;
+            const headY = state.pos.y + Math.sin(angle) * vectorLen;
+
+            ctx.strokeStyle = 'rgba(6, 182, 212, 0.85)'; // Cyan velocity vector
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(state.pos.x, state.pos.y);
+            ctx.lineTo(headX, headY);
+            ctx.stroke();
+
+            // Arrow head
+            const arrowAngle = 0.4;
+            const arrowHeadLen = 6;
+            ctx.beginPath();
+            ctx.moveTo(headX, headY);
+            ctx.lineTo(
+              headX - arrowHeadLen * Math.cos(angle - arrowAngle),
+              headY - arrowHeadLen * Math.sin(angle - arrowAngle)
+            );
+            ctx.moveTo(headX, headY);
+            ctx.lineTo(
+              headX - arrowHeadLen * Math.cos(angle + arrowAngle),
+              headY - arrowHeadLen * Math.sin(angle + arrowAngle)
+            );
+            ctx.stroke();
+          }
+        }
+
+        // Loop Runner (Respects prefers-reduced-motion)
+        const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+        let isReduced = mediaQuery.matches;
+        mediaQuery.addEventListener('change', (e) => {
+          isReduced = e.matches;
+        });
+
+        function loop() {
+          if (!isReduced || isPointerDown || Object.values(state.keys).some(Boolean)) {
+            updatePhysics();
+          }
+          draw();
+          requestAnimationFrame(loop);
+        }
+
+        requestAnimationFrame(loop);
+      })();
+    </script>
+<blockquote>
+<p>&quot;A great game controller doesn&#39;t just register button presses; it translates human intent into a believable mechanical presence.&quot;</p>
+</blockquote>
+<h2>Conclusion &amp; Next Iterations</h2>
+<p>Our inaugural R&amp;D prototypes will continue exploring deterministic kinematics across networked physics boundaries. Subsequent dispatches will break down spatial partitioning algorithms for collision detection.</p>
+
+      </div>
+
+      <footer class="article-colophon">
+        <div class="colophon-box">
+          <h4>About this publication</h4>
+          <p>
+            Published under the Primordial Paradigm masthead. Authored with first-principles systems analysis, zero sponsored bias, and strict reproducible rigor.
+          </p>
+          <a href="/games/" class="btn btn-secondary">&larr; Return to Games Hub</a>
+        </div>
+      </footer>
+    </article>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Architecting Systemic Movement: Vector Kinematics in 2D Space",
+  "description": "An engineering post-mortem on building inertia, surface friction, and deterministic player controllers from first principles.",
+  "datePublished": "2026-11-13",
+  "author": {
+    "@type": "Organization",
+    "name": "Primordial Paradigm",
+    "url": "https://primordialparadigm.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Primordial Paradigm",
+    "url": "https://primordialparadigm.com",
+    "logo": "https://primordialparadigm.com/favicon.svg"
+  },
+  "mainEntityOfPage": "https://primordialparadigm.com/games/systemic-movement-prototype/"
+}
+    </script>
+    </main>
+    <aside class="craft-switcher-dock" id="craftSwitcherDock" aria-label="Studio Creative Atmosphere Switcher">
+      <div class="switcher-inner">
+        <div class="switcher-meta">
+          <span class="switcher-title">LUMINOSITY //</span>
+        </div>
+        <div class="switcher-pills" role="toolbar" aria-label="Atmosphere Modes">
+          <button
+            type="button"
+            class="switcher-pill"
+            data-atmo="limestone"
+            title="Mode 01: Luminous Limestone (High-Key Warm Gallery Paper)"
+          >
+            <span class="pill-num">01</span>
+            <span class="pill-label">LIMESTONE</span>
+          </button>
+          <button
+            type="button"
+            class="switcher-pill"
+            data-atmo="titanium"
+            title="Mode 02: Warm Titanium (Architectural Mid-Tone Slate)"
+          >
+            <span class="pill-num">02</span>
+            <span class="pill-label">TITANIUM</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+    <footer class="studio-footer" role="contentinfo">
+      <div class="container footer-container">
+        
+        <!-- Top Architectural Banner: Thesis & Brand Lockup -->
+        <div class="footer-hero-band">
+          <div class="footer-brand-lockup">
+            <a href="/" class="footer-brand-link" aria-label="Primordial Paradigm Homepage">
+              <svg
+      width="30"
+      height="30"
+      viewBox="0 0 120 120"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="monogram "
+      aria-label="Primordial Paradigm Monogram"
+      role="img"
+    >
+      <title>Primordial Paradigm</title>
+      <path
+        d="M29 101V45C29 24 42 12 63 12C86 12 101 27 101 48C101 70 85 84 63 84H54V65H63C75 65 82 59 82 48C82 38 75 31 64 31C54 31 48 37 48 47V101Z"
+        fill="currentColor"
+      />
+      <circle cx="64" cy="48" r="7" fill="var(--accent-amber)" />
+    </svg>
+              <span class="footer-brand-title">PRIMORDIAL PARADIGM</span>
+            </a>
+            <p class="footer-thesis">
+              An independent game and creative systems studio crafting deterministic vector physics, original interactive worlds, and computational architecture from first principles.
+            </p>
+          </div>
+
+          <div class="footer-telemetry-badge">
+            <div class="telemetry-badge-content">
+              <span class="telemetry-badge-title">STUDIO NODE // PRODUCTION</span>
+              <span class="telemetry-badge-detail">SECTOR: 01 &bull; BANGALORE &bull; UTC+5:30</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Middle Section: 4-Column Directory Grid -->
+        <div class="footer-columns-grid">
+          
+          <!-- Column 1: Studio Directory -->
+          <div class="footer-nav-col">
+            <h4 class="footer-col-header">
+              <span class="col-index">[01]</span>
+              <span class="col-title">Studio Directory</span>
+            </h4>
+            <ul class="footer-links-list">
+              <li><a href="/games/">Games &amp; Devlogs</a></li>
+              <li><a href="/learn/">Systems Learning Hub</a></li>
+              <li><a href="/services/">Advisory &amp; Engineering</a></li>
+              <li><a href="/about/">Philosophy &amp; Ethos</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 2: Systems & Prototypes -->
+          <div class="footer-nav-col">
+            <h4 class="footer-col-header">
+              <span class="col-index">[02]</span>
+              <span class="col-title">Systems &amp; Research</span>
+            </h4>
+            <ul class="footer-links-list">
+              <li><a href="/games/systemic-movement-prototype/">Vector Kinematics Prototype</a></li>
+              <li><a href="/learn/systems-architecture-first-principles/">First Principles Monograph</a></li>
+              <li><a href="/explore/">Motion &amp; Physics Lab</a></li>
+              <li><a href="/specimen/">Living Specimen Atelier</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Architecture & Integrity -->
+          <div class="footer-nav-col">
+            <h4 class="footer-col-header">
+              <span class="col-index">[03]</span>
+              <span class="col-title">Architecture Standards</span>
+            </h4>
+            <ul class="footer-links-list">
+              <li><a href="/about/#colophon">Studio Colophon</a></li>
+              <li><a href="/sitemap.xml">XML Machine Sitemap</a></li>
+              <li><span class="footer-spec-item">Pure Static ESM Compiler</span></li>
+              <li><span class="footer-spec-item">Zero Native DLL Binaries</span></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Operational Telemetry -->
+          <div class="footer-nav-col">
+            <h4 class="footer-col-header">
+              <span class="col-index">[04]</span>
+              <span class="col-title">Production Telemetry</span>
+            </h4>
+            <div class="footer-telemetry-docket">
+              <div class="telemetry-entry">
+                <span class="entry-kicker">HOSTING</span>
+                <span class="entry-data">Hostinger High-Performance Cloud</span>
+              </div>
+              <div class="telemetry-entry">
+                <span class="entry-kicker">DEPLOY PIPELINE</span>
+                <span class="entry-data">Git Auto-Deploy (production)</span>
+              </div>
+              <div class="telemetry-entry">
+                <span class="entry-kicker">ACCESSIBILITY</span>
+                <span class="entry-data">WCAG 2.2 AAA Contrast</span>
+              </div>
+              <div class="telemetry-entry">
+                <span class="entry-kicker">TELEMETRY</span>
+                <span class="entry-data highlight-amber">Zero Unconsented Tracking</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bottom Ground Bar: Legal & Back to Top -->
+        <div class="footer-bottom-bar">
+          <div class="footer-legal-copy">
+            <p class="copyright-text">
+              &copy; 2026 Primordial Paradigm. All rights reserved.
+            </p>
+            <p class="privacy-text">
+              Zero tracking cookies. Zero client telemetry without explicit consent. Built with pure static craft.
+            </p>
+          </div>
+
+          <a href="#studioHeader" class="footer-back-to-top" id="footerBackToTop" aria-label="Back to top of page">
+            <span>Back to Top</span>
+            <span class="back-arrow" aria-hidden="true">&uarr;</span>
+          </a>
+        </div>
+
+      </div>
+    </footer>
+
+    <!-- Site-Wide Atmosphere Synchronization Controller -->
+    <script>
+      (function() {
+        const VALID_ATMOSPHERES = ['limestone', 'titanium'];
+
+        function normalizeAtmosphere(atmo) {
+          if (atmo === 'twilight' || atmo === 'chiaroscuro' || atmo === 'blueprint') return 'titanium';
+          if (atmo === 'surrealism' || atmo === 'dawn') return 'limestone';
+          return VALID_ATMOSPHERES.includes(atmo) ? atmo : 'limestone';
+        }
+
+        function setAtmosphere(atmo) {
+          var normalized = normalizeAtmosphere(atmo);
+          document.documentElement.setAttribute('data-atmosphere', normalized);
+          try { localStorage.setItem('pp_atmosphere', normalized); } catch(e) {}
+          
+          document.querySelectorAll('[data-atmo]').forEach(function(btn) {
+            var btnAtmo = normalizeAtmosphere(btn.getAttribute('data-atmo'));
+            var isActive = btnAtmo === normalized;
+            btn.classList.toggle('active', isActive);
+            btn.classList.toggle('is-active', isActive);
+            btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+          });
+
+          window.dispatchEvent(new CustomEvent('pp:atmosphere-changed', { detail: { atmosphere: normalized } }));
+        }
+
+        window.__setAtmosphere = setAtmosphere;
+
+        // Attach click listeners to all atmosphere buttons
+        document.addEventListener('click', function(e) {
+          var btn = e.target.closest('[data-atmo]');
+          if (btn) {
+            e.preventDefault();
+            var atmo = btn.getAttribute('data-atmo');
+            if (atmo) setAtmosphere(atmo);
+          }
+        });
+
+        // Initialize active button states
+        var current = normalizeAtmosphere(document.documentElement.getAttribute('data-atmosphere') || 'limestone');
+        setAtmosphere(current);
+      })();
+    </script>
+  </body>
+</html>

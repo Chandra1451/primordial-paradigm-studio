@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About the Studio — Primordial Paradigm</title>
+    <meta name="description" content="The ethos, philosophy, and personal founder voice behind Primordial Paradigm Studio." />
+    
+    <link rel="canonical" href="https://primordialparadigm.com/about/" />
+
+    <!-- Security & Resource Directives -->
+    <meta name="color-scheme" content="dark" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+
+    <!-- OpenGraph Tags -->
+    <meta property="og:title" content="About the Studio — Primordial Paradigm" />
+    <meta property="og:description" content="The ethos, philosophy, and personal founder voice behind Primordial Paradigm Studio." />
+    <meta property="og:url" content="https://primordialparadigm.com/about/" />
+    <meta property="og:site_name" content="Primordial Paradigm" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="About the Studio — Primordial Paradigm" />
+    <meta name="twitter:description" content="The ethos, philosophy, and personal founder voice behind Primordial Paradigm Studio." />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Design System Tokens & Global Styles -->
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <link rel="stylesheet" href="/styles/global.css" />
+
+    <!-- Immediate Atmosphere Token Initialization (Zero FOUC) -->
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('pp_atmosphere');
+          if (saved === 'twilight' || saved === 'chiaroscuro' || saved === 'blueprint') saved = 'titanium';
+          if (saved === 'surrealism' || saved === 'dawn') saved = 'limestone';
+          if (saved && (saved === 'limestone' || saved === 'titanium')) {
+            document.documentElement.setAttribute('data-atmosphere', saved);
+          } else {
+            document.documentElement.setAttribute('data-atmosphere', 'limestone');
+          }
+        } catch(e) {}
+      })();
+    </script>
+
+    <!-- Google Consent Mode v2 (Default: Denied / Zero Telemetry) -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
+    </script>
+
+    <!-- Structured Data (Schema.org JSON-LD) -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Primordial Paradigm",
+  "url": "https://primordialparadigm.com",
+  "logo": "https://primordialparadigm.com/favicon.svg",
+  "description": "The ethos, philosophy, and personal founder voice behind Primordial Paradigm Studio."
+}
+    </script>
+  </head>
+  <body>
+    <!-- Accessibility Skip Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="studio-header" id="studioHeader">
+      <div class="container header-inner">
+        
+        <!-- Architectural Brand Masthead -->
+        <a href="/" class="brand-masthead" aria-label="Primordial Paradigm Homepage">
+          <div class="brand-icon-wrap" aria-hidden="true">
+            <svg
+      width="26"
+      height="26"
+      viewBox="0 0 120 120"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="monogram "
+      aria-label="Primordial Paradigm Monogram"
+      role="img"
+    >
+      <title>Primordial Paradigm</title>
+      <path
+        d="M29 101V45C29 24 42 12 63 12C86 12 101 27 101 48C101 70 85 84 63 84H54V65H63C75 65 82 59 82 48C82 38 75 31 64 31C54 31 48 37 48 47V101Z"
+        fill="currentColor"
+      />
+      <circle cx="64" cy="48" r="7" fill="#f4f4f5" />
+    </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">PRIMORDIAL PARADIGM</span>
+            <span class="brand-tag">STUDIO // SYSTEMS ATELIER</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Menu -->
+        <nav class="nav-menu" aria-label="Main Navigation">
+          <ul class="nav-list">
+            
+      <li class="nav-item">
+        <a
+          href="/games/"
+          class="nav-link "
+          
+        >
+          <span class="nav-link-text">GAMES</span>
+          
+        </a>
+      </li>
+    
+      <li class="nav-item">
+        <a
+          href="/learn/"
+          class="nav-link "
+          
+        >
+          <span class="nav-link-text">LEARN</span>
+          
+        </a>
+      </li>
+    
+      <li class="nav-item">
+        <a
+          href="/services/"
+          class="nav-link "
+          
+        >
+          <span class="nav-link-text">SERVICES</span>
+          
+        </a>
+      </li>
+    
+      <li class="nav-item">
+        <a
+          href="/about/"
+          class="nav-link is-active"
+          aria-current="page"
+        >
+          <span class="nav-link-text">ABOUT</span>
+          <span class="nav-active-rule" aria-hidden="true"></span>
+        </a>
+      </li>
+    
+          </ul>
+        </nav>
+
+        <!-- Right Utility & Mobile Toggle -->
+        <div class="header-dock">
+          <!-- Minimalist Atmosphere Selector in Header -->
+          <div class="header-atmosphere-controls" role="group" aria-label="Visual Atmosphere">
+            <span class="atmo-indicator-label">ATMO //</span>
+            <button type="button" class="header-atmo-btn" data-atmo="limestone" title="Mode 01: Luminous Limestone (Warm Gallery Paper)">01</button>
+            <button type="button" class="header-atmo-btn" data-atmo="titanium" title="Mode 02: Warm Titanium (Architectural Slate)">02</button>
+          </div>
+
+          <!-- Mobile Hamburger Toggle Button -->
+          <button
+            type="button"
+            class="mobile-nav-toggle"
+            id="mobileNavToggle"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="mobileNavDrawer"
+          >
+            <span class="toggle-icon-box" aria-hidden="true">
+              <span class="toggle-bar bar-1"></span>
+              <span class="toggle-bar bar-2"></span>
+              <span class="toggle-bar bar-3"></span>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation Drawer -->
+      <div
+        class="mobile-nav-drawer"
+        id="mobileNavDrawer"
+        aria-hidden="true"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile Navigation"
+      >
+        <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop" aria-hidden="true"></div>
+        <div class="mobile-drawer-panel">
+          <div class="mobile-drawer-header">
+            <div class="drawer-meta-title">[STUDIO DIRECTORY]</div>
+            <button
+              type="button"
+              class="mobile-drawer-close"
+              id="mobileDrawerClose"
+              aria-label="Close navigation menu"
+            >
+              &times;
+            </button>
+          </div>
+
+          <nav class="mobile-drawer-nav" aria-label="Mobile Navigation Menu">
+            <ul class="mobile-nav-list">
+              
+      <li class="mobile-nav-item">
+        <a
+          href="/games/"
+          class="mobile-nav-link "
+          
+        >
+          <span class="mobile-link-index">[01]</span>
+          <span class="mobile-link-label">GAMES</span>
+          <span class="mobile-link-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+      <li class="mobile-nav-item">
+        <a
+          href="/learn/"
+          class="mobile-nav-link "
+          
+        >
+          <span class="mobile-link-index">[02]</span>
+          <span class="mobile-link-label">LEARN</span>
+          <span class="mobile-link-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+      <li class="mobile-nav-item">
+        <a
+          href="/services/"
+          class="mobile-nav-link "
+          
+        >
+          <span class="mobile-link-index">[03]</span>
+          <span class="mobile-link-label">SERVICES</span>
+          <span class="mobile-link-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+      <li class="mobile-nav-item">
+        <a
+          href="/about/"
+          class="mobile-nav-link is-active"
+          aria-current="page"
+        >
+          <span class="mobile-link-index">[04]</span>
+          <span class="mobile-link-label">ABOUT</span>
+          <span class="mobile-link-arrow" aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    
+            </ul>
+          </nav>
+
+          <!-- Mobile Drawer Atmosphere Selection -->
+          <div class="drawer-atmo-section">
+            <div class="drawer-atmo-title">[ATMOSPHERIC LUMINOSITY]</div>
+            <div class="drawer-atmo-grid">
+              <button type="button" class="drawer-atmo-option" data-atmo="limestone">
+                <span class="option-num">01</span>
+                <span class="option-name">Luminous Limestone (Warm Paper)</span>
+              </button>
+              <button type="button" class="drawer-atmo-option" data-atmo="titanium">
+                <span class="option-num">02</span>
+                <span class="option-name">Warm Titanium (Concrete Slate)</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="mobile-drawer-footer">
+            <div class="drawer-telemetry-row">
+              <span class="telemetry-label">SECTOR</span>
+              <span class="telemetry-val">01 // DEEP SYSTEMS</span>
+            </div>
+            <div class="drawer-telemetry-row">
+              <span class="telemetry-label">LOCATION</span>
+              <span class="telemetry-val">BANGALORE // UTC+5:30</span>
+            </div>
+            <div class="drawer-telemetry-row">
+              <span class="telemetry-label">ARCHITECTURE</span>
+              <span class="telemetry-val text-bone">DETERMINISTIC</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Header & Mobile Drawer Interaction Logic -->
+    <script>
+      (function() {
+        const toggleBtn = document.getElementById('mobileNavToggle');
+        const closeBtn = document.getElementById('mobileDrawerClose');
+        const drawer = document.getElementById('mobileNavDrawer');
+        const backdrop = document.getElementById('mobileDrawerBackdrop');
+        const header = document.getElementById('studioHeader');
+
+        if (!toggleBtn || !drawer) return;
+
+        function openDrawer() {
+          drawer.classList.add('is-open');
+          toggleBtn.classList.add('is-active');
+          toggleBtn.setAttribute('aria-expanded', 'true');
+          drawer.setAttribute('aria-hidden', 'false');
+          document.body.classList.add('drawer-locked');
+          if (closeBtn) closeBtn.focus();
+        }
+
+        function closeDrawer() {
+          drawer.classList.remove('is-open');
+          toggleBtn.classList.remove('is-active');
+          toggleBtn.setAttribute('aria-expanded', 'false');
+          drawer.setAttribute('aria-hidden', 'true');
+          document.body.classList.remove('drawer-locked');
+          toggleBtn.focus();
+        }
+
+        toggleBtn.addEventListener('click', function() {
+          const isOpen = drawer.classList.contains('is-open');
+          if (isOpen) closeDrawer();
+          else openDrawer();
+        });
+
+        if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+        if (backdrop) backdrop.addEventListener('click', closeDrawer);
+
+        // Close on ESC key
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && drawer.classList.contains('is-open')) {
+            closeDrawer();
+          }
+        });
+
+        // Close when a link inside mobile drawer is clicked
+        drawer.querySelectorAll('a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            closeDrawer();
+          });
+        });
+
+        // Sticky header hairline shadow on scroll
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 16) {
+            header.classList.add('is-scrolled');
+          } else {
+            header.classList.remove('is-scrolled');
+          }
+        }, { passive: true });
+      })();
+    </script>
+    <main id="main-content">
+      <div class="container page-content">
+      <div class="page-header">
+        <span class="mono-label">PHILOSOPHY & ETHOS</span>
+        <h1>About Primordial Paradigm</h1>
+        <p class="lead">
+          An independent studio exploring the boundaries between game systems, creative computing, and clear communication.
+        </p>
+      </div>
+
+      <div class="content-body">
+        <section class="text-section">
+          <h2>Origin & Purpose</h2>
+          <p>
+            Primordial Paradigm was founded on a simple conviction: software and interactive worlds are most compelling when crafted from first principles rather than assembled from cookie-cutter corporate patterns.
+          </p>
+          <p>
+            Whether building an emergent video game system, authoring an exhaustive technical breakdown, or engineering an executive data interface, our goal is the same: unyielding clarity, tactile responsiveness, and structural integrity.
+          </p>
+        </section>
+
+        <section class="text-section" id="colophon">
+          <h2>Colophon & Standards</h2>
+          <ul class="colophon-list">
+            <li><strong>Architecture:</strong> Statically compiled with pure ES modules for zero runtime client-side JavaScript overhead.</li>
+            <li><strong>Aesthetic:</strong> Custom Obsidian Cosmos theme tokens with WCAG AAA contrast ratio compliance.</li>
+            <li><strong>Privacy:</strong> Zero third-party trackers, zero invasive cookies, zero telemetry without explicit consent.</li>
+            <li><strong>Hosting:</strong> High-performance static web hosting on Hostinger.</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+    </main>
+    <aside class="craft-switcher-dock" id="craftSwitcherDock" aria-label="Studio Creative Atmosphere Switcher">
+      <div class="switcher-inner">
+        <div class="switcher-meta">
+          <span class="switcher-title">LUMINOSITY //</span>
+        </div>
+        <div class="switcher-pills" role="toolbar" aria-label="Atmosphere Modes">
+          <button
+            type="button"
+            class="switcher-pill"
+            data-atmo="limestone"
+            title="Mode 01: Luminous Limestone (High-Key Warm Gallery Paper)"
+          >
+            <span class="pill-num">01</span>
+            <span class="pill-label">LIMESTONE</span>
+          </button>
+          <button
+            type="button"
+            class="switcher-pill"
+            data-atmo="titanium"
+            title="Mode 02: Warm Titanium (Architectural Mid-Tone Slate)"
+          >
+            <span class="pill-num">02</span>
+            <span class="pill-label">TITANIUM</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+    <footer class="studio-footer" role="contentinfo">
+      <div class="container footer-container">
+        
+        <!-- Top Architectural Banner: Thesis & Brand Lockup -->
+        <div class="footer-hero-band">
+          <div class="footer-brand-lockup">
+            <a href="/" class="footer-brand-link" aria-label="Primordial Paradigm Homepage">
+              <svg
+      width="30"
+      height="30"
+      viewBox="0 0 120 120"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="monogram "
+      aria-label="Primordial Paradigm Monogram"
+      role="img"
+    >
+      <title>Primordial Paradigm</title>
+      <path
+        d="M29 101V45C29 24 42 12 63 12C86 12 101 27 101 48C101 70 85 84 63 84H54V65H63C75 65 82 59 82 48C82 38 75 31 64 31C54 31 48 37 48 47V101Z"
+        fill="currentColor"
+      />
+      <circle cx="64" cy="48" r="7" fill="var(--accent-amber)" />
+    </svg>
+              <span class="footer-brand-title">PRIMORDIAL PARADIGM</span>
+            </a>
+            <p class="footer-thesis">
+              An independent game and creative systems studio crafting deterministic vector physics, original interactive worlds, and computational architecture from first principles.
+            </p>
+          </div>
+
+          <div class="footer-telemetry-badge">
+            <div class="telemetry-badge-content">
+              <span class="telemetry-badge-title">STUDIO NODE // PRODUCTION</span>
+              <span class="telemetry-badge-detail">SECTOR: 01 &bull; BANGALORE &bull; UTC+5:30</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Middle Section: 4-Column Directory Grid -->
+        <div class="footer-columns-grid">
+          
+          <!-- Column 1: Studio Directory -->
+          <div class="footer-nav-col">
+            <h4 class="footer-col-header">
+              <span class="col-index">[01]</span>
+              <span class="col-title">Studio Directory</span>
+            </h4>
+            <ul class="footer-links-list">
+              <li><a href="/games/">Games &amp; Devlogs</a></li>
+              <li><a href="/learn/">Systems Learning Hub</a></li>
+              <li><a href="/services/">Advisory &amp; Engineering</a></li>
+              <li><a href="/about/">Philosophy &amp; Ethos</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 2: Systems & Prototypes -->
+          <div class="footer-nav-col">
+            <h4 class="footer-col-header">
+              <span class="col-index">[02]</span>
+              <span class="col-title">Systems &amp; Research</span>
+            </h4>
+            <ul class="footer-links-list">
+              <li><a href="/games/systemic-movement-prototype/">Vector Kinematics Prototype</a></li>
+              <li><a href="/learn/systems-architecture-first-principles/">First Principles Monograph</a></li>
+              <li><a href="/explore/">Motion &amp; Physics Lab</a></li>
+              <li><a href="/specimen/">Living Specimen Atelier</a></li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Architecture & Integrity -->
+          <div class="footer-nav-col">
+            <h4 class="footer-col-header">
+              <span class="col-index">[03]</span>
+              <span class="col-title">Architecture Standards</span>
+            </h4>
+            <ul class="footer-links-list">
+              <li><a href="/about/#colophon">Studio Colophon</a></li>
+              <li><a href="/sitemap.xml">XML Machine Sitemap</a></li>
+              <li><span class="footer-spec-item">Pure Static ESM Compiler</span></li>
+              <li><span class="footer-spec-item">Zero Native DLL Binaries</span></li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Operational Telemetry -->
+          <div class="footer-nav-col">
+            <h4 class="footer-col-header">
+              <span class="col-index">[04]</span>
+              <span class="col-title">Production Telemetry</span>
+            </h4>
+            <div class="footer-telemetry-docket">
+              <div class="telemetry-entry">
+                <span class="entry-kicker">HOSTING</span>
+                <span class="entry-data">Hostinger High-Performance Cloud</span>
+              </div>
+              <div class="telemetry-entry">
+                <span class="entry-kicker">DEPLOY PIPELINE</span>
+                <span class="entry-data">Git Auto-Deploy (production)</span>
+              </div>
+              <div class="telemetry-entry">
+                <span class="entry-kicker">ACCESSIBILITY</span>
+                <span class="entry-data">WCAG 2.2 AAA Contrast</span>
+              </div>
+              <div class="telemetry-entry">
+                <span class="entry-kicker">TELEMETRY</span>
+                <span class="entry-data highlight-amber">Zero Unconsented Tracking</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Bottom Ground Bar: Legal & Back to Top -->
+        <div class="footer-bottom-bar">
+          <div class="footer-legal-copy">
+            <p class="copyright-text">
+              &copy; 2026 Primordial Paradigm. All rights reserved.
+            </p>
+            <p class="privacy-text">
+              Zero tracking cookies. Zero client telemetry without explicit consent. Built with pure static craft.
+            </p>
+          </div>
+
+          <a href="#studioHeader" class="footer-back-to-top" id="footerBackToTop" aria-label="Back to top of page">
+            <span>Back to Top</span>
+            <span class="back-arrow" aria-hidden="true">&uarr;</span>
+          </a>
+        </div>
+
+      </div>
+    </footer>
+
+    <!-- Site-Wide Atmosphere Synchronization Controller -->
+    <script>
+      (function() {
+        const VALID_ATMOSPHERES = ['limestone', 'titanium'];
+
+        function normalizeAtmosphere(atmo) {
+          if (atmo === 'twilight' || atmo === 'chiaroscuro' || atmo === 'blueprint') return 'titanium';
+          if (atmo === 'surrealism' || atmo === 'dawn') return 'limestone';
+          return VALID_ATMOSPHERES.includes(atmo) ? atmo : 'limestone';
+        }
+
+        function setAtmosphere(atmo) {
+          var normalized = normalizeAtmosphere(atmo);
+          document.documentElement.setAttribute('data-atmosphere', normalized);
+          try { localStorage.setItem('pp_atmosphere', normalized); } catch(e) {}
+          
+          document.querySelectorAll('[data-atmo]').forEach(function(btn) {
+            var btnAtmo = normalizeAtmosphere(btn.getAttribute('data-atmo'));
+            var isActive = btnAtmo === normalized;
+            btn.classList.toggle('active', isActive);
+            btn.classList.toggle('is-active', isActive);
+            btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+          });
+
+          window.dispatchEvent(new CustomEvent('pp:atmosphere-changed', { detail: { atmosphere: normalized } }));
+        }
+
+        window.__setAtmosphere = setAtmosphere;
+
+        // Attach click listeners to all atmosphere buttons
+        document.addEventListener('click', function(e) {
+          var btn = e.target.closest('[data-atmo]');
+          if (btn) {
+            e.preventDefault();
+            var atmo = btn.getAttribute('data-atmo');
+            if (atmo) setAtmosphere(atmo);
+          }
+        });
+
+        // Initialize active button states
+        var current = normalizeAtmosphere(document.documentElement.getAttribute('data-atmosphere') || 'limestone');
+        setAtmosphere(current);
+      })();
+    </script>
+  </body>
+</html>

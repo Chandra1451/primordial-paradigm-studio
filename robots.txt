@@ -1,0 +1,5 @@
+# Primordial Paradigm Studio - robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://primordialparadigm.com/sitemap.xml
