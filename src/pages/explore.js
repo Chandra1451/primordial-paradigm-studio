@@ -47,37 +47,37 @@ export function renderExplorePage() {
             
             <!-- Architecture Option 1 -->
             <article class="pillar-card" style="border-color: rgba(229, 155, 32, 0.25);">
-              <span class="card-tag">CONCEPT 01 // EDITORIAL MONOLITH</span>
-              <h3 class="card-title" style="font-size: 1.3rem;">Cinematic Viewport + Research Cassettes</h3>
+              <span class="card-tag">CONCEPT 01 // COSMIC CHIAROSCURO</span>
+              <h3 class="card-title" style="font-size: 1.3rem;">Cinematic Volumetric Void</h3>
               <p class="card-desc">
-                Massive architectural masthead with real-time celestial telemetry. The hero flows directly into a playable in-situ game simulation right on the homepage, flanked by asymmetrical project research cassettes.
+                Inspired by Remedy Entertainment (<em>Control</em>) and Christopher Nolan (<em>Interstellar</em>). Analog film grain, dark starlight horizon glow, and real-time spacetime curvature lensing around user mouse interactions.
               </p>
               <div style="margin-top: var(--space-md); padding-top: var(--space-sm); border-top: 1px solid var(--border-subtle); font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">
-                ✦ Best paired with: <strong>Gravitational Singularity</strong>
+                ✦ Influence: <strong>Remedy, Nolan, Denis Villeneuve</strong>
               </div>
             </article>
 
             <!-- Architecture Option 2 -->
-            <article class="pillar-card" style="border-color: rgba(56, 189, 248, 0.25);">
-              <span class="card-tag">CONCEPT 02 // CAD BLUEPRINT & DOSSIER</span>
-              <h3 class="card-title" style="font-size: 1.3rem;">Tactical Grid + Parameter Deck</h3>
+            <article class="pillar-card" style="border-color: rgba(244, 244, 245, 0.25);">
+              <span class="card-tag">CONCEPT 02 // VECTOR BLUEPRINT</span>
+              <h3 class="card-title" style="font-size: 1.3rem;">Tactical CAD Drafting & Schematics</h3>
               <p class="card-desc">
-                Inspired by avionics schematics and architectural drafting. Hairline grid with crosshair markers (<code style="color: var(--accent-cyan); font-size: 0.85em;">+</code>). Split-screen dossier pairing the founder manifesto with interactive simulation dials.
+                Inspired by Bungie <em>Marathon</em>, Kurppa Hosk, and Teenage Engineering. Precision CAD coordinate grid, real-time rotating 3D wireframe polyhedra driven by mouse inertia, and dynamic crosshair reticle tracking.
               </p>
               <div style="margin-top: var(--space-md); padding-top: var(--space-sm); border-top: 1px solid var(--border-subtle); font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">
-                ✦ Best paired with: <strong>Procedural Flow Field</strong>
+                ✦ Influence: <strong>Bungie Marathon, Kurppa Hosk</strong>
               </div>
             </article>
 
             <!-- Architecture Option 3 -->
-            <article class="pillar-card" style="border-color: rgba(255, 255, 255, 0.15);">
-              <span class="card-tag">CONCEPT 03 // ISOMETRIC GEOMETRY CORE</span>
-              <h3 class="card-title" style="font-size: 1.3rem;">3D Monumental Brutalism</h3>
+            <article class="pillar-card" style="border-color: rgba(148, 163, 184, 0.25);">
+              <span class="card-tag">CONCEPT 03 // ATMOSPHERIC SURREALISM</span>
+              <h3 class="card-title" style="font-size: 1.3rem;">Drifting Mist & Monolithic Scale</h3>
               <p class="card-desc">
-                Extreme typographic scale contrast (giant titles paired with tiny monospaced telemetry). Features an interactive 3D rotating First Form crystalline core that responds to user mouse inertia.
+                Inspired by Playdead (<em>Inside</em>, <em>Limbo</em>) and Fumito Ueda (<em>Shadow of the Colossus</em>). Layered volumetric fog drifting across dark architectural spires, ambient spore particles that scatter on hover, and poetic spatial tension.
               </p>
               <div style="margin-top: var(--space-md); padding-top: var(--space-sm); border-top: 1px solid var(--border-subtle); font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">
-                ✦ Best paired with: <strong>Kinetic Sacred Geometry</strong>
+                ✦ Influence: <strong>Playdead, Fumito Ueda, Kentucky Route Zero</strong>
               </div>
             </article>
 
