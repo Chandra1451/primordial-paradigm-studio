@@ -178,11 +178,8 @@ try {
   console.log('Capturing Mode 01: Luminous Limestone (Home)...');
   await capture('homepage-atmosphere-01-limestone.png', 'limestone', '/', 1440, 900);
 
-  console.log('Capturing Mode 02: Chromatic Twilight (Home)...');
-  await capture('homepage-atmosphere-02-twilight.png', 'twilight', '/', 1440, 900);
-
-  console.log('Capturing Mode 03: Warm Titanium (Home)...');
-  await capture('homepage-atmosphere-03-titanium.png', 'titanium', '/', 1440, 900);
+  console.log('Capturing Mode 02: Warm Titanium (Home)...');
+  await capture('homepage-atmosphere-02-titanium.png', 'titanium', '/', 1440, 900);
 
   console.log('Capturing Mobile Mode 01: Limestone (390px)...');
   await capture('homepage-mobile-390-limestone.png', 'limestone', '/', 390, 844);

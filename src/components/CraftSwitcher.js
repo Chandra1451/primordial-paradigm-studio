@@ -1,10 +1,9 @@
 // =============================================================================
 // Primordial Paradigm Studio - Atmospheric Visitor Switcher Dock
-// Sleek, sharp architectural dock allowing visitors to switch between 3
+// Sleek, sharp architectural dock allowing visitors to switch between 2
 // luminous, human-crafted creative atmospheres site-wide:
 // 1. Luminous Limestone (High-Key Warm Gallery Paper #f4f1ea)
-// 2. Chromatic Twilight (Lapis Indigo Sky #101726 + Solar Horizon Gold)
-// 3. Warm Titanium (Architectural Mid-Tone Slate #1e222b + Signal Orange)
+// 2. Warm Titanium (Architectural Mid-Tone Slate #1e222b + Signal Vermilion)
 // =============================================================================
 
 export function renderCraftSwitcher() {
@@ -27,19 +26,10 @@ export function renderCraftSwitcher() {
           <button
             type="button"
             class="switcher-pill"
-            data-atmo="twilight"
-            title="Mode 02: Chromatic Twilight (Lapis Indigo Sky + Solar Gold)"
+            data-atmo="titanium"
+            title="Mode 02: Warm Titanium (Architectural Mid-Tone Slate)"
           >
             <span class="pill-num">02</span>
-            <span class="pill-label">TWILIGHT</span>
-          </button>
-          <button
-            type="button"
-            class="switcher-pill"
-            data-atmo="titanium"
-            title="Mode 03: Warm Titanium (Architectural Mid-Tone Slate)"
-          >
-            <span class="pill-num">03</span>
             <span class="pill-label">TITANIUM</span>
           </button>
         </div>

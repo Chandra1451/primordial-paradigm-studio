@@ -67,10 +67,9 @@ export function renderBaseLayout({
       (function() {
         try {
           var saved = localStorage.getItem('pp_atmosphere');
-          if (saved === 'chiaroscuro') saved = 'twilight';
-          if (saved === 'blueprint') saved = 'titanium';
-          if (saved === 'surrealism') saved = 'limestone';
-          if (saved && (saved === 'limestone' || saved === 'twilight' || saved === 'titanium')) {
+          if (saved === 'twilight' || saved === 'chiaroscuro' || saved === 'blueprint') saved = 'titanium';
+          if (saved === 'surrealism' || saved === 'dawn') saved = 'limestone';
+          if (saved && (saved === 'limestone' || saved === 'titanium')) {
             document.documentElement.setAttribute('data-atmosphere', saved);
           } else {
             document.documentElement.setAttribute('data-atmosphere', 'limestone');
@@ -108,11 +107,10 @@ ${JSON.stringify(schemaData, null, 2)}
     <!-- Site-Wide Atmosphere Synchronization Controller -->
     <script>
       (function() {
-        const VALID_ATMOSPHERES = ['limestone', 'twilight', 'titanium'];
+        const VALID_ATMOSPHERES = ['limestone', 'titanium'];
 
         function normalizeAtmosphere(atmo) {
-          if (atmo === 'chiaroscuro') return 'twilight';
-          if (atmo === 'blueprint') return 'titanium';
+          if (atmo === 'twilight' || atmo === 'chiaroscuro' || atmo === 'blueprint') return 'titanium';
           if (atmo === 'surrealism' || atmo === 'dawn') return 'limestone';
           return VALID_ATMOSPHERES.includes(atmo) ? atmo : 'limestone';
         }

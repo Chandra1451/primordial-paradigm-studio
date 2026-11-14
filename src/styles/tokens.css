@@ -1,15 +1,15 @@
 /* =============================================================================
    Primordial Paradigm Studio - Design System Tokens
-   Luminous Atmospheric Color Worlds (WCAG AAA Contrast Baseline)
-   Eradicating the pitch-black void trap; introducing:
-   1. Luminous Limestone (High-Key Warm Gallery Paper #f4f1ea)
-   2. Chromatic Twilight (Rich Lapis Indigo #101726 + Solar Horizon Gold)
-   3. Warm Titanium (Architectural Mid-Tone Slate #1e222b + Signal Cobalt)
+   Luminous Atmospheric Color Worlds (Dual Creative Atelier Baseline)
+   Purged the pitch-black void trap and AI-generated vibes; featuring:
+   1. Luminous Limestone (High-Key Warm Gallery Paper #f4f1ea + Soft Charcoal Ink)
+   2. Warm Titanium (Architectural Mid-Tone Slate #1e222b + Signal Vermilion)
    ============================================================================= */
 
 /* -----------------------------------------------------------------------------
    DEFAULT / MODE 01: LUMINOUS LIMESTONE (Daylight Gallery & Warm Paper)
    Inspired by: Fumito Ueda (Ico, The Last Guardian), Swiss Art Catalogues
+   Softer, organic letterpress charcoal typography on sun-warmed Italian paper.
    ----------------------------------------------------------------------------- */
 :root,
 [data-atmosphere="limestone"],
@@ -21,13 +21,13 @@
   --bg-surface-elevated: #ffffff; /* Crisp gallery plinths & cards */
 
   /* Structural Hairlines */
-  --border-subtle: rgba(18, 19, 22, 0.10);
-  --border-strong: rgba(18, 19, 22, 0.25);
+  --border-subtle: rgba(45, 49, 58, 0.12);
+  --border-strong: rgba(45, 49, 58, 0.24);
 
-  /* Typography (WCAG AAA Contrast: 16.5:1 against #f4f1ea) */
-  --text-primary: #121316;        /* Dense inkjet soot charcoal */
-  --text-secondary: #4a4f5c;      /* Muted architectural slate (7.4:1) */
-  --text-muted: #737885;          /* Technical metadata */
+  /* Typography (Refined, Softened Charcoal Ink — 11.3:1 AAA Contrast) */
+  --text-primary: #2d313a;        /* Warm editorial charcoal (softer than harsh black) */
+  --text-secondary: #5a5f6e;      /* Muted architectural slate (5.8:1) */
+  --text-muted: #7c8292;          /* Technical metadata */
 
   /* Accent: Warm Terracotta Clay & Raw Cadmium */
   --accent-studio: #c84b31;
@@ -69,49 +69,13 @@
 }
 
 /* -----------------------------------------------------------------------------
-   MODE 02: CHROMATIC TWILIGHT (Lapis Indigo Sky & Solar Horizon Gold)
-   Inspired by: Denis Villeneuve (Arrival, Dune), Christopher Nolan, A24
-   Rich, luminous evening cobalt — NOT pitch black!
-   ----------------------------------------------------------------------------- */
-[data-atmosphere="twilight"],
-[data-atmosphere="chiaroscuro"] {
-  --bg-canvas: #101726;           /* Rich deep lapis evening sky */
-  --bg-surface: #182238;          /* Midnight cobalt surface */
-  --bg-surface-hover: #212e4c;    /* Deep sky hover */
-  --bg-surface-elevated: #28385c; /* Luminous plinths */
-
-  --border-subtle: rgba(241, 245, 249, 0.10);
-  --border-strong: rgba(241, 245, 249, 0.24);
-
-  --text-primary: #f8fafc;        /* Starlight Platinum White (13.2:1) */
-  --text-secondary: #94a3b8;      /* Lunar silver mist (7.2:1) */
-  --text-muted: #64748b;
-
-  /* Accent: Solar Horizon Gold / Dawn Flare (Luminous Celestial Accent) */
-  --accent-studio: #f59e0b;
-  --accent-studio-hover: #fbbf24;
-  --accent-studio-glow: rgba(245, 158, 11, 0.22);
-  --border-spark: rgba(245, 158, 11, 0.40);
-
-  --accent-amber: var(--accent-studio);
-  --accent-amber-light: var(--accent-studio-hover);
-  --accent-amber-glow: var(--accent-studio-glow);
-
-  --accent-cyan: #38bdf8;
-  --accent-cyan-light: #7dd3fc;
-  --accent-cyan-glow: rgba(56, 189, 248, 0.15);
-
-  --status-success: #10b981;
-  --status-warning: #f59e0b;
-  --status-error: #ef4444;
-}
-
-/* -----------------------------------------------------------------------------
-   MODE 03: WARM TITANIUM & SLATE (Architectural Mid-Tone & Signal Vermilion)
+   MODE 02: WARM TITANIUM & SLATE (Architectural Mid-Tone & Signal Vermilion)
    Inspired by: Kurppa Hosk, Dieter Rams, Industrial Design Ateliers
    Comfortable mid-tone slate & raw concrete — significantly lighter than black!
    ----------------------------------------------------------------------------- */
 [data-atmosphere="titanium"],
+[data-atmosphere="twilight"],
+[data-atmosphere="chiaroscuro"],
 [data-atmosphere="blueprint"],
 [data-atmosphere="surrealism"] {
   --bg-canvas: #1e222b;           /* Warm architectural concrete & slate */

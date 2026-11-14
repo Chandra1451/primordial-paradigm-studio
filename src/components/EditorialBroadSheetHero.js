@@ -512,10 +512,9 @@ export function renderEditorialBroadSheetHero() {
         const telemetryCol4 = document.getElementById('telemetryCol4');
 
         function normalizeAtmo(atmo) {
-          if (atmo === 'chiaroscuro') return 'twilight';
-          if (atmo === 'blueprint') return 'titanium';
+          if (atmo === 'twilight' || atmo === 'chiaroscuro' || atmo === 'blueprint') return 'titanium';
           if (atmo === 'surrealism' || atmo === 'dawn') return 'limestone';
-          return atmo || 'limestone';
+          return atmo === 'titanium' ? 'titanium' : 'limestone';
         }
 
         let currentAtmosphere = normalizeAtmo(document.documentElement.getAttribute('data-atmosphere'));
@@ -616,7 +615,7 @@ export function renderEditorialBroadSheetHero() {
         }
 
         // -------------------------------------------------------------
-        // ATMOSPHERE 01: LUMINOUS LIMESTONE (Warm Italian Paper + Soot Ink)
+        // ATMOSPHERE 01: LUMINOUS LIMESTONE (Warm Italian Paper + Soft Charcoal)
         // -------------------------------------------------------------
         function drawLimestone() {
           // Warm limestone paper trail wash
@@ -636,8 +635,8 @@ export function renderEditorialBroadSheetHero() {
           ctx.arc(cx, cy, 100, 0, Math.PI * 2);
           ctx.fill();
 
-          // Dense soot ink core
-          ctx.fillStyle = '#121316';
+          // Softened warm charcoal ink core (not harsh digital black)
+          ctx.fillStyle = '#2d313a';
           ctx.beginPath();
           ctx.arc(cx, cy, horizonRadius, 0, Math.PI * 2);
           ctx.fill();
@@ -649,7 +648,7 @@ export function renderEditorialBroadSheetHero() {
           ctx.arc(cx, cy, horizonRadius + 1.5, 0, Math.PI * 2);
           ctx.stroke();
 
-          // Update & draw soot ink & terracotta particles
+          // Update & draw softened warm charcoal & terracotta particles
           updateParticlePhysics(cx, cy);
           for (let i = 0; i < orbitalParticles.length; i++) {
             const p = orbitalParticles[i];
@@ -660,7 +659,7 @@ export function renderEditorialBroadSheetHero() {
             if (alpha > 0.04) {
               ctx.fillStyle = p.isAccent
                 ? 'rgba(200, 75, 49, ' + alpha + ')'
-                : 'rgba(18, 19, 22, ' + (alpha * 0.85) + ')';
+                : 'rgba(45, 49, 58, ' + (alpha * 0.75) + ')';
               ctx.beginPath();
               ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
               ctx.fill();
@@ -669,61 +668,7 @@ export function renderEditorialBroadSheetHero() {
         }
 
         // -------------------------------------------------------------
-        // ATMOSPHERE 02: CHROMATIC TWILIGHT (Lapis Indigo Sky + Solar Gold)
-        // -------------------------------------------------------------
-        function drawTwilight() {
-          // Lapis cobalt evening sky wash
-          ctx.fillStyle = 'rgba(16, 23, 38, 0.25)';
-          ctx.fillRect(0, 0, width, height);
-
-          const cx = width > 960 ? width * 0.75 : width * 0.5;
-          const cy = height * 0.5;
-
-          // Solar horizon gold corona
-          const corona = ctx.createRadialGradient(cx, cy, 5, cx, cy, 110);
-          corona.addColorStop(0, '#080c14');
-          corona.addColorStop(0.35, 'rgba(245, 158, 11, 0.32)');
-          corona.addColorStop(0.7, 'rgba(24, 34, 56, 0.15)');
-          corona.addColorStop(1, 'rgba(16, 23, 38, 0)');
-          ctx.fillStyle = corona;
-          ctx.beginPath();
-          ctx.arc(cx, cy, 110, 0, Math.PI * 2);
-          ctx.fill();
-
-          // Deepest obsidian navy core
-          ctx.fillStyle = '#080c14';
-          ctx.beginPath();
-          ctx.arc(cx, cy, horizonRadius, 0, Math.PI * 2);
-          ctx.fill();
-
-          // Solar gold event horizon ring
-          ctx.strokeStyle = 'rgba(245, 158, 11, 0.85)';
-          ctx.lineWidth = 1.2;
-          ctx.beginPath();
-          ctx.arc(cx, cy, horizonRadius + 1, 0, Math.PI * 2);
-          ctx.stroke();
-
-          // Update & draw platinum starlight & solar gold particles
-          updateParticlePhysics(cx, cy);
-          for (let i = 0; i < orbitalParticles.length; i++) {
-            const p = orbitalParticles[i];
-            const dx = cx - p.x;
-            const dy = cy - p.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            const alpha = Math.min(p.brightness, (dist - horizonRadius) / 28);
-            if (alpha > 0.04) {
-              ctx.fillStyle = p.isAccent
-                ? 'rgba(245, 158, 11, ' + alpha + ')'
-                : 'rgba(248, 250, 252, ' + alpha + ')';
-              ctx.beginPath();
-              ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-              ctx.fill();
-            }
-          }
-        }
-
-        // -------------------------------------------------------------
-        // ATMOSPHERE 03: WARM TITANIUM SLATE (Architectural Slate + Vermilion)
+        // ATMOSPHERE 02: WARM TITANIUM SLATE (Architectural Slate + Vermilion)
         // -------------------------------------------------------------
         let rotX = 0.45;
         let rotY = 0.65;
@@ -831,10 +776,6 @@ export function renderEditorialBroadSheetHero() {
             ctx.fillStyle = '#f4f1ea';
             ctx.fillRect(0, 0, width, height);
             initParticles();
-          } else if (norm === 'twilight') {
-            ctx.fillStyle = '#101726';
-            ctx.fillRect(0, 0, width, height);
-            initParticles();
           } else if (norm === 'titanium') {
             rotX = 0.45;
             rotY = 0.65;
@@ -851,26 +792,13 @@ export function renderEditorialBroadSheetHero() {
             if (docketStatK1) docketStatK1.textContent = 'PAPER STOCK';
             if (docketStatV1) docketStatV1.textContent = 'UNCOATED 300GSM';
             if (docketStatK2) docketStatK2.textContent = 'INK CONTRAST';
-            if (docketStatV2) docketStatV2.textContent = '16.5:1 AAA';
+            if (docketStatV2) docketStatV2.textContent = '11.3:1 AAA';
             if (telemetryCol4) {
               telemetryCol4.textContent = 'Luminous Limestone';
               telemetryCol4.style.color = 'var(--accent-studio)';
             }
-          } else if (atmo === 'twilight') {
-            if (docketLabel) docketLabel.textContent = 'ATMOSPHERE // 002';
-            if (docketId) docketId.textContent = 'CHROMATIC TWILIGHT';
-            if (docketOrbitVal) docketOrbitVal.textContent = 'ORBITAL VELOCITY: 0.98c';
-            if (docketOrbitHint) docketOrbitHint.textContent = 'RICH EVENING LAPIS SKY';
-            if (docketStatK1) docketStatK1.textContent = 'SKY TONE';
-            if (docketStatV1) docketStatV1.textContent = 'DEEP LAPIS COBALT';
-            if (docketStatK2) docketStatK2.textContent = 'CORONA ACCENT';
-            if (docketStatV2) docketStatV2.textContent = 'SOLAR GOLD';
-            if (telemetryCol4) {
-              telemetryCol4.textContent = 'Chromatic Twilight';
-              telemetryCol4.style.color = 'var(--accent-studio)';
-            }
           } else if (atmo === 'titanium') {
-            if (docketLabel) docketLabel.textContent = 'ATMOSPHERE // 003';
+            if (docketLabel) docketLabel.textContent = 'ATMOSPHERE // 002';
             if (docketId) docketId.textContent = '3D ISOMETRIC RASTER';
             if (docketOrbitVal) docketOrbitVal.textContent = 'CAD MATRIX // TITANIUM';
             if (docketOrbitHint) docketOrbitHint.textContent = 'CURSOR VELOCITY DRIVES INERTIA';
@@ -888,7 +816,6 @@ export function renderEditorialBroadSheetHero() {
         function renderFrame() {
           const norm = normalizeAtmo(currentAtmosphere);
           if (norm === 'limestone') drawLimestone();
-          else if (norm === 'twilight') drawTwilight();
           else if (norm === 'titanium') drawTitanium();
           animId = requestAnimationFrame(renderFrame);
         }

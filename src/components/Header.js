@@ -79,9 +79,8 @@ export function renderHeader(activePath = '/') {
           <!-- Minimalist Atmosphere Selector in Header -->
           <div class="header-atmosphere-controls" role="group" aria-label="Visual Atmosphere">
             <span class="atmo-indicator-label">ATMO //</span>
-            <button type="button" class="header-atmo-btn" data-atmo="limestone" title="Mode 01: Luminous Limestone (Daylight Gallery)">01</button>
-            <button type="button" class="header-atmo-btn" data-atmo="twilight" title="Mode 02: Chromatic Twilight (Lapis Cobalt)">02</button>
-            <button type="button" class="header-atmo-btn" data-atmo="titanium" title="Mode 03: Warm Titanium (Mid-Tone Slate)">03</button>
+            <button type="button" class="header-atmo-btn" data-atmo="limestone" title="Mode 01: Luminous Limestone (Warm Gallery Paper)">01</button>
+            <button type="button" class="header-atmo-btn" data-atmo="titanium" title="Mode 02: Warm Titanium (Architectural Slate)">02</button>
           </div>
 
           <!-- Mobile Hamburger Toggle Button -->
@@ -137,15 +136,11 @@ export function renderHeader(activePath = '/') {
             <div class="drawer-atmo-grid">
               <button type="button" class="drawer-atmo-option" data-atmo="limestone">
                 <span class="option-num">01</span>
-                <span class="option-name">Luminous Limestone (Daylight)</span>
-              </button>
-              <button type="button" class="drawer-atmo-option" data-atmo="twilight">
-                <span class="option-num">02</span>
-                <span class="option-name">Chromatic Twilight (Lapis Indigo)</span>
+                <span class="option-name">Luminous Limestone (Warm Paper)</span>
               </button>
               <button type="button" class="drawer-atmo-option" data-atmo="titanium">
-                <span class="option-num">03</span>
-                <span class="option-name">Warm Titanium (Mid-Tone Slate)</span>
+                <span class="option-num">02</span>
+                <span class="option-name">Warm Titanium (Concrete Slate)</span>
               </button>
             </div>
           </div>
