@@ -11,8 +11,11 @@ export function renderGamesPage(articles = []) {
       <div class="pillars-grid">
         ${articles.map(a => `
           <article class="pillar-card">
-            <div class="card-spark" style="background: var(--accent-amber);"></div>
-            <span class="card-tag">${a.categoryLabel || 'DEVLOG'} &bull; ${a.date}</span>
+            <div class="card-meta-line">
+              <span class="card-tag">${a.categoryLabel || 'DEVLOG'}</span>
+              <span class="card-sep">//</span>
+              <span class="card-date">${a.date}</span>
+            </div>
             <h3 class="card-title">${a.title}</h3>
             <p class="card-desc">${a.description}</p>
             <a href="${a.url}" class="card-link">Read Devlog (${a.readingTime}) &rarr;</a>
@@ -25,7 +28,7 @@ export function renderGamesPage(articles = []) {
   const content = `
     <div class="container page-content">
       <div class="page-header">
-        <span class="mono-label">DIVISION / GAMES</span>
+        <span class="mono-label">DIVISION // GAMES</span>
         <h1>Interactive Systems & Worlds</h1>
         <p class="lead">
           We build systems-driven video games rooted in distinctive art direction and emergent gameplay mechanics.
@@ -34,8 +37,9 @@ export function renderGamesPage(articles = []) {
 
       <div class="status-card" style="margin-bottom: 3.5rem;">
         <div class="status-indicator">
-          <span class="pulse-dot"></span>
-          <span class="status-title">ACTIVE R&D IN PROGRESS</span>
+          <span class="status-kicker">[RESEARCH REGISTER]</span>
+          <span class="status-sep">//</span>
+          <span class="status-title">ACTIVE R&D</span>
         </div>
         <p class="status-body">
           The studio is actively exploring mechanics for our inaugural game projects. Early devlogs, architectural post-mortems, and playable prototypes are published directly below.
@@ -48,7 +52,7 @@ export function renderGamesPage(articles = []) {
 
   return renderBaseLayout({
     title: 'Games & Interactive Systems — Primordial Paradigm',
-    description: 'Independent video games and interactive systems exploring emergent play mechanics and atmospheric worldbuilding.',
+    description: 'Original video games, experimental physics prototypes, and interactive systems by Primordial Paradigm.',
     canonicalPath: '/games/',
     content
   });

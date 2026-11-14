@@ -26,7 +26,6 @@ export function renderFooter() {
           </div>
 
           <div class="footer-telemetry-badge">
-            <span class="telemetry-beacon-dot"></span>
             <div class="telemetry-badge-content">
               <span class="telemetry-badge-title">STUDIO NODE // PRODUCTION</span>
               <span class="telemetry-badge-detail">SECTOR: 01 &bull; BANGALORE &bull; UTC+5:30</span>

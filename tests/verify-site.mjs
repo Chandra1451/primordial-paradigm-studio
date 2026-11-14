@@ -255,10 +255,24 @@ try {
 
       // Test zero overflow
       const zeroOverflow = metrics.scrollWidth <= vp.width + 1;
-      recordCheck(`${route} [${vp.name}] zero-horizontal-overflow`, zeroOverflow, {
+      let overflowDetail = {
         innerWidth: metrics.innerWidth,
         scrollWidth: metrics.scrollWidth
-      });
+      };
+      if (!zeroOverflow) {
+        const culprits = await evaluate(`(() => {
+          const els = [];
+          document.querySelectorAll('*').forEach(el => {
+            const r = el.getBoundingClientRect();
+            if (r.right > ${vp.width} + 1) {
+              els.push({ tag: el.tagName, class: el.className, right: Math.round(r.right), width: Math.round(r.width) });
+            }
+          });
+          return els.slice(0, 10);
+        })()`);
+        overflowDetail.culprits = culprits;
+      }
+      recordCheck(`${route} [${vp.name}] zero-horizontal-overflow`, zeroOverflow, overflowDetail);
 
       // Test single H1 landmark
       recordCheck(`${route} [${vp.name}] single-h1-landmark`, metrics.hasH1);

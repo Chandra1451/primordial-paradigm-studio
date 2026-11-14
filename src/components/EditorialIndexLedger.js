@@ -337,20 +337,20 @@ export function renderEditorialIndexLedger() {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 38px;
-        height: 38px;
-        border-radius: 50%;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        color: var(--text-primary);
+        width: 36px;
+        height: 36px;
+        border-radius: 0px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #f4f4f5;
         font-family: var(--font-mono);
         font-size: 1.1rem;
-        transition: all 200ms ease;
+        transition: all 160ms ease;
       }
 
       .ledger-row:hover .ledger-arrow {
-        background: var(--accent-amber);
-        border-color: var(--accent-amber);
-        color: #06070a;
+        background: #f4f4f5;
+        border-color: #f4f4f5;
+        color: #07080a;
         transform: translateX(4px);
       }
 
@@ -446,9 +446,9 @@ export function renderEditorialIndexLedger() {
 
       /* Archival Specs Box (Right Column) */
       .archival-specs-box {
-        background: rgba(10, 12, 18, 0.75);
+        background: rgba(13, 14, 19, 0.85);
         border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: var(--radius-md);
+        border-radius: 0px;
         padding: clamp(1.5rem, 3vw, 2rem);
         backdrop-filter: blur(12px);
       }
@@ -512,7 +512,7 @@ export function renderEditorialIndexLedger() {
         justify-content: space-between;
         width: 100%;
         padding: 0.85rem 1.25rem;
-        border-radius: var(--radius-sm);
+        border-radius: 0px;
         background: rgba(255, 255, 255, 0.04);
         border: 1px solid rgba(255, 255, 255, 0.12);
         color: var(--text-primary);

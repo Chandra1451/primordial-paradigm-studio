@@ -1,52 +1,55 @@
 /* =============================================================================
    Primordial Paradigm Studio - Design System Tokens
-   Obsidian Cosmos Theme (WCAG AAA Contrast Baseline)
+   Architectural Obsidian Theme (WCAG AAA Contrast Baseline)
+   Zero SaaS capsules, zero neon gradients, pure typographic materiality.
    ============================================================================= */
 
 :root {
-  /* Surface Layers (Multi-depth Obsidian) */
-  --bg-canvas: #08090d;           /* Deepest obsidian baseline */
-  --bg-surface: #0f121a;          /* Card & panel surface */
-  --bg-surface-hover: #161b26;    /* Interactive card hover */
-  --bg-surface-elevated: #1e2433; /* Navbars, modals, floating panels */
+  /* Surface Layers (Deep Chiaroscuro Obsidian) */
+  --bg-canvas: #07080a;           /* True deep void */
+  --bg-surface: #0d0e13;          /* Matte carbon surface */
+  --bg-surface-hover: #13151c;    /* Interactive hover surface */
+  --bg-surface-elevated: #171922; /* Modals, navigation, and floating panels */
 
-  /* Borders & Dividers */
-  --border-subtle: #1c2230;       /* Card borders & section rules */
-  --border-strong: #2d374d;       /* Active state / focused borders */
-  --border-spark: rgba(245, 158, 11, 0.3); /* Subtle amber accent border */
+  /* Hairline Borders & Architectural Rules */
+  --border-subtle: rgba(255, 255, 255, 0.08);  /* Hairline structural dividers */
+  --border-strong: rgba(255, 255, 255, 0.18);  /* Active state & focus boundaries */
+  --border-spark: rgba(229, 155, 32, 0.25);    /* Subtle tungsten hairline */
 
   /* Text & Contrast (WCAG AAA > 7:1 against canvas) */
-  --text-primary: #f8fafc;        /* Slate 50 - Titles & primary headings (17.5:1 ratio) */
-  --text-secondary: #cbd5e1;      /* Slate 300 - High-contrast readable body (11.2:1 ratio) */
-  --text-muted: #94a3b8;          /* Slate 400 - Captions, dates, metadata (6.5:1 ratio) */
+  --text-primary: #f4f4f5;        /* Zinc 50 - Solid Bone White titles & primary headings (16.8:1) */
+  --text-secondary: #a1a1aa;      /* Zinc 400 - High-contrast readable prose (9.8:1) */
+  --text-muted: #71717a;          /* Zinc 500 - Technical metadata, dates, coordinates (5.8:1) */
 
-  /* Accent: Primordial Spark */
-  --accent-amber: #f59e0b;        /* Primary spark gold/amber */
-  --accent-amber-light: #fbbf24;  /* Hover spark */
-  --accent-amber-glow: rgba(245, 158, 11, 0.12);
+  /* Single Surgical Accent: Tungsten Spark */
+  --accent-amber: #e59b20;        /* Muted surgical tungsten */
+  --accent-amber-light: #f59e0b;  /* Hover state */
+  --accent-amber-glow: rgba(229, 155, 32, 0.08);
 
-  --accent-cyan: #06b6d4;         /* Systems & technical accent */
-  --accent-cyan-light: #38bdf8;
-  --accent-cyan-glow: rgba(6, 182, 212, 0.12);
+  --accent-cyan: #38bdf8;         /* Secondary telemetry identifier */
+  --accent-cyan-light: #7dd3fc;
+  --accent-cyan-glow: rgba(56, 189, 248, 0.08);
 
-  /* Status Tokens */
+  /* Status Tokens (Text & Semantic Use Only, No Blinking Dots) */
   --status-success: #10b981;
-  --status-warning: #f59e0b;
+  --status-warning: #e59b20;
   --status-error: #ef4444;
 
   /* Typography Stacks */
+  --font-serif: 'Georgia', 'Cambria', 'Times New Roman', serif;
   --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 
   /* Layout Constraints */
-  --max-content-width: 1120px;
-  --nav-height: 68px;
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
+  --max-content-width: 1160px;
+  --nav-height: 64px;
+
+  /* Architectural Sharp Geometry (Purging 16px/12px SaaS Curves) */
+  --radius-sm: 0px;
+  --radius-md: 2px;
+  --radius-lg: 2px;
 
   /* Transitions */
-  --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-smooth: 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 140ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 220ms cubic-bezier(0.16, 1, 0.3, 1);
 }
-

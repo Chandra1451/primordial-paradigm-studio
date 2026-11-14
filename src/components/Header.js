@@ -1,21 +1,20 @@
 // =============================================================================
 // Primordial Paradigm Studio - Header Component
-// Sticky glassmorphic masthead with desktop navigation, live status beacon,
-// accessibility skip-link, and accessible responsive mobile drawer.
+// Minimalist architectural masthead: sharp hairline rule, solid bone typography,
+// quiet monospace directory links, and accessible mobile drawer (zero SaaS capsules).
 // =============================================================================
 
 import { renderFirstFormMonogram } from './FirstFormMonogram.js';
 
 export function renderHeader(activePath = '/') {
   const navLinks = [
-    { href: '/games/', label: 'Games' },
-    { href: '/learn/', label: 'Learn' },
-    { href: '/services/', label: 'Services' },
-    { href: '/about/', label: 'About' }
+    { href: '/games/', label: 'GAMES' },
+    { href: '/learn/', label: 'LEARN' },
+    { href: '/services/', label: 'SERVICES' },
+    { href: '/about/', label: 'ABOUT' }
   ];
 
   const linksHtml = navLinks.map(link => {
-    // Normalise comparison: remove trailing slash for prefix matching or match exact
     const linkBase = link.href.replace(/\/$/, '');
     const isActive = activePath === link.href || (linkBase.length > 1 && activePath.startsWith(linkBase));
     return `
@@ -26,7 +25,7 @@ export function renderHeader(activePath = '/') {
           ${isActive ? 'aria-current="page"' : ''}
         >
           <span class="nav-link-text">${link.label}</span>
-          ${isActive ? '<span class="nav-active-pip" aria-hidden="true"></span>' : ''}
+          ${isActive ? '<span class="nav-active-rule" aria-hidden="true"></span>' : ''}
         </a>
       </li>
     `;
@@ -57,14 +56,14 @@ export function renderHeader(activePath = '/') {
     <header class="studio-header" id="studioHeader">
       <div class="container header-inner">
         
-        <!-- Brand Masthead Lockup -->
+        <!-- Architectural Brand Masthead -->
         <a href="/" class="brand-masthead" aria-label="Primordial Paradigm Homepage">
           <div class="brand-icon-wrap" aria-hidden="true">
-            ${renderFirstFormMonogram({ size: 28 })}
+            ${renderFirstFormMonogram({ size: 26, sparkColor: '#f4f4f5' })}
           </div>
           <div class="brand-text">
             <span class="brand-name">PRIMORDIAL PARADIGM</span>
-            <span class="brand-tag">ATELIER // R&D</span>
+            <span class="brand-tag">STUDIO // SYSTEMS ATELIER</span>
           </div>
         </a>
 
@@ -75,12 +74,13 @@ export function renderHeader(activePath = '/') {
           </ul>
         </nav>
 
-        <!-- Right Utility & Mobile Toggle Dock -->
+        <!-- Right Utility & Mobile Toggle -->
         <div class="header-dock">
-          <!-- Studio Status Beacon -->
-          <div class="studio-status-pill" title="Studio operational state">
-            <span class="status-beacon-spark" aria-hidden="true"></span>
-            <span class="status-beacon-text">ACTIVE R&D</span>
+          <!-- Minimalist Architectural Sector Stamp -->
+          <div class="header-sector-stamp">
+            <span class="sector-code">SEC.01</span>
+            <span class="sector-sep">//</span>
+            <span class="sector-state">ACTIVE</span>
           </div>
 
           <!-- Mobile Hamburger Toggle Button -->
@@ -132,16 +132,16 @@ export function renderHeader(activePath = '/') {
 
           <div class="mobile-drawer-footer">
             <div class="drawer-telemetry-row">
-              <span class="telemetry-label">SECTOR:</span>
+              <span class="telemetry-label">SECTOR</span>
               <span class="telemetry-val">01 // DEEP SYSTEMS</span>
             </div>
             <div class="drawer-telemetry-row">
-              <span class="telemetry-label">COORDINATES:</span>
-              <span class="telemetry-val">37.77° N, -122.41° W</span>
+              <span class="telemetry-label">LOCATION</span>
+              <span class="telemetry-val">BANGALORE // UTC+5:30</span>
             </div>
             <div class="drawer-telemetry-row">
-              <span class="telemetry-label">STATE:</span>
-              <span class="telemetry-val highlight-amber">DETERMINISTIC BUILD</span>
+              <span class="telemetry-label">ARCHITECTURE</span>
+              <span class="telemetry-val text-bone">DETERMINISTIC</span>
             </div>
           </div>
         </div>
@@ -200,9 +200,9 @@ export function renderHeader(activePath = '/') {
           });
         });
 
-        // Sticky header scroll shadow refinement
+        // Sticky header hairline shadow on scroll
         window.addEventListener('scroll', function() {
-          if (window.scrollY > 20) {
+          if (window.scrollY > 16) {
             header.classList.add('is-scrolled');
           } else {
             header.classList.remove('is-scrolled');

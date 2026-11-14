@@ -13,17 +13,16 @@ export function renderExplorePage() {
         <!-- Eyebrow & Headline -->
         <div class="hero-top-bar" style="margin-bottom: var(--space-xs);">
           <span class="studio-badge">
-            <span class="badge-dot"></span>
             PP-STUDIO-13 // CREATIVE VISUAL LAB
           </span>
           <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">
-            OBSIDIAN COSMOS 2.0
+            ARCHITECTURAL OBSIDIAN
           </span>
         </div>
 
         <h1 class="hero-headline" style="font-size: clamp(2.2rem, 5vw, 3.5rem); margin-bottom: var(--space-sm);">
           Evolving Beyond the <br />
-          <span class="gradient-text">Standard Template.</span>
+          <span class="headline-solid">Standard Template.</span>
         </h1>
 
         <p class="hero-lead" style="max-width: 720px; margin-bottom: var(--space-xl);">
@@ -47,8 +46,7 @@ export function renderExplorePage() {
           <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: var(--space-lg); margin-top: var(--space-xl);">
             
             <!-- Architecture Option 1 -->
-            <article class="pillar-card" style="border-color: rgba(245, 158, 11, 0.25);">
-              <div class="card-spark spark-amber"></div>
+            <article class="pillar-card" style="border-color: rgba(229, 155, 32, 0.25);">
               <span class="card-tag">CONCEPT 01 // EDITORIAL MONOLITH</span>
               <h3 class="card-title" style="font-size: 1.3rem;">Cinematic Viewport + Research Cassettes</h3>
               <p class="card-desc">
@@ -60,8 +58,7 @@ export function renderExplorePage() {
             </article>
 
             <!-- Architecture Option 2 -->
-            <article class="pillar-card" style="border-color: rgba(6, 182, 212, 0.25);">
-              <div class="card-spark spark-cyan"></div>
+            <article class="pillar-card" style="border-color: rgba(56, 189, 248, 0.25);">
               <span class="card-tag">CONCEPT 02 // CAD BLUEPRINT & DOSSIER</span>
               <h3 class="card-title" style="font-size: 1.3rem;">Tactical Grid + Parameter Deck</h3>
               <p class="card-desc">
@@ -74,7 +71,6 @@ export function renderExplorePage() {
 
             <!-- Architecture Option 3 -->
             <article class="pillar-card" style="border-color: rgba(255, 255, 255, 0.15);">
-              <div class="card-spark spark-slate"></div>
               <span class="card-tag">CONCEPT 03 // ISOMETRIC GEOMETRY CORE</span>
               <h3 class="card-title" style="font-size: 1.3rem;">3D Monumental Brutalism</h3>
               <p class="card-desc">

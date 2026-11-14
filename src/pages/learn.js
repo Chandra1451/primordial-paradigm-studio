@@ -11,8 +11,11 @@ export function renderLearnPage(articles = []) {
       <div class="pillars-grid">
         ${articles.map(a => `
           <article class="pillar-card">
-            <div class="card-spark" style="background: var(--accent-cyan);"></div>
-            <span class="card-tag">${a.categoryLabel || 'SYSTEMS ESSAY'} &bull; ${a.date}</span>
+            <div class="card-meta-line">
+              <span class="card-tag">${a.categoryLabel || 'SYSTEMS ESSAY'}</span>
+              <span class="card-sep">//</span>
+              <span class="card-date">${a.date}</span>
+            </div>
             <h3 class="card-title">${a.title}</h3>
             <p class="card-desc">${a.description}</p>
             <a href="${a.url}" class="card-link">Read Deep-Dive (${a.readingTime}) &rarr;</a>
@@ -25,7 +28,7 @@ export function renderLearnPage(articles = []) {
   const content = `
     <div class="container page-content">
       <div class="page-header">
-        <span class="mono-label">DIVISION / RESEARCH & LEARNING</span>
+        <span class="mono-label">DIVISION // RESEARCH & LEARNING</span>
         <h1>Systems Architecture & Essays</h1>
         <p class="lead">
           High-value, deep-dive technical essays exploring the intersection of creative engineering, data architecture, and game systems.
@@ -34,7 +37,8 @@ export function renderLearnPage(articles = []) {
 
       <div class="status-card" style="margin-bottom: 3.5rem;">
         <div class="status-indicator">
-          <span class="pulse-dot" style="background-color: var(--accent-cyan); box-shadow: 0 0 10px var(--accent-cyan);"></span>
+          <span class="status-kicker">[PUBLICATION REGISTER]</span>
+          <span class="status-sep">//</span>
           <span class="status-title">VALUABLE CONTENT FRAMEWORK</span>
         </div>
         <p class="status-body">
