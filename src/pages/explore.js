@@ -4,6 +4,7 @@
 
 import { renderBaseLayout } from '../layouts/BaseLayout.js';
 import { renderCreativeStudioLab } from '../components/CreativeStudioLab.js';
+import { renderCraftSwitcher } from '../components/CraftSwitcher.js';
 
 export function renderExplorePage() {
   const content = `
@@ -102,6 +103,9 @@ export function renderExplorePage() {
         </div>
       </div>
     </section>
+
+    <!-- Discrete Floating Creative Direction Switcher Dock -->
+    ${renderCraftSwitcher('03')}
   `.trim();
 
   return renderBaseLayout({
