@@ -1,42 +1,45 @@
 // =============================================================================
-// Primordial Paradigm Studio - Architectural Direction Comparator Dock
-// Minimalist, sharp architectural dock allowing owner & visitors to compare
-// Option 1 (Editorial Broad-Sheet), Option 3 (Specimen Atelier), and Motion Lab.
-// Zero 9999px bubble capsules, zero pulsing dots; pure Swiss architectural framing.
+// Primordial Paradigm Studio - Atmospheric Visitor Switcher Dock
+// Sleek, sharp architectural dock allowing visitors to switch between the 3
+// human-crafted creative atmospheres site-wide (Cosmic, Blueprint, Surrealism).
+// Zero 9999px bubble capsules; pure Swiss architectural framing.
 // =============================================================================
 
-export function renderCraftSwitcher(currentActive = '01') {
+export function renderCraftSwitcher() {
   return `
-    <aside class="craft-switcher-dock" id="craftSwitcherDock" aria-label="Studio Creative Directions Switcher">
+    <aside class="craft-switcher-dock" id="craftSwitcherDock" aria-label="Studio Creative Atmosphere Switcher">
       <div class="switcher-inner">
         <div class="switcher-meta">
-          <span class="switcher-title">DIRECTION //</span>
+          <span class="switcher-title">ATMOSPHERE //</span>
         </div>
-        <div class="switcher-pills" role="navigation" aria-label="Creative Variations">
-          <a
-            href="/"
-            class="switcher-pill ${currentActive === '01' ? 'is-active' : ''}"
-            title="Option 1: Editorial Broad-Sheet with Singularity Canvas"
+        <div class="switcher-pills" role="toolbar" aria-label="Atmosphere Modes">
+          <button
+            type="button"
+            class="switcher-pill"
+            data-atmo="chiaroscuro"
+            title="Mode 01: Cosmic Chiaroscuro (Remedy / Control + Christopher Nolan)"
           >
             <span class="pill-num">01</span>
-            <span class="pill-label">EDITORIAL</span>
-          </a>
-          <a
-            href="/specimen/"
-            class="switcher-pill ${currentActive === '02' ? 'is-active' : ''}"
-            title="Option 3: Living Specimen Atelier with Playable Craft"
+            <span class="pill-label">COSMIC</span>
+          </button>
+          <button
+            type="button"
+            class="switcher-pill"
+            data-atmo="blueprint"
+            title="Mode 02: Vector Blueprint (Bungie Marathon + Kurppa Hosk)"
           >
             <span class="pill-num">02</span>
-            <span class="pill-label">SPECIMEN</span>
-          </a>
-          <a
-            href="/explore/"
-            class="switcher-pill ${currentActive === '03' ? 'is-active' : ''}"
-            title="Motion Lab: Real-time 3-Physics Engine Playground"
+            <span class="pill-label">BLUEPRINT</span>
+          </button>
+          <button
+            type="button"
+            class="switcher-pill"
+            data-atmo="surrealism"
+            title="Mode 03: Atmospheric Surrealism (Playdead Inside + Fumito Ueda)"
           >
             <span class="pill-num">03</span>
-            <span class="pill-label">LAB</span>
-          </a>
+            <span class="pill-label">SURREALISM</span>
+          </button>
         </div>
       </div>
     </aside>

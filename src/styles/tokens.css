@@ -1,38 +1,45 @@
 /* =============================================================================
    Primordial Paradigm Studio - Design System Tokens
-   Architectural Obsidian Theme (WCAG AAA Contrast Baseline)
-   Zero SaaS capsules, zero neon gradients, pure typographic materiality.
+   Architectural Obsidian Theme & Dynamic Atmosphere Color Worlds
+   (WCAG AAA Contrast Baseline across all 3 themes)
+   Zero generic AI amber/zinc templates; pure human-crafted studio palettes.
    ============================================================================= */
 
-:root {
-  /* Surface Layers (Deep Chiaroscuro Obsidian) */
-  --bg-canvas: #07080a;           /* True deep void */
-  --bg-surface: #0d0e13;          /* Matte carbon surface */
-  --bg-surface-hover: #13151c;    /* Interactive hover surface */
-  --bg-surface-elevated: #171922; /* Modals, navigation, and floating panels */
+:root,
+[data-atmosphere="chiaroscuro"] {
+  /* 01. Cosmic Chiaroscuro (Remedy / Control + Christopher Nolan Interstellar) */
+  --bg-canvas: #050608;           /* True deep void */
+  --bg-surface: #0b0c10;          /* Deep obsidian carbon */
+  --bg-surface-hover: #111318;    /* Interactive hover surface */
+  --bg-surface-elevated: #161820; /* Modals, navigation, and floating docks */
 
-  /* Hairline Borders & Architectural Rules */
-  --border-subtle: rgba(255, 255, 255, 0.08);  /* Hairline structural dividers */
-  --border-strong: rgba(255, 255, 255, 0.18);  /* Active state & focus boundaries */
-  --border-spark: rgba(229, 155, 32, 0.25);    /* Subtle tungsten hairline */
+  /* Hairline Structural Rules */
+  --border-subtle: rgba(232, 236, 242, 0.08);
+  --border-strong: rgba(232, 236, 242, 0.20);
 
-  /* Text & Contrast (WCAG AAA > 7:1 against canvas) */
-  --text-primary: #f4f4f5;        /* Zinc 50 - Solid Bone White titles & primary headings (16.8:1) */
-  --text-secondary: #a1a1aa;      /* Zinc 400 - High-contrast readable prose (9.8:1) */
-  --text-muted: #71717a;          /* Zinc 500 - Technical metadata, dates, coordinates (5.8:1) */
+  /* Typography (WCAG AAA > 7:1 against canvas) */
+  --text-primary: #e8ecf2;        /* Cold Starlight Bone White */
+  --text-secondary: #9aa2b1;      /* High-contrast lunar silver */
+  --text-muted: #6b7382;          /* Technical metadata */
 
-  /* Single Surgical Accent: Tungsten Spark */
-  --accent-amber: #e59b20;        /* Muted surgical tungsten */
-  --accent-amber-light: #f59e0b;  /* Hover state */
-  --accent-amber-glow: rgba(229, 155, 32, 0.08);
+  /* Accent: Remedy Crimson Redshift (replaces generic Tailwind amber) */
+  --accent-studio: #c82b20;
+  --accent-studio-hover: #e03528;
+  --accent-studio-glow: rgba(200, 43, 32, 0.18);
+  --border-spark: rgba(200, 43, 32, 0.35);
 
-  --accent-cyan: #38bdf8;         /* Secondary telemetry identifier */
-  --accent-cyan-light: #7dd3fc;
-  --accent-cyan-glow: rgba(56, 189, 248, 0.08);
+  /* Backward compatibility alias */
+  --accent-amber: var(--accent-studio);
+  --accent-amber-light: var(--accent-studio-hover);
+  --accent-amber-glow: var(--accent-studio-glow);
 
-  /* Status Tokens (Text & Semantic Use Only, No Blinking Dots) */
+  --accent-cyan: #9aa2b1;
+  --accent-cyan-light: #e8ecf2;
+  --accent-cyan-glow: rgba(232, 236, 242, 0.1);
+
+  /* Status Tokens */
   --status-success: #10b981;
-  --status-warning: #e59b20;
+  --status-warning: #c82b20;
   --status-error: #ef4444;
 
   /* Typography Stacks */
@@ -44,7 +51,7 @@
   --max-content-width: 1160px;
   --nav-height: 64px;
 
-  /* Architectural Sharp Geometry (Purging 16px/12px SaaS Curves) */
+  /* Architectural Sharp Geometry */
   --radius-sm: 0px;
   --radius-md: 2px;
   --radius-lg: 2px;
@@ -52,4 +59,62 @@
   /* Transitions */
   --transition-fast: 140ms cubic-bezier(0.16, 1, 0.3, 1);
   --transition-smooth: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 02. Vector Blueprint (Bungie Marathon + Kurppa Hosk + Teenage Engineering) */
+[data-atmosphere="blueprint"] {
+  --bg-canvas: #0c0d10;           /* Industrial Matte Carbon */
+  --bg-surface: #13151b;          /* Drafting surface */
+  --bg-surface-hover: #1a1d26;
+  --bg-surface-elevated: #202430;
+
+  --border-subtle: rgba(240, 242, 245, 0.10);
+  --border-strong: rgba(240, 242, 245, 0.25);
+
+  --text-primary: #f0f2f5;        /* Crisp Technical Signal White */
+  --text-secondary: #94a3b8;      /* Cold engineering slate */
+  --text-muted: #64748b;
+
+  /* Accent: NASA Flight Signal Orange (High-intensity mechanical pigment) */
+  --accent-studio: #ff4d00;
+  --accent-studio-hover: #ff661a;
+  --accent-studio-glow: rgba(255, 77, 0, 0.22);
+  --border-spark: rgba(255, 77, 0, 0.40);
+
+  --accent-amber: var(--accent-studio);
+  --accent-amber-light: var(--accent-studio-hover);
+  --accent-amber-glow: var(--accent-studio-glow);
+
+  --accent-cyan: #38bdf8;
+  --accent-cyan-light: #7dd3fc;
+  --accent-cyan-glow: rgba(56, 189, 248, 0.12);
+}
+
+/* 03. Atmospheric Surrealism (Playdead Inside / Limbo + Fumito Ueda) */
+[data-atmosphere="surrealism"] {
+  --bg-canvas: #0a0e14;           /* Deep Fog Slate */
+  --bg-surface: #101620;          /* Monolith surface */
+  --bg-surface-hover: #17202d;
+  --bg-surface-elevated: #1e2a3b;
+
+  --border-subtle: rgba(209, 215, 224, 0.08);
+  --border-strong: rgba(209, 215, 224, 0.20);
+
+  --text-primary: #d1d7e0;        /* Pale Silver Mist */
+  --text-secondary: #8b949e;      /* Ghostly charcoal */
+  --text-muted: #5c6773;
+
+  /* Accent: Subdued Lichen Teal / Ethereal Fog Aqua */
+  --accent-studio: #486b72;
+  --accent-studio-hover: #5d858d;
+  --accent-studio-glow: rgba(72, 107, 114, 0.25);
+  --border-spark: rgba(72, 107, 114, 0.40);
+
+  --accent-amber: var(--accent-studio);
+  --accent-amber-light: var(--accent-studio-hover);
+  --accent-amber-glow: var(--accent-studio-glow);
+
+  --accent-cyan: #486b72;
+  --accent-cyan-light: #5d858d;
+  --accent-cyan-glow: rgba(72, 107, 114, 0.25);
 }

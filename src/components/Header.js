@@ -76,11 +76,12 @@ export function renderHeader(activePath = '/') {
 
         <!-- Right Utility & Mobile Toggle -->
         <div class="header-dock">
-          <!-- Minimalist Architectural Sector Stamp -->
-          <div class="header-sector-stamp">
-            <span class="sector-code">SEC.01</span>
-            <span class="sector-sep">//</span>
-            <span class="sector-state">ACTIVE</span>
+          <!-- Minimalist Atmosphere Selector in Header -->
+          <div class="header-atmosphere-controls" role="group" aria-label="Visual Atmosphere">
+            <span class="atmo-indicator-label">ATMO //</span>
+            <button type="button" class="header-atmo-btn" data-atmo="chiaroscuro" title="Mode 01: Cosmic Chiaroscuro">01</button>
+            <button type="button" class="header-atmo-btn" data-atmo="blueprint" title="Mode 02: Vector Blueprint">02</button>
+            <button type="button" class="header-atmo-btn" data-atmo="surrealism" title="Mode 03: Atmospheric Surrealism">03</button>
           </div>
 
           <!-- Mobile Hamburger Toggle Button -->
@@ -129,6 +130,25 @@ export function renderHeader(activePath = '/') {
               ${mobileLinksHtml}
             </ul>
           </nav>
+
+          <!-- Mobile Drawer Atmosphere Selection -->
+          <div class="drawer-atmo-section">
+            <div class="drawer-atmo-title">[CREATIVE ATMOSPHERE]</div>
+            <div class="drawer-atmo-grid">
+              <button type="button" class="drawer-atmo-option" data-atmo="chiaroscuro">
+                <span class="option-num">01</span>
+                <span class="option-name">Cosmic Chiaroscuro</span>
+              </button>
+              <button type="button" class="drawer-atmo-option" data-atmo="blueprint">
+                <span class="option-num">02</span>
+                <span class="option-name">Vector Blueprint</span>
+              </button>
+              <button type="button" class="drawer-atmo-option" data-atmo="surrealism">
+                <span class="option-num">03</span>
+                <span class="option-name">Atmospheric Surrealism</span>
+              </button>
+            </div>
+          </div>
 
           <div class="mobile-drawer-footer">
             <div class="drawer-telemetry-row">

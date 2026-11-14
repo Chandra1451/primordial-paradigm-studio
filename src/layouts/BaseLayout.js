@@ -5,6 +5,7 @@
 
 import { renderHeader } from '../components/Header.js';
 import { renderFooter } from '../components/Footer.js';
+import { renderCraftSwitcher } from '../components/CraftSwitcher.js';
 
 export function renderBaseLayout({
   title = 'Primordial Paradigm — Independent Game & Creative Tech Studio',
@@ -58,7 +59,22 @@ export function renderBaseLayout({
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <!-- Design System Tokens & Global Styles -->
+    <link rel="stylesheet" href="/styles/tokens.css" />
     <link rel="stylesheet" href="/styles/global.css" />
+
+    <!-- Immediate Atmosphere Token Initialization (Zero FOUC) -->
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('pp_atmosphere');
+          if (saved && (saved === 'chiaroscuro' || saved === 'blueprint' || saved === 'surrealism')) {
+            document.documentElement.setAttribute('data-atmosphere', saved);
+          } else {
+            document.documentElement.setAttribute('data-atmosphere', 'chiaroscuro');
+          }
+        } catch(e) {}
+      })();
+    </script>
 
     <!-- Google Consent Mode v2 (Default: Denied / Zero Telemetry) -->
     <script>
@@ -83,7 +99,44 @@ ${JSON.stringify(schemaData, null, 2)}
     <main id="main-content">
       ${content}
     </main>
+    ${renderCraftSwitcher()}
     ${renderFooter()}
+
+    <!-- Site-Wide Atmosphere Synchronization Controller -->
+    <script>
+      (function() {
+        function setAtmosphere(atmo) {
+          if (!['chiaroscuro', 'blueprint', 'surrealism'].includes(atmo)) return;
+          document.documentElement.setAttribute('data-atmosphere', atmo);
+          try { localStorage.setItem('pp_atmosphere', atmo); } catch(e) {}
+          
+          document.querySelectorAll('[data-atmo]').forEach(function(btn) {
+            var isActive = btn.getAttribute('data-atmo') === atmo;
+            btn.classList.toggle('active', isActive);
+            btn.classList.toggle('is-active', isActive);
+            btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+          });
+
+          window.dispatchEvent(new CustomEvent('pp:atmosphere-changed', { detail: { atmosphere: atmo } }));
+        }
+
+        window.__setAtmosphere = setAtmosphere;
+
+        // Attach click listeners to all atmosphere buttons
+        document.addEventListener('click', function(e) {
+          var btn = e.target.closest('[data-atmo]');
+          if (btn) {
+            e.preventDefault();
+            var atmo = btn.getAttribute('data-atmo');
+            if (atmo) setAtmosphere(atmo);
+          }
+        });
+
+        // Initialize active button states
+        var current = document.documentElement.getAttribute('data-atmosphere') || 'chiaroscuro';
+        setAtmosphere(current);
+      })();
+    </script>
   </body>
 </html>`.trim();
 }

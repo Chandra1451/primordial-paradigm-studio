@@ -6,7 +6,6 @@
 import { renderBaseLayout } from '../layouts/BaseLayout.js';
 import { renderLivingSpecimenHero } from '../components/LivingSpecimenHero.js';
 import { renderSpecimenReel } from '../components/SpecimenReel.js';
-import { renderCraftSwitcher } from '../components/CraftSwitcher.js';
 
 export function renderSpecimenPage() {
   const content = `
@@ -15,9 +14,6 @@ export function renderSpecimenPage() {
 
     <!-- 2. Architectural Specimen Reel & Engineering Colophon -->
     ${renderSpecimenReel()}
-
-    <!-- 3. Discrete Floating Creative Direction Switcher Dock -->
-    ${renderCraftSwitcher('02')}
   `.trim();
 
   return renderBaseLayout({

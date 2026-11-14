@@ -7,18 +7,14 @@
 import { renderBaseLayout } from '../layouts/BaseLayout.js';
 import { renderEditorialBroadSheetHero } from '../components/EditorialBroadSheetHero.js';
 import { renderEditorialIndexLedger } from '../components/EditorialIndexLedger.js';
-import { renderCraftSwitcher } from '../components/CraftSwitcher.js';
 
 export function renderHomePage() {
   const content = `
-    <!-- 1. Editorial Broad-Sheet Hero with Gravitational Singularity Canvas -->
+    <!-- 1. Editorial Broad-Sheet Hero with Multi-Atmosphere Engine -->
     ${renderEditorialBroadSheetHero()}
 
     <!-- 2. Archival Project Ledger & Broadsheet Colophon -->
     ${renderEditorialIndexLedger()}
-
-    <!-- 3. Discrete Floating Creative Direction Switcher Dock -->
-    ${renderCraftSwitcher('01')}
   `.trim();
 
   return renderBaseLayout({
