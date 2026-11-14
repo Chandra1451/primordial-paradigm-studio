@@ -67,10 +67,13 @@ export function renderBaseLayout({
       (function() {
         try {
           var saved = localStorage.getItem('pp_atmosphere');
-          if (saved && (saved === 'chiaroscuro' || saved === 'blueprint' || saved === 'surrealism')) {
+          if (saved === 'chiaroscuro') saved = 'twilight';
+          if (saved === 'blueprint') saved = 'titanium';
+          if (saved === 'surrealism') saved = 'limestone';
+          if (saved && (saved === 'limestone' || saved === 'twilight' || saved === 'titanium')) {
             document.documentElement.setAttribute('data-atmosphere', saved);
           } else {
-            document.documentElement.setAttribute('data-atmosphere', 'chiaroscuro');
+            document.documentElement.setAttribute('data-atmosphere', 'limestone');
           }
         } catch(e) {}
       })();
@@ -105,19 +108,29 @@ ${JSON.stringify(schemaData, null, 2)}
     <!-- Site-Wide Atmosphere Synchronization Controller -->
     <script>
       (function() {
+        const VALID_ATMOSPHERES = ['limestone', 'twilight', 'titanium'];
+
+        function normalizeAtmosphere(atmo) {
+          if (atmo === 'chiaroscuro') return 'twilight';
+          if (atmo === 'blueprint') return 'titanium';
+          if (atmo === 'surrealism' || atmo === 'dawn') return 'limestone';
+          return VALID_ATMOSPHERES.includes(atmo) ? atmo : 'limestone';
+        }
+
         function setAtmosphere(atmo) {
-          if (!['chiaroscuro', 'blueprint', 'surrealism'].includes(atmo)) return;
-          document.documentElement.setAttribute('data-atmosphere', atmo);
-          try { localStorage.setItem('pp_atmosphere', atmo); } catch(e) {}
+          var normalized = normalizeAtmosphere(atmo);
+          document.documentElement.setAttribute('data-atmosphere', normalized);
+          try { localStorage.setItem('pp_atmosphere', normalized); } catch(e) {}
           
           document.querySelectorAll('[data-atmo]').forEach(function(btn) {
-            var isActive = btn.getAttribute('data-atmo') === atmo;
+            var btnAtmo = normalizeAtmosphere(btn.getAttribute('data-atmo'));
+            var isActive = btnAtmo === normalized;
             btn.classList.toggle('active', isActive);
             btn.classList.toggle('is-active', isActive);
             btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
           });
 
-          window.dispatchEvent(new CustomEvent('pp:atmosphere-changed', { detail: { atmosphere: atmo } }));
+          window.dispatchEvent(new CustomEvent('pp:atmosphere-changed', { detail: { atmosphere: normalized } }));
         }
 
         window.__setAtmosphere = setAtmosphere;
@@ -133,7 +146,7 @@ ${JSON.stringify(schemaData, null, 2)}
         });
 
         // Initialize active button states
-        var current = document.documentElement.getAttribute('data-atmosphere') || 'chiaroscuro';
+        var current = normalizeAtmosphere(document.documentElement.getAttribute('data-atmosphere') || 'limestone');
         setAtmosphere(current);
       })();
     </script>

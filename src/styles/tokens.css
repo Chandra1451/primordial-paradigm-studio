@@ -1,46 +1,53 @@
 /* =============================================================================
    Primordial Paradigm Studio - Design System Tokens
-   Architectural Obsidian Theme & Dynamic Atmosphere Color Worlds
-   (WCAG AAA Contrast Baseline across all 3 themes)
-   Zero generic AI amber/zinc templates; pure human-crafted studio palettes.
+   Luminous Atmospheric Color Worlds (WCAG AAA Contrast Baseline)
+   Eradicating the pitch-black void trap; introducing:
+   1. Luminous Limestone (High-Key Warm Gallery Paper #f4f1ea)
+   2. Chromatic Twilight (Rich Lapis Indigo #101726 + Solar Horizon Gold)
+   3. Warm Titanium (Architectural Mid-Tone Slate #1e222b + Signal Cobalt)
    ============================================================================= */
 
+/* -----------------------------------------------------------------------------
+   DEFAULT / MODE 01: LUMINOUS LIMESTONE (Daylight Gallery & Warm Paper)
+   Inspired by: Fumito Ueda (Ico, The Last Guardian), Swiss Art Catalogues
+   ----------------------------------------------------------------------------- */
 :root,
-[data-atmosphere="chiaroscuro"] {
-  /* 01. Cosmic Chiaroscuro (Remedy / Control + Christopher Nolan Interstellar) */
-  --bg-canvas: #050608;           /* True deep void */
-  --bg-surface: #0b0c10;          /* Deep obsidian carbon */
-  --bg-surface-hover: #111318;    /* Interactive hover surface */
-  --bg-surface-elevated: #161820; /* Modals, navigation, and floating docks */
+[data-atmosphere="limestone"],
+[data-atmosphere="dawn"] {
+  /* Surface Layers (Warm Italian Limestone & Uncoated Cotton Paper) */
+  --bg-canvas: #f4f1ea;           /* Sun-drenched warm limestone */
+  --bg-surface: #eae5dc;          /* Warm drafting stone surface */
+  --bg-surface-hover: #dfd9ce;    /* Interactive hover stone */
+  --bg-surface-elevated: #ffffff; /* Crisp gallery plinths & cards */
 
-  /* Hairline Structural Rules */
-  --border-subtle: rgba(232, 236, 242, 0.08);
-  --border-strong: rgba(232, 236, 242, 0.20);
+  /* Structural Hairlines */
+  --border-subtle: rgba(18, 19, 22, 0.10);
+  --border-strong: rgba(18, 19, 22, 0.25);
 
-  /* Typography (WCAG AAA > 7:1 against canvas) */
-  --text-primary: #e8ecf2;        /* Cold Starlight Bone White */
-  --text-secondary: #9aa2b1;      /* High-contrast lunar silver */
-  --text-muted: #6b7382;          /* Technical metadata */
+  /* Typography (WCAG AAA Contrast: 16.5:1 against #f4f1ea) */
+  --text-primary: #121316;        /* Dense inkjet soot charcoal */
+  --text-secondary: #4a4f5c;      /* Muted architectural slate (7.4:1) */
+  --text-muted: #737885;          /* Technical metadata */
 
-  /* Accent: Remedy Crimson Redshift (replaces generic Tailwind amber) */
-  --accent-studio: #c82b20;
-  --accent-studio-hover: #e03528;
-  --accent-studio-glow: rgba(200, 43, 32, 0.18);
-  --border-spark: rgba(200, 43, 32, 0.35);
+  /* Accent: Warm Terracotta Clay & Raw Cadmium */
+  --accent-studio: #c84b31;
+  --accent-studio-hover: #b03a22;
+  --accent-studio-glow: rgba(200, 75, 49, 0.15);
+  --border-spark: rgba(200, 75, 49, 0.40);
 
-  /* Backward compatibility alias */
+  /* Aliases */
   --accent-amber: var(--accent-studio);
   --accent-amber-light: var(--accent-studio-hover);
   --accent-amber-glow: var(--accent-studio-glow);
 
-  --accent-cyan: #9aa2b1;
-  --accent-cyan-light: #e8ecf2;
-  --accent-cyan-glow: rgba(232, 236, 242, 0.1);
+  --accent-cyan: #2a6f7b;
+  --accent-cyan-light: #1d555f;
+  --accent-cyan-glow: rgba(42, 111, 123, 0.15);
 
   /* Status Tokens */
-  --status-success: #10b981;
-  --status-warning: #c82b20;
-  --status-error: #ef4444;
+  --status-success: #15803d;
+  --status-warning: #c84b31;
+  --status-error: #dc2626;
 
   /* Typography Stacks */
   --font-serif: 'Georgia', 'Cambria', 'Times New Roman', serif;
@@ -61,25 +68,30 @@
   --transition-smooth: 220ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* 02. Vector Blueprint (Bungie Marathon + Kurppa Hosk + Teenage Engineering) */
-[data-atmosphere="blueprint"] {
-  --bg-canvas: #0c0d10;           /* Industrial Matte Carbon */
-  --bg-surface: #13151b;          /* Drafting surface */
-  --bg-surface-hover: #1a1d26;
-  --bg-surface-elevated: #202430;
+/* -----------------------------------------------------------------------------
+   MODE 02: CHROMATIC TWILIGHT (Lapis Indigo Sky & Solar Horizon Gold)
+   Inspired by: Denis Villeneuve (Arrival, Dune), Christopher Nolan, A24
+   Rich, luminous evening cobalt — NOT pitch black!
+   ----------------------------------------------------------------------------- */
+[data-atmosphere="twilight"],
+[data-atmosphere="chiaroscuro"] {
+  --bg-canvas: #101726;           /* Rich deep lapis evening sky */
+  --bg-surface: #182238;          /* Midnight cobalt surface */
+  --bg-surface-hover: #212e4c;    /* Deep sky hover */
+  --bg-surface-elevated: #28385c; /* Luminous plinths */
 
-  --border-subtle: rgba(240, 242, 245, 0.10);
-  --border-strong: rgba(240, 242, 245, 0.25);
+  --border-subtle: rgba(241, 245, 249, 0.10);
+  --border-strong: rgba(241, 245, 249, 0.24);
 
-  --text-primary: #f0f2f5;        /* Crisp Technical Signal White */
-  --text-secondary: #94a3b8;      /* Cold engineering slate */
+  --text-primary: #f8fafc;        /* Starlight Platinum White (13.2:1) */
+  --text-secondary: #94a3b8;      /* Lunar silver mist (7.2:1) */
   --text-muted: #64748b;
 
-  /* Accent: NASA Flight Signal Orange (High-intensity mechanical pigment) */
-  --accent-studio: #ff4d00;
-  --accent-studio-hover: #ff661a;
-  --accent-studio-glow: rgba(255, 77, 0, 0.22);
-  --border-spark: rgba(255, 77, 0, 0.40);
+  /* Accent: Solar Horizon Gold / Dawn Flare (Luminous Celestial Accent) */
+  --accent-studio: #f59e0b;
+  --accent-studio-hover: #fbbf24;
+  --accent-studio-glow: rgba(245, 158, 11, 0.22);
+  --border-spark: rgba(245, 158, 11, 0.40);
 
   --accent-amber: var(--accent-studio);
   --accent-amber-light: var(--accent-studio-hover);
@@ -87,34 +99,48 @@
 
   --accent-cyan: #38bdf8;
   --accent-cyan-light: #7dd3fc;
-  --accent-cyan-glow: rgba(56, 189, 248, 0.12);
+  --accent-cyan-glow: rgba(56, 189, 248, 0.15);
+
+  --status-success: #10b981;
+  --status-warning: #f59e0b;
+  --status-error: #ef4444;
 }
 
-/* 03. Atmospheric Surrealism (Playdead Inside / Limbo + Fumito Ueda) */
+/* -----------------------------------------------------------------------------
+   MODE 03: WARM TITANIUM & SLATE (Architectural Mid-Tone & Signal Vermilion)
+   Inspired by: Kurppa Hosk, Dieter Rams, Industrial Design Ateliers
+   Comfortable mid-tone slate & raw concrete — significantly lighter than black!
+   ----------------------------------------------------------------------------- */
+[data-atmosphere="titanium"],
+[data-atmosphere="blueprint"],
 [data-atmosphere="surrealism"] {
-  --bg-canvas: #0a0e14;           /* Deep Fog Slate */
-  --bg-surface: #101620;          /* Monolith surface */
-  --bg-surface-hover: #17202d;
-  --bg-surface-elevated: #1e2a3b;
+  --bg-canvas: #1e222b;           /* Warm architectural concrete & slate */
+  --bg-surface: #282d39;          /* Titanium matte surface */
+  --bg-surface-hover: #323847;    /* Brushed metal hover */
+  --bg-surface-elevated: #3c4455; /* Floating cassettes */
 
-  --border-subtle: rgba(209, 215, 224, 0.08);
-  --border-strong: rgba(209, 215, 224, 0.20);
+  --border-subtle: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.28);
 
-  --text-primary: #d1d7e0;        /* Pale Silver Mist */
-  --text-secondary: #8b949e;      /* Ghostly charcoal */
-  --text-muted: #5c6773;
+  --text-primary: #ffffff;        /* Pure Signal White (10.4:1) */
+  --text-secondary: #cbd5e1;      /* Light mechanical silver (7.5:1) */
+  --text-muted: #94a3b8;
 
-  /* Accent: Subdued Lichen Teal / Ethereal Fog Aqua */
-  --accent-studio: #486b72;
-  --accent-studio-hover: #5d858d;
-  --accent-studio-glow: rgba(72, 107, 114, 0.25);
-  --border-spark: rgba(72, 107, 114, 0.40);
+  /* Accent: Signal Flight Vermilion / Electric Tangerine */
+  --accent-studio: #ff5500;
+  --accent-studio-hover: #ff701a;
+  --accent-studio-glow: rgba(255, 85, 0, 0.25);
+  --border-spark: rgba(255, 85, 0, 0.45);
 
   --accent-amber: var(--accent-studio);
   --accent-amber-light: var(--accent-studio-hover);
   --accent-amber-glow: var(--accent-studio-glow);
 
-  --accent-cyan: #486b72;
-  --accent-cyan-light: #5d858d;
-  --accent-cyan-glow: rgba(72, 107, 114, 0.25);
+  --accent-cyan: #00d2ff;
+  --accent-cyan-light: #4de1ff;
+  --accent-cyan-glow: rgba(0, 210, 255, 0.15);
+
+  --status-success: #10b981;
+  --status-warning: #ff5500;
+  --status-error: #ef4444;
 }

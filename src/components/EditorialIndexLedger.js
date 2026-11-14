@@ -340,17 +340,17 @@ export function renderEditorialIndexLedger() {
         width: 36px;
         height: 36px;
         border-radius: 0px;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        color: #f4f4f5;
+        border: 1px solid var(--border-strong);
+        color: var(--text-primary);
         font-family: var(--font-mono);
         font-size: 1.1rem;
         transition: all 160ms ease;
       }
 
       .ledger-row:hover .ledger-arrow {
-        background: #f4f4f5;
-        border-color: #f4f4f5;
-        color: #07080a;
+        background: var(--text-primary);
+        border-color: var(--text-primary);
+        color: var(--bg-canvas);
         transform: translateX(4px);
       }
 
@@ -360,7 +360,8 @@ export function renderEditorialIndexLedger() {
       .broadsheet-section {
         padding-top: clamp(4.5rem, 7vw, 7rem);
         padding-bottom: clamp(4.5rem, 7vw, 7rem);
-        background: #040508;
+        background: var(--bg-surface);
+        border-top: 1px solid var(--border-subtle);
       }
 
       .broadsheet-grid {
@@ -446,8 +447,8 @@ export function renderEditorialIndexLedger() {
 
       /* Archival Specs Box (Right Column) */
       .archival-specs-box {
-        background: rgba(13, 14, 19, 0.85);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: var(--bg-surface-elevated);
+        border: 1px solid var(--border-subtle);
         border-radius: 0px;
         padding: clamp(1.5rem, 3vw, 2rem);
         backdrop-filter: blur(12px);
@@ -459,7 +460,7 @@ export function renderEditorialIndexLedger() {
         align-items: center;
         padding-bottom: 0.85rem;
         margin-bottom: 1.5rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        border-bottom: 1px solid var(--border-subtle);
         font-family: var(--font-mono);
         font-size: 0.7rem;
       }
@@ -485,7 +486,7 @@ export function renderEditorialIndexLedger() {
         flex-direction: column;
         gap: 3px;
         padding-bottom: 0.75rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        border-bottom: 1px solid var(--border-subtle);
       }
 
       .detail-label {
@@ -513,8 +514,8 @@ export function renderEditorialIndexLedger() {
         width: 100%;
         padding: 0.85rem 1.25rem;
         border-radius: 0px;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: var(--bg-surface);
+        border: 1px solid var(--border-subtle);
         color: var(--text-primary);
         font-family: var(--font-mono);
         font-size: 0.78rem;
@@ -526,7 +527,7 @@ export function renderEditorialIndexLedger() {
       .broadsheet-link-btn:hover {
         background: var(--accent-amber);
         border-color: var(--accent-amber);
-        color: #06070a;
+        color: #ffffff;
         text-decoration: none;
       }
 

@@ -79,9 +79,9 @@ export function renderHeader(activePath = '/') {
           <!-- Minimalist Atmosphere Selector in Header -->
           <div class="header-atmosphere-controls" role="group" aria-label="Visual Atmosphere">
             <span class="atmo-indicator-label">ATMO //</span>
-            <button type="button" class="header-atmo-btn" data-atmo="chiaroscuro" title="Mode 01: Cosmic Chiaroscuro">01</button>
-            <button type="button" class="header-atmo-btn" data-atmo="blueprint" title="Mode 02: Vector Blueprint">02</button>
-            <button type="button" class="header-atmo-btn" data-atmo="surrealism" title="Mode 03: Atmospheric Surrealism">03</button>
+            <button type="button" class="header-atmo-btn" data-atmo="limestone" title="Mode 01: Luminous Limestone (Daylight Gallery)">01</button>
+            <button type="button" class="header-atmo-btn" data-atmo="twilight" title="Mode 02: Chromatic Twilight (Lapis Cobalt)">02</button>
+            <button type="button" class="header-atmo-btn" data-atmo="titanium" title="Mode 03: Warm Titanium (Mid-Tone Slate)">03</button>
           </div>
 
           <!-- Mobile Hamburger Toggle Button -->
@@ -133,19 +133,19 @@ export function renderHeader(activePath = '/') {
 
           <!-- Mobile Drawer Atmosphere Selection -->
           <div class="drawer-atmo-section">
-            <div class="drawer-atmo-title">[CREATIVE ATMOSPHERE]</div>
+            <div class="drawer-atmo-title">[ATMOSPHERIC LUMINOSITY]</div>
             <div class="drawer-atmo-grid">
-              <button type="button" class="drawer-atmo-option" data-atmo="chiaroscuro">
+              <button type="button" class="drawer-atmo-option" data-atmo="limestone">
                 <span class="option-num">01</span>
-                <span class="option-name">Cosmic Chiaroscuro</span>
+                <span class="option-name">Luminous Limestone (Daylight)</span>
               </button>
-              <button type="button" class="drawer-atmo-option" data-atmo="blueprint">
+              <button type="button" class="drawer-atmo-option" data-atmo="twilight">
                 <span class="option-num">02</span>
-                <span class="option-name">Vector Blueprint</span>
+                <span class="option-name">Chromatic Twilight (Lapis Indigo)</span>
               </button>
-              <button type="button" class="drawer-atmo-option" data-atmo="surrealism">
+              <button type="button" class="drawer-atmo-option" data-atmo="titanium">
                 <span class="option-num">03</span>
-                <span class="option-name">Atmospheric Surrealism</span>
+                <span class="option-name">Warm Titanium (Mid-Tone Slate)</span>
               </button>
             </div>
           </div>
