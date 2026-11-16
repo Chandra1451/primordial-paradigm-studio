@@ -17,7 +17,8 @@
     "deploy": "node scripts/deploy.mjs",
     "build:lab": "node scripts/build.mjs --lab",
     "preview:lab": "node scripts/build.mjs --lab && node scripts/preview.mjs",
-    "hooks:install": "git config core.hooksPath .githooks"
+    "hooks:install": "git config core.hooksPath .githooks",
+    "test:lab": "node scripts/build.mjs --lab && node tests/verify-lab.mjs"
   },
   "dependencies": {
     "marked": "18.2.0"

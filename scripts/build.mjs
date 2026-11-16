@@ -152,6 +152,12 @@ for (const page of labPages) {
   fs.writeFileSync(path.join(targetDir, 'index.html'), page.html, 'utf8');
   console.log(`  [Lab] /${page.route}/ -> dist/${page.route}/index.html (local only)`);
 }
+// Redesign candidates are plain static folders in src/lab/, copied as they are.
+const LAB_SRC_DIR = path.join(CODE_ROOT, 'src', 'lab');
+if (LAB && fs.existsSync(LAB_SRC_DIR)) {
+  fs.cpSync(LAB_SRC_DIR, path.join(DIST_DIR, 'lab'), { recursive: true });
+  console.log('  [Lab] src/lab/ -> dist/lab/ (local only)');
+}
 if (LAB) fs.writeFileSync(path.join(DIST_DIR, 'LAB_BUILD'), 'Local lab build. Do not deploy.', 'utf8');
 
 for (const page of corePages) {

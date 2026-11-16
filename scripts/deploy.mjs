@@ -53,7 +53,7 @@ run('npm test', CODE_ROOT);
 
 // 2. Ensure dist directory exists and contains critical assets
 console.log('\n[2/4] Verifying production distribution integrity...');
-for (const lab of ['LAB_BUILD', 'explore', 'specimen']) {
+for (const lab of ['LAB_BUILD', 'lab', 'explore', 'specimen']) {
   if (fs.existsSync(path.join(DIST_DIR, lab))) {
     console.error(`✗ Lab artifact found in production build: dist/${lab}`);
     process.exit(1);

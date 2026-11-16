@@ -1,0 +1,132 @@
+:root {
+  --ground: #170a1c;
+  --paper: #f4f1ea;
+  --teal: #0b7189;
+  --blue: #228cdb;
+  --lavender: #9c95dc;
+  --display: 'Segoe UI Black', 'Arial Black', Impact, 'Helvetica Neue', Arial, sans-serif;
+  --text: Georgia, 'Times New Roman', serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--paper);
+  font-family: var(--text);
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+a { color: inherit; }
+
+.lab-tag {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+  padding: 4px 10px;
+  background: var(--paper);
+  color: var(--ground);
+  font: 12px/1.4 ui-monospace, Consolas, monospace;
+  text-decoration: none;
+}
+
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 32px;
+  padding: 22px clamp(16px, 2vw, 32px);
+  font-family: var(--display);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.bar nav { display: flex; flex-wrap: wrap; gap: 0 28px; }
+.bar a { text-decoration: none; }
+.bar a:hover,
+.bar a:focus-visible { color: var(--lavender); text-decoration: underline; text-underline-offset: 6px; }
+
+/* The name fills the width. With the script running, the canvas replaces the heading visually. */
+.grow {
+  position: relative;
+  padding: 0 clamp(8px, 1vw, 16px);
+}
+
+#title {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 13.4vw;
+  line-height: 0.86;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+#cells { display: none; cursor: crosshair; }
+
+.grow.live #title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.grow.live #cells { display: block; width: 100%; }
+
+.hint {
+  margin: 14px clamp(16px, 2vw, 32px) 0;
+  font: 13px/1.4 ui-monospace, Consolas, monospace;
+  color: var(--lavender);
+}
+
+.cols {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: clamp(40px, 6vw, 88px) clamp(16px, 2vw, 32px) 96px;
+  border-top: 2px solid var(--paper);
+}
+
+.cols section {
+  padding: 24px 28px 0 0;
+}
+
+.cols section + section {
+  padding-left: 28px;
+  border-left: 1px solid rgba(244, 241, 234, 0.3);
+}
+
+.cols h2 {
+  margin: 0 0 14px;
+  font-family: var(--display);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lavender);
+}
+
+.cols p { margin: 0 0 18px; max-width: 34ch; }
+
+.cols a {
+  text-decoration: underline;
+  text-decoration-color: var(--blue);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+.cols a:hover { color: var(--lavender); }
+
+@media (max-width: 760px) {
+  .cols { grid-template-columns: 1fr; }
+  .cols section,
+  .cols section + section {
+    padding: 24px 0;
+    border-left: 0;
+    border-bottom: 1px solid rgba(244, 241, 234, 0.3);
+  }
+}
