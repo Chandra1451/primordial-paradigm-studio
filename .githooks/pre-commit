@@ -1,0 +1,6 @@
+#!/bin/sh
+# Blocks a commit when the secret scanner finds a credential pattern.
+node scripts/check-secrets.mjs || {
+  echo "Commit blocked: secret scan failed." >&2
+  exit 1
+}

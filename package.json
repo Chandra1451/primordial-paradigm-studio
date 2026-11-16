@@ -16,9 +16,10 @@
     "package": "node scripts/package-hostinger.mjs",
     "deploy": "node scripts/deploy.mjs",
     "build:lab": "node scripts/build.mjs --lab",
-    "preview:lab": "node scripts/build.mjs --lab && node scripts/preview.mjs"
+    "preview:lab": "node scripts/build.mjs --lab && node scripts/preview.mjs",
+    "hooks:install": "git config core.hooksPath .githooks"
   },
   "dependencies": {
-    "marked": "^18.2.0"
+    "marked": "18.2.0"
   }
 }

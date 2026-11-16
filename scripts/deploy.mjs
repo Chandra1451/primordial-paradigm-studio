@@ -26,6 +26,27 @@ function run(cmd, cwd = CODE_ROOT) {
   }
 }
 
+// 0. Deploy only committed code from main, so every release can be rebuilt.
+function capture(args) {
+  const res = spawnSync('git', args, { cwd: CODE_ROOT, encoding: 'utf8' });
+  if (res.status !== 0) {
+    console.error(`ERROR: git ${args.join(' ')} failed`);
+    process.exit(1);
+  }
+  return res.stdout.trim();
+}
+const branch = capture(['rev-parse', '--abbrev-ref', 'HEAD']);
+if (branch !== 'main') {
+  console.error(`ERROR: deploys run from main only (current branch: ${branch}).`);
+  process.exit(1);
+}
+if (capture(['status', '--porcelain']) !== '') {
+  console.error('ERROR: working tree has uncommitted changes. Commit or stash them before deploying.');
+  process.exit(1);
+}
+const sourceCommit = capture(['rev-parse', '--short', 'HEAD']);
+console.log(`Source commit: ${sourceCommit}`);
+
 // 1. Run full verification suite (Secrets, Build, Claims, Browser CDP tests)
 console.log('\n[1/4] Running full verification pipeline...');
 run('npm test', CODE_ROOT);
@@ -59,7 +80,7 @@ run('git config user.email "49201353+Chandra1451@users.noreply.github.com"', DIS
 run('git add -A', DIST_DIR);
 
 const timestamp = new Date().toISOString();
-run(`git commit -m "deploy: release production build ${timestamp}"`, DIST_DIR);
+run(`git commit -m "deploy: release production build ${timestamp} (source ${sourceCommit})"`, DIST_DIR);
 run(`git remote add origin ${REMOTE_URL}`, DIST_DIR);
 
 // 4. Force push production branch to origin
@@ -72,6 +93,10 @@ if (fs.existsSync(distGitDir)) {
 }
 
 console.log('\n✓ Production branch deployed successfully!');
+// Mark the deployed source so a previous release can be checked out and redeployed.
+const releaseTag = `deploy-${timestamp.replace(/[:.]/g, '-')}`;
+run(`git tag ${releaseTag}`, CODE_ROOT);
+console.log(`  Release tag (local): ${releaseTag}`);
 console.log('  Branch: production');
 console.log('  Target: https://github.com/Chandra1451/primordial-paradigm-studio/tree/production');
 console.log('\nHostinger Git Auto-Deployment will now pull the latest production release.');
