@@ -28,8 +28,6 @@ export function renderEditorialBroadSheetHero() {
             <span class="masthead-location" id="heroSectorTag">SECTOR: 01 // DEEP SYSTEMS</span>
           </div>
           <div class="masthead-meta-right">
-            <span class="masthead-coord">37.77° N, -122.41° W</span>
-            <span class="masthead-divider"></span>
             <span class="masthead-status" id="heroStatusTag">STATUS // ACTIVE R&D</span>
           </div>
         </div>

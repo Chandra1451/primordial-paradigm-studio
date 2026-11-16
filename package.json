@@ -14,7 +14,9 @@
     "test:browser": "node tests/verify-site.mjs",
     "test": "node scripts/check-secrets.mjs && node scripts/build.mjs && node scripts/check-claims.mjs && node tests/verify-site.mjs",
     "package": "node scripts/package-hostinger.mjs",
-    "deploy": "node scripts/deploy.mjs"
+    "deploy": "node scripts/deploy.mjs",
+    "build:lab": "node scripts/build.mjs --lab",
+    "preview:lab": "node scripts/build.mjs --lab && node scripts/preview.mjs"
   },
   "dependencies": {
     "marked": "^18.2.0"

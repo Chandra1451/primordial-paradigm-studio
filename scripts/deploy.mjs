@@ -32,6 +32,12 @@ run('npm test', CODE_ROOT);
 
 // 2. Ensure dist directory exists and contains critical assets
 console.log('\n[2/4] Verifying production distribution integrity...');
+for (const lab of ['LAB_BUILD', 'explore', 'specimen']) {
+  if (fs.existsSync(path.join(DIST_DIR, lab))) {
+    console.error(`✗ Lab artifact found in production build: dist/${lab}`);
+    process.exit(1);
+  }
+}
 const criticalFiles = ['index.html', '404.html', '.htaccess', 'favicon.svg', 'robots.txt', 'sitemap.xml'];
 for (const file of criticalFiles) {
   if (!fs.existsSync(path.join(DIST_DIR, file))) {

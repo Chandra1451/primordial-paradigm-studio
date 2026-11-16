@@ -59,8 +59,6 @@ export function renderFooter() {
             <ul class="footer-links-list">
               <li><a href="/games/systemic-movement-prototype/">Vector Kinematics Prototype</a></li>
               <li><a href="/learn/systems-architecture-first-principles/">First Principles Monograph</a></li>
-              <li><a href="/explore/">Motion &amp; Physics Lab</a></li>
-              <li><a href="/specimen/">Living Specimen Atelier</a></li>
             </ul>
           </div>
 

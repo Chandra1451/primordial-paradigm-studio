@@ -39,7 +39,11 @@ import { render404Page } from '../src/pages/404.js';
 import { renderExplorePage } from '../src/pages/explore.js';
 import { renderSpecimenPage } from '../src/pages/specimen.js';
 
-console.log('=== Primordial Paradigm Studio Build ===');
+// Design-lab pages are local experiments. They are built only with --lab
+// (npm run build:lab) and never belong in a production build.
+const LAB = process.argv.includes('--lab');
+
+console.log(`=== Primordial Paradigm Studio Build${LAB ? ' (LAB: local only, do not deploy)' : ''} ===`);
 
 // 1. Clean and initialize dist directory
 if (fs.existsSync(DIST_DIR)) {
@@ -132,10 +136,23 @@ const corePages = [
   { route: 'games', html: renderGamesPage(gamesArticles), priority: '0.9' },
   { route: 'learn', html: renderLearnPage(learnArticles), priority: '0.9' },
   { route: 'services', html: renderServicesPage(), priority: '0.8' },
-  { route: 'about', html: renderAboutPage(), priority: '0.7' },
-  { route: 'explore', html: renderExplorePage(), priority: '0.5' },
-  { route: 'specimen', html: renderSpecimenPage(), priority: '0.5' }
+  { route: 'about', html: renderAboutPage(), priority: '0.7' }
 ];
+
+// Lab pages: rendered only for local experiments, never listed in the sitemap.
+const labPages = LAB
+  ? [
+      { route: 'explore', html: renderExplorePage() },
+      { route: 'specimen', html: renderSpecimenPage() }
+    ]
+  : [];
+for (const page of labPages) {
+  const targetDir = path.join(DIST_DIR, page.route);
+  fs.mkdirSync(targetDir, { recursive: true });
+  fs.writeFileSync(path.join(targetDir, 'index.html'), page.html, 'utf8');
+  console.log(`  [Lab] /${page.route}/ -> dist/${page.route}/index.html (local only)`);
+}
+if (LAB) fs.writeFileSync(path.join(DIST_DIR, 'LAB_BUILD'), 'Local lab build. Do not deploy.', 'utf8');
 
 for (const page of corePages) {
   const targetDir = page.route ? path.join(DIST_DIR, page.route) : DIST_DIR;

@@ -221,9 +221,7 @@ try {
     '/about/',
     '/games/systemic-movement-prototype/',
     '/learn/systems-architecture-first-principles/',
-    '/404.html',
-    '/explore/',
-    '/specimen/'
+    '/404.html'
   ];
   const VIEWPORTS = [
     { name: 'desktop-1440', width: 1440, height: 900 },
