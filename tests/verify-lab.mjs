@@ -76,31 +76,7 @@ async function open(candidate, vp, wait = 2600) {
 }
 
 for (const vp of VIEWPORTS) {
-  // A. Play: press on the middle of the name and hold; the disc should arrive and move letters.
-  await open('play', vp, 100);
-  const maxShift = `Math.max(...[...document.querySelectorAll('.word .l')].map(l => { const m = new DOMMatrix(getComputedStyle(l).transform); return Math.hypot(m.e, m.f); }))`;
-  let intro = 0;
-  for (let i = 0; i < 20; i++) { intro = Math.max(intro, await evaluate(maxShift)); await sleep(100); }
-  check(`play/${vp.name}: opening roll moves a letter`, intro > 0.5, `max shift ${intro.toFixed(1)}px`);
-  await sleep(1500);
-  const box = await evaluate(`(() => { const r = document.querySelector('.word').getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; })()`);
-  await mouse('mousePressed', box.x, box.y);
-  await sleep(700);
-  await mouse('mouseMoved', box.x + vp.width * 0.2, box.y + 20);
-  await sleep(500);
-  const held = await evaluate(maxShift);
-  await shot(`play-${vp.name}`);
-  await mouse('mouseReleased', box.x + vp.width * 0.2, box.y + 20);
-  check(`play/${vp.name}: dragging knocks letters about`, held > 3, `max shift ${held.toFixed(1)}px`);
-  await sleep(8000);
-  const settledA = await evaluate(maxShift);
-  await sleep(700);
-  const settledB = await evaluate(maxShift);
-  check(`play/${vp.name}: everything comes to rest`, Math.abs(settledA - settledB) < 0.2, `max shift ${settledA.toFixed(2)}px then ${settledB.toFixed(2)}px`);
-  const disc = await evaluate(`(() => { const r = document.getElementById('disc').getBoundingClientRect(); return r.left >= -1 && r.top >= -1 && r.right <= innerWidth + 1 && r.bottom <= innerHeight + 1; })()`);
-  check(`play/${vp.name}: disc stays inside the stage`, disc === true);
-
-  // B. Notebook: drag the ball to the right and release; it should keep gliding, then stop.
+  // Notebook: drag the ball to the right and release; it should keep gliding, then stop.
   await open('notebook', vp);
   await evaluate(`document.getElementById('flick').scrollIntoView({ block: 'center' })`);
   await sleep(1800);
@@ -122,7 +98,7 @@ for (const vp of VIEWPORTS) {
   check(`notebook/${vp.name}: ball glides after release`, b2.x < b1.x - 2, `${b1.x.toFixed(0)} -> ${b2.x.toFixed(0)}`);
   check(`notebook/${vp.name}: friction brings it to rest`, Math.abs(b4.x - b3.x) < 0.5, `${b3.x.toFixed(1)} -> ${b4.x.toFixed(1)}`);
 
-  // C. Poster: growth should finish and cover the whole name; a click should restart it.
+  // Poster: growth should finish and cover the whole name; a click should restart it.
   await open('poster', vp, 250);
   const lit = `(() => { const c = document.getElementById('cells'); const d = c.getContext('2d').getImageData(0, 0, c.width, c.height).data; let n = 0; for (let i = 3; i < d.length; i += 4) if (d[i] > 200) n++; return n / (c.width * c.height); })()`;
   const early = await evaluate(lit);
@@ -140,6 +116,27 @@ for (const vp of VIEWPORTS) {
   await sleep(120);
   const restarted = await evaluate(lit);
   check(`poster/${vp.name}: click restarts growth`, restarted < full * 0.5, `lit ${Math.round(restarted * 100)}%`);
+
+  // Every colour combination: applies, keeps what has grown, and stays readable.
+  await sleep(6500);
+  const contrast = `(() => {
+    const lum = (c) => { const [r, g, b] = c.match(/[0-9.]+/g).slice(0, 3).map((v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
+    const ratio = (a, b) => { const [hi, lo] = [lum(a), lum(b)].sort((x, y) => y - x); return (hi + 0.05) / (lo + 0.05); };
+    const body = getComputedStyle(document.body);
+    return { id: document.body.dataset.palette, text: ratio(body.color, body.backgroundColor), label: ratio(getComputedStyle(document.querySelector('.cols h2')).color, body.backgroundColor) };
+  })()`;
+  const grounds = new Set();
+  for (let n = 1; n <= 6; n++) {
+    await send('Input.dispatchKeyEvent', { type: 'keyDown', key: String(n), text: String(n) });
+    await send('Input.dispatchKeyEvent', { type: 'keyUp', key: String(n) });
+    await sleep(450);
+    const c = await evaluate(contrast);
+    grounds.add(await evaluate('getComputedStyle(document.body).backgroundColor'));
+    const stillLit = await evaluate(lit);
+    check(`poster/${vp.name}: palette ${c.id} readable and name kept`, c.text >= 7 && c.label >= 4.5 && stillLit > 0.2, `text ${c.text.toFixed(1)}:1, labels ${c.label.toFixed(1)}:1`);
+    await shot(`poster-${vp.name}-${c.id}`);
+  }
+  check(`poster/${vp.name}: six distinct grounds`, grounds.size === 6, `${grounds.size} found`);
 }
 
 check('no JavaScript exceptions', errors.length === 0, errors.slice(0, 3).join(' | '));

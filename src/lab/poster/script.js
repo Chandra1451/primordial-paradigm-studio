@@ -10,7 +10,8 @@
 
   const FONT = '"Segoe UI Black", "Arial Black", Impact, "Helvetica Neue", Arial, sans-serif';
   const LINES = ['PRIMORDIAL', 'PARADIGM'];
-  const RING = [[11, 113, 137], [34, 140, 219], [156, 149, 220], [244, 241, 234]]; // teal, blue, lavender, paper
+  let RING = [];   // the four ring colours, read from the active palette in style.css
+  let dim = 0.09;  // opacity of cells outside the letters
   const RING_SPAN = 34; // generations between one colour and the next
 
   let W = 0;
@@ -21,11 +22,21 @@
   let mask = null;      // 1 where a cell is inside a letter
   let filled = null;    // 1 once a cell has grown
   let generation = null;
+  let painted = null;   // 1 once a cell has been drawn
   let frontier = [];
   let raf = 0;
 
+  function readPalette() {
+    const css = getComputedStyle(document.body);
+    RING = [1, 2, 3, 4].map((n) => {
+      const hex = css.getPropertyValue(`--ring-${n}`).trim().replace('#', '');
+      return [0, 2, 4].map((i) => parseInt(hex.slice(i, i + 2), 16));
+    });
+    dim = parseFloat(css.getPropertyValue('--dim')) || 0.09;
+  }
+
   function ringColour(gen) {
-    // Walk teal -> blue -> lavender -> paper and back again.
+    // Walk through the four ring colours and back again.
     const steps = RING.length - 1;
     let t = (gen / RING_SPAN) % (steps * 2);
     if (t > steps) t = steps * 2 - t;
@@ -97,9 +108,19 @@
     const x = index % cols;
     const y = (index - x) / cols;
     const [r, g, b] = ringColour(generation[index]);
-    ctx.fillStyle = mask[index] ? `rgb(${r}, ${g}, ${b})` : `rgba(${r}, ${g}, ${b}, 0.09)`;
+    ctx.fillStyle = mask[index] ? `rgb(${r}, ${g}, ${b})` : `rgba(${r}, ${g}, ${b}, ${dim})`;
     ctx.fillRect(x * cell, y * cell, cell - 1, cell - 1);
+    painted[index] = 1;
   }
+
+  // A palette change recolours what has already grown, without starting over.
+  function repaint() {
+    readPalette();
+    if (!painted) return;
+    ctx.clearRect(0, 0, cols * cell, rows * cell);
+    for (let i = 0; i < painted.length; i++) if (painted[i]) paint(i);
+  }
+  document.addEventListener('palettechange', repaint);
 
   function growOne() {
     // Pick a random cell on the edge of the growth and fill it.
@@ -129,6 +150,7 @@
     cancelAnimationFrame(raf);
     filled = new Uint8Array(cols * rows);
     generation = new Uint16Array(cols * rows);
+    painted = new Uint8Array(cols * rows);
     frontier = [];
     ctx.clearRect(0, 0, cols * cell, rows * cell);
     const x = Math.max(0, Math.min(cols - 1, Math.floor(cx / cell)));
@@ -150,6 +172,7 @@
   function start() {
     wrap.classList.add('live');
     hint.hidden = false;
+    readPalette();
     layout();
     // First growth starts in the bowl of the first P.
     seed(W * 0.05, H * 0.25);
