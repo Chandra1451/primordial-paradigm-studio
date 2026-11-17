@@ -165,7 +165,9 @@ for (const vp of VIEWPORTS) {
   })()`;
   for (const page of ['poster', 'notebook']) {
     await open(page, vp, 400);
-    for (let n = 1; n <= 4; n++) {
+    const pairings = await evaluate(`document.querySelectorAll('.lab-types button').length`);
+    check(`${page}/${vp.name}: all 10 typeface pairings offered`, pairings === 10, `${pairings} found`);
+    for (let n = 1; n <= pairings; n++) {
       await evaluate(`document.querySelectorAll('.lab-types button')[${n - 1}].click()`);
       let growMs = '';
       if (page === 'poster') {

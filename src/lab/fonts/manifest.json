@@ -94,5 +94,53 @@
   "magic": "wOF2",
   "sha256": "7691c51bc286a9014db0048277d2c3f2ad0a90b533dc8adfb16cb22a95390d39",
   "source": "https://cdn.jsdelivr.net/npm/@fontsource/source-serif-4@5.3.1/files/source-serif-4-latin-700-normal.woff2"
+ },
+ {
+  "name": "syne-latin-800-normal.woff2",
+  "http": 200,
+  "bytes": 13684,
+  "magic": "wOF2",
+  "sha256": "1a340e84b78c7e1e7ed24306d682fdcd6dc8cc6cb52b158fbaf22c03f7f001c3",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/syne@5.3.0/files/syne-latin-800-normal.woff2"
+ },
+ {
+  "name": "bungee-latin-400-normal.woff2",
+  "http": 200,
+  "bytes": 14344,
+  "magic": "wOF2",
+  "sha256": "126eec706b7931682dbcf6c6efc274132c603f181fbf912678e6cfeb341e721b",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/bungee@5.3.0/files/bungee-latin-400-normal.woff2"
+ },
+ {
+  "name": "pixelify-sans-latin-700-normal.woff2",
+  "http": 200,
+  "bytes": 7904,
+  "magic": "wOF2",
+  "sha256": "c836cfa5c0e9d62ea9b890e0418d52a6004149090a521cd198a8c09f5d5ab893",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/pixelify-sans@5.3.0/files/pixelify-sans-latin-700-normal.woff2"
+ },
+ {
+  "name": "tektur-latin-900-normal.woff2",
+  "http": 200,
+  "bytes": 7248,
+  "magic": "wOF2",
+  "sha256": "fa93b029dbafa4f34c7fc9f56d0ce39daccc5ac8374161c11a410297e8893189",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/tektur@5.3.0/files/tektur-latin-900-normal.woff2"
+ },
+ {
+  "name": "dela-gothic-one-latin-400-normal.woff2",
+  "http": 200,
+  "bytes": 13804,
+  "magic": "wOF2",
+  "sha256": "00ffa61fea9edb126e8e4fd3cf2b46e96ad158a0c1078b3cd22a3f6964993a88",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/dela-gothic-one@5.3.0/files/dela-gothic-one-latin-400-normal.woff2"
+ },
+ {
+  "name": "big-shoulders-display-latin-900-normal.woff2",
+  "http": 200,
+  "bytes": 14016,
+  "magic": "wOF2",
+  "sha256": "65f2c368034258382e77672f083d9f42e805d23d557432517a1b5a4f75c21f1a",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/big-shoulders-display@5.3.0/files/big-shoulders-display-latin-900-normal.woff2"
  }
 ]

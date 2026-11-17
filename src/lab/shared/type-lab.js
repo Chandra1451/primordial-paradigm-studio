@@ -1,10 +1,16 @@
-// Lab only: switch typeface pairings with the buttons at the bottom left or keys 1 to 4.
+// Lab only: switch typeface pairings with the buttons at the bottom left, keys 1 to 9, or 0 for system fonts.
 // The choice is kept when moving between lab pages. Pages listen for "typechange".
 (() => {
   const SETS = [
     { id: 'bricolage', name: 'Bricolage + Fraunces' },
     { id: 'unbounded', name: 'Unbounded + Literata' },
     { id: 'archivo', name: 'Archivo Black + Source Serif 4' },
+    { id: 'syne', name: 'Syne + Fraunces' },
+    { id: 'bungee', name: 'Bungee + Literata' },
+    { id: 'pixelify', name: 'Pixelify Sans + Source Serif 4' },
+    { id: 'tektur', name: 'Tektur + Literata' },
+    { id: 'dela', name: 'Dela Gothic One + Fraunces' },
+    { id: 'shoulders', name: 'Big Shoulders + Source Serif 4' },
     { id: 'system', name: 'System (before)' }
   ];
   const KEY = 'pp-lab-type';
@@ -26,15 +32,16 @@
     const b = document.createElement('button');
     b.type = 'button';
     b.dataset.type = set.id;
-    b.textContent = `${i + 1} ${set.name}`;
+    b.textContent = `${(i + 1) % 10} ${set.name}`;
     b.addEventListener('click', () => apply(set.id, true));
     holder.appendChild(b);
   });
 
   window.addEventListener('keydown', (e) => {
     if (e.ctrlKey || e.metaKey || e.altKey) return;
-    const n = Number(e.key);
-    if (n >= 1 && n <= SETS.length) apply(SETS[n - 1].id, true);
+    if (!/^[0-9]$/.test(e.key)) return;
+    const index = e.key === '0' ? 9 : Number(e.key) - 1;
+    if (SETS[index]) apply(SETS[index].id, true);
   });
 
   let saved = '';
