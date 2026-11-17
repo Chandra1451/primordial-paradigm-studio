@@ -64,6 +64,20 @@ const VIEWPORTS = [
   { name: 'phone', width: 390, height: 844, mobile: true }
 ];
 
+// Contrast of each selector's text colour against the page ground (WCAG formula).
+const contrastOf = (selectors) => `(() => {
+  const lum = (c) => { const [r, g, b] = c.match(/[0-9.]+/g).slice(0, 3).map((v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
+  const ground = getComputedStyle(document.body).backgroundColor;
+  const out = {};
+  for (const sel of ${JSON.stringify(selectors)}) {
+    const el = document.querySelector(sel);
+    if (!el) { out[sel] = 0; continue; }
+    const [hi, lo] = [lum(getComputedStyle(el).color), lum(ground)].sort((x, y) => y - x);
+    out[sel] = (hi + 0.05) / (lo + 0.05);
+  }
+  return out;
+})()`;
+
 const results = [];
 const check = (name, ok, detail = '') => { results.push({ name, ok }); console.log(`${ok ? 'PASS' : 'FAIL'}  ${name}${detail ? '  (' + detail + ')' : ''}`); };
 
@@ -97,6 +111,13 @@ for (const vp of VIEWPORTS) {
   check(`notebook/${vp.name}: ball follows the drag`, b1.x < b0.x - 2, `${b0.x.toFixed(0)} -> ${b1.x.toFixed(0)}`);
   check(`notebook/${vp.name}: ball glides after release`, b2.x < b1.x - 2, `${b1.x.toFixed(0)} -> ${b2.x.toFixed(0)}`);
   check(`notebook/${vp.name}: friction brings it to rest`, Math.abs(b4.x - b3.x) < 0.5, `${b3.x.toFixed(1)} -> ${b4.x.toFixed(1)}`);
+  const selected = await evaluate('String(window.getSelection())');
+  check(`notebook/${vp.name}: dragging selects no text`, selected === '', selected ? `selected "${selected.slice(0, 30)}"` : '');
+  const nb = await evaluate(contrastOf(['h1', '.entry div p', '.margin', '.top nav a']));
+  for (const [sel, ratio] of Object.entries(nb)) {
+    const need = sel === '.margin' || sel === '.top nav a' ? 4.5 : 7;
+    check(`notebook/${vp.name}: ${sel} contrast`, ratio >= need, `${ratio.toFixed(1)}:1, needs ${need}:1`);
+  }
 
   // Poster: growth should finish and cover the whole name; a click should restart it.
   await open('poster', vp, 250);
@@ -117,26 +138,16 @@ for (const vp of VIEWPORTS) {
   const restarted = await evaluate(lit);
   check(`poster/${vp.name}: click restarts growth`, restarted < full * 0.5, `lit ${Math.round(restarted * 100)}%`);
 
-  // Every colour combination: applies, keeps what has grown, and stays readable.
-  await sleep(6500);
-  const contrast = `(() => {
-    const lum = (c) => { const [r, g, b] = c.match(/[0-9.]+/g).slice(0, 3).map((v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
-    const ratio = (a, b) => { const [hi, lo] = [lum(a), lum(b)].sort((x, y) => y - x); return (hi + 0.05) / (lo + 0.05); };
-    const body = getComputedStyle(document.body);
-    return { id: document.body.dataset.palette, text: ratio(body.color, body.backgroundColor), label: ratio(getComputedStyle(document.querySelector('.cols h2')).color, body.backgroundColor) };
-  })()`;
-  const grounds = new Set();
-  for (let n = 1; n <= 6; n++) {
-    await send('Input.dispatchKeyEvent', { type: 'keyDown', key: String(n), text: String(n) });
-    await send('Input.dispatchKeyEvent', { type: 'keyUp', key: String(n) });
-    await sleep(450);
-    const c = await evaluate(contrast);
-    grounds.add(await evaluate('getComputedStyle(document.body).backgroundColor'));
-    const stillLit = await evaluate(lit);
-    check(`poster/${vp.name}: palette ${c.id} readable and name kept`, c.text >= 7 && c.label >= 4.5 && stillLit > 0.2, `text ${c.text.toFixed(1)}:1, labels ${c.label.toFixed(1)}:1`);
-    await shot(`poster-${vp.name}-${c.id}`);
+  // Readability of the Clay palette on the poster: body text, labels, and the lead paragraph.
+  await sleep(6500); // let the regrow from the click finish before the screenshot
+  const poster = await evaluate(contrastOf(['.cols p', '.lead h2', '.lead-text', '.hint']));
+  for (const [sel, ratio] of Object.entries(poster)) {
+    const need = sel === '.lead h2' || sel === '.hint' ? 4.5 : 7;
+    check(`poster/${vp.name}: ${sel} contrast`, ratio >= need, `${ratio.toFixed(1)}:1, needs ${need}:1`);
   }
-  check(`poster/${vp.name}: six distinct grounds`, grounds.size === 6, `${grounds.size} found`);
+  await shot(`poster-${vp.name}-final`);
+  const leadFirst = await evaluate(`document.querySelector('.lead').getBoundingClientRect().top < document.querySelector('.cols').getBoundingClientRect().top`);
+  check(`poster/${vp.name}: games block comes before the other sections`, leadFirst === true);
 }
 
 check('no JavaScript exceptions', errors.length === 0, errors.slice(0, 3).join(' | '));

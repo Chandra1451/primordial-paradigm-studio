@@ -4,14 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
-  <title>Candidate C: Poster — Primordial Paradigm lab</title>
+  <title>Poster homepage — Primordial Paradigm lab</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body data-palette="plum">
+<body>
   <a class="lab-tag" href="/lab/">Lab: poster</a>
-
-  <!-- Lab only: colour comparison. Not part of the design. -->
-  <div class="lab-palettes" id="labPalettes" role="group" aria-label="Colour combination (lab only)"></div>
 
   <header class="bar">
     <span>An independent game studio</span>
@@ -30,12 +27,16 @@
     </div>
     <p class="hint" id="hint" hidden>Click anywhere on the name to grow it again from that point.</p>
 
+    <section class="lead" aria-labelledby="lead-games">
+      <h2 id="lead-games">Games</h2>
+      <p class="lead-text">The first game is in development. Nothing is released yet. The development journal follows the work as it happens.</p>
+      <p class="lead-links">
+        <a href="/games/systemic-movement-prototype/">Read the latest journal entry</a>
+        <a href="/games/">All games</a>
+      </p>
+    </section>
+
     <div class="cols">
-      <section>
-        <h2>Games</h2>
-        <p>The first game is in development. Nothing is released yet. The devlog shows the work as it happens.</p>
-        <a href="/games/systemic-movement-prototype/">Read the first devlog</a>
-      </section>
       <section>
         <h2>Writing</h2>
         <p>Essays on how systems are put together, in games and outside them.</p>
@@ -49,7 +50,6 @@
     </div>
   </main>
 
-  <script src="palettes.js" defer></script>
   <script src="script.js" defer></script>
 </body>
 </html>

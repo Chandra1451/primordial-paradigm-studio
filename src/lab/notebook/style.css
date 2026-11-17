@@ -1,20 +1,25 @@
+/* Clay, the same palette as the poster pages (owner choice, 2026-11-17).
+   The notebook adds two inks: the margin line and the highlighter. */
 :root {
-  --paper: #f4f1ea;
-  --ink: #170a1c;
-  --teal: #0b7189;
-  --blue: #228cdb;
-  --lavender: #9c95dc;
+  --ground: #ece3d4;
+  --text: #2a1a12;
+  --label: #a23b1f;
+  --link: #d1552d;
+  --margin-line: #d1552d;
+  --highlight: rgba(233, 180, 76, 0.65);
+  --ghost: #e07a3a;
+  --rule-line: rgba(42, 26, 18, 0.14);
   --rule: 32px; /* every line of body text sits on a ruled line */
-  --text: Georgia, 'Times New Roman', serif;
+  --body-font: Georgia, 'Times New Roman', serif;
 }
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--text);
+  background: var(--ground);
+  color: var(--text);
+  font-family: var(--body-font);
   font-size: 19px;
   line-height: var(--rule);
 }
@@ -29,8 +34,8 @@ a { color: inherit; }
   right: 0;
   z-index: 10;
   padding: 4px 10px;
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--text);
+  color: var(--ground);
   font: 12px/1.4 ui-monospace, Consolas, monospace;
   text-decoration: none;
 }
@@ -50,7 +55,7 @@ a { color: inherit; }
   bottom: 0;
   left: clamp(12px, 6vw, 96px);
   width: 2px;
-  background: var(--lavender);
+  background: var(--margin-line);
 }
 
 .top {
@@ -72,13 +77,13 @@ a { color: inherit; }
 .top nav a,
 .foot a {
   font-style: italic;
-  text-decoration: underline wavy var(--teal);
+  text-decoration: underline wavy var(--link);
   text-decoration-thickness: 1.5px;
   text-underline-offset: 6px;
 }
 
 .top nav a:hover,
-.foot a:hover { color: var(--teal); }
+.foot a:hover { color: var(--label); }
 
 .opening {
   display: grid;
@@ -98,7 +103,7 @@ h1 {
 
 /* A highlighter stroke, slightly off the baseline like a real one. */
 .mark {
-  background: linear-gradient(176deg, transparent 0 46%, rgba(156, 149, 220, 0.6) 46% 92%, transparent 92%);
+  background: linear-gradient(176deg, transparent 0 46%, var(--highlight) 46% 92%, transparent 92%);
   padding: 0 0.12em;
   margin: 0 -0.12em;
 }
@@ -112,18 +117,27 @@ h1 {
   overflow: visible;
   touch-action: pan-y;
   cursor: grab;
+  /* Dragging the ball must not select the sketch's labels. */
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .sketch svg.dragging { cursor: grabbing; }
 
 .note {
-  font-family: var(--text);
+  font-family: var(--body-font);
   font-style: italic;
   font-size: 19px;
-  fill: var(--ink);
+  fill: var(--text);
 }
 
-.note.teal { fill: var(--teal); text-anchor: middle; }
+.note.accent { fill: var(--label); text-anchor: middle; }
+
+/* Sketch inks come from the palette, not from the SVG markup. */
+.sk-ink { stroke: var(--text); }
+.sk-ink circle { fill: var(--ground); }
+.sk-ghost { stroke: var(--ghost); }
+.sk-arrow { stroke: var(--label); }
 
 figcaption {
   font-size: 16px;
@@ -133,7 +147,7 @@ figcaption {
 
 /* Ruled section: the lines are drawn every --rule and the text is set to match. */
 .entries {
-  background-image: linear-gradient(to bottom, transparent calc(var(--rule) - 1px), rgba(23, 10, 28, 0.13) calc(var(--rule) - 1px));
+  background-image: linear-gradient(to bottom, transparent calc(var(--rule) - 1px), var(--rule-line) calc(var(--rule) - 1px));
   background-size: 100% var(--rule);
   padding-bottom: var(--rule);
 }
@@ -148,7 +162,7 @@ figcaption {
 .margin {
   margin: 0;
   font-style: italic;
-  color: var(--teal);
+  color: var(--label);
 }
 
 h2 {
@@ -160,12 +174,12 @@ h2 {
 
 h2 a {
   text-decoration: underline;
-  text-decoration-color: var(--lavender);
+  text-decoration-color: var(--link);
   text-decoration-thickness: 3px;
   text-underline-offset: 5px;
 }
 
-h2 a:hover { text-decoration-color: var(--teal); }
+h2 a:hover { color: var(--label); }
 
 .entry p { margin: 0; }
 .entry .aside { font-style: italic; opacity: 0.8; }

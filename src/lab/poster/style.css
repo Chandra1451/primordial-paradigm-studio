@@ -1,34 +1,15 @@
-/* Colour combinations under comparison. Each one sets the same eight roles:
-   ground and text, a label colour, a link underline, and the four growth-ring colours
-   the name passes through (first to last, then back). */
-[data-palette="plum"] {
-  --ground: #170a1c; --text: #f4f1ea; --label: #9c95dc; --link: #228cdb;
-  --ring-1: #0b7189; --ring-2: #228cdb; --ring-3: #9c95dc; --ring-4: #f4f1ea;
-  --dim: 0.09;
-}
-[data-palette="limestone"] {
-  --ground: #f4f1ea; --text: #170a1c; --label: #0b7189; --link: #228cdb;
-  --ring-1: #170a1c; --ring-2: #0b7189; --ring-3: #228cdb; --ring-4: #9c95dc;
-  --dim: 0.1;
-}
-[data-palette="lichen"] {
-  --ground: #0f1a14; --text: #eef0e3; --label: #b5d16b; --link: #7fb23a;
-  --ring-1: #1f6b4a; --ring-2: #7fb23a; --ring-3: #e3d44e; --ring-4: #f3f1dc;
-  --dim: 0.09;
-}
-[data-palette="ember"] {
-  --ground: #1b1210; --text: #f3eadc; --label: #f2a541; --link: #e2572b;
-  --ring-1: #8f2d1a; --ring-2: #e2572b; --ring-3: #f2a541; --ring-4: #f6e7c8;
-  --dim: 0.1;
-}
-[data-palette="ink"] {
-  --ground: #15173a; --text: #fff7e6; --label: #ff9bb0; --link: #ff5b3a;
-  --ring-1: #ff5b3a; --ring-2: #ff9bb0; --ring-3: #ffe14d; --ring-4: #fff7e6;
-  --dim: 0.08;
-}
-[data-palette="clay"] {
-  --ground: #ece3d4; --text: #2a1a12; --label: #a23b1f; --link: #d1552d;
-  --ring-1: #2a1a12; --ring-2: #a23b1f; --ring-3: #e07a3a; --ring-4: #e9b44c;
+/* Clay: chosen by the owner on 2026-11-17.
+   Roles: ground and text, a label colour, a link underline, and the four growth-ring
+   colours the name passes through (first to last, then back). */
+:root {
+  --ground: #ece3d4;
+  --text: #2a1a12;
+  --label: #a23b1f;
+  --link: #d1552d;
+  --ring-1: #2a1a12;
+  --ring-2: #a23b1f;
+  --ring-3: #e07a3a;
+  --ring-4: #e9b44c;
   --dim: 0.1;
 }
 
@@ -103,11 +84,44 @@ a { color: inherit; }
   color: var(--label);
 }
 
+/* Games lead: the largest block under the name. */
+.lead {
+  margin: clamp(40px, 6vw, 88px) clamp(16px, 2vw, 32px) 0;
+  padding-top: 24px;
+  border-top: 2px solid var(--text);
+}
+
+.lead-text {
+  margin: 0 0 24px;
+  max-width: 30ch;
+  font-size: clamp(1.6rem, 3.2vw, 2.6rem);
+  line-height: 1.2;
+}
+
+.lead-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.lead a,
+.cols a {
+  text-decoration: underline;
+  text-decoration-color: var(--link);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+.lead a:hover,
+.cols a:hover { color: var(--label); }
+
 .cols {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  margin: clamp(40px, 6vw, 88px) clamp(16px, 2vw, 32px) 96px;
-  border-top: 2px solid var(--text);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: clamp(48px, 6vw, 80px) clamp(16px, 2vw, 32px) 96px;
+  border-top: 1px solid color-mix(in srgb, var(--text) 30%, transparent);
 }
 
 .cols section { padding: 24px 28px 0 0; }
@@ -117,6 +131,7 @@ a { color: inherit; }
   border-left: 1px solid color-mix(in srgb, var(--text) 30%, transparent);
 }
 
+.lead h2,
 .cols h2 {
   margin: 0 0 14px;
   font-family: var(--display);
@@ -127,15 +142,6 @@ a { color: inherit; }
 }
 
 .cols p { margin: 0 0 18px; max-width: 34ch; }
-
-.cols a {
-  text-decoration: underline;
-  text-decoration-color: var(--link);
-  text-decoration-thickness: 2px;
-  text-underline-offset: 6px;
-}
-
-.cols a:hover { color: var(--label); }
 
 @media (max-width: 760px) {
   .cols { grid-template-columns: 1fr; }
@@ -159,38 +165,3 @@ a { color: inherit; }
   font: 12px/1.4 ui-monospace, Consolas, monospace;
   text-decoration: none;
 }
-
-.lab-palettes {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 10px 6px 6px;
-  background: #ffffff;
-  color: #111111;
-  font: 12px/1 ui-monospace, Consolas, monospace;
-}
-
-.lab-palettes button {
-  width: 30px;
-  height: 30px;
-  padding: 0;
-  display: grid;
-  place-items: center;
-  border: 2px solid #111111;
-  border-radius: 0;
-  background: var(--ground);
-  cursor: pointer;
-}
-
-.lab-palettes button i {
-  width: 12px;
-  height: 12px;
-  background: var(--ring-2);
-}
-
-.lab-palettes button[aria-pressed="true"] { outline: 3px solid #111111; outline-offset: 2px; }
-.lab-palette-name { margin-left: 8px; min-width: 9ch; }

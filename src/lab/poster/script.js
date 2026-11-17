@@ -10,7 +10,7 @@
 
   const FONT = '"Segoe UI Black", "Arial Black", Impact, "Helvetica Neue", Arial, sans-serif';
   const LINES = ['PRIMORDIAL', 'PARADIGM'];
-  let RING = [];   // the four ring colours, read from the active palette in style.css
+  let RING = [];   // the four ring colours, read from style.css
   let dim = 0.09;  // opacity of cells outside the letters
   const RING_SPAN = 34; // generations between one colour and the next
 
@@ -22,7 +22,6 @@
   let mask = null;      // 1 where a cell is inside a letter
   let filled = null;    // 1 once a cell has grown
   let generation = null;
-  let painted = null;   // 1 once a cell has been drawn
   let frontier = [];
   let raf = 0;
 
@@ -110,17 +109,8 @@
     const [r, g, b] = ringColour(generation[index]);
     ctx.fillStyle = mask[index] ? `rgb(${r}, ${g}, ${b})` : `rgba(${r}, ${g}, ${b}, ${dim})`;
     ctx.fillRect(x * cell, y * cell, cell - 1, cell - 1);
-    painted[index] = 1;
   }
 
-  // A palette change recolours what has already grown, without starting over.
-  function repaint() {
-    readPalette();
-    if (!painted) return;
-    ctx.clearRect(0, 0, cols * cell, rows * cell);
-    for (let i = 0; i < painted.length; i++) if (painted[i]) paint(i);
-  }
-  document.addEventListener('palettechange', repaint);
 
   function growOne() {
     // Pick a random cell on the edge of the growth and fill it.
@@ -150,7 +140,6 @@
     cancelAnimationFrame(raf);
     filled = new Uint8Array(cols * rows);
     generation = new Uint16Array(cols * rows);
-    painted = new Uint8Array(cols * rows);
     frontier = [];
     ctx.clearRect(0, 0, cols * cell, rows * cell);
     const x = Math.max(0, Math.min(cols - 1, Math.floor(cx / cell)));
