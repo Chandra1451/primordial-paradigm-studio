@@ -207,10 +207,5 @@
     resizeTimer = setTimeout(() => { layout(); seed(W * 0.05, H * 0.25); }, 200);
   });
 
-  // A new typeface (lab switcher) re-lays the name and grows it again.
-  document.addEventListener('typechange', () => {
-    fontReady().then(() => { layout(); seed(W * 0.05, H * 0.25); });
-  });
-
   fontReady().then(start);
 })();

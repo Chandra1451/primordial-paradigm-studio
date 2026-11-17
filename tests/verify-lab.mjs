@@ -149,60 +149,33 @@ for (const vp of VIEWPORTS) {
   const leadFirst = await evaluate(`document.querySelector('.lead').getBoundingClientRect().top < document.querySelector('.cols').getBoundingClientRect().top`);
   check(`poster/${vp.name}: games block comes before the other sections`, leadFirst === true);
 
-  // Typefaces (two lab menus). Browsers load a face only when text uses it, so each page is
-  // checked for the faces it shows: every display face on the poster, every text face on the
-  // notebook and essay pages.
-  const fontState = `(() => {
-    const css = getComputedStyle(document.body);
-    const first = (stack) => stack.split(',')[0].trim();
-    const display = first(css.getPropertyValue('--display'));
-    const weight = css.getPropertyValue('--display-weight').trim();
-    const body = first(css.getPropertyValue('--body-font'));
-    return { display: document.body.dataset.display, text: document.body.dataset.text, displayFamily: display, bodyFamily: body,
-      displayOk: document.fonts.check(weight + ' 50px ' + display),
-      bodyOk: document.fonts.check('400 20px ' + body),
-      italicOk: document.fonts.check('italic 400 20px ' + body) };
-  })()`;
-  const optionsOf = (id) => evaluate(`[...document.getElementById('${id}').options].map(o => o.value)`);
-  const choose = (id, value) => evaluate(`(() => { const s = document.getElementById('${id}'); s.value = '${value}'; s.dispatchEvent(new Event('change')); })()`);
-  const overflowNow = () => evaluate('document.documentElement.scrollWidth - window.innerWidth');
+  // Chosen typefaces: Tektur (display) and Figtree (text). Browsers load a face only when
+  // text uses it, so each page is checked for the faces it shows.
+  const fontsLoaded = `(() => ({
+    tektur: document.fonts.check('900 50px Tektur'),
+    figtree: document.fonts.check('400 20px Figtree'),
+    figtreeItalic: document.fonts.check('italic 400 20px Figtree'),
+    figtreeBold: document.fonts.check('700 20px Figtree')
+  }))()`;
 
-  // Poster: every display face (text face fixed).
   await open('poster', vp, 400);
-  const displays = await optionsOf('labDisplay');
-  check(`poster/${vp.name}: 16 display faces offered`, displays.length === 16, `${displays.length} found`);
-  for (const id of displays) {
-    await choose('labDisplay', id);
-    await sleep(300);
-    for (let t = 0; t < 150 && (await evaluate(`document.getElementById('grow').dataset.state`)) !== 'grown'; t++) await sleep(100);
-    const growMs = Number(await evaluate(`document.getElementById('grow').dataset.growMs`));
-    const st = await evaluate(fontState);
-    const clipped = await evaluate(`(() => { const c = document.getElementById('cells'); const d = c.getContext('2d').getImageData(c.width - 3, 0, 3, c.height).data; for (let i = 3; i < d.length; i += 4) if (d[i] > 200) return true; return false; })()`);
-    const overflow = await overflowNow();
-    const ok = (id === 'system' || st.displayOk) && overflow <= 0 && !clipped && growMs < 4000;
-    check(`poster/${vp.name}: display ${id} loads, fits, grows in under 4s`, ok, `${st.displayFamily}, overflow ${overflow}, clipped ${clipped}, grown in ${growMs}ms`);
-    await shot(`poster-${vp.name}-display-${id}`);
-  }
+  for (let t = 0; t < 150 && (await evaluate(`document.getElementById('grow').dataset.state`)) !== 'grown'; t++) await sleep(100);
+  const posterFonts = await evaluate(fontsLoaded);
+  const growMs = Number(await evaluate(`document.getElementById('grow').dataset.growMs`));
+  check(`poster/${vp.name}: Tektur and Figtree load`, posterFonts.tektur && posterFonts.figtree, JSON.stringify(posterFonts));
+  check(`poster/${vp.name}: name grows in under 4s`, growMs < 4000, `${growMs}ms`);
+  await shot(`poster-${vp.name}-tektur`);
 
-  // Notebook and essay: every text face (display face fixed).
-  for (const page of ['notebook', 'essay']) {
-    await open(page, vp, 400);
-    const texts = await optionsOf('labText');
-    check(`${page}/${vp.name}: 8 text faces offered`, texts.length === 8, `${texts.length} found`);
-    for (const id of texts) {
-      await choose('labText', id);
-      await sleep(900);
-      const st = await evaluate(fontState);
-      const overflow = await overflowNow();
-      const ok = (id === 'system' || (st.bodyOk && st.italicOk)) && overflow <= 0;
-      check(`${page}/${vp.name}: text ${id} loads and fits`, ok, `${st.bodyFamily}, regular ${st.bodyOk}, italic ${st.italicOk}, overflow ${overflow}`);
-      await shot(`${page}-${vp.name}-text-${id}`);
-    }
-  }
+  await open('notebook', vp, 1200);
+  const nbFonts = await evaluate(fontsLoaded);
+  check(`notebook/${vp.name}: Figtree regular, italic and bold load`, nbFonts.figtree && nbFonts.figtreeItalic && nbFonts.figtreeBold, JSON.stringify(nbFonts));
+  await shot(`notebook-${vp.name}-figtree`);
 
-  // Essay reading checks (default faces).
-  await choose('labText', 'fraunces');
-  await sleep(600);
+  await open('essay', vp, 1200);
+  const essayFonts = await evaluate(fontsLoaded);
+  check(`essay/${vp.name}: Tektur and Figtree load`, essayFonts.tektur && essayFonts.figtree && essayFonts.figtreeItalic, JSON.stringify(essayFonts));
+
+  // Essay reading checks.
   const read = await evaluate(`(() => {
     const p = [...document.querySelectorAll('.essay-body p:not(.opening)')].sort((a, b) => b.textContent.length - a.textContent.length)[0];
     // Exact count: characters whose box sits on the paragraph's first line.

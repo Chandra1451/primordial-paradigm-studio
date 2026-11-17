@@ -1,0 +1,19 @@
+/* Chosen typefaces (owner, 2026-11-17): Tektur for display, Figtree for text.
+   Self-hosted, SIL Open Font License 1.1. Sources and checksums: lab/fonts/manifest.json;
+   licence texts: lab/fonts/licences/. Tektur ships as one heavy weight, so it declares the
+   full range: the browser then never fakes a bold. */
+
+@font-face { font-family: 'Tektur'; src: url('../fonts/tektur-latin-900-normal.woff2') format('woff2'); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Figtree'; src: url('../fonts/figtree-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Figtree'; src: url('../fonts/figtree-latin-400-italic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Figtree'; src: url('../fonts/figtree-latin-700-normal.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+
+/* Set on body so these win over each page's fallback values on :root. */
+body {
+  --display: 'Tektur', 'Arial Black', sans-serif;
+  --display-weight: 900;
+  --label-font: 'Tektur', 'Arial Black', sans-serif;
+  --label-weight: 900;
+  --body: 'Figtree', 'Segoe UI', Arial, sans-serif;
+  --body-font: 'Figtree', 'Segoe UI', Arial, sans-serif;
+}
