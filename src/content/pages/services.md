@@ -1,6 +1,6 @@
 ---
 title: Work for hire
-review: pending
+review: approved
 summary: Business dashboards, data models and data pipelines, built to order in Power BI and taken on selectively.
 ---
 Alongside its games, Primordial Paradigm builds business dashboards: the data model underneath, the report people read, and the pipeline that keeps it current. Power BI is the main tool; a project that needs a different one can be planned around it. Work is taken on selectively, and every project is built for the client who asked for it.
