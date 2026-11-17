@@ -148,6 +148,47 @@ for (const vp of VIEWPORTS) {
   await shot(`poster-${vp.name}-final`);
   const leadFirst = await evaluate(`document.querySelector('.lead').getBoundingClientRect().top < document.querySelector('.cols').getBoundingClientRect().top`);
   check(`poster/${vp.name}: games block comes before the other sections`, leadFirst === true);
+
+  // Typeface pairings (lab switcher): each loads the faces that page uses, and fits.
+  // Browsers load a face only when text uses it: the poster uses display + regular text,
+  // the notebook uses regular + italic text and no display face.
+  const fontState = `(() => {
+    const css = getComputedStyle(document.body);
+    const display = css.getPropertyValue('--display').trim();
+    const weight = css.getPropertyValue('--display-weight').trim();
+    const body = (css.getPropertyValue('--body-font') || css.getPropertyValue('--body')).trim();
+    const first = (stack) => stack.split(',')[0].trim();
+    return { type: document.body.dataset.type, display: first(display), body: first(body),
+      displayOk: document.fonts.check(weight + ' 50px ' + first(display)),
+      bodyOk: document.fonts.check('400 20px ' + first(body)),
+      italicOk: document.fonts.check('italic 400 20px ' + first(body)) };
+  })()`;
+  for (const page of ['poster', 'notebook']) {
+    await open(page, vp, 400);
+    for (let n = 1; n <= 4; n++) {
+      await evaluate(`document.querySelectorAll('.lab-types button')[${n - 1}].click()`);
+      let growMs = '';
+      if (page === 'poster') {
+        await sleep(300);
+        for (let t = 0; t < 150 && (await evaluate(`document.getElementById('grow').dataset.state`)) !== 'grown'; t++) await sleep(100);
+        growMs = await evaluate(`document.getElementById('grow').dataset.state + ' in ' + document.getElementById('grow').dataset.growMs + 'ms'`);
+      } else {
+        await sleep(1200);
+      }
+      const st = await evaluate(fontState);
+      const system = st.type === 'system';
+      const overflow = await evaluate('document.documentElement.scrollWidth - window.innerWidth');
+      let clipped = false;
+      if (page === 'poster') {
+        clipped = await evaluate(`(() => { const c = document.getElementById('cells'); const d = c.getContext('2d').getImageData(c.width - 3, 0, 3, c.height).data; for (let i = 3; i < d.length; i += 4) if (d[i] > 200) return true; return false; })()`);
+      }
+      const loaded = system || (page === 'poster' ? st.displayOk && st.bodyOk : st.bodyOk && st.italicOk);
+      const fastEnough = page !== 'poster' || (growMs.startsWith('grown') && Number(growMs.match(/([0-9]+)ms/)[1]) < 4000);
+      check(`${page}/${vp.name}: type ${st.type} loads, fits${page === 'poster' ? ', grows in under 4s' : ''}`, loaded && overflow <= 0 && !clipped && fastEnough,
+        `${page === 'poster' ? st.display + ' / ' : ''}${st.body}, overflow ${overflow}, clipped ${clipped}${growMs ? ', ' + growMs : ''}`);
+      await shot(`${page}-${vp.name}-type-${st.type}`);
+    }
+  }
 }
 
 check('no JavaScript exceptions', errors.length === 0, errors.slice(0, 3).join(' | '));

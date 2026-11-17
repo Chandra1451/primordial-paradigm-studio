@@ -58,7 +58,7 @@ a { color: inherit; }
 #title {
   margin: 0;
   font-family: var(--display);
-  font-weight: 900;
+  font-weight: var(--display-weight, 900);
   font-size: 13.4vw;
   line-height: 0.86;
   letter-spacing: -0.03em;

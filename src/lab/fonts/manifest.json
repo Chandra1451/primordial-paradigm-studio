@@ -1,0 +1,98 @@
+[
+ {
+  "name": "bricolage-grotesque-latin-800-normal.woff2",
+  "http": 200,
+  "bytes": 21844,
+  "magic": "wOF2",
+  "sha256": "3e1b5f0a56ee995b7c1445bc54e6ec98c5dffb585ef5c4baf86731cf68e27c61",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/bricolage-grotesque@5.3.0/files/bricolage-grotesque-latin-800-normal.woff2"
+ },
+ {
+  "name": "fraunces-latin-400-normal.woff2",
+  "http": 200,
+  "bytes": 17968,
+  "magic": "wOF2",
+  "sha256": "e558f39453a9c611908be04294b50dea5f21ae6c49b41c6e47f4115e91f90209",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/fraunces@5.3.0/files/fraunces-latin-400-normal.woff2"
+ },
+ {
+  "name": "fraunces-latin-400-italic.woff2",
+  "http": 200,
+  "bytes": 22852,
+  "magic": "wOF2",
+  "sha256": "475b154af19c6b4ef371db22078b5044a078ce2467e11ef22a7b87f77837caf3",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/fraunces@5.3.0/files/fraunces-latin-400-italic.woff2"
+ },
+ {
+  "name": "fraunces-latin-700-normal.woff2",
+  "http": 200,
+  "bytes": 18212,
+  "magic": "wOF2",
+  "sha256": "c38570d224b830056e69484bb9e768e1d3fa7ba4755c8891a3c6d366194d2ff3",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/fraunces@5.3.0/files/fraunces-latin-700-normal.woff2"
+ },
+ {
+  "name": "unbounded-latin-900-normal.woff2",
+  "http": 200,
+  "bytes": 21112,
+  "magic": "wOF2",
+  "sha256": "d84ca6bdf94ebb12a42e2d6f08ceb3437c6b8b1411575fcd0a370d60b54c0040",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/unbounded@5.3.0/files/unbounded-latin-900-normal.woff2"
+ },
+ {
+  "name": "literata-latin-400-normal.woff2",
+  "http": 200,
+  "bytes": 20420,
+  "magic": "wOF2",
+  "sha256": "a60c193b55766b68b922e2327e15c2d8c145532f283a27c3411b9c47a8583d18",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/literata@5.3.0/files/literata-latin-400-normal.woff2"
+ },
+ {
+  "name": "literata-latin-400-italic.woff2",
+  "http": 200,
+  "bytes": 21148,
+  "magic": "wOF2",
+  "sha256": "1e98bfbbb4eb8177b9c21b3fd526e1118c4835d21ff870c0d1c25b1ef4409fba",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/literata@5.3.0/files/literata-latin-400-italic.woff2"
+ },
+ {
+  "name": "literata-latin-700-normal.woff2",
+  "http": 200,
+  "bytes": 22004,
+  "magic": "wOF2",
+  "sha256": "1f2985e0fc368aac76f95b847cd05ef6ec4bac2733a648098c62edf990756cf5",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/literata@5.3.0/files/literata-latin-700-normal.woff2"
+ },
+ {
+  "name": "archivo-black-latin-400-normal.woff2",
+  "http": 200,
+  "bytes": 18604,
+  "magic": "wOF2",
+  "sha256": "25f33e61cf995abd6be62931cf03bf427286259177b43618cc410ee0157cfd30",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/archivo-black@5.3.0/files/archivo-black-latin-400-normal.woff2"
+ },
+ {
+  "name": "source-serif-4-latin-400-normal.woff2",
+  "http": 200,
+  "bytes": 20088,
+  "magic": "wOF2",
+  "sha256": "02194deb92d3975dd30e11a3824a1f1db32b48c93654e60560cb81ce8e7b5f95",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/source-serif-4@5.3.1/files/source-serif-4-latin-400-normal.woff2"
+ },
+ {
+  "name": "source-serif-4-latin-400-italic.woff2",
+  "http": 200,
+  "bytes": 20092,
+  "magic": "wOF2",
+  "sha256": "882b7c150c29f29d4f8daae6b8dcae8662aac7f28ca34b34615305154136ecfd",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/source-serif-4@5.3.1/files/source-serif-4-latin-400-italic.woff2"
+ },
+ {
+  "name": "source-serif-4-latin-700-normal.woff2",
+  "http": 200,
+  "bytes": 21716,
+  "magic": "wOF2",
+  "sha256": "7691c51bc286a9014db0048277d2c3f2ad0a90b533dc8adfb16cb22a95390d39",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/source-serif-4@5.3.1/files/source-serif-4-latin-700-normal.woff2"
+ }
+]

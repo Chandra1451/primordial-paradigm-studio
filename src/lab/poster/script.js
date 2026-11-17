@@ -8,11 +8,25 @@
   const ctx = canvas.getContext('2d');
   const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const FONT = '"Segoe UI Black", "Arial Black", Impact, "Helvetica Neue", Arial, sans-serif';
+  // The display face and weight come from CSS (--display, --display-weight), so the canvas
+  // name always matches the heading it replaces.
+  let FONT = 'sans-serif';
+  let WEIGHT = '900';
+  function readType() {
+    const css = getComputedStyle(document.body);
+    FONT = css.getPropertyValue('--display').trim() || 'sans-serif';
+    WEIGHT = css.getPropertyValue('--display-weight').trim() || '900';
+  }
+  // Wait for the face itself; a canvas does not trigger font loading on its own.
+  function fontReady() {
+    readType();
+    return document.fonts && document.fonts.load ? document.fonts.load(`${WEIGHT} 100px ${FONT}`).catch(() => {}) : Promise.resolve();
+  }
   const LINES = ['PRIMORDIAL', 'PARADIGM'];
   let RING = [];   // the four ring colours, read from style.css
   let dim = 0.09;  // opacity of cells outside the letters
   const RING_SPAN = 34; // generations between one colour and the next
+  const GROW_MS = 2200; // growth finishes in about this time on any screen size
 
   let W = 0;
   let H = 0;
@@ -60,10 +74,10 @@
     const inner = W - cell * 4;
     let top = cell;
     const set = LINES.map((text) => {
-      probe.font = `900 200px ${FONT}`;
+      probe.font = `${WEIGHT} 200px ${FONT}`;
       let m = probe.measureText(text);
       const size = (200 * inner) / (m.actualBoundingBoxLeft + m.actualBoundingBoxRight);
-      probe.font = `900 ${size}px ${FONT}`;
+      probe.font = `${WEIGHT} ${size}px ${FONT}`;
       m = probe.measureText(text);
       const line = { text, size, x: cell * 2 + m.actualBoundingBoxLeft, baseline: top + m.actualBoundingBoxAscent };
       top = line.baseline + m.actualBoundingBoxDescent + size * 0.09;
@@ -82,7 +96,7 @@
     o.textBaseline = 'alphabetic';
     o.fillStyle = '#fff';
     for (const line of set) {
-      o.font = `900 ${line.size}px ${FONT}`;
+      o.font = `${WEIGHT} ${line.size}px ${FONT}`;
       o.fillText(line.text, line.x, line.baseline);
     }
     const px = o.getImageData(0, 0, off.width, off.height).data;
@@ -145,15 +159,27 @@
     const x = Math.max(0, Math.min(cols - 1, Math.floor(cx / cell)));
     const y = Math.max(0, Math.min(rows - 1, Math.floor(cy / cell)));
     claim(y * cols + x, 0);
+    // State is exposed on the element so tests can wait for the real end of growth.
+    wrap.dataset.state = 'growing';
+    const startedAt = performance.now();
+    const done = () => { wrap.dataset.state = 'grown'; wrap.dataset.growMs = String(Math.round(performance.now() - startedAt)); };
 
     if (reduceMotion) {
       while (frontier.length) growOne();
+      done();
       return;
     }
-    const tick = () => {
-      const count = Math.max(24, Math.ceil(frontier.length * 0.16));
+    // Each frame fills a share of all cells in proportion to the time elapsed, so a wide
+    // screen grows as quickly as a narrow one.
+    const total = cols * rows;
+    let last = performance.now();
+    const tick = (now) => {
+      const dt = Math.min(Math.max(now - last, 0), 50);
+      last = now;
+      const count = Math.max(24, Math.ceil((total * dt) / GROW_MS));
       for (let i = 0; i < count && frontier.length; i++) growOne();
       if (frontier.length) raf = requestAnimationFrame(tick);
+      else done();
     };
     raf = requestAnimationFrame(tick);
   }
@@ -181,6 +207,10 @@
     resizeTimer = setTimeout(() => { layout(); seed(W * 0.05, H * 0.25); }, 200);
   });
 
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(start);
-  else start();
+  // A new typeface (lab switcher) re-lays the name and grows it again.
+  document.addEventListener('typechange', () => {
+    fontReady().then(() => { layout(); seed(W * 0.05, H * 0.25); });
+  });
+
+  fontReady().then(start);
 })();
