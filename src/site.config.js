@@ -12,7 +12,7 @@ export const site = {
   // Plain links only: no embedded feeds or tracking widgets.
   // LinkedIn is added when the owner creates the page and supplies its URL.
   social: [
-    { name: 'YouTube', url: 'https://www.youtube.com/@irongod6947' },
+    { name: 'YouTube', url: 'https://www.youtube.com/@PrimordialParadigm' },
     { name: 'Instagram', url: 'https://www.instagram.com/primordialparadigm' }
   ],
 
