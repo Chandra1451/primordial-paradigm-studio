@@ -142,5 +142,149 @@
   "magic": "wOF2",
   "sha256": "65f2c368034258382e77672f083d9f42e805d23d557432517a1b5a4f75c21f1a",
   "source": "https://cdn.jsdelivr.net/npm/@fontsource/big-shoulders-display@5.3.0/files/big-shoulders-display-latin-900-normal.woff2"
+ },
+ {
+  "name": "anybody-latin-900-normal.woff2",
+  "http": 200,
+  "bytes": 12732,
+  "magic": "wOF2",
+  "sha256": "83179ac2c3dd6787a630014783243743b367d4e1a70e0b32c9cbed87d3dc58bc",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/anybody@5.3.0/files/anybody-latin-900-normal.woff2"
+ },
+ {
+  "name": "monoton-latin-400-normal.woff2",
+  "http": 200,
+  "bytes": 16492,
+  "magic": "wOF2",
+  "sha256": "54dd0ac1cf6c02e094ad114d3cc038baddc42e5d6ba1c0b74566cedaed765c4c",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/monoton@5.3.0/files/monoton-latin-400-normal.woff2"
+ },
+ {
+  "name": "krona-one-latin-400-normal.woff2",
+  "http": 200,
+  "bytes": 10416,
+  "magic": "wOF2",
+  "sha256": "e9d1d62518ebf3f92580236ad105a2cb737f25ae3119d228c84af4d12790a12e",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/krona-one@5.3.0/files/krona-one-latin-400-normal.woff2"
+ },
+ {
+  "name": "rubik-mono-one-latin-400-normal.woff2",
+  "http": 200,
+  "bytes": 12752,
+  "magic": "wOF2",
+  "sha256": "4c1f9c2e5e3f867641f60becebfc11cd0e6ab02aa96bac88d750e37de8fce3c4",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/rubik-mono-one@5.3.0/files/rubik-mono-one-latin-400-normal.woff2"
+ },
+ {
+  "name": "zen-dots-latin-400-normal.woff2",
+  "http": 200,
+  "bytes": 13856,
+  "magic": "wOF2",
+  "sha256": "aaad72a24e4047bf39cac4bca3c5de075c83b11476b3b162e2a3939b9fe5fceb",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/zen-dots@5.3.0/files/zen-dots-latin-400-normal.woff2"
+ },
+ {
+  "name": "bowlby-one-latin-400-normal.woff2",
+  "http": 200,
+  "bytes": 21536,
+  "magic": "wOF2",
+  "sha256": "e2f3c84b26df8512d2cda4a9595e278e67b3efc86c5866b0a89ac45a16625e35",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/bowlby-one@5.3.0/files/bowlby-one-latin-400-normal.woff2"
+ },
+ {
+  "name": "newsreader-latin-400-normal.woff2",
+  "http": 200,
+  "bytes": 22480,
+  "magic": "wOF2",
+  "sha256": "e66067814f1c672d33a457e4f4d102c818b481420e2234cf685ebdbf2f443904",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/newsreader@5.3.0/files/newsreader-latin-400-normal.woff2"
+ },
+ {
+  "name": "newsreader-latin-400-italic.woff2",
+  "http": 200,
+  "bytes": 24340,
+  "magic": "wOF2",
+  "sha256": "fa9b900403949d9a723106752a5c8ad2797012a0c9057427b1da2db72d552148",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/newsreader@5.3.0/files/newsreader-latin-400-italic.woff2"
+ },
+ {
+  "name": "newsreader-latin-700-normal.woff2",
+  "http": 200,
+  "bytes": 23796,
+  "magic": "wOF2",
+  "sha256": "8b5c3b65cbda1d79ed371d23df3ef1fe194e590558965cf9942042441480ec61",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/newsreader@5.3.0/files/newsreader-latin-700-normal.woff2"
+ },
+ {
+  "name": "spectral-latin-400-normal.woff2",
+  "http": 200,
+  "bytes": 21696,
+  "magic": "wOF2",
+  "sha256": "cf8daee3b83c1e662196c6e34e444bc41344d54bfeb4fb5351e197de6ce94539",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/spectral@5.3.0/files/spectral-latin-400-normal.woff2"
+ },
+ {
+  "name": "spectral-latin-400-italic.woff2",
+  "http": 200,
+  "bytes": 22712,
+  "magic": "wOF2",
+  "sha256": "db397149a9f73fd6a41dd2fdf3314cf8a9daf0485134465cc268cac578766b71",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/spectral@5.3.0/files/spectral-latin-400-italic.woff2"
+ },
+ {
+  "name": "spectral-latin-700-normal.woff2",
+  "http": 200,
+  "bytes": 23036,
+  "magic": "wOF2",
+  "sha256": "5276f202cce67e8caa9f697800e11cfc9d708da67d47f6f5507dcadcf1e11c11",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/spectral@5.3.0/files/spectral-latin-700-normal.woff2"
+ },
+ {
+  "name": "atkinson-hyperlegible-next-latin-400-normal.woff2",
+  "http": 200,
+  "bytes": 12096,
+  "magic": "wOF2",
+  "sha256": "5cb240a4d99ab7e6fc3a4d4e6d11d89789fdffe9c86a8384000d662c53283f6f",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/atkinson-hyperlegible-next@5.3.0/files/atkinson-hyperlegible-next-latin-400-normal.woff2"
+ },
+ {
+  "name": "atkinson-hyperlegible-next-latin-400-italic.woff2",
+  "http": 200,
+  "bytes": 14152,
+  "magic": "wOF2",
+  "sha256": "59bc0e965694b9409ac2684c6c8d08994f4fee8a474bc63c4653714f8f441435",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/atkinson-hyperlegible-next@5.3.0/files/atkinson-hyperlegible-next-latin-400-italic.woff2"
+ },
+ {
+  "name": "atkinson-hyperlegible-next-latin-700-normal.woff2",
+  "http": 200,
+  "bytes": 12732,
+  "magic": "wOF2",
+  "sha256": "0dbe07ed7679407db9d90f747d5ca3bd1b2bb7ccbcbe41c8246cfc6d2c7bc3bc",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/atkinson-hyperlegible-next@5.3.0/files/atkinson-hyperlegible-next-latin-700-normal.woff2"
+ },
+ {
+  "name": "figtree-latin-400-normal.woff2",
+  "http": 200,
+  "bytes": 11384,
+  "magic": "wOF2",
+  "sha256": "8f98dd642986f1fa39c45b89665a57372897c235b36028e0e4a136e43dc5f8ab",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/figtree@5.3.0/files/figtree-latin-400-normal.woff2"
+ },
+ {
+  "name": "figtree-latin-400-italic.woff2",
+  "http": 200,
+  "bytes": 11872,
+  "magic": "wOF2",
+  "sha256": "3a2b7966f6d36cb6b6d1b71ca83668a9234e8cf1b9adaf733d7439885c314d57",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/figtree@5.3.0/files/figtree-latin-400-italic.woff2"
+ },
+ {
+  "name": "figtree-latin-700-normal.woff2",
+  "http": 200,
+  "bytes": 11376,
+  "magic": "wOF2",
+  "sha256": "7ec4f08d09f91d349917dd6592f6aaae66d8fe1bbd58fa24707961e79236616e",
+  "source": "https://cdn.jsdelivr.net/npm/@fontsource/figtree@5.3.0/files/figtree-latin-700-normal.woff2"
  }
 ]

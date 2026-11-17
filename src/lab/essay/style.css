@@ -1,0 +1,242 @@
+/* Clay palette: the same roles as the poster and notebook pages. */
+:root {
+  --ground: #ece3d4;
+  --text: #2a1a12;
+  --label: #a23b1f;
+  --link: #d1552d;
+  --ring-1: #2a1a12;
+  --ring-2: #a23b1f;
+  --ring-3: #e07a3a;
+  --ring-4: #e9b44c;
+  --panel: #e2d6c2;          /* code and figure ground */
+  --soft-rule: rgba(42, 26, 18, 0.22);
+  --display: 'Segoe UI Black', 'Arial Black', Impact, sans-serif;
+  --body-font: Georgia, 'Times New Roman', serif;
+  --mono: ui-monospace, Consolas, 'Courier New', monospace;
+  --measure: 32em; /* about 65 characters per line in a typical text face; ch units overshoot */
+  --note-width: 220px;
+  --note-gap: 48px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--text);
+  font-family: var(--body-font);
+  font-size: clamp(18px, 0.45vw + 15px, 21px);
+  line-height: 1.65;
+}
+
+a { color: inherit; }
+
+/* Reading progress: a strip of cells that fills from the left. */
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 15;
+  height: 6px;
+}
+
+.progress-fill {
+  height: 100%;
+  transform-origin: left center;
+  transform: scaleX(0);
+  background: repeating-linear-gradient(to right, var(--ring-2) 0 5px, transparent 5px 7px);
+}
+
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 32px;
+  padding: 26px clamp(16px, 2vw, 32px) 22px;
+  font-family: var(--label-font, var(--display));
+  font-weight: var(--label-weight, 900);
+  font-size: 13px;
+  line-height: 1.4;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.bar nav { display: flex; flex-wrap: wrap; gap: 0 28px; }
+.bar a { text-decoration: none; }
+.bar a:hover,
+.bar a:focus-visible,
+.bar a[aria-current="page"] { color: var(--label); text-decoration: underline; text-underline-offset: 6px; }
+
+/* Layout: one reading column; on wide screens a margin for notes to its right. */
+.essay {
+  max-width: calc(var(--measure) + var(--note-width) + var(--note-gap));
+  margin: 0 auto;
+  padding: clamp(32px, 6vw, 88px) 20px 96px;
+}
+
+.essay-head,
+.essay-body > :not(.note),
+.essay-foot { max-width: var(--measure); }
+
+.kicker {
+  margin: 0 0 18px;
+  font-family: var(--label-font, var(--display));
+  font-weight: var(--label-weight, 900);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--label);
+}
+
+h1 {
+  margin: 0 0 24px;
+  font-family: var(--display);
+  font-weight: var(--display-weight, 900);
+  font-size: clamp(2.3rem, 5.2vw, 4.4rem);
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+}
+
+.standfirst {
+  margin: 0 0 56px;
+  font-size: 1.2em;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.essay-body p { margin: 0 0 1.1em; }
+
+/* The opening letter: a grid of cells in the growth-ring colours, clipped to the letter. */
+.initial {
+  float: left;
+  margin: 0.06em 0.1em 0 0;
+  font-family: var(--display);
+  font-weight: var(--display-weight, 900);
+  font-size: 4.6em;
+  line-height: 0.8;
+  color: var(--ring-2);
+  background:
+    repeating-linear-gradient(to right, transparent 0 5px, var(--ground) 5px 7px),
+    repeating-linear-gradient(to bottom, transparent 0 5px, var(--ground) 5px 7px),
+    repeating-radial-gradient(circle at 10% 20%, var(--ring-1) 0 10px, var(--ring-2) 10px 20px, var(--ring-3) 20px 30px, var(--ring-4) 30px 40px);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h2 {
+  margin: 2.2em 0 0.6em;
+  font-family: var(--label-font, var(--display));
+  font-weight: var(--label-weight, 900);
+  font-size: 1.05em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--label);
+}
+
+.essay-body a {
+  text-decoration: underline;
+  text-decoration-color: var(--link);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.essay-body a:hover { color: var(--label); }
+
+/* Notes: in the margin on wide screens, folded into the text below that. */
+.note {
+  margin: 0 0 1.4em;
+  padding: 2px 0 2px 16px;
+  border-left: 2px solid var(--link);
+  font-size: 0.82em;
+  line-height: 1.5;
+}
+
+.note-mark {
+  display: block;
+  font-family: var(--label-font, var(--display));
+  font-weight: var(--label-weight, 900);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--label);
+}
+
+@media (min-width: 1100px) {
+  .note {
+    float: right;
+    clear: right;
+    width: var(--note-width);
+    margin-right: calc(-1 * (var(--note-width) + var(--note-gap)));
+  }
+  .essay-body { max-width: var(--measure); }
+}
+
+/* Quotations: a column of small squares, then larger italic text. */
+blockquote {
+  margin: 1.8em 0;
+  padding-left: 28px;
+  background: repeating-linear-gradient(to bottom, var(--ring-3) 0 6px, transparent 6px 10px) left top / 6px 100% no-repeat;
+  font-size: 1.22em;
+  line-height: 1.45;
+  font-style: italic;
+}
+
+blockquote p { margin: 0; }
+
+pre {
+  margin: 1.4em 0;
+  padding: 16px 18px;
+  overflow-x: auto;
+  background: var(--panel);
+  font-family: var(--mono);
+  font-size: 0.8em;
+  line-height: 1.5;
+}
+
+.figure { margin: 2em 0; }
+
+.figure-frame {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 7;
+  background: var(--panel);
+  font-family: var(--mono);
+  font-size: 0.8em;
+}
+
+figcaption {
+  margin-top: 10px;
+  font-size: 0.85em;
+  font-style: italic;
+}
+
+.essay-foot {
+  margin-top: 64px;
+  padding-top: 20px;
+  border-top: 2px solid var(--text);
+  font-size: 0.95em;
+}
+
+.essay-foot p { margin: 0 0 8px; }
+
+.essay-foot a {
+  text-decoration: underline;
+  text-decoration-color: var(--link);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+/* ---- Lab only ---- */
+.lab-tag {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 20;
+  padding: 4px 10px;
+  background: var(--text);
+  color: var(--ground);
+  font: 12px/1.4 ui-monospace, Consolas, monospace;
+  text-decoration: none;
+}

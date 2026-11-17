@@ -149,48 +149,98 @@ for (const vp of VIEWPORTS) {
   const leadFirst = await evaluate(`document.querySelector('.lead').getBoundingClientRect().top < document.querySelector('.cols').getBoundingClientRect().top`);
   check(`poster/${vp.name}: games block comes before the other sections`, leadFirst === true);
 
-  // Typeface pairings (lab switcher): each loads the faces that page uses, and fits.
-  // Browsers load a face only when text uses it: the poster uses display + regular text,
-  // the notebook uses regular + italic text and no display face.
+  // Typefaces (two lab menus). Browsers load a face only when text uses it, so each page is
+  // checked for the faces it shows: every display face on the poster, every text face on the
+  // notebook and essay pages.
   const fontState = `(() => {
     const css = getComputedStyle(document.body);
-    const display = css.getPropertyValue('--display').trim();
-    const weight = css.getPropertyValue('--display-weight').trim();
-    const body = (css.getPropertyValue('--body-font') || css.getPropertyValue('--body')).trim();
     const first = (stack) => stack.split(',')[0].trim();
-    return { type: document.body.dataset.type, display: first(display), body: first(body),
-      displayOk: document.fonts.check(weight + ' 50px ' + first(display)),
-      bodyOk: document.fonts.check('400 20px ' + first(body)),
-      italicOk: document.fonts.check('italic 400 20px ' + first(body)) };
+    const display = first(css.getPropertyValue('--display'));
+    const weight = css.getPropertyValue('--display-weight').trim();
+    const body = first(css.getPropertyValue('--body-font'));
+    return { display: document.body.dataset.display, text: document.body.dataset.text, displayFamily: display, bodyFamily: body,
+      displayOk: document.fonts.check(weight + ' 50px ' + display),
+      bodyOk: document.fonts.check('400 20px ' + body),
+      italicOk: document.fonts.check('italic 400 20px ' + body) };
   })()`;
-  for (const page of ['poster', 'notebook']) {
+  const optionsOf = (id) => evaluate(`[...document.getElementById('${id}').options].map(o => o.value)`);
+  const choose = (id, value) => evaluate(`(() => { const s = document.getElementById('${id}'); s.value = '${value}'; s.dispatchEvent(new Event('change')); })()`);
+  const overflowNow = () => evaluate('document.documentElement.scrollWidth - window.innerWidth');
+
+  // Poster: every display face (text face fixed).
+  await open('poster', vp, 400);
+  const displays = await optionsOf('labDisplay');
+  check(`poster/${vp.name}: 16 display faces offered`, displays.length === 16, `${displays.length} found`);
+  for (const id of displays) {
+    await choose('labDisplay', id);
+    await sleep(300);
+    for (let t = 0; t < 150 && (await evaluate(`document.getElementById('grow').dataset.state`)) !== 'grown'; t++) await sleep(100);
+    const growMs = Number(await evaluate(`document.getElementById('grow').dataset.growMs`));
+    const st = await evaluate(fontState);
+    const clipped = await evaluate(`(() => { const c = document.getElementById('cells'); const d = c.getContext('2d').getImageData(c.width - 3, 0, 3, c.height).data; for (let i = 3; i < d.length; i += 4) if (d[i] > 200) return true; return false; })()`);
+    const overflow = await overflowNow();
+    const ok = (id === 'system' || st.displayOk) && overflow <= 0 && !clipped && growMs < 4000;
+    check(`poster/${vp.name}: display ${id} loads, fits, grows in under 4s`, ok, `${st.displayFamily}, overflow ${overflow}, clipped ${clipped}, grown in ${growMs}ms`);
+    await shot(`poster-${vp.name}-display-${id}`);
+  }
+
+  // Notebook and essay: every text face (display face fixed).
+  for (const page of ['notebook', 'essay']) {
     await open(page, vp, 400);
-    const pairings = await evaluate(`document.querySelectorAll('.lab-types button').length`);
-    check(`${page}/${vp.name}: all 10 typeface pairings offered`, pairings === 10, `${pairings} found`);
-    for (let n = 1; n <= pairings; n++) {
-      await evaluate(`document.querySelectorAll('.lab-types button')[${n - 1}].click()`);
-      let growMs = '';
-      if (page === 'poster') {
-        await sleep(300);
-        for (let t = 0; t < 150 && (await evaluate(`document.getElementById('grow').dataset.state`)) !== 'grown'; t++) await sleep(100);
-        growMs = await evaluate(`document.getElementById('grow').dataset.state + ' in ' + document.getElementById('grow').dataset.growMs + 'ms'`);
-      } else {
-        await sleep(1200);
-      }
+    const texts = await optionsOf('labText');
+    check(`${page}/${vp.name}: 8 text faces offered`, texts.length === 8, `${texts.length} found`);
+    for (const id of texts) {
+      await choose('labText', id);
+      await sleep(900);
       const st = await evaluate(fontState);
-      const system = st.type === 'system';
-      const overflow = await evaluate('document.documentElement.scrollWidth - window.innerWidth');
-      let clipped = false;
-      if (page === 'poster') {
-        clipped = await evaluate(`(() => { const c = document.getElementById('cells'); const d = c.getContext('2d').getImageData(c.width - 3, 0, 3, c.height).data; for (let i = 3; i < d.length; i += 4) if (d[i] > 200) return true; return false; })()`);
-      }
-      const loaded = system || (page === 'poster' ? st.displayOk && st.bodyOk : st.bodyOk && st.italicOk);
-      const fastEnough = page !== 'poster' || (growMs.startsWith('grown') && Number(growMs.match(/([0-9]+)ms/)[1]) < 4000);
-      check(`${page}/${vp.name}: type ${st.type} loads, fits${page === 'poster' ? ', grows in under 4s' : ''}`, loaded && overflow <= 0 && !clipped && fastEnough,
-        `${page === 'poster' ? st.display + ' / ' : ''}${st.body}, overflow ${overflow}, clipped ${clipped}${growMs ? ', ' + growMs : ''}`);
-      await shot(`${page}-${vp.name}-type-${st.type}`);
+      const overflow = await overflowNow();
+      const ok = (id === 'system' || (st.bodyOk && st.italicOk)) && overflow <= 0;
+      check(`${page}/${vp.name}: text ${id} loads and fits`, ok, `${st.bodyFamily}, regular ${st.bodyOk}, italic ${st.italicOk}, overflow ${overflow}`);
+      await shot(`${page}-${vp.name}-text-${id}`);
     }
   }
+
+  // Essay reading checks (default faces).
+  await choose('labText', 'fraunces');
+  await sleep(600);
+  const read = await evaluate(`(() => {
+    const p = [...document.querySelectorAll('.essay-body p:not(.opening)')].sort((a, b) => b.textContent.length - a.textContent.length)[0];
+    // Exact count: characters whose box sits on the paragraph's first line.
+    const node = [...p.childNodes].find(n => n.nodeType === 3);
+    const range = document.createRange();
+    let firstTop = null, perLine = 0;
+    for (let i = 0; i < node.length; i++) {
+      range.setStart(node, i); range.setEnd(node, i + 1);
+      const r = range.getBoundingClientRect();
+      if (r.width === 0 && r.height === 0) continue;
+      if (firstTop === null) firstTop = Math.round(r.top);
+      if (Math.abs(Math.round(r.top) - firstTop) > 2) break;
+      perLine++;
+    }
+    range.selectNodeContents(p);
+    const lines = new Set([...range.getClientRects()].map(r => Math.round(r.top))).size;
+    const note = document.querySelector('.note').getBoundingClientRect();
+    const para = p.getBoundingClientRect();
+    return { perLine, lines, noteLeft: note.left, paraRight: para.right, noteBelow: note.top >= para.bottom || note.bottom <= para.top };
+  })()`);
+  const wide = vp.width >= 1100;
+  check(`essay/${vp.name}: line length readable`, wide ? read.perLine <= 75 && read.perLine >= 50 : read.perLine <= 75,
+    `about ${Math.round(read.perLine)} characters per line over ${read.lines} lines`);
+  check(`essay/${vp.name}: margin note clear of the text`, wide ? read.noteLeft >= read.paraRight : read.noteBelow,
+    wide ? `note starts ${Math.round(read.noteLeft - read.paraRight)}px right of the text` : 'note sits between paragraphs');
+  const essayContrast = await evaluate(contrastOf(['.essay-body p', '.kicker', 'h2', 'pre', '.note']));
+  for (const [sel, ratio] of Object.entries(essayContrast)) {
+    const need = sel === '.kicker' || sel === 'h2' ? 4.5 : 7;
+    check(`essay/${vp.name}: ${sel} contrast`, ratio >= need, `${ratio.toFixed(1)}:1, needs ${need}:1`);
+  }
+  const before = Number(await evaluate(`document.getElementById('progress').dataset.share`));
+  await evaluate('window.scrollTo(0, document.documentElement.scrollHeight)');
+  await sleep(300);
+  const after = Number(await evaluate(`document.getElementById('progress').dataset.share`));
+  check(`essay/${vp.name}: progress strip fills on scroll`, after > before && after > 0.95, `${before} -> ${after}`);
+  await evaluate('window.scrollTo(0, 0)');
+  await sleep(200);
+  await shot(`essay-${vp.name}`);
 }
 
 check('no JavaScript exceptions', errors.length === 0, errors.slice(0, 3).join(' | '));
