@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <!-- Clay: a "P" built from cells, like the growing name. -->
+  <rect width="120" height="120" fill="#2a1a12"/>
+  <g fill="#e07a3a">
+    <rect x="28" y="22" width="14" height="14"/><rect x="44" y="22" width="14" height="14"/><rect x="60" y="22" width="14" height="14"/><rect x="76" y="22" width="14" height="14"/>
+    <rect x="28" y="38" width="14" height="14"/><rect x="76" y="38" width="14" height="14"/>
+    <rect x="28" y="54" width="14" height="14"/><rect x="44" y="54" width="14" height="14"/><rect x="60" y="54" width="14" height="14"/><rect x="76" y="54" width="14" height="14"/>
+    <rect x="28" y="70" width="14" height="14"/>
+    <rect x="28" y="86" width="14" height="14"/>
+  </g>
+  <rect x="60" y="38" width="14" height="14" fill="#e9b44c"/>
+</svg>

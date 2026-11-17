@@ -1,0 +1,171 @@
+/* Essay style: writing index and essays. One reading column of about 65 characters per line,
+   with a few quiet touches: a cell-grid opening letter, margin notes, a reading-progress strip. */
+
+.page-essay {
+  --measure: 32em;          /* about 65 characters per line; ch units overshoot */
+  --note-width: 220px;
+  --note-gap: 48px;
+}
+
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 15;
+  height: 6px;
+}
+
+.progress-fill {
+  height: 100%;
+  transform-origin: left center;
+  transform: scaleX(0);
+  background: repeating-linear-gradient(to right, var(--ring-2) 0 5px, transparent 5px 7px);
+}
+
+.essay {
+  max-width: calc(var(--measure) + var(--note-width) + var(--note-gap));
+  margin: 0 auto;
+  padding: clamp(32px, 6vw, 88px) 20px 0;
+  font-size: clamp(18px, 0.45vw + 15px, 21px);
+  line-height: 1.65;
+}
+
+.essay-head,
+.essay-body > :not(.note),
+.essay-foot,
+.essay-list { max-width: var(--measure); }
+
+.kicker {
+  margin: 0 0 18px;
+  font-family: var(--display);
+  font-weight: var(--display-weight);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--label);
+}
+
+.essay h1 {
+  margin: 0 0 24px;
+  font-family: var(--display);
+  font-weight: var(--display-weight);
+  font-size: clamp(2.3rem, 5.2vw, 4.4rem);
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+}
+
+.standfirst {
+  margin: 0 0 56px;
+  font-size: 1.2em;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.essay-body p { margin: 0 0 1.1em; }
+
+/* Opening letter: a grid of cells in the growth-ring colours, clipped to the letter */
+.initial {
+  float: left;
+  margin: 0.06em 0.1em 0 0;
+  font-family: var(--display);
+  font-weight: var(--display-weight);
+  font-size: 4.6em;
+  line-height: 0.8;
+  color: var(--ring-2);
+  background:
+    repeating-linear-gradient(to right, transparent 0 5px, var(--ground) 5px 7px),
+    repeating-linear-gradient(to bottom, transparent 0 5px, var(--ground) 5px 7px),
+    repeating-radial-gradient(circle at 10% 20%, var(--ring-1) 0 10px, var(--ring-2) 10px 20px, var(--ring-3) 20px 30px, var(--ring-4) 30px 40px);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.essay-body h2 {
+  margin: 2.2em 0 0.6em;
+  font-family: var(--display);
+  font-weight: var(--display-weight);
+  font-size: 1.05em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--label);
+}
+
+.essay a {
+  text-decoration: underline;
+  text-decoration-color: var(--link);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.essay a:hover { color: var(--label); }
+
+/* Notes: in the margin on wide screens, folded into the text below that */
+.note {
+  margin: 0 0 1.4em;
+  padding: 2px 0 2px 16px;
+  border-left: 2px solid var(--link);
+  font-size: 0.82em;
+  line-height: 1.5;
+}
+
+.note-mark {
+  display: block;
+  font-family: var(--display);
+  font-weight: var(--display-weight);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--label);
+}
+
+@media (min-width: 1100px) {
+  .note {
+    float: right;
+    clear: right;
+    width: var(--note-width);
+    margin-right: calc(-1 * (var(--note-width) + var(--note-gap)));
+  }
+  .essay-body { max-width: var(--measure); }
+}
+
+blockquote {
+  margin: 1.8em 0;
+  padding-left: 28px;
+  background: repeating-linear-gradient(to bottom, var(--ring-3) 0 6px, transparent 6px 10px) left top / 6px 100% no-repeat;
+  font-size: 1.22em;
+  line-height: 1.45;
+  font-style: italic;
+}
+
+blockquote p { margin: 0; }
+
+pre {
+  margin: 1.4em 0;
+  padding: 16px 18px;
+  overflow-x: auto;
+  background: var(--panel);
+  font-family: var(--mono);
+  font-size: 0.8em;
+  line-height: 1.5;
+}
+
+figure { margin: 2em 0; }
+figure img { display: block; max-width: 100%; height: auto; }
+figcaption { margin-top: 10px; font-size: 0.85em; font-style: italic; }
+
+.essay-foot {
+  margin-top: 64px;
+  padding-top: 20px;
+  border-top: 2px solid var(--text);
+  font-size: 0.95em;
+}
+
+.essay-foot p { margin: 0 0 8px; }
+
+.essay-list { margin: 0; padding: 0; list-style: none; border-top: 2px solid var(--text); }
+.essay-list li { padding: 24px 0; border-bottom: 1px solid var(--soft-rule); }
+.essay-list .kicker { margin-bottom: 6px; }
+.essay-list h2 { margin: 0 0 6px; font-size: 1.4em; line-height: 1.25; }
+.essay-list p { margin: 0; }
