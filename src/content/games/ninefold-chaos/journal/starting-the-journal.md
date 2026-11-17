@@ -1,6 +1,6 @@
 ---
 title: Starting the journal
-review: pending
+review: approved
 date: 2026-11-17
 summary: Ninefold Chaos is at the concept stage. This journal follows it from here.
 ---

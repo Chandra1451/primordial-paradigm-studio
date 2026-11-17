@@ -1,6 +1,6 @@
 ---
 title: Work for hire
-review: pending
+review: approved
 summary: Primordial Paradigm builds dashboards and data systems to order, taken on selectively.
 ---
 Alongside its games, Primordial Paradigm builds dashboards and data systems to order: dashboards for the people who make decisions, business intelligence reporting, and the data architecture underneath.

@@ -1,6 +1,6 @@
 ---
 title: About
-review: pending
+review: approved
 summary: Primordial Paradigm is an independent game studio that also builds dashboards and data systems for clients.
 ---
 Primordial Paradigm is an independent game studio.

@@ -1,6 +1,6 @@
 ---
 title: Ninefold Chaos
-review: pending
+review: approved
 status: Concept stage
 summary: An action-adventure, and the studio's first game. It is at the concept stage; nothing is released.
 ---
