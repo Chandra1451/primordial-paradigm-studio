@@ -1,0 +1,143 @@
+/* Shared by every page: fonts, the Clay palette, base text, menu bar, footer.
+   Colours are named by role and defined only here (specs/30_design/redesign-direction.md). */
+
+/* Tektur (display) and Figtree (text): self-hosted, SIL Open Font License 1.1.
+   Sources and checksums: /assets/fonts/manifest.json. Tektur ships as one heavy weight,
+   so it declares the full range and the browser never fakes a bold. */
+@font-face { font-family: 'Tektur'; src: url('/assets/fonts/tektur-latin-900-normal.woff2') format('woff2'); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Figtree'; src: url('/assets/fonts/figtree-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Figtree'; src: url('/assets/fonts/figtree-latin-400-italic.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: 'Figtree'; src: url('/assets/fonts/figtree-latin-700-normal.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+
+:root {
+  /* Clay */
+  --ground: #ece3d4;
+  --text: #2a1a12;          /* 13.2:1 on ground */
+  --label: #a23b1f;         /* 5.2:1: labels and small headings only */
+  --link: #d1552d;          /* underlines and decorative lines, never text */
+  --ring-1: #2a1a12;
+  --ring-2: #a23b1f;
+  --ring-3: #e07a3a;
+  --ring-4: #e9b44c;
+  --dim: 0.1;               /* cells outside the letters of the growing name */
+  --panel: #e2d6c2;         /* code and figure ground */
+  --soft-rule: rgba(42, 26, 18, 0.3);
+  --margin-line: #d1552d;   /* notebook */
+  --highlight: rgba(233, 180, 76, 0.65);
+  --ghost: #e07a3a;
+  --rule-line: rgba(42, 26, 18, 0.14);
+
+  /* Type */
+  --display: 'Tektur', 'Arial Black', sans-serif;
+  --display-weight: 900;
+  --body: 'Figtree', 'Segoe UI', Arial, sans-serif;
+  --mono: ui-monospace, Consolas, 'Courier New', monospace;
+
+  --gutter: clamp(16px, 2vw, 32px);
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 3px solid var(--link);
+  outline-offset: 3px;
+}
+
+.skip {
+  position: absolute;
+  left: 8px;
+  top: -60px;
+  z-index: 30;
+  padding: 8px 12px;
+  background: var(--text);
+  color: var(--ground);
+}
+
+.skip:focus { top: 8px; }
+
+/* Menu bar */
+.bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px 32px;
+  padding: 22px var(--gutter);
+  font-family: var(--display);
+  font-weight: var(--display-weight);
+  font-size: 13px;
+  line-height: 1.4;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.bar-name { margin: 0; text-decoration: none; }
+.bar nav { display: flex; flex-wrap: wrap; gap: 0 28px; }
+.bar a { text-decoration: none; }
+
+.bar a:hover,
+.bar a:focus-visible,
+.bar a[aria-current="page"] {
+  color: var(--label);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+/* Footer */
+.foot {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px 32px;
+  margin: 96px var(--gutter) 0;
+  padding: 28px 0 40px;
+  border-top: 2px solid var(--text);
+  font-size: 15px;
+}
+
+.foot p { margin: 0 0 6px; }
+.foot ul { margin: 0; padding: 0; list-style: none; }
+.foot li { margin: 0 0 6px; }
+
+.foot-name {
+  font-family: var(--display);
+  font-weight: var(--display-weight);
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.foot a {
+  text-decoration: underline;
+  text-decoration-color: var(--link);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.foot a:hover { color: var(--label); }
+
+.foot-copy {
+  grid-column: 1 / -1;
+  color: var(--text);
+  font-size: 13px;
+}
+
+@media (max-width: 700px) {
+  .foot { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; }
+}

@@ -47,15 +47,33 @@ if (capture(['status', '--porcelain']) !== '') {
 const sourceCommit = capture(['rev-parse', '--short', 'HEAD']);
 console.log(`Source commit: ${sourceCommit}`);
 
-// 1. Run full verification suite (Secrets, Build, Claims, Browser CDP tests)
+// 0b. Every content file must be approved by the owner (front matter "review: approved").
+const pendingReview = [];
+(function walk(dir) {
+  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, e.name);
+    if (e.isDirectory()) walk(full);
+    else if (e.name.endsWith('.md') && !/^review:\s*approved\s*$/m.test(fs.readFileSync(full, 'utf8'))) {
+      pendingReview.push(path.relative(CODE_ROOT, full));
+    }
+  }
+})(path.join(CODE_ROOT, 'src', 'content'));
+if (pendingReview.length) {
+  console.error('ERROR: content not yet approved by the owner (set "review: approved" after review):');
+  for (const f of pendingReview) console.error(`  - ${f}`);
+  process.exit(1);
+}
+
+// 1. Run full verification suite (secrets, build, claims, links, browser tests).
+// npm test ends with a clean production build in dist/.
 console.log('\n[1/4] Running full verification pipeline...');
 run('npm test', CODE_ROOT);
 
 // 2. Ensure dist directory exists and contains critical assets
 console.log('\n[2/4] Verifying production distribution integrity...');
-for (const lab of ['LAB_BUILD', 'lab', 'explore', 'specimen']) {
-  if (fs.existsSync(path.join(DIST_DIR, lab))) {
-    console.error(`✗ Lab artifact found in production build: dist/${lab}`);
+for (const artifact of ['FIXTURE_BUILD', 'LAB_BUILD', 'lab', 'explore', 'specimen', 'learn/sample-layout']) {
+  if (fs.existsSync(path.join(DIST_DIR, artifact))) {
+    console.error(`ERROR: test or lab artifact found in production build: dist/${artifact}`);
     process.exit(1);
   }
 }

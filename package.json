@@ -1,24 +1,21 @@
 {
   "name": "primordial-paradigm-studio",
   "type": "module",
-  "version": "1.0.0",
+  "version": "2.0.0-rc1",
   "private": true,
   "scripts": {
     "build": "node scripts/build.mjs",
     "preview": "node scripts/preview.mjs",
     "check:secrets": "node scripts/check-secrets.mjs",
-    "check:skills": "node scripts/check-external-skill.mjs",
     "check:claims": "node scripts/check-claims.mjs",
-    "test:secrets": "node scripts/check-secrets.mjs",
-    "test:claims": "node scripts/check-claims.mjs",
-    "test:browser": "node tests/verify-site.mjs",
-    "test": "node scripts/check-secrets.mjs && node scripts/build.mjs && node scripts/check-claims.mjs && node tests/verify-site.mjs",
+    "test:browser": "node scripts/build.mjs --fixtures && node tests/verify-site.mjs",
+    "test": "node scripts/check-secrets.mjs && node scripts/build.mjs && node scripts/check-claims.mjs && node scripts/check-links.mjs && node scripts/build.mjs --fixtures && node tests/verify-site.mjs && node scripts/build.mjs",
     "package": "node scripts/package-hostinger.mjs",
     "deploy": "node scripts/deploy.mjs",
-    "build:lab": "node scripts/build.mjs --lab",
-    "preview:lab": "node scripts/build.mjs --lab && node scripts/preview.mjs",
     "hooks:install": "git config core.hooksPath .githooks",
-    "test:lab": "node scripts/build.mjs --lab && node tests/verify-lab.mjs"
+    "build:fixtures": "node scripts/build.mjs --fixtures",
+    "check:links": "node scripts/check-links.mjs",
+    "check:skills": "node scripts/check-external-skill.mjs"
   },
   "dependencies": {
     "marked": "18.2.0"

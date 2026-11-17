@@ -20,8 +20,17 @@ const PROHIBITED_CLAIMS = [
   { name: 'Unverified Team Size Claim', regex: /\b(?:team\s+of\s+\d+|global\s+team\s+of|our\s+\d+\s+engineers|over\s+\d+\s+employees)\b/i },
   { name: 'Unverified Enterprise Social Proof', regex: /\b(?:trusted\s+by\s+fortune\s+500|industry-leading\s+enterprise|award-winning\s+studio|over\s+\d+\s+million\s+users)\b/i },
   { name: 'Unverified Legal Incorporation Claim', regex: /\b(?:primordial\s+paradigm\s+(?:inc|llc|corp|ltd|pvt\s+ltd))\b/i },
-  { name: 'Fictional Pricing or Money-Back Guarantee', regex: /\b(?:money-back\s+guarantee|100%\s+satisfaction\s+guaranteed|pricing\s+starts\s+at\s+\$)\b/i }
+  { name: 'Fictional Pricing or Money-Back Guarantee', regex: /\b(?:money-back\s+guarantee|100%\s+satisfaction\s+guaranteed|pricing\s+starts\s+at\s+\$)\b/i },
+  // Added 2026-11-17 from owner decisions (specs/10_brief/verified-brand-and-claims.md):
+  { name: 'Retired Test Content (not authentic)', regex: /\b(?:systemic\s+movement|low-cognitive\s+load|vector\s+kinematics)\b/i },
+  { name: 'Unannounced Game Genre (game is an action-adventure; styles undecided)', regex: /\b(?:shoot[\s-]*'?em[\s-]*up|shmup|side-scrolling\s+shooter|bullet[\s-]hell)\b/i },
+  { name: 'Invented Map Coordinates', regex: /\d{1,3}\.\d+\s*°\s*[NSEW]\b/ },
+  { name: 'Unlabelled Placeholder Text in a Production Build', regex: /\b(?:placeholder|lorem\s+ipsum)\b/i }
 ];
+
+// The only email address the site may show (owner-supplied, persona only).
+const ALLOWED_EMAILS = new Set(['contact@primordialparadigm.com']);
+const EMAIL_PATTERN = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi;
 
 console.log('--- Primordial Paradigm Studio: Static Claim Checker ---');
 
@@ -42,6 +51,12 @@ function checkHtmlFile(filePath) {
         file: relativePath,
         claim: claim.name
       });
+    }
+  }
+  for (const email of content.match(EMAIL_PATTERN) || []) {
+    if (!ALLOWED_EMAILS.has(email.toLowerCase())) {
+      // The address itself is not printed: it may be personal.
+      violations.push({ file: relativePath, claim: 'Email address other than the approved contact address' });
     }
   }
 }

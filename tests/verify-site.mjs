@@ -53,6 +53,14 @@ const MIME_TYPES = {
   '.json': 'application/json'
 };
 
+// Serve pages with the same Content-Security-Policy the live server sends (public/.htaccess),
+// so a page that needs inline code or a third-party resource fails here, not in production.
+// upgrade-insecure-requests is dropped because this test server is plain http on loopback.
+const htaccess = fs.readFileSync(path.join(CODE_ROOT, 'public', '.htaccess'), 'utf8');
+const cspMatch = htaccess.match(/Content-Security-Policy "([^"]+)"/);
+if (!cspMatch) { console.error('No Content-Security-Policy found in public/.htaccess'); process.exit(1); }
+const CSP = cspMatch[1].replace(/;\s*upgrade-insecure-requests/, '');
+
 // Loopback HTTP server
 const server = http.createServer(async (req, res) => {
   let reqPath = new URL(req.url, 'http://127.0.0.1').pathname;
@@ -71,7 +79,7 @@ const server = http.createServer(async (req, res) => {
   const contentType = MIME_TYPES[ext] || 'application/octet-stream';
   try {
     const data = await readFile(filePath);
-    res.writeHead(200, { 'Content-Type': contentType, 'Cache-Control': 'no-store' });
+    res.writeHead(200, { 'Content-Type': contentType, 'Cache-Control': 'no-store', 'Content-Security-Policy': CSP });
     res.end(data);
   } catch (err) {
     res.writeHead(500, { 'Content-Type': 'text/plain' });
@@ -191,6 +199,11 @@ try {
 
   await pageClient.send('Page.enable');
   await pageClient.send('Runtime.enable');
+  // Record Content-Security-Policy violations on every page (this listener is installed by the
+  // test harness, outside the page, so the policy itself does not block it).
+  await pageClient.send('Page.addScriptToEvaluateOnNewDocument', {
+    source: "window.__csp = []; document.addEventListener('securitypolicyviolation', (e) => window.__csp.push(e.violatedDirective + ' ' + (e.blockedURI || 'inline')));"
+  });
 
   const evaluate = async (expr) => {
     const res = await pageClient.send('Runtime.evaluate', {
@@ -213,14 +226,17 @@ try {
     }
   };
 
+  // Every page type. /learn/sample-layout/ is a test fixture (build --fixtures), never deployed.
   const ROUTES_TO_TEST = [
     '/',
     '/games/',
+    '/games/ninefold-chaos/',
+    '/games/ninefold-chaos/journal/',
+    '/games/ninefold-chaos/journal/starting-the-journal/',
     '/learn/',
+    '/learn/sample-layout/',
     '/services/',
     '/about/',
-    '/games/systemic-movement-prototype/',
-    '/learn/systems-architecture-first-principles/',
     '/404.html'
   ];
   const VIEWPORTS = [
@@ -282,18 +298,134 @@ try {
 
       // Test zero broken internal anchor hashes
       recordCheck(`${route} [${vp.name}] valid-internal-anchors`, metrics.brokenAnchors === 0);
+
+      // No Content-Security-Policy violations (no inline code, no third-party resources)
+      const cspViolations = await evaluate('window.__csp || []');
+      recordCheck(`${route} [${vp.name}] zero-csp-violations`, cspViolations.length === 0, cspViolations);
+
+      // Skip link targets the single <main>
+      const landmarks = await evaluate(`({ mains: document.querySelectorAll('main#main').length, skip: !!document.querySelector('a.skip[href="#main"]') })`);
+      recordCheck(`${route} [${vp.name}] skip-link-and-single-main`, landmarks.mains === 1 && landmarks.skip, landmarks);
     }
   }
 
-  // 2. WCAG Contrast Check Assertion on Homepage
+  // 2. Readability and interaction on every page type, at desktop and phone width.
+  // Contrast is measured (WCAG formula) against the page ground, not just read.
+  const contrastOf = (selectors) => `(() => {
+    const lum = (c) => { const [r, g, b] = c.match(/[0-9.]+/g).slice(0, 3).map((v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
+    const ground = getComputedStyle(document.body).backgroundColor;
+    const out = {};
+    for (const sel of ${JSON.stringify(selectors)}) {
+      const el = document.querySelector(sel);
+      if (!el) { out[sel] = 0; continue; }
+      const [hi, lo] = [lum(getComputedStyle(el).color), lum(ground)].sort((x, y) => y - x);
+      out[sel] = (hi + 0.05) / (lo + 0.05);
+    }
+    return out;
+  })()`;
+  // Body text needs 7:1 (AAA); labels and small headings 4.5:1 (AA).
+  const contrastPlan = {
+    '/': { '.lead-text': 7, '.cols p': 7, '.lead h2': 4.5, '.grow-hint': 4.5, '.foot p': 7 },
+    '/games/ninefold-chaos/': { '.game-body p': 7, '.eyebrow': 4.5 },
+    '/games/ninefold-chaos/journal/': { '.opening h1': 7, '.entry div p': 7, '.margin': 4.5 },
+    '/games/ninefold-chaos/journal/starting-the-journal/': { '.entry-body p': 7, '.margin': 4.5 },
+    '/learn/sample-layout/': { '.essay-body p': 7, '.kicker': 4.5, '.essay-body h2': 4.5, 'pre': 7, '.note': 7 },
+    '/services/': { '.page-body p': 7, '.eyebrow': 4.5 }
+  };
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  const mouse = (type, x, y) => pageClient.send('Input.dispatchMouseEvent', { type, x, y, button: 'left', buttons: type === 'mouseReleased' ? 0 : 1, clickCount: 1 });
+  const fontsLoaded = `({ tektur: document.fonts.check('900 50px Tektur'), figtree: document.fonts.check('400 20px Figtree') })`;
+
+  for (const vp of [VIEWPORTS[0], VIEWPORTS[2]]) {
+    await pageClient.send('Emulation.setDeviceMetricsOverride', { width: vp.width, height: vp.height, deviceScaleFactor: 1, mobile: vp.width < 600 });
+
+    for (const [route, plan] of Object.entries(contrastPlan)) {
+      await navigateTo(route);
+      await sleep(300);
+      const ratios = await evaluate(contrastOf(Object.keys(plan)));
+      for (const [sel, need] of Object.entries(plan)) {
+        recordCheck(`${route} [${vp.name}] contrast ${sel} >= ${need}:1`, ratios[sel] >= need, { ratio: Number(ratios[sel].toFixed(2)) });
+      }
+    }
+
+    // Growing name: real fonts, finishes in under 4 s, fits the width, regrows on click.
+    for (const route of ['/', '/games/ninefold-chaos/']) {
+      await navigateTo(route);
+      for (let t = 0; t < 150 && (await evaluate(`document.querySelector('.grow').dataset.state`)) !== 'grown'; t++) await sleep(100);
+      const grow = await evaluate(`(() => {
+        const wrap = document.querySelector('.grow'); const c = wrap.querySelector('.grow-cells');
+        const d = c.getContext('2d').getImageData(c.width - 3, 0, 3, c.height).data;
+        let clipped = false; for (let i = 3; i < d.length; i += 4) if (d[i] > 200) { clipped = true; break; }
+        const all = c.getContext('2d').getImageData(0, 0, c.width, c.height).data;
+        let lit = 0; for (let i = 3; i < all.length; i += 4) if (all[i] > 200) lit++;
+        return { state: wrap.dataset.state, ms: Number(wrap.dataset.growMs), clipped, lit: lit / (c.width * c.height), live: wrap.classList.contains('live') };
+      })()`);
+      const fonts = await evaluate(fontsLoaded);
+      recordCheck(`${route} [${vp.name}] growing name finishes in under 4s`, grow.state === 'grown' && grow.ms < 4000, grow);
+      recordCheck(`${route} [${vp.name}] growing name fits and is drawn`, grow.live && !grow.clipped && grow.lit > 0.15, grow);
+      recordCheck(`${route} [${vp.name}] Tektur and Figtree load`, fonts.tektur && fonts.figtree, fonts);
+      const box = await evaluate(`(() => { const r = document.querySelector('.grow-cells').getBoundingClientRect(); return { x: r.left + r.width * 0.6, y: r.top + r.height * 0.6 }; })()`);
+      await mouse('mousePressed', box.x, box.y);
+      await mouse('mouseReleased', box.x, box.y);
+      await sleep(60);
+      const restarted = await evaluate(`document.querySelector('.grow').dataset.state`);
+      recordCheck(`${route} [${vp.name}] click regrows the name`, restarted === 'growing' || restarted === 'grown', { state: restarted });
+    }
+
+    // Journal sketch: the ball follows a drag, glides after release, stops, selects no text.
+    await navigateTo('/games/ninefold-chaos/journal/');
+    await evaluate(`document.getElementById('flick').scrollIntoView({ block: 'center' })`);
+    await sleep(1800);
+    const ball = () => evaluate(`(() => { const r = document.getElementById('ball').getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; })()`);
+    const b0 = await ball();
+    await mouse('mousePressed', b0.x, b0.y);
+    const stepPx = vp.width * 0.012;
+    for (let i = 1; i <= 8; i++) { await mouse('mouseMoved', b0.x - i * stepPx, b0.y); await sleep(16); }
+    const b1 = await ball();
+    await mouse('mouseReleased', b0.x - 8 * stepPx, b0.y);
+    await sleep(350);
+    const b2 = await ball();
+    await sleep(4000);
+    const b3 = await ball();
+    await sleep(600);
+    const b4 = await ball();
+    const selected = await evaluate('String(window.getSelection())');
+    recordCheck(`journal sketch [${vp.name}] ball follows drag, glides, stops`, b1.x < b0.x - 2 && b2.x < b1.x - 2 && Math.abs(b4.x - b3.x) < 0.5, { b0: b0.x, b1: b1.x, b2: b2.x, b3: b3.x, b4: b4.x });
+    recordCheck(`journal sketch [${vp.name}] dragging selects no text`, selected === '', { selected });
+
+    // Essay: about 65 characters per line, margin notes clear of the text, progress strip fills.
+    await navigateTo('/learn/sample-layout/');
+    await sleep(600);
+    const read = await evaluate(`(() => {
+      const p = [...document.querySelectorAll('.essay-body p:not(.opening)')].sort((a, b) => b.textContent.length - a.textContent.length)[0];
+      const node = [...p.childNodes].find(n => n.nodeType === 3);
+      const range = document.createRange();
+      let firstTop = null, perLine = 0;
+      for (let i = 0; i < node.length; i++) {
+        range.setStart(node, i); range.setEnd(node, i + 1);
+        const r = range.getBoundingClientRect();
+        if (r.width === 0 && r.height === 0) continue;
+        if (firstTop === null) firstTop = Math.round(r.top);
+        if (Math.abs(Math.round(r.top) - firstTop) > 2) break;
+        perLine++;
+      }
+      const note = document.querySelector('.note').getBoundingClientRect();
+      const para = p.getBoundingClientRect();
+      return { perLine, noteLeft: note.left, paraRight: para.right, noteApart: note.top >= para.bottom || note.bottom <= para.top };
+    })()`);
+    const wide = vp.width >= 1100;
+    recordCheck(`essay [${vp.name}] line length readable`, wide ? read.perLine >= 50 && read.perLine <= 75 : read.perLine <= 75, read);
+    recordCheck(`essay [${vp.name}] margin note clear of the text`, wide ? read.noteLeft >= read.paraRight : read.noteApart, read);
+    const opening = await evaluate(`!!document.querySelector('.essay-body p.opening .initial')`);
+    recordCheck(`essay [${vp.name}] cell-grid opening letter present`, opening);
+    const before = Number(await evaluate(`document.getElementById('progress').dataset.share`));
+    await evaluate('window.scrollTo(0, document.documentElement.scrollHeight)');
+    await sleep(300);
+    const after = Number(await evaluate(`document.getElementById('progress').dataset.share`));
+    recordCheck(`essay [${vp.name}] progress strip fills on scroll`, after > before && after > 0.95, { before, after });
+  }
+  await pageClient.send('Emulation.setDeviceMetricsOverride', { width: VIEWPORTS[0].width, height: VIEWPORTS[0].height, deviceScaleFactor: 1, mobile: false });
   await navigateTo('/');
-  const contrastCheck = await evaluate(`(() => {
-    const bg = getComputedStyle(document.body).backgroundColor;
-    const h1Color = getComputedStyle(document.querySelector('h1')).color;
-    const pColor = getComputedStyle(document.querySelector('p')).color;
-    return { bg, h1Color, pColor };
-  })()`);
-  recordCheck('homepage computed-contrast-styles', Boolean(contrastCheck.bg && contrastCheck.h1Color && contrastCheck.pColor), contrastCheck);
 
   // 3. Probing: Negative Control (Flaw Injection)
   // Inject an intentional 2500px wide element and assert the test runner catches the overflow
@@ -313,6 +445,18 @@ try {
   const cleanRestoration = await evaluate(`document.documentElement.scrollWidth <= window.innerWidth + 1`);
   recordCheck('flaw-probing-positive-control (clean recovery after probe removal)', cleanRestoration);
 
+  // 4b. Probing: the Content-Security-Policy really blocks inline code, and the detector sees it.
+  await navigateTo('/');
+  const cspProbe = await evaluate(`new Promise((resolve) => {
+    const before = window.__csp.length;
+    window.__probeRan = false;
+    const s = document.createElement('script');
+    s.textContent = 'window.__probeRan = true;';
+    document.body.appendChild(s);
+    setTimeout(() => resolve({ blocked: window.__probeRan === false, reported: window.__csp.length > before }), 150);
+  })`);
+  recordCheck('flaw-probing-csp-control (inline script blocked and reported)', cspProbe.blocked && cspProbe.reported, cspProbe);
+
   // 5. Runtime Exceptions Check
   recordCheck('zero-runtime-javascript-exceptions', runtimeErrors.length === 0, runtimeErrors);
 
@@ -320,15 +464,20 @@ try {
   const screenshotsDir = path.join(REPORT_DIR, 'screenshots');
   await mkdir(screenshotsDir, { recursive: true });
 
-  await pageClient.send('Emulation.setDeviceMetricsOverride', { width: 1440, height: 900, deviceScaleFactor: 1, mobile: false });
-  await navigateTo('/');
-  const shot1440 = await pageClient.send('Page.captureScreenshot', { format: 'png' });
-  await writeFile(path.join(screenshotsDir, 'homepage-desktop-1440.png'), Buffer.from(shot1440.data, 'base64'));
-
-  await pageClient.send('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 1, mobile: true });
-  await navigateTo('/');
-  const shot390 = await pageClient.send('Page.captureScreenshot', { format: 'png' });
-  await writeFile(path.join(screenshotsDir, 'homepage-mobile-390.png'), Buffer.from(shot390.data, 'base64'));
+  // Every page at desktop and phone width, full length, after any growing name has finished.
+  for (const vp of [{ name: 'desktop', width: 1440, height: 900, mobile: false }, { name: 'phone', width: 390, height: 844, mobile: true }]) {
+    await pageClient.send('Emulation.setDeviceMetricsOverride', { width: vp.width, height: vp.height, deviceScaleFactor: 1, mobile: vp.mobile });
+    for (const route of ROUTES_TO_TEST) {
+      await navigateTo(route);
+      for (let t = 0; t < 60 && (await evaluate(`(document.querySelector('.grow') || { dataset: { state: 'grown' } }).dataset.state`)) !== 'grown'; t++) {
+        await new Promise((r) => setTimeout(r, 100));
+      }
+      await new Promise((r) => setTimeout(r, 400));
+      const shot = await pageClient.send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true });
+      const name = (route.replace(/^\/|\/$/g, '').replace(/[/.]/g, '-') || 'home') + `-${vp.name}.png`;
+      await writeFile(path.join(screenshotsDir, name), Buffer.from(shot.data, 'base64'));
+    }
+  }
 
   // Write structured JSON summary report
   const summaryReport = {
